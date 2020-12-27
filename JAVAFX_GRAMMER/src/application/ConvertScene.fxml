@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="128.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.G_ConvertScene">
+   <children>
+      <Button fx:id="ComboBoxButton" layoutX="27.0" layoutY="32.0" mnemonicParsing="false" onAction="#toComboBox" text="ComboBox" />
+      <Button fx:id="CheckBoxButton" layoutX="27.0" layoutY="61.0" mnemonicParsing="false" onAction="#toCheckBox" text="CheckBox" />
+      <Button fx:id="RadioButtonButton" layoutX="27.0" layoutY="90.0" mnemonicParsing="false" onAction="#toRadioButton" text="RadioButton" />
+      <Button fx:id="ListViewButton" layoutX="27.0" layoutY="120.0" mnemonicParsing="false" onAction="#toListView" text="ListView" />
+      <Button fx:id="TreeViewButton" layoutX="27.0" layoutY="151.0" mnemonicParsing="false" onAction="#toTreeView" text="TreeView" />
+   </children>
+</AnchorPane>
