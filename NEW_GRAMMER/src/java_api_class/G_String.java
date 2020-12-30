@@ -111,6 +111,13 @@ public class G_String {
 		System.out.println(splArr[1]);
 		System.out.println(splArr[2]);
 		
+		String spl2 = "한번 두번  세번   네번    ";
+		String[] splArr2 = spl2.split(" +");//+가 들어가서 띄어쓰기가 몇 번이 있어도 한 번으로 제거해 반환한다.
+		System.out.println(splArr2[0]);
+		System.out.println(splArr2[1]);
+		System.out.println(splArr2[2]);
+		System.out.println(splArr2[3]);
+		
 //		join() 메소드
 //		여러 문자열을 구분자를 넣어 결합
 		
