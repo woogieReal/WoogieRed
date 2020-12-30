@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class SerializationEx {
+public class Serialization {
 
 	/*
 	 * 직렬화 
