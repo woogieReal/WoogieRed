@@ -1,10 +1,8 @@
 package java_api_class;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class G_BufferedReader {
@@ -40,7 +38,6 @@ public class G_BufferedReader {
 				try {
 					br.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -49,28 +46,7 @@ public class G_BufferedReader {
 		
 		System.out.println("Success");
 		
-		System.out.println("================================");
 		
-		FileWriter fw = null;
-		BufferedWriter bw = null;
-		
-		try {
-			fw = new FileWriter("prac02.txt");
-			bw = new BufferedWriter(fw);
-			String tmp = "근데 아예 수정되냐";
-			bw.write(tmp);
-		}catch(IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				bw.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		System.out.println("Success");
 		
 	}
 
