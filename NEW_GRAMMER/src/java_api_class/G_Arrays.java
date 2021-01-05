@@ -71,13 +71,27 @@ public class G_Arrays {
 		}
 		System.out.println();
 		
+		
+		//일반 오름차순 sort
+		String[] strArr = {"cat","Dog","lion","tiger"};
+		Arrays.sort(strArr);
+		System.out.println(Arrays.toString(strArr));
+		
+		//대소문자 무시 sort
+		Arrays.sort(strArr, String.CASE_INSENSITIVE_ORDER);
+		System.out.println(Arrays.toString(strArr));
+		
 //		toString()메소드
 //		배열을 String으로 바꿉니다.
 //		print를 통해 for문을 쓰지 않고 한 번에 배열을 출력하게 해줍니다.
+//		다차원 배열은 deepToString을 사용합니다
 		
 		//[1, 2, 3, 4, 5, 6]
 		int[] arr8 = {1, 2, 3, 4, 5, 6};
 		System.out.println(Arrays.toString(arr8));
+		
+		int[][] arr9 = {{1,2,3},{4,5,6}};
+		System.out.println(Arrays.deepToString(arr9));
 		
 		
 	}

@@ -2,7 +2,6 @@ package java_api_class;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Queue;
 
 public class G_ListIterator {
 
