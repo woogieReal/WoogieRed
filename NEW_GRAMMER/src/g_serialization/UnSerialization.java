@@ -1,4 +1,4 @@
-package java_serialization;
+package g_serialization;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
