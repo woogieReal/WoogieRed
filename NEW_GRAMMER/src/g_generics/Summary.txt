@@ -38,3 +38,9 @@ class FruitBox<T>{
 ex) FruitBox<Fruit> fruitBox = new FruitBox<Fruit>();
     Juicer.makeJuice(fruitBox);
     
+지네릭 타입의 제거
+컴파일러는 지네릭 타입을 이용해서 소스파일을 체크하고
+필요한 곳에 형변환을 넣어준다.
+그리고 지네릭 타입을 제거한다.
+컴파일된 클래스에는 지네릭 타입에 대한 정보가 없다.
+    

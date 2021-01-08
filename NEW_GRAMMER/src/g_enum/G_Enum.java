@@ -1,4 +1,4 @@
-package java_api_class;
+package g_enum;
 
 enum Rainbow {RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET}
 /*
