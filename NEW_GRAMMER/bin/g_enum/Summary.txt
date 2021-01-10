@@ -1,0 +1,23 @@
+열거형
+관련된 상수들을 묶어 놓은 것.
+JAVA는 타입의 안전한 열거형을 제공
+열거형이 갖는 값 뿐만 아니라 타입까지 관리해 논리적 오류를 줄일 수 있다.
+
+모든 열거형은 Enum의 자손이다. 따라서 아래의 메서드를 상속받는다.
+String name() 열거형 상수의 이름을 문자열로 반환
+int ordinal 열거형 상수의 순서를 반환한다.(0부터 시작)
+T valueOf(class<T>enumType,String name) 지정된 열거형에서 name과 일치하는 상수를  반환
+Class<E> getDeclaringClass() 열거형에 Class객체를 반환
+
+불연속적인 열거형 상수의 경우, 원하는 값을 괄호() 안에 적는다.
+ex) public enum TableStatus{ Y("1"),N("0") }
+괄호를 사용하려면 변수 생성자 추가
+    public enum TableStatus{
+        Y("1"), N("0")
+        private String tableValue
+        
+        public TableStatus(String tableValue){
+            this.tableValue = tableValue;
+        }
+        getter/setter생성
+    }
