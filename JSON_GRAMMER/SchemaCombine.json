@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"minLength": 3
+		},
+		{
+			"maxLength": 5
+		}
+	],
+	"anyOf": [
+		{
+			"type": "string"
+		},
+		{
+			"type": "number"
+		}
+	],
+	"oneOf": [
+		{
+			"type": "number",
+			"multipleOf": 3
+		},
+		{
+			"type": "number",
+			"multipleOf": 4
+		}
+	],
+	"not": {
+		"type": "string"
+	}
+}
+
