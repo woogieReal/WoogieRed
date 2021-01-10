@@ -1,57 +1,24 @@
-
 {
-  "name":"식빵",
-  "family":"웰시코기",
-  "age":1,
-  "weight":2.14
-}
-
-{
-  "dog":[
-    {"name":"식빵","family":"웰시코기","age":1,"weight":2.14},
-    {"name":"콩콩","family":"포메라니안","age":3,"weight":2.5},
-    {"name":"젤리","family":"푸들","age":7,"weight":3.1}
-  ]
-}
-
-{
-  "comment":"안녕하세요. \"식빵\"입니다."
-}
-
-{
-  "name":"식빵",
-  "lunch":true
-}
-
-{
-  "dog":{
-    "name":"식빵",
-    "family":"웰시코기",
-    "age":1,
-    "weight":2.14,
+  "title":"강아지 스키마",
+  "description":"이 스키마는 강아지에 관한 데이터를 검증하기 위해 작성된 스키마임.",
+  "type":"object",
+  "properties":{
+    "name":{"type":"string"},
+    "minLength":1,
+    "maxLength":5,
+    "family":{"type":"string"},
+    "age":{"type":"integer"},
+    "weight":{"type":"number"},
+    "multipleOf":5,
+    "minimum":1,
+    "maximum":100,
+    "exclusiveMaximum":true,
     "owner":{
-      "ownerName":"홍길동",
-      "phone":"01012345678"
+      "type":"object",
+      "properties":{
+        "ownerName":{"type":"string"},
+        "phone":{"type":"string"}
+      }
     }
   }
-}
-
-{
-  "dog":[
-    "웰시코기",
-    "포메라니안",
-    "푸들"
-  ]
-}
-
-{
-  "dog":[
-    "웰시코기",
-    "포메라니안",
-    "푸들",
-    {
-      "owner":"홀길동",
-      "phone":"01012345678"
-    }
-  ]
 }
