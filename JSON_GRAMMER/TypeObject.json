@@ -19,6 +19,7 @@
         "ownerName":{"type":"string"},
         "phone":{"type":"string"}
       }
-    }
-  }
+    } 
+  },
+  "required":["name","family"]
 }
