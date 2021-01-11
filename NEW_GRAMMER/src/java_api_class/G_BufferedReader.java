@@ -26,14 +26,6 @@ public class G_BufferedReader {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}finally {
-			if(fr != null) {
-				try {
-					fr.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			if(br != null) {
 				try {
 					br.close();

@@ -3,12 +3,13 @@ package connection;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class Main1 {
+public class Read {
 
 //	{
 //	    "name":"kim jaeuk",
@@ -27,7 +28,7 @@ public class Main1 {
 	public static void main(String[] args) {
 
 		JSONParser parser = new JSONParser();
-		File file = new File("C:\\\\Users\\\\123wo\\\\OneDrive\\\\문서\\\\GitHub\\\\WoogieRed\\\\JSON_GRAMMER\\\\TypeArray2.json");
+		File file = new File("C:\\Users\\123wo\\OneDrive\\문서\\GitHub\\WoogieRed\\JSON_GRAMMER\\json\\TypeArray2.json");
 		FileReader fr = null;
 		BufferedReader br = null;
 		
@@ -51,6 +52,15 @@ public class Main1 {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			if(null != br) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		
