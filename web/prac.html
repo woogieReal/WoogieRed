@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+  <meta charset = "utf-8">
+  <title>Practice</title>
+</head>
+<body style="background-color: skyblue">
+  <h1 id="좀">It's a just practice</h1>
+  <!--이거 어차피 안나옴-->
+  <h4><s>좀 이따 알바 가야됨</s></h4>
+  <!--h4는 글씨는 기본크기에 굵은 크기임-->
+  <s>좀 이따 알바 가야됨</s><br>
+  <a href="http://www.naver.com/" target="_self">네이버</a><br>
+  <!--현재 프레임-->
+  <a href="http://www.daum.net/" target="_blank">다음</a><br>
+  <!--새로운 프레임-->
+  <ul>
+    <li>콩나물</li>
+    <li>파</li>
+    <li>국간장</li>
+  </ul><br>
+  <ol>
+    <li>냄비에 국물용 멸치를 넣고...</li>
+    <li>콩나물을 넣고...</li>
+    <li>뚜껑을 닫고...</li>
+  </ol>
+  <dl>
+    <dt>리플리 증후군</dt>
+    <dd>허구의 세계를 진실이라 믿고...</dd>
+    <dt>피그말리온 효과</dt>
+    <dd>타인의 기대나 관심으로 인하여...</dd>
+  </dl>
+  <img src="C:\Users\123wo\Pictures\images\pizza.jpg" alt="피자" width="400"><br>
+  <img src="C:\Users\123wo\Pictures\images\pizza2.png" alt="피자" width="400"><br>
+  <a href="#좀">이동</a><br>
+  <table>
+    <caption>Monthly Savings</caption>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Savings</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>sum</td>
+        <td>$180</td>
+      </tr>
+    <tfoot>
+    <tbody>
+      <tr>
+        <td>January</td>
+        <td>$100</td>
+      </tr>
+      <tr>
+        <td>February</td>
+        <td>$80</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Monthly Savings2</caption>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Savings</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="2">sum</td>
+      </tr>
+    <tfoot>
+    <tbody>
+      <tr>
+        <td>January</td>
+        <td rowspan="2">$100</td>
+      </tr>
+      <tr>
+        <td>February</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form action="/test.html" method="post">
+  <h1>Form 관련 요소</h1>
+  <fieldset>
+    <legend>로그인 정보</legend>
+  <label for="userid">아이디</label>: <input type="text" placeholder="영문으로만 써주세요." id="userid"><br>
+  비밀번호: <input type="password"><br>
+  </fieldset>
+  <fieldset>
+    <legend>개인정보</legend>
+  성별: 남자 <input type="radio" name="gender">
+        여자 <input type="radio" name="gender" checked><br>
+  취미: 영화감상 <input type="checkbox" name="hobby">
+        음악감상 <input type="checkbox" name="hobby">
+        독서 <input type="checkbox" name="hobby"><br>
+  프로필 사진 업로드: <input type="file"><br>
+  <input type="submit" value="전송">
+  <input type="reset" value="취소">
+  <input type="button" value="등록"><br>
+  <input type="image" src="C:\Users\123wo\Pictures\images\login_button.png" alt="로그인" width="100" height="60">
+  사는지역: <select>
+    <option>서울</option>
+    <option>경기</option>
+    <option>강원</option>
+    <option selected>제주도</option>
+  </select><br>
+  자기소개: <textarea cols="30" rows="5" placeholder="자기소개"></textarea><br>
+  <button type="submit">전송</button><br>
+  <button type="reset">취소</button><br>
+  </form>
+</fieldset>
+
+<h1>시멘틱 마크업</h1>
+<b>굵은</b> vs <strong>중요한</strong><br>
+<i>기울어진</i> vs <em>강조하는</em><br>
+<u>밑줄친</u> vs <ins>새롭게 추가된</ins><br>
+<s>중간선</s> vs <del>삭제된</del><br>
+
+
+</body>

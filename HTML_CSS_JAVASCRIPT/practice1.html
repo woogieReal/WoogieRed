@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+   <meta charset="utf-8">
+   <title>practice1</title>
+ </head>
+ <style>
+  body {background-color: white}
+  h1 {color: lightred}
+  p {background-color: #7986cb}
+  a:hover {color:orange}
+ </style>
+ <body>
+  <h1><a name="top" href = "#bottom">a name = "top"로 지정되었습니다.</a></h1>
+  <pre>
+    pre 태그를 사용하면
+    br 태그를 사용하지 않아도
+    띄어쓰기와
+    줄바꿈이 됩니다.
+  </pre>
+  <hr>
+  <h4">hr태그는 빈태그이며 수평가로줄을 출력합니다.</h4>
+  <q>이 문장은 큰따옴표("")로 묶입니다.</q>
+  <h3>blockquote</h3>
+  <blockquote>
+    비교적 긴문장을 인용할때는 <br>
+    이렇게 blockquote 태그를 사용하면 <br>
+    보기 좋게 들여쓰기 처리됩니다.
+  </blockquote>
+  <address>
+    인천광역시 서구 가정로 387 <br>
+    이탤릭체 처리
+  </address>
+  <!-- 주석처리 방법, ctrl + /, 이클립스와 같음 -->
+  <p style = "background-color:#bbdefb">
+    style = "background-color:색깔"로 배경색을 줄 수 있습니다.
+  </p>
+  <p style = "color:blue">
+    style = "color:blue"로 글자색을 줄 수 있습니다.
+  </p>
+  <p style = "font-size:150%">
+    style = "font-size:150%"와 같이 글씨 크기를 변경할 수 있습니다.
+  </p>
+  <h2 style = "text-align:center">
+    <pre>
+      style = "text-align:center"로
+      문단정렬을 할 수 있습니다.
+    </pre>
+  </h2>
+  <h1 style = "background-color:orange; color:blue; font-size:120%; text-align:center">
+    <pre>
+      태그 하나에 여러가지 속성을 줄 수 있습니다.
+      큰 따옴표 안에 전부 작성하며
+      속성간에는 ;(세미콜론)으로 구분합니다.
+    </pre>
+  </h1>
+  <a href = "https://www.naver.com/">네이버</a>
+  <a href = "https://www.naver.com/" target = "_blank">blank는 누르면 새탭에</a>
+  <a name = "bottom" href = "#top"><p>
+    a name = "top"로 지정한 곳으로 갑니다.
+  </p></a>
+  <img src = "/20201126_133453.jpg" alt = "이미지가 안나오면 나오는 문장"
+  style = "width:400px; height:240px; border:5px solid red">
+  <a href = "#top">
+    <img src = "/20201126_133324.jpg" alt = "대체 문장"
+    style = "width:240px; height:400px; border:5px solid blue">
+  </a>
+  <img src = "/naver.png" alt = "네이버" usemap = "#vending">
+  <map name = "vending">
+    <area shape = "rect" coords = "50,50,150,150" alt = "네이버"
+    href = "https://www.naver.com/" target = "_blank">
+  </map>
+  <img src = "/google.png" alt = "구글" usemap = "#google">
+  <map name = "google">
+    <area shape = "circle" coords = "100,100,65" alt = "구글"
+    href = "https://www.google.co.kr/" target = "_blank">
+  </map>
+ </body>
+</html>
