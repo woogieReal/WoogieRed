@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>TCP_HTML_21~</title>
+  </head>
+  <body>
+      <form action = "https://google.co.kr/" method="post">
+        <fieldset>
+          <legend>입력양식</legend>
+          검색할 내용을 입력하세요 : <input type = "text" name = "search"> <br>
+          비밀번호 : <input type = "password" name = "password"> <br>
+          성별 : <input type = "radio" name = "gender" value = "man" checked> 남자
+                 <input type = "radio" name = "gender" value = "woman"> 여자 <br>
+          취미 : <input type = "checkbox" name = "hobby" value = "exercise"> 운동
+                 <input type = "checkbox" name = "hobby" value = "movie"> 영화감상
+                 <input type = "checkbox" name = "hobby" value = "game"> 게임
+                 <input type = "checkbox" name = "hobby" value = "war" disabled> 전쟁 <br>
+          사진 : <input type = "file" name = "upload_picture" accept = "image/*"> <br>
+          학력 : <select name = "graduate">
+                    <option value = "middle_school"> 중학교 </option>
+                    <option value = "high_school"> 고등학교 </option>
+                    <option value = "college" selected> 대학교 </option>
+                 </select> <br>
+          자기소개 : <br> <textarea name = "introduce" rows="5" cols="30" maxlength="10"></textarea> <br>
+          추가 : <br> <input type = "text" name = "additional" value = "입력불가" readonly> <br>
+          버튼 : <button type = "button" onclick = "alert">버튼</button> <br>
+          전송 : <input type = "submit" value = "등록">
+        </fieldset>
+      </form>
+  </body>
+</html>

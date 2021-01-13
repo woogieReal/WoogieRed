@@ -253,8 +253,18 @@ legend 요소는 fieldset 요소의 제목을 나타냄
          </fieldset>
 </form>
 
+value 속성 & readonly 속성
+<input type = "text" name = "additional" value = "입력불가" readonly>
+value로 기본값 지정
+readonly로 수정할 수는 없도록 설정
+(disabled 속성과 다른 점은 전송 버튼(submit)을 누르면 초깃값이 서버로 전송된다는 점)
 
+maxlength
+입력할 수 있는 문자의 최대 길이(length)를 설정
 
+size
+입력 필드에 보여지는 input 요소의 크기(size)를 설정
+maxlength 속성과는 달리 입력 필드가 한 번에 보여줄 수 있는 문자의 최대 개수만을 의미합니다.
 
 
 
