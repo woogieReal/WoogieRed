@@ -52,7 +52,7 @@ empty tag
 HTML 링크상태
 link	아직 한 번도 방문한 적이 없는 상태   파란색
 visited	한 번이라도 방문한 적이 있는 상태    보라색
-hover	링크 위에 마우스를 올려놓은 상태      없음
+hover	링크 위에 마우스를 올려놓은 상태     없음
 active	링크를 마우스로 누르고 있는 상태     빨간색
 <style>
     a:link    { color: teal; } 
@@ -63,7 +63,7 @@ active	링크를 마우스로 누르고 있는 상태     빨간색
 
 <a name = "top"> a </a>
 ....
-<a href = "#top> b </a>
+<a href = "#top"> b </a>
 북마크 이동 name으로 지정한 곳으로 이동
 
 <img src = "/20201126_133453.jpg" alt = "이미지가 안나오면 나오는 문장"
@@ -92,6 +92,8 @@ shape = "rect" 의 경우 coords = "x1,y1,x2,y2"
 shape = "circle" 의 경우 coords = "x,y,반지름"
 원의 중심점 좌표와 반지름을 명시함.
 
+TCP_HTML_17~18.html
+
 <ul style="list-style-type:square"> unordered list
 - disc : 검정색 작은 원 모양 (기본설정)
 - circle : 흰색 작은 원 모양
@@ -111,7 +113,7 @@ shape = "circle" 의 경우 coords = "x,y,반지름"
 <table style="width:50%"> width 표 크기 지정
 <tr> 열구분
 <th> 각 열의 제목, 굵은글씨+중앙정렬
-<td> 데이터 왼쪽정렬
+<td> 데이터, 왼쪽정렬
 
 <style>
    table, th, td {border:1px solid black; border-collapse:collapse}
@@ -126,3 +128,134 @@ shape = "circle" 의 경우 coords = "x,y,반지름"
 
 <caption>테이블이름</caption>
 테이블 상단에 제목이나 짧은 설명을 붙일 수 있음
+
+TCP_HTML_19~20.html
+
+블록(block) 타입의 요소
+언제나 새로운 라인(line)에서 시작하며, 해당 라인의 모든 너비를 차지
+<p>, <div>, <h>, <ul>, <ol>, <form>
+
+<div> 
+다른 HTML 요소들을 하나로 묶는 데 자주 사용되는 대표적인 블록(block) 요소
+주로 여러 요소들의 스타일을 한 번에 적용하기 위해 사용
+
+인라인(inline) 타입의 요소
+새로운 라인(line)에서 시작하지 않음
+요소의 너비도 해당 라인 전체가 아닌 해당 HTML 요소의 내용(content)만큼만 차지
+<span>, <a>, <img>
+
+<span>
+텍스트(text)의 특정 부분을 묶는 데 자주 사용되는 인라인(inline) 요소
+ 주로 텍스트의 특정 부분에 따로 스타일을 적용하기 위해 사용
+
+<iframe src="http://www.tcpschool.com/html/html_space_framesIframes"
+    style="width:600px; height:300px" border: 3px dashed maroon>
+해당 웹 페이지 안에 어떠한 제한 없이 또 다른 하나의 웹 페이지를 삽입
+border: 3px dashed maroon : 테두리 점선
+
+<iframe src="https://www.naver.com" name="frame_target">
+iframe 객체에 name을 설정
+<a href="https://google.co.kr" target="frame_target"> 구글로 이동
+기존의 iframe의 연결된 페이지를 네이버에서 구글로 변경
+
+TCP_HTML_21~.html
+
+HTML5 레이아웃
+웹 페이지의 레이아웃만을 위한 별도의 새로운 요소들을 제공
+이러한 요소들을 의미(semantic) 요소라고 함
+의미요소		설명
+<header>		HTML 문서나 섹션(section) 부분에 대한 헤더(header)를 정의함.
+<nav>		HTML 문서의 탐색 링크를 정의함.
+<section>		HTML 문서에서 섹션(section) 부분을 정의함.
+<article>		HTML 문서에서 독립적인 하나의 글(article) 부분을 정의함.
+<aside>		HTML 문서에서 페이지 부분 이외의 콘텐츠(content)를 정의함. 
+<footer>		HTML 문서나 섹션(section) 부분에 대한 푸터(footer)를 정의함.
+
+form 요소
+form 요소를 사용하여 사용자로부터 입력을 받을 수 있음
+사용자가 입력한 데이터를 서버로 보낼 때에도 form 요소를 사용
+<form action="처리할페이지주소" method="get|post"></form>
+action 속성은 입력받은 데이터를 처리할 서버 상의 스크립트 파일의 주소를 명시
+method 속성은 입력받은 데이터를 서버에 전달할 방식을 명시
+
+method 속성
+요소의 전달 방식은 GET 방식과 POST 방식으로 나눠짐
+
+GET 방식은 주소에 데이터(data)를 추가하여 전달하는 방식
+데이터가 주소 입력창에 그대로 나타나며, 전송할 수 있는 데이터의 크기 또한 제한적
+검색 엔진의 쿼리(query)와 같이 크기가 작고 중요도가 낮은 정보를 보낼 때 주로 사용
+
+POST 방식은 데이터(data)를 별도로 첨부하여 전달하는 방식
+데이터가 외부에 드러나지 않으며, 전송할 수 있는 데이터의 크기 또한 제한이 없음
+보안성 및 활용성이 GET 방식보다 좋음
+
+텍스트 입력
+<form action = "https://google.co.kr/" method="get">
+      검색할 내용을 입력하세요 :
+      <input type = "text" name = "search">
+</form>
+<input>태그의 type 속성값을 "text"로 설정하면, 사용자로부터 한 줄의 텍스트를 입력받을 수 있음
+
+비밀번호 입력
+비밀번호 : <input type = "password" name = "password">
+type 속성값을 "password"로 설정하면, 사용자로부터 비밀번호를 입력받을 수 있음
+
+라디오 버튼
+type 속성값을 "radio"로 설정
+반드시 모든 input 요소의 name 속성이 같아야함
+<input type = "radio" name = "hobby" value = "exercise" checked > exercise
+<input type = "radio" name = "hobby" value = "youtube"> movie
+<input type = "radio" name = "hobby" value = "game"> game <br>
+checked를 입력하면 디폴트값 지정
+
+체크박스
+type 속성값을 "checkbox"로 설정
+모든 input 요소의 name 속성이 같아야함
+<input type = "checkbox" name = "hobby" value = "exercise"> 운동
+<input type = "checkbox" name = "hobby" value = "movie"> 영화감상
+<input type = "checkbox" name = "hobby" value = "war" disabled> 전쟁 <br>
+disabled 속성을 이용하여 선택하지 못하도록 설정가능
+
+파일 선택
+ type 속성값을 "file"로 설정
+<input type = "file" name = "upload_picture" accept = "image/*">
+accept 속성을 지정하여 파일의 확장자 및 종류를 명시가능
+
+선택 입력
+콤보박스 생성
+<select name = "graduate">
+	<option value = "middle_school"> 중학교 </option>
+	<option value = "high_school"> 고등학교 </option>
+	<option value = "college" selected> 대학교 </option>
+</select>
+selected 속성을 이용하여 디폴트값 지정
+
+텍스트박스
+<textarea name = "introduce" rows="5" cols="30"></textarea>
+
+버튼
+<button type = "button" onclick = "alert">버튼</button>
+
+전송 버튼
+ type 속성값을 "submit"으로 설정
+사용자로부터 입력받은 데이터(data)를 서버의 폼 핸들러로 제출하는 버튼을 만들 수 있음. 
+폼 핸들러(form-handler)란 입력받은 데이터를 처리하기 위한 서버 측의 웹 페이지
+form 요소의 action 속성을 이용하여 명시
+<input type = "submit" value = "등록">
+
+필드셋(fieldset)
+form 요소와 관련된 데이터들을 하나로 묶어주는 역할
+legend 요소는 fieldset 요소의 제목을 나타냄
+<form action = "https://google.co.kr/" method="post">
+        <fieldset>
+          <legend>입력양식</legend>
+	.........
+         </fieldset>
+</form>
+
+
+
+
+
+
+
