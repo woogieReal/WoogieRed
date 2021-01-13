@@ -1,3 +1,5 @@
+TCP_HTML_1~16.html
+
 <pre> (preformatted text)
 작성한 텍스트 서식을 그대로 표현
 텍스트의 모든 띄어쓰기와 줄 나누기는 웹 브라우저에 그대로 표현
@@ -158,18 +160,7 @@ iframe 객체에 name을 설정
 <a href="https://google.co.kr" target="frame_target"> 구글로 이동
 기존의 iframe의 연결된 페이지를 네이버에서 구글로 변경
 
-TCP_HTML_21~.html
-
-HTML5 레이아웃
-웹 페이지의 레이아웃만을 위한 별도의 새로운 요소들을 제공
-이러한 요소들을 의미(semantic) 요소라고 함
-의미요소		설명
-<header>		HTML 문서나 섹션(section) 부분에 대한 헤더(header)를 정의함.
-<nav>		HTML 문서의 탐색 링크를 정의함.
-<section>		HTML 문서에서 섹션(section) 부분을 정의함.
-<article>		HTML 문서에서 독립적인 하나의 글(article) 부분을 정의함.
-<aside>		HTML 문서에서 페이지 부분 이외의 콘텐츠(content)를 정의함. 
-<footer>		HTML 문서나 섹션(section) 부분에 대한 푸터(footer)를 정의함.
+TCP_HTML_21~23.html
 
 form 요소
 form 요소를 사용하여 사용자로부터 입력을 받을 수 있음
@@ -266,6 +257,95 @@ size
 입력 필드에 보여지는 input 요소의 크기(size)를 설정
 maxlength 속성과는 달리 입력 필드가 한 번에 보여줄 수 있는 문자의 최대 개수만을 의미합니다.
 
+TCP_HTML_24.html
 
+스타일 시트(style sheet)
+<head> 태그내에 <link rel = "stylesheet" href = "/스타일시트 이름.css"> 작성
 
+스타일 적용의 우선순위
+1. 인라인 스타일
+2. 내부 / 외부 스타일 시트
+3. 웹 브라우저 기본 스타일
+
+아이디(id) 선택자
+특정 아이디 이름을 가지는 요소만을 선택해 CSS 적용
+<style>
+      #unordered {color : red}
+</style>
+	......
+     <ol id = "unordered">
+
+클래스(class) 선택자
+특정 집단(class)의 여러 요소를 한 번에 선택할 때 사용
+.explane {color : #00838f}
+<div class = "explane">
+
+TCP_HTML_26~30.html
+
+XHTML(EXtensible HTML)
+XHTML 문서는 하나의 XML 문서로서 문법적으로 정확하므로, 표준 XML 라이브러리를 이용한 자동화된 처리가 가능해짐
+XHTML에서의 변경 사항
+ 
+문서의 구조적 측면
+- XHTML DOCTYPE을 반드시 명시해야 합니다.
+- <html>태그의 xmlns 속성을 반드시 명시해야 합니다.
+- <html>, <head>, <title>, <body>태그를 반드시 사용해야 합니다.
+
+문서의 요소적 측면
+- 모든 태그는 반드시 닫혀야 합니다.
+- XHTML 문서는 반드시 하나의 root 요소를 포함해야 합니다.
+ 
+문서의 속성적 측면
+- 속성값 생략이 없어졌기 때문에 반드시 속성값을 명시해야 합니다.
+
+1. 종료 태그가 없는 빈 태그(empty tag)는 반드시 끝에 공백과 함께 슬래시(/)를 붙여야 합니다.
+XHTML : <hr />
+
+4. <img>태그에는 반드시 alt 속성이 기술되어야 합니다.
+<img src="alternative.png" alt="explanation" />
+
+8. 속성값 생략이 없어졌으므로, 반드시 속성값을 명시해야 합니다.
+XHTML : <textarea readonly="readonly">읽기만 가능합니다.</textarea>
+
+HTML 문서를 XHTML 문서로 변환하는 방법
+1. 첫줄에 다음 코드를 추가합니다.
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+2. xmlns 속성을 추가합니다.
+    <html xmlns="http://www.w3.org/1999/xhtml">
+3. 모든 태그 이름을 소문자로 바꿔줍니다.
+4. 모든 빈 태그를 닫아줍니다.
+5. 모든 속성 이름을 소문자로 바꿔줍니다.
+6. 모든 속성값을 따옴표로 둘러쌉니다.
+
+의미 요소(semantic element)
+요소가 자기 스스로 브라우저와 개발자 모두에게 자신이 사용된 의미를 명확히 전달해 주는 요소
+
+HTML5에서 추가된 의미 요소
+
+header 요소
+도입부에 해당하는 콘텐츠를 가지고 있는 부분
+한 문서 내에 여러 개의 header 요소가 존재할 수 있음
+(ex. section 태그 안에도 section 부분에 대한 header가 있을 수 있음)
+
+nav 요소
+HTML 문서 사이를 탐색할 수 있는 링크의 집합을 정의
+
+section 요소
+섹션이란 제목을 가지고 있으며, HTML 문서의 전체적인 내용과 관련이 있는 콘텐츠들의 집합
+
+article 요소
+HTML 문서에서 독립적인 하나의 기사(article) 부분을 정의
+내용은 그 자체만으로도 이해가 되어야 하며, 웹 사이트의 나머지 부분과는 별도로 읽을 수 있어야 합니다.
+
+section요소와 article요소의 차이
+section 요소는 HTML 문서의 전체적인 내용에 포함되며, article 요소는 문서의 전체적인 내용과는 별도의 독립적인 내용이 들어갈 때 사용
+
+figure 요소와 figcaption 요소
+figure 요소는 HTML 문서에서 그래픽과 비디오 등의 독립적인 콘텐츠(content)를 정의할 때 사용
+figcaption 요소는 위와 같은 figure 요소를 위한 캡션을 정의할 때 사용합니다.
+
+footer 요소
+일반적으로 사이트의 작성자나 그에 따른 저작권 정보, 연락처 등을 명시
+한 문서 내에 여러 개의 footer 요소가 존재할 수 있습니다.
 
