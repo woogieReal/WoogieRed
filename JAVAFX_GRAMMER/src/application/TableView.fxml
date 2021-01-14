@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.G_TableView">
+   <children>
+      <TableView fx:id="memberTableView" layoutX="87.0" layoutY="41.0" prefHeight="200.0" prefWidth="225.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="104.00003814697266" text="이름" />
+            <TableColumn fx:id="addressColumn" prefWidth="119.3333485921224" text="주소" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
