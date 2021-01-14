@@ -414,6 +414,78 @@ type 속성값을 "search"로 설정하면, input 요소는 사용자가 검색�
 검색 필드는 보통의 텍스트 필드(text field)와 동일하게 동작
 다른 점은 입력 필드 우측에 입력된 검색어를 바로 삭제할 수 있는 엑스(X) 표시가 생기는 점
 
+Input 요소의 속성
+
+1. autocomplete 속성
+속성값이 on으로 설정되면, 브라우저는 사용자가 입력하는 정보를 자동으로 저장
+이 후에 입력되는 입력값을 저장된 정보를 바탕으로 자동 완성 해줌
+- text, password, range, color, date, datetime-local, month, week, email, url, tel, search 타입
+
+2. novalidate 속성
+form 요소의 속성
+입력한 정보(data)를 전송할 때 그 정보가 유효한지 아닌지를 검사하지 않았다는 것을 명시, 서버 측에서 따로 유효성 검사를 실시해야함
+
+3. autofocus 속성
+웹 페이지가 로드(load)될 때, 속성이 적용된 input 요소에 자동으로 포커스됨
+
+4. form 속성
+input 요소의 위치에 상관없이 포함될 form 요소를 명시
+포함할 form 요소의 id 속성값을 공백으로 연결하여, 둘 이상의 form 요소에 포함할 수도 있음
+
+5. formaction 속성
+formaction 속성은 form 요소의 action 속성을 덮어씀
+입력된 정보를 넘겨줄 서버 측 파일을 input 요소에서 바꿀 수 있게됨
+submit 타입과 image 타입에서만 사용할 수 있음
+
+6. formenctype 속성
+입력한 정보(data)를 전송할 때 암호화하는 방법을 명시
+form 요소의 method 속성이 post일 때만 적용
+submit 타입과 image 타입에서만 사용할 수 있음
+
+7. formmethod 속성
+입력한 정보(data)를 전송할 때 사용하는 http 메소드(method)를 명시
+form 요소의 method 속성을 덮어쓰게됨
+submit 타입과 image 타입에서만 사용할 수 있음
+
+8. formnovalidate 속성
+입력한 정보(data)를 전송할 때 그 정보가 유효한지 아닌지를 검사하지 않았다는 것을 명시
+form 요소의 novalidate 속성을 덮어쓰게됨
+submit 타입에서만 사용할 수 있음
+
+9. formtarget 속성
+입력한 정보(data)를 전송한 후, 그 결과로 받은 응답 페이지를 어디에 출력할지를 명시, orm 요소의 target 속성을 덮어쓰게됨
+submit 타입과 image 타입에서만 사용할 수 있음
+
+10. height와 width 속성
+<input>태그의 type 속성이 "image"일 경우에는 height 속성과 width 속성을 사용하여 이미지의 높이와 너비를 명시
+
+11. list 속성
+해당 input 요소에 대한 미리 정의된 옵션 리스트를 설정하는 datalist 요소와 관련이 있음, list 속성값이 datalist 요소의 id 속성값과 일치해야만 연결
+
+12. min과 max 속성
+min속성과 max 속성은 input 요소에 입력할 수 있는 최솟값과 최댓값을 명시
+- number, range, date, time, datetime-local, month, week 타입
+
+13. multiple 속성
+사용자가 input 요소에 값을 두 개 이상 입력하는 것을 허용
+이 속성은 email 타입과 file 타입에서만 사용할 수 있음
+
+14. pattern 속성
+정규 표현식(regular expression)을 명시
+- text, password, email, tel, url 타입
+
+15. placeholder 속성
+input 요소에 입력되어야 할 값에 대한 힌트를 제공
+해당 입력 필드에 포커스가 오게 되면 더 이상 표시되지 않음
+- text, password, email, tel, url, search 타입
+
+16. required 속성
+반드시 입력되어야 할 필수 input 요소를 명시
+이 속성이 설정된 모든 input 요소에 입력값이 존재해야만 서버로 전송(submit)할 수 있음
+
+17. step 속성
+input 요소에 입력할 수 있도록 허용된 숫자 간격을 명시
+- number, range, date, time, datetime-local, month, week 타입
 
 
 

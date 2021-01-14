@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+    <title>TCP_HTML_33</title>
+  </head>
+  <body>
+    <header>
+      <h2>HTML5 input 요소의 속성</h2>
+    </header>
+    <nav>
+      <a href = "http://www.tcpschool.com/html/html5_element_inputattr"
+      target = "_blank">TCP HTML 33</a>
+    </nav> <br /><hr />
+    <section>
+      <h3>1. autocomplete 속성</h3>
+      <form action = "https://naver.com/" autocomplete = "on">
+        <div>
+          이름 : <input type = "text" name = "name" /> <br />
+          나이 : <input type = "number" name = "age" min = "1" max = "99"
+                  autocomplete = "off">
+        </div>
+      </form> <br /><hr />
+      <h3>2. novalidate 속성</h3>
+      <form action = "https://google.co.kr" novalidate>
+        <div>
+          여러분이 자주 들리는 사이트의 URL 주소를 입력해 주세요 : <br /><br />
+          <input type = "url" name = "myurl" />
+        </div>
+      </form> <br /><hr />
+      <h3>3. autofocus 속성</h3>
+      <form action = "https://google.com">
+        <div>
+          사용자 : <input type = "text" name = "myname" autofocus/><br />
+          비밀번호 : <input type = "password" name = "mypassword"/><br />
+        </div>
+      </form> <br /><hr />
+      <h3>4. form 속성</h3>
+      <form action = "https://google.com/" id = "name">
+        <div>
+          사용자 : <input type = "text" name = "username" /><br />
+        </div>
+      </form>
+      <form action = "https://google.com" id = "userpass">
+        <div>
+          비밀번호 : <input type = "password" name = "password" form = "username userpass"/>
+        </div>
+      </form> <br /><hr />
+      <h3>5. formaction 속성</h3>
+      <form action = "https://google.co.kr">
+        <div>
+          생일 : <input type = "date"  name = "birthday" />
+          <input type = "submit" value = "전송" formaction = "https://naver.com" />
+        </div>
+      </form> <br /><hr />
+      <h3>6. formenctype 속성</h3>
+      <form action = "https://naver.com" method = "post">
+        <div>
+          이메일 : <input type = "email" name = "myemail" />
+          <input type = "submit" value = "암호화 전송" formenctype = "multipart/form-data" />
+        </div>
+      </form> <br /><hr />
+      <h3>7. formmethod 속성</h3>
+      <form action = "https://naver.com" method = "get">
+        <div>
+          검색 : <input type = "search" name = "mysearch" />
+          <input type = "submit" value = "post방식으로 전송" formmethod = "post" />
+        </div>
+      </form> <br /><hr />
+      <h3>8. formnovalidate 속성</h3>
+      <form action = "https://naver.com">
+        <div>
+          이동을 원하는 URL : <input type = "url" name = "hopeurl" />
+          <input type = "submit" value = "novalidate방식으로 전송" formnovalidate />
+        </div>
+      </form> <br /><hr />
+      <h3>9. formtarget 속성</h3>
+      <form action = "https://google.co.kr">
+        <div>
+          이동을 원하는 URL : <input type = "url" name = "hopeurl" />
+          <input type = "submit" value = "새로운 화면으로 열기" formtarget = "_blanck" />
+        </div>
+      </form> <br /><hr />
+      <h3>10. height와 width 속성</h3>
+      <form action = "https://naver.com">
+        <div>
+          이동할 사이트를 선택 : <br />
+          <input type = "image" src = "/img/naver.png" alt = "naver"
+          height = "50" width = "50" formtarget = "_blank"/>
+          <input type = "image" src = "/img/google.png" alt = "google"
+          height = "50" width = "50" formtarget = "_blank"/>
+        </div>
+      </form> <br /><hr />
+      <h3>11. list 속성</h3>
+      <form action = "https://naver.com">
+        <input list = "location" name = "mylocation" />
+          <datalist id = "location">
+            <option value = "Seoul"></option>
+            <option value = "Incheon"></option>
+            <option value = "Gimpo"></option>
+          </datalist>
+      </form> <br /><hr />
+      <h3>12. min과 max 속성</h3>
+      <form action = "https://naver.com">
+        <input type = "date" name = "mydate" min = "1977-01-01" max = "2020-12-31" />
+        <input type = "submit" value = "전송" />
+      </form> <br /><hr />
+      <h3>13. multiple 속성</h3>
+      <form action = "https://naver.com">
+        <input type = "file" name = "myfile" multiple = "multiple"/>
+        <input type = "email" name = "myemails" multiple />
+      </form> <br /><hr />
+      <h3>14. pattern 속성</h3>
+      <form action = "https://naver.com">
+        <input type = "email" name = "myemail"
+          pattern = "[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+          title = "이메일 양식" />
+      </form> <br /><hr />
+      <h3>15. placeholder 속성</h3>
+      <form action = "https://naver.com">
+        <div>
+          특기 : <input type = "text" name = "speciality"
+          placeholder = "없으면 입력하지 않아도 좋습니다." style = "width:500px"/>
+        </div>
+      </form> <br /><hr />
+      <h3>16. required 속성</h3>
+      <form action = "https://naver.com">
+        <div>
+          이름 : <input type = "text" name = "name" required placeholder = "필입력" /> <br />
+          나이 : <input type = "number" name = "age" required placeholder = "필입력"/> <br />
+          주민등록번호 : <input type = "password" name = "secure" /><br />
+        </div>
+      </form> <br /><hr />
+      <h3>17. step 속성</h3>
+      <form action = "https://naver.com">
+        <div>
+          연령대 : <input type = "number" name = "age" placeholder = "10단위로"
+          step = "10" />
+        </div>
+      </form> <br /><hr />
+    </section>
+  </body>
+</html>
