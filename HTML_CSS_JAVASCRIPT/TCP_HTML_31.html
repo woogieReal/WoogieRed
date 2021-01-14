@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+    <title>TCP_HTML_31</title>
+  </head>
+  <body>
+    <header>
+      <h2>HTML5에서 추가된 다양한 타입의 input 요소</h2>
+      <ol>
+        <li>datalist 요소</li>
+        <li>keygen 요소</li>
+        <li>output 요소</li>
+      </ol>
+    </header><hr />
+    <nav>
+      <h2>TCP HTML 참고</h2>
+      <a href = "http://www.tcpschool.com/html/html5_element_input"
+      target = "_blank">TCP_HTML_31</a>
+    </nav> <br /><hr />
+    <section>
+      <h2>datalist 요소</h2>
+      <form action = "https://www.google.co.kr" method = "get">
+        <input list = "lectures" name = "lecture" />
+          <datalist id = "lectures">
+            <option value = "HTML"></option>
+            <option value = "CSS"></option>
+            <option value = "JAVA"></option>
+            <option value = "JAVASCRIPT"></option>
+          </datalist>
+        <input type = "submit" value = "전송" />
+      </form> <br /><hr />
+      <h2>keygen 요소</h2>
+      <form action = "https://www.naver.com/" method = "post">
+        <span>사용자 : </span>
+        <input type = "text" name = "username" /><br /><br />
+        <span>암호화방법 : keygen</span>
+        <keygen name = "security" />
+        <input type = "submit" value = "전송" />
+      </form> <br /><hr />
+      <h2>output 요소</h2>
+      <form action = "https://daum.net" method = "post"
+        oninput = "total.value = parseInt(value01.value)/parseInt(value02.value)">
+        <input type = "number" id = "value01" name = "input01" value = "20" />
+        /
+        (0
+        <input type = "range" id = "value02" name = "input02" value = "50" min = "0"
+        max = "100" />
+        100)
+        =
+        <output name = "total" for = "value01 value02"></output><br /><br />
+        <input type = "submit" value = "전송" />
+      </form>
+    </section><br /><hr />
+    <footer>
+      <p>Copyright 2021. 김재욱 all rights reserved. </p>
+    </footer>
+  </body>
+</html>
