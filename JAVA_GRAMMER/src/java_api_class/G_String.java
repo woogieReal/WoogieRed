@@ -99,7 +99,7 @@ public class G_String {
 //		해당 문자열의 문자/문자열을 치환
 		
 		String rep = "woogia";
-		System.out.println(rep.replace('a', 'e'));
+		System.out.println(rep.replace('o', 'e'));
 		System.out.println(rep.replace("woogia", "umi"));
 		
 //		split() 메소드

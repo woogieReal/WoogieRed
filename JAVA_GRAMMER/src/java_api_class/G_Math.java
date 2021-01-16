@@ -20,7 +20,7 @@ public class G_Math {
 		System.out.println("================================");
 		System.out.println((int)Math.pow(10, 2)); // 10의 2제곱
 		System.out.println(Math.sqrt(30)); //인수의 제곱근을 반환(실수까지)
-		System.out.println((int)Math.log10(1000)+1); //숫자의 길이 측정
+		System.out.println((int)Math.log10(1)+1); //숫자의 길이 측정
 		
 		
 	}

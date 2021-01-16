@@ -9,26 +9,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class Read {
+public class prac02 {
 
-//	{
-//	    "name":"kim jaeuk",
-//	    "age":28,
-//		"dog": [
-//			"웰시코기",
-//			"포메라니안",
-//			"푸들",
-//			{
-//				"ownerName": "홍길동",
-//				"phone": "01012345678"
-//			}
-//		]
-//	}
-	
 	public static void main(String[] args) {
 
 		JSONParser parser = new JSONParser();
-		File file = new File(".\\json\\TypeArray2.json");
+		File file = new File("./json\\Test1.json");
 		FileReader fr = null;
 		BufferedReader br = null;
 		
@@ -62,7 +48,6 @@ public class Read {
 				}
 			}
 		}
-		
 		
 	}
 
