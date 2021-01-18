@@ -1,30 +1,26 @@
 package application;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class UpdateSchedule {
+public class ReadScheduleAll {
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
-		String member_id = "user01";
-		String schedule_id = "379018";
+		String member_id = "user03";
+		String schedule_date = "2021-01-18";
 		
 		JSONParser parser = new JSONParser();
 		File scheduleJson = new File(".\\jsonFile\\schedule.json");
 		FileReader fr = null;
 		BufferedReader br = null;
-		FileWriter fw = null;
-		BufferedWriter bw = null;
 		
 		try {
 			
@@ -33,27 +29,37 @@ public class UpdateSchedule {
 			
 			JSONObject jsonObject = (JSONObject) parser.parse(br);
 			
-			fw = new FileWriter(scheduleJson);
-			bw = new BufferedWriter(fw);	
-			
 			JSONArray userArr = (JSONArray) jsonObject.get(member_id);
 			int num = 0;
 			JSONObject jobj;
 			
 			while(true) {
 				jobj = (JSONObject) parser.parse(userArr.get(num).toString());
-				if(jobj.containsValue(schedule_id)) {
-					jobj.put("schedule_title", "테스트3");
-					break;
+				if(jobj.containsValue(schedule_date)) {
+					System.out.println(jobj.get("member_id"));
+					System.out.println(jobj.get("lunar_date"));
+					System.out.println(jobj.get("repeat_type"));
+					System.out.println(jobj.get("alarm_time"));
+					System.out.println(jobj.get("schedule_place"));
+					System.out.println(jobj.get("schedule_alarm"));
+					System.out.println(jobj.get("register_date"));
+					System.out.println(jobj.get("schedule_date"));
+					System.out.println(jobj.get("sticker_img"));
+					System.out.println(jobj.get("text_size"));
+					System.out.println(jobj.get("schedule_time"));
+					System.out.println(jobj.get("repeat_check"));
+					System.out.println(jobj.get("schedule_id"));
+					System.out.println(jobj.get("schedule_title"));
+					System.out.println("============================");
 				}
 				num++;
+				if(num == userArr.size()) {
+					break;
+				}
 			}
 
-			userArr.remove(num);
-			userArr.add(jobj);
 			
-			bw.write(jsonObject.toJSONString());	
-			System.out.println("성공");
+			
 			
 		} catch(Exception e) {
 			System.out.println("registerSchedule: "+ e.getMessage());
@@ -67,15 +73,9 @@ public class UpdateSchedule {
 					e.printStackTrace();
 				}
 			}
-			if(null != bw) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+
 		}//--finally
+		
 	}
 
 }

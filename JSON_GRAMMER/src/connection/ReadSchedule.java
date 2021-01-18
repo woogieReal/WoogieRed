@@ -1,4 +1,4 @@
-package connection;
+package application;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 public class ReadSchedule {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		String member_id = "user01";

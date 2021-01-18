@@ -1,0 +1,104 @@
+{
+	"user03": [
+		{
+			"member_id": "user03",
+			"lunar_date": false,
+			"repeat_type": "",
+			"alarm_time": "",
+			"schedule_place": "홍대",
+			"schedule_alarm": false,
+			"register_date": "2021-01-18",
+			"schedule_date": "2021-01-21",
+			"sticker_img": "",
+			"text_size": 3,
+			"schedule_time": "오전 08:00~09:00",
+			"repeat_check": false,
+			"schedule_id": "084175",
+			"schedule_title": "테스트5"
+		},
+		{
+			"member_id": "user03",
+			"lunar_date": false,
+			"repeat_type": "",
+			"alarm_time": "",
+			"schedule_place": "영등포",
+			"schedule_alarm": false,
+			"register_date": "2021-01-18",
+			"schedule_date": "2021-01-18",
+			"sticker_img": "importantSticker",
+			"text_size": 3,
+			"schedule_time": "오전 08:00~09:00",
+			"repeat_check": false,
+			"schedule_id": "156731",
+			"schedule_title": "테스트6"
+		}
+	],
+	"user02": [
+		{
+			"member_id": "user02",
+			"lunar_date": false,
+			"repeat_type": "매달",
+			"alarm_time": "",
+			"schedule_place": "학원",
+			"schedule_alarm": false,
+			"register_date": "2021-01-17",
+			"schedule_date": "2021-01-27",
+			"sticker_img": "",
+			"text_size": 3,
+			"schedule_time": "오후 11:00~12:00",
+			"repeat_check": true,
+			"schedule_id": "308188",
+			"schedule_title": "테스트2"
+		}
+	],
+	"user01": [
+		{
+			"member_id": "user01",
+			"lunar_date": false,
+			"repeat_type": "",
+			"alarm_time": "",
+			"schedule_place": "우리집",
+			"schedule_alarm": false,
+			"register_date": "2021-01-17",
+			"schedule_date": "2021-01-20",
+			"sticker_img": "",
+			"text_size": 3,
+			"schedule_time": "오전 08:00~09:00",
+			"repeat_check": false,
+			"schedule_id": "356723",
+			"schedule_title": "테스트1"
+		},
+		{
+			"member_id": "user01",
+			"lunar_date": false,
+			"repeat_type": "",
+			"alarm_time": "",
+			"schedule_place": "어디든",
+			"schedule_alarm": false,
+			"register_date": "2021-01-17",
+			"schedule_date": "2021-01-28",
+			"sticker_img": "",
+			"text_size": 3,
+			"schedule_time": "오전 08:00~09:00",
+			"repeat_check": false,
+			"schedule_id": "344764",
+			"schedule_title": "테스트2"
+		},
+		{
+			"member_id": "user01",
+			"lunar_date": false,
+			"repeat_type": "매달",
+			"alarm_time": "1시간 전",
+			"schedule_place": "우리집",
+			"schedule_alarm": true,
+			"register_date": "2021-01-17",
+			"schedule_date": "2021-01-20",
+			"sticker_img": "",
+			"text_size": 3,
+			"schedule_time": "오전 08:00~09:00",
+			"repeat_check": true,
+			"schedule_id": "379018",
+			"schedule_title": "테스트3"
+		}
+	]
+}

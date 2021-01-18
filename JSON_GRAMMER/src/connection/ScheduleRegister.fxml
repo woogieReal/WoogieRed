@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
+   <children>
+      <AnchorPane prefHeight="70.0" prefWidth="1280.0" style="-fx-background-color: #90caf9;">
+         <children>
+            <Button fx:id="registerButton" layoutX="1032.0" layoutY="7.0" mnemonicParsing="false" onAction="#registerSchedule" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #42a5f5;" text="등록" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelButton" layoutX="1150.0" layoutY="7.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #42a5f5;" text="취소" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="25.0" />
+               </font>
+            </Button>
+            <Label layoutX="76.0" layoutY="10.0" prefHeight="35.0" prefWidth="112.0" text="일정" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="basicAnchorPane" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1280.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="150.0" layoutY="150.0" prefHeight="50.0" prefWidth="120.0" text="제목">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="titleTextField" layoutX="350.0" layoutY="150.0" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Label layoutX="150.0" layoutY="250.0" prefHeight="50.0" prefWidth="120.0" text="날짜">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="150.0" layoutY="350.0" prefHeight="50.0" prefWidth="120.0" text="시간">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="150.0" layoutY="450.0" prefHeight="50.0" prefWidth="120.0" text="장소">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="locationTextField" layoutX="350.0" layoutY="450.0" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <DatePicker fx:id="scheduleDatePicker" layoutX="350.0" layoutY="250.0" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <ComboBox fx:id="timeCobmobox" layoutX="350.0" layoutY="350.0" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Label layoutX="150.0" layoutY="50.0" prefHeight="50.0" prefWidth="120.0" text="글씨크기">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="fontSizeComboBox" layoutX="350.0" layoutY="50.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Button fx:id="extensionButton" layoutX="1100.0" layoutY="500.0" mnemonicParsing="false" onAction="#extension" prefHeight="50.0" prefWidth="140.0" style="-fx-background-color: #42a5f5;" text="확장기능" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="extensionAnchorPane" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1280.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="70.0" layoutY="150.0" prefHeight="50.0" prefWidth="120.0" text="제목">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="exTitleTextField" layoutX="230.0" layoutY="150.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Label layoutX="70.0" layoutY="250.0" prefHeight="50.0" prefWidth="120.0" text="날짜">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="350.0" prefHeight="50.0" prefWidth="120.0" text="시간">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="450.0" prefHeight="50.0" prefWidth="120.0" text="장소">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="exLocationTextField" layoutX="230.0" layoutY="450.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <DatePicker fx:id="exScheduleDatePicker" layoutX="230.0" layoutY="250.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <ComboBox fx:id="exTimeCobmobox" layoutX="230.0" layoutY="350.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Label layoutX="70.0" layoutY="50.0" prefHeight="50.0" prefWidth="120.0" text="글씨크기">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="exFontSizeComboBox" layoutX="230.0" layoutY="50.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" />
+            <Separator layoutX="668.0" layoutY="38.0" orientation="VERTICAL" prefHeight="500.0" prefWidth="2.0" />
+            <Label alignment="CENTER" layoutX="750.0" layoutY="50.0" prefHeight="50.0" prefWidth="120.0" text="알람여부">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="exAlramUseButton" layoutX="950.0" layoutY="67.0" mnemonicParsing="false" onAction="#AlarmTimeUse" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="사용">
+               <toggleGroup>
+                  <ToggleGroup fx:id="alarm" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="exAlramUnuseButton" layoutX="1100.0" layoutY="67.0" mnemonicParsing="false" onAction="#AlarmTimeUnuse" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="안함" toggleGroup="$alarm" />
+            <Label alignment="CENTER" layoutX="750.0" layoutY="187.0" prefHeight="50.0" prefWidth="120.0" text="음력날짜">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="exLunarUseButton" layoutX="950.0" layoutY="204.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="사용">
+               <toggleGroup>
+                  <ToggleGroup fx:id="lunar" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="exLunarUnuseButton" layoutX="1100.0" layoutY="204.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="안함" toggleGroup="$lunar" />
+            <Label alignment="CENTER" layoutX="750.0" layoutY="258.0" prefHeight="50.0" prefWidth="120.0" text="반복일정">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="exRepeatUseButton" layoutX="950.0" layoutY="275.0" mnemonicParsing="false" onAction="#RepeatDateUse" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="사용">
+               <toggleGroup>
+                  <ToggleGroup fx:id="repeat" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="exRepeatUnuseButton" layoutX="1100.0" layoutY="275.0" mnemonicParsing="false" onAction="#RepeatDateUnuse" scaleX="2.0" scaleY="2.0" style="-fx-background-color: white;" text="안함" toggleGroup="$repeat" />
+            <Label fx:id="exAlarmTimeLabel" alignment="CENTER" layoutX="808.0" layoutY="115.0" prefHeight="50.0" prefWidth="120.0" text="시간설정" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="750.0" layoutY="385.0" prefHeight="50.0" prefWidth="150.0" text="일정스티커">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="exBasicButton" layoutX="1100.0" layoutY="500.0" mnemonicParsing="false" onAction="#basic" prefHeight="50.0" prefWidth="140.0" style="-fx-background-color: #42a5f5;" text="기본기능" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="25.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="exAlarmTimeComboBox" layoutX="927.0" layoutY="119.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" visible="false" />
+            <ComboBox fx:id="exRepeatDateComboBox" layoutX="924.0" layoutY="323.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: white; -fx-border-color: #bdbdbd;" visible="false" />
+            <Button fx:id="exStickerButton" layoutX="924.0" layoutY="390.0" mnemonicParsing="false" onAction="#stickerButton" prefHeight="40.0" prefWidth="80.0" text="사용">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="exStickerUnuseButton" layoutX="1019.0" layoutY="390.0" mnemonicParsing="false" onAction="#stickerUnuseButton" prefHeight="40.0" prefWidth="113.0" text="사용안함">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <GridPane fx:id="exStickerGridPane" alignment="CENTER" layoutX="894.0" layoutY="37.0" prefHeight="317.0" prefWidth="346.0" visible="false">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="importantSticker" mnemonicParsing="false" onAction="#stickerClicked" prefHeight="41.0" prefWidth="20.0">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_high_priority_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="travelSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_airport_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="moneySticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_cash_in_hand_100px_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="classSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_classroom_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="hospitalSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_hospital_3_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="exerciseSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_track_and_field_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="dishSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_meal_100px_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="meetingSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_meeting_room_100px_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="dateSticker" mnemonicParsing="false" onAction="#stickerClicked" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../img/icons8_heart_outline_100px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+            <Label fx:id="stickerPathLabel" layoutX="1017.0" layoutY="440.0" prefHeight="30.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

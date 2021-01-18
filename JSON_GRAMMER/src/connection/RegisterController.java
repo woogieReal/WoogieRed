@@ -1,4 +1,4 @@
-package connection;
+package application;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -23,7 +24,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -85,9 +85,29 @@ public class RegisterController {
     @FXML
     private Button exStickerButton;
     @FXML
+    private Button exStickerUnuseButton;
+    @FXML
     private GridPane exStickerGridPane;
     @FXML
-    private ImageView important;
+    private Label stickerPathLabel;
+    @FXML
+    private Button moneySticker;
+    @FXML
+    private Button travelSticker;
+    @FXML
+    private Button classSticker;
+    @FXML
+    private Button hospitalSticker;
+    @FXML
+    private Button dishSticker;
+    @FXML
+    private Button meetingSticker;
+    @FXML
+    private Button exerciseSticker;
+    @FXML
+    private Button dateSticker;
+    @FXML
+    private Button importantSticker;
 	
     //폰트 콤보박스에 리스트 지정
     ObservableList<String> fontSizeComboBoxList = FXCollections.observableArrayList("1","2","3","4","5");
@@ -160,27 +180,36 @@ public class RegisterController {
 		exStickerGridPane.setVisible(!exStickerGridPane.isVisible());
 	}
 	
+	public void stickerClicked(ActionEvent event) {
+		String tmp = event.getSource().toString();
+		String str = tmp.substring(10, 14);
+		switch(str) {
+			case "impo": stickerPathLabel.setText("importantSticker"); break;
+			case "mone": stickerPathLabel.setText("moneySticker"); break;
+			case "trav": stickerPathLabel.setText("travelSticker"); break;
+			case "clas": stickerPathLabel.setText("classSticker"); break;
+			case "hosp": stickerPathLabel.setText("hospitalSticker"); break;
+			case "exer": stickerPathLabel.setText("exerciseSticker"); break;
+			case "dish": stickerPathLabel.setText("dishSticker"); break;
+			case "meet": stickerPathLabel.setText("meetingSticker"); break;
+			case "date": stickerPathLabel.setText("dateSticker"); break;
+		}
+		
+	}
+	
+	public void stickerUnuseButton() {
+		stickerPathLabel.setText("");
+	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void registerSchedule() {
 		
 		//수정필요
-		String member_id = "user01";
+		String member_id = "user03";
 		
 		Random random = new Random();
 		int randomNum = random.nextInt(1000000); //100만개의 일정을 만들 수 있음
 		int empty = 6 - ((int)Math.log10(randomNum)+1);
-				
-		String schedule_id = "";
-		switch(empty) {
-			case 0: schedule_id = Integer.toString(randomNum); break;
-			case 1: schedule_id = "0"+randomNum; break;
-			case 2: schedule_id = "00"+randomNum; break;
-			case 3: schedule_id = "000"+randomNum; break;
-			case 4: schedule_id = "0000"+randomNum; break;
-			case 5: schedule_id = "00000"+randomNum; break;
-		}
-		System.out.println(schedule_id);
 		
 		JSONParser parser = new JSONParser();
 		File scheduleJson = new File(".\\jsonFile\\schedule.json");
@@ -188,6 +217,50 @@ public class RegisterController {
 		BufferedReader br = null;
 		FileWriter fw = null;
 		BufferedWriter bw = null;
+		
+		String schedule_id = "";
+		
+		createScheduleId : while(true) {
+			
+			switch(empty) {
+			case 0: schedule_id = Integer.toString(randomNum); break;
+			case 1: schedule_id = "0"+randomNum; break;
+			case 2: schedule_id = "00"+randomNum; break;
+			case 3: schedule_id = "000"+randomNum; break;
+			case 4: schedule_id = "0000"+randomNum; break;
+			case 5: schedule_id = "00000"+randomNum; break;
+			}
+			System.out.println(schedule_id);
+			
+			try {
+				fr = new FileReader(scheduleJson);
+				br = new BufferedReader(fr);
+				JSONObject jsonObject = (JSONObject) parser.parse(br);
+				JSONArray userArr = (JSONArray) jsonObject.get(member_id);
+				
+				for(int i = 0; i < userArr.size(); i++) {
+					JSONObject jobj = (JSONObject) parser.parse(userArr.get(i).toString());
+					if(jobj.containsValue(schedule_id)) {
+						continue createScheduleId;
+					}
+					
+				} break;
+				
+			} catch(Exception e) {
+				System.out.println("createScheduleId: "+ e.getMessage());
+				e.printStackTrace();
+			} finally {
+				if(null != br) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		
+		
 		
 		
 		try {
@@ -231,7 +304,6 @@ public class RegisterController {
 				
 				
 			} else if(extensionAnchorPane.isVisible()) {
-				
 				text_size = Integer.parseInt(exFontSizeComboBox.getValue());
 				schedule_title = exTitleTextField.getText();
 				schedule_date = exScheduleDatePicker.getValue().toString();
@@ -242,7 +314,7 @@ public class RegisterController {
 				lunar_date = exLunarUseButton.isSelected();
 				repeat_check = exRepeatUseButton.isSelected();
 				repeat_type = exRepeatDateComboBox.getValue();
-				sticker_img = "";
+				sticker_img = stickerPathLabel.getText();
 				
 			}
 			
