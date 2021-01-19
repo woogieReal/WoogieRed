@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_HTML_38</title>
+  </head>
+  <body>
+    <h2>svg요소를 이용한 사각형 그리기</h2>
+    <svg width="200" height="150">
+		    <rect width="200" height="150" stroke="orange" stroke-width="5" fill="yellow"/>
+		이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+	  </svg>
+    <h2>rx/ry를 이용해 모서리가 둥근 사각형 그리기</h2>
+    <svg width="250" height="200">
+		    <rect width="200" height="150" x="20" y="20" rx="20" ry="20"
+        stroke="orange" stroke-width="5" fill="yellow"/>
+		이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+	  </svg>
+    <h2>svg요소를 이용한 선 그리기</h2>
+    <svg width="250" height="200">
+      <line x1="50" y1="50" x2="200" y2="150" stroke="orange" stroke-width="5"></line>
+      이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+    </svg>
+    <h2>svg요소를 이용한 원 그리기</h2>
+    <svg width="300" height="300">
+      <circle cx="150" cy="150" r="100" stroke="red" stroke-width="10" fill="grey"></circle>
+    </svg>
+    <h2>svg요소를 이용한 타원 그리기</h2>
+    <svg width="300" height="300">
+      <ellipse cx="150" cy="100" rx="120" ry="70" stroke="blue" stroke-width="10"></ellipse>
+    </svg>
+    <h2>svg요소를 이용한 다각형 그리기</h2>
+    <svg width="300" height="300">
+      <polygon points="10, 100 190, 100 30, 200 100, 40 170, 200"
+      stroke="purple" stroke-width="5" fill="pink" />
+    </svg>
+  </body>
+</html>
