@@ -1,4 +1,5 @@
-TCP CSS 3
+			TCP CSS 3
+
 
 CSS 선택자
 - HTML 요소 선택자
@@ -17,7 +18,9 @@ HTML과 CSS에서는 아이디 이름이 중복되어도 잘 작동하지만 자
 여러 선택자를 같이 사용하고자 할 때 사용
  ex) h1, h2, p { background-color: lightgray; }
 
-TCP CSS 6
+
+			TCP CSS 6
+
 
 background-repeat 속성
 배경 이미지를 수평이나 수직 방향으로만 반복되도록 설정할 수 있음
@@ -56,7 +59,9 @@ background 속성 한 번에 적용하기
 위에서 언급한 모든 속성을 한 줄로 설정
 body { background: grey url("/img/circle.png") no-repeat left bottom fixed; }
 
-TCP CSS 7
+
+			TCP CSS 7
+
 
 CSS 텍스트
 대표적인 text 속성
@@ -122,3 +127,129 @@ h4 {text-transform: uppercase;} //모두 대문자
 .lightShadow {text-shadow: 5px 10px lightgray}
 5px는 x축
 10px는 y축
+
+
+			TCP CSS 7
+
+
+CSS 글꼴
+
+CSS에서 사용할 수 있는 font 속성
+1.font-family
+2.font-style
+3.font-variant
+4.font-weight
+5.font-size
+
+font-family 속성
+하나의 글꼴만을 설정할 수도 있고, 여러개의 글꼴을 같이 설정가능
+font-family의 속성값이 여러개의 글꼴로 설정되어 있으면, 웹 브라우저는 위에서부터 순서대로 글꼴을 읽어들임(사용자의 컴퓨터에 있는 글꼴이면 사용, 아니면 다음 글꼴)
+글꼴의 이름이 한 단어 이상으로 이루어지면 따옴표를 사용하여 묶어줘야함
+글꼴 간에는 쉼표로 구분
+.fontSet1 {font-family: "Times New Roman", Times, serif;}
+
+font-style 속성
+주로 이탤릭체를 사용하기 위해 사용. 3가지의 속성값이 있음
+- normal: 텍스트에 어떠한 스타일도 적용하지 않음
+- oblique: 텍스트를 기울임, italic과 유사. 그러나 지원하는 웹브라우저가 거의 없음
+- italic: 텍스트를 이탤릭체로 나타냄
+.fontSet2 {font-style: italic; font-family: serif;}
+
+font-variant 속성
+속성값이 small-caps로 설정되면 텍스트에 포함된 영문자 중 모든 소문자를 작은 대문자(small-caps) 글꼴로 변경
+.fontSet3 {font-variant: small-caps;}
+
+font-weight 속성
+텍스트를 얼마나 두껍게 표현할지를 설정
+사용할수 이쓴 속성값
+lighter, normal, bold, bolder 등이 있음
+또한 100, 200, 300, ... ,900 등과 같이 숫자로 텍스트의 두께를 설정할 수 있음
+.lighter {font-weight: lighter;}
+.bold {font-weight: bold;}
+.bolder {font-weight: bolder}
+.mine {font-weight: 400;}
+
+font-size 속성
+1. 절대적 크기
+2. 상대적 크기
+
+절대적 크기는 텍스트의 크기를 명시된 크디 그대로 설정하고자 할 때 사용
+모든 웹브라우저에서 같은 크기로 표현
+
+상대적 크기는 텍스트를 둘러싸고 있는 HTML 요소들의 크기에 따라 텍스트의 크기도 같이 변하는 방식
+또한, 사용자가 웹브라우저를 통해 텍스트의 크기를 직접 변경할 수 있음
+
+font-size의 크기 단위
+백분율 단위 : 기본크기를 100%로 놓고 상대적인 크기 설정
+배수 단위 : 해당글꼴의 기본크기를 1em으로 놓고 그에 대한 상대적인 크기 설정
+픽셀 단위: 스크린의 픽셀을 기준으로 하는 절대적인 크기를 설정함
+  #emSize {font-size: 2.5em;}
+  #pixelSize {font-size: 20px;}
+
+
+			TCP CSS 9
+
+
+CSS 링크
+
+링크에 다양한 효과를 설정가능
+링크에는 color, font-family, background 속성 등 CSS의 다양한 속성들을 적용 가능
+text_decoration: none 으로 설정하여 링크가 연결된 텍스트의 밑줄 제거 가능
+
+링크의 상태
+1. link : 링크의 기본상태
+2. visited : 해당 링크를 방문한 상태
+3. hover : 마우스 커서가 링크위에 올라가 있는 상태
+4. active : 링크를 클릭하고 있는 상태
+5. focus : 키보드나 마우스의 이벤트 또는 다른 형태로 해당 요소가 포커스된 상태
+
+링크를 버튼처럼 만들기
+
+
+			TCP CSS 10
+
+
+CSS 리스트
+
+리스트에 다양한 효과 적용가능
+CSS에서 사용할 수 있는 list-style 속성
+1. list-style-type
+2. list-style-image
+3. list-style-position
+
+1. list-style-type 속성
+리스트 요소 앞에 위치한 마커(marker)를 변경
+circle, square, upper-alpha, lower-roman;
+
+2. list-style-image 속성
+자신만의 이미지로 마커 사용
+.imageMarker {list-style-image: url("/img/circle.png")}
+
+3. list-style-position 속성
+list-style-position: inside 로 설정하면 리스트가 화면 중앙에 가까워짐
+.inside {list-style-position: inside;}
+
+4. list-style 속성 한 번에 적용하기
+위에서 언급한 모든 list-style 속성을 한 줄로 설정가능
+<style>
+     ul { list-style: square inside url("/img/circle.png"); }
+</style>
+
+5. 리스트에 배경색 적용
+리스트 전체 또는 리스트 요소별로 각각의 배경색을 설정가능
+      ul {
+        background-color: red;
+        padding: 15px;
+      }
+      ul li {
+        background-color: blue;
+        margin: 5px;
+        color: white;
+      }
+
+
+			TCP CSS 11
+
+
+CSS 테이블
+

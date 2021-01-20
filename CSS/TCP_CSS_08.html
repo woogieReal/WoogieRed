@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_8</title>
+    <style>
+      .fontSet1 {font-family: "Times New Roman", Times, serif;}
+      .fontSet2 {font-style: italic; font-family: serif;}
+      .fontSet3 {font-variant: small-caps;}
+      .lighter {font-weight: lighter;}
+      .bold {font-weight: bold;}
+      .bolder {font-weight: bolder}
+      .mine {font-weight: 400;}
+      #emSize {font-size: 2.5em;}
+      #pixelSize {font-size: 20px;}
+    </style>
+  </head>
+  <body>
+    <h2>font-family</h2>
+    <div class="fontSet1">
+      폰트 Times New Roman, Times, serif 를 사용한 문장입니다. <br />
+      컴퓨터에 Times New Roman 폰트가 없으므로 <br />
+      이 문장은 Times가 사용되었습니다.
+    </div>
+    <h2>font-style</h2>
+    <div class="fontSet2">
+      폰트 스타일을 italic을 사용한 문장입니다. <br />
+      그리고 폰트는 serif를 사용하였습니다.
+    </div>
+    <h2>font-variant</h2>
+    <div class="fontSet3">
+      폰트 variant를 Small-Caps 로 설정한 문장입니다. <br />
+      대문자는 그대로, 소문자는 작은 폰트의 대문자로 변경되었습니다.
+    </div>
+    <h2>font-weight</h2>
+    <div>
+      <span class="lighter">폰트 weight가 lighter로 설정된 문장</span><br />
+      <span class="bold">폰트 weight가 bold로 설정된 문장</span><br />
+      <span class="bolder">폰트 weight가 bolder로 설정된 문장</span><br />
+      <span class="mine">폰트 weight가 mine으로 설정된 문장</span><br />
+    </div>
+    <h2>font-size</h2>
+    <div>
+      <p id="emSize">
+        글꼴의 크기를 2.5em으로 변경한 문장 (배수단위)
+      </p>
+      <p id="pixelSize">
+        글꼴의 크기를 20px로 변경한 문장 (픽셀단위)
+      </p>
+    </div>
+  </body>
+</html>
