@@ -29,7 +29,7 @@ body {background-image: url("/img/circle.png");}
 이미지 반복출력
 body {background-image: url("/img/circle.png"); background-repeat: repeat-x;}
 가로로 이미지 반복
-body {background-image: url("/img/circle.png"); background-repeat: repeat-x;}
+body {background-image: url("/img/circle.png"); background-repeat: repeat-y;}
 세로로 이미지 반복
 body {background-image: url("/img/circle.png"); background-repeat: no-repeat;}
 이미지 반복 없음
@@ -39,7 +39,7 @@ background-position 속성
   body {
         background-image: url("/img/circle.png");
         background-repeat: no-repeat;
-        background-position: top right;
+        background-position: right top;
       }
 속성 값으로 사용할 수 있는 키워드
 left top		center top		right top
@@ -83,7 +83,6 @@ body {color: red;}
 2. direction 속성
 텍스트가 써지는 방향을 설정
 .rightToLeft { direction : rtl; }
-클래스를 지정하여 적용하였음
 
 3. letter spacing 속성
 텍스트 내에서 글자 사이의 간격을 설정
@@ -129,7 +128,7 @@ h4 {text-transform: uppercase;} //모두 대문자
 10px는 y축
 
 
-			TCP CSS 7
+			TCP CSS 8
 
 
 CSS 글꼴
@@ -161,7 +160,7 @@ font-variant 속성
 
 font-weight 속성
 텍스트를 얼마나 두껍게 표현할지를 설정
-사용할수 이쓴 속성값
+사용할수 있는 속성값
 lighter, normal, bold, bolder 등이 있음
 또한 100, 200, 300, ... ,900 등과 같이 숫자로 텍스트의 두께를 설정할 수 있음
 .lighter {font-weight: lighter;}
@@ -173,7 +172,7 @@ font-size 속성
 1. 절대적 크기
 2. 상대적 크기
 
-절대적 크기는 텍스트의 크기를 명시된 크디 그대로 설정하고자 할 때 사용
+절대적 크기는 텍스트의 크기를 명시된 크기 그대로 설정하고자 할 때 사용
 모든 웹브라우저에서 같은 크기로 표현
 
 상대적 크기는 텍스트를 둘러싸고 있는 HTML 요소들의 크기에 따라 텍스트의 크기도 같이 변하는 방식
@@ -252,4 +251,56 @@ list-style-position: inside 로 설정하면 리스트가 화면 중앙에 가�
 
 
 CSS 테이블
+
+CSS를 이용하면 다양한 형태의 테이블 작성가능
+적용할 수 있는 CSS 스타일
+1. border
+2. border-collapse
+3. border-spacing
+4. caption-side
+5. empty-cells
+6. table-layout
+
+1. border 속성
+테이블의 테두리 설정
+지정하지 않으면 기본 빈테두리
+
+2. border-collapse 속성
+border-collapse: collapse 로 설정하면 해당 테이블의 테두리는 한 줄로 표현됨
+     table, th, td {border: 2px solid orange;}
+     table {border-collapse: collapse;}
+
+3. border-spacing
+테이블 요소(th, td)간의 여백을 설정
+border-collapse: separate 설정
+border-spacing: 20px(가로) 30px(세로)
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 20px 30px;
+      }
+
+4. text-align 속성
+테이블 요소(th, td)내부에서 텍스트의 수평방향 정렬을 설정합니다.
+<th>태그 내부는 가운데 정렬이, <td>태그 내부는 왼쪽 정렬이 기본설정
+      th {text-align: left;}
+      td {text-align: center;}
+
+5. vertical-align 속성
+테이블 요소(th, td)내부에서 텍스트의 수직 방향 정렬을 설정
+<th>태그와 <td>태그 모두 가운데 정렬이 기본설정
+      th {text-align: left; vertical-align: top; height: 30px;}
+      td {text-align: center; vertical-align: bottom;}
+
+6. border-bottom 속성
+row를 수평 나눔선 만으로 구분
+      border-bottom: 1px solid black;
+
+7. hover 태그
+각 row에 마우스를 올리면 행 전체가 하이라이트 되도록 함
+      tr:hover {background-color:lightgrey;}
+
+8. nth-child 
+얼룩무늬 효과를 설정
+      tr:nth-child(odd) {background-color: #F3F3F3;}
 
