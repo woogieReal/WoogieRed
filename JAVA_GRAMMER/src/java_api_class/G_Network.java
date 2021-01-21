@@ -1,8 +1,26 @@
-package g_network;
+package java_api_class;
 import java.net.*;
 
 public class G_Network {
 
+//	네트워킹
+//	네트워킹이랑 2대이상의 컴퓨터를 케이블로 연결하여 네트워크를 구성
+//	-java.net 패키지에서 API제공
+//	클라이언트/서버(client/server)
+//	-서버 : 서비스를 제공(web server, mail server, file server, FTP server)
+//	-클라이언트 : 서비스 이용
+//	IP주소(IP address)
+//	-ip주소는 컴퓨터를 구별하는데 사용되는 고유한 값.
+//	(인터넷에 연결된 모든 컴퓨터는 고유한 IP를 갖는다.)
+//	-ipv4주소는 4byte(32bit)의 정수
+//	-자기 ip확인 cmd - ipconfig /all
+//	IPv4 주소 . . . . . . . . . : 220.79.121.229(기본 설정)
+//	2진수로 변환 8bit씩 4개 즉 32bit
+//	11011100
+//	01001111
+//	01111001
+//	11100101
+	
 	public static void main(String[] args) {
 
 		//InetAddress : IP를 다루는 클래스
