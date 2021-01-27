@@ -365,8 +365,51 @@ HTML 요소의 height와 width 속성으로 설정된 높이와 너비에 패딩
 			TCP CSS 16
 
 
+패딩(padding)
+padding 속성은 내용(content)과 테두리(border) 사이의 간격인 패딩영역의 크기를 설정, 이러한 패딩영역은 background-color 속성으로 설정라는 배경색의 영향을 함께 받음.
+
+padding-top/right/bottom/left 로 설정할 수 있으며
+축약형으로
+4개일 때 padding: top/right/bottom/left
+3개일 때 padding: top/right + left/bottom
+2개일 때 padding: top + bottom/right + left
+1개일 때 padding: top + right + bottom + left
+로 자동으로 적용됨
 
 
+			TCP CSS 17
+
+
+테두리(border)
+border 속성은 내용(content)와 패딩(padding) 영역을 둘러싸는 테두리의 스타일을 설정
+
+border-style 속성
+- dotted : 테두리를 점선으로 설정함.
+- dashed : 테두리를 약간 긴 점선으로 설정함.
+- solid : 테두리를 실선으로 설정함.
+- double : 테두리를 이중 실선으로 설정함.
+- groove : 테두리를 3차원인 입체적인 선으로 설정하며, border-color 속성값에 영향을 받음.
+- ridge : 테두리를 3차원인 능선효과가 있는 선으로 설정하며, border-color 속성값에 영향을 받음.
+- inset : 테두리를 3차원인 내지로 끼운 선으로 설정하며, border-color 속성값에 영향을 받음.
+- outset : 테두리를 3차원인 외지로 끼운 선으로 설정하며, border-color 속성값에 영향을 받음.
+- none : 테두리를 없앰.
+- hidden : 테두리가 존재하기는 하지만 표현되지는 않음.
+
+border-width 속성
+border-width 속성은 테두리(border)의 두께를 설정합니다.
+px, em, cm 등과 같은 크기단위를 사용하여 두께를 지정가능
+미리 설정해 놓은 예약어 thin, medium, thick을 사용하여 설정가능
+
+border-color 속성
+border-color 속성은 테두리(border)의 색상을 설정함
+투명한 선을 나타내는 transparent 속성값을 사용할 수도 있음
+
+테두리(border)의 개별설정
+테두리 구역을 개별적으로 스타일 적용
+border-top/right/bottom/left-style: 속성값;
+
+
+			TCP CSS 18
 
 
 
