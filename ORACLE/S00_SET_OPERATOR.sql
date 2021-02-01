@@ -24,7 +24,6 @@ WHERE deptno2 = 201;
 --      9512 Nicholas Cage
 --      9611 Richard Dreyfus
 --      9711 Danny Devito
--- 5건출력
 
 --2.UNION ALL -> 그냥합침
 SELECT studno,name
@@ -42,7 +41,6 @@ WHERE deptno2 = 201;
 --      9711 Danny Devito
 --      9411 James Seo
 --      9512 Nicholas Cage
--- 6건 출력
 
 --3.INTERSECT -> 교집합
 SELECT studno,name

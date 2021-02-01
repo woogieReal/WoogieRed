@@ -371,8 +371,8 @@ padding 속성은 내용(content)과 테두리(border) 사이의 간격인 패�
 padding-top/right/bottom/left 로 설정할 수 있으며
 축약형으로
 4개일 때 padding: top/right/bottom/left
-3개일 때 padding: top/right + left/bottom
-2개일 때 padding: top + bottom/right + left
+3개일 때 padding: top + bottom/right + left
+2개일 때 padding: top/right + left/bottom
 1개일 때 padding: top + right + bottom + left
 로 자동으로 적용됨
 

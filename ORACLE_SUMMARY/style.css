@@ -1,10 +1,39 @@
+div.index {
+  display: inline-block;
+  background-color: lightgreen;
+  border-radius: 10px;
+  max-width: 200px;
+  max-height: 600px;
+  margin-top: -15px;
+  padding: 5px 20px;
+  overflow: auto;
+  position: fixed;
+}
+h3 {color: red;}
+ul {
+  padding-left: 10px;
+  line-height: 5px;
+}
 a {text-decoration: none;}
 a:hover {color: red;}
 a:visited {color: blue;}
-pre {font-size: 150%;}
+h4 {
+  background-color: lightgreen;
+  padding: 10px;
+  border-radius: 10px;
+}
+pre {
+  border-left-style: solid;
+  padding-left: 20px;
+  font-size: 150%;
+  margin-left: 250px;
+}
 div.code {
   color: white;
   background-color: black;
-  max-width: 1000px;
+  max-width: 850px;
   border-radius: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
 }

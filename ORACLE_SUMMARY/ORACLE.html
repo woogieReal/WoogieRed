@@ -1,49 +1,860 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="utf-8" />
   <title>ORACLE_SUMMARY</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
   <header>
-    <a name = "인덱스"><h2>목차</h2></a>
-    <ol>
-      <a href="#날짜함수"><li>날짜함수</li></a>
-      <a href="#형변환함수"><li>형변환함수</li></a>
-      <a href="#일반함수"><li>일반함수</li></a>
-    </ol>
+    <div class = "index">
+      <a name = "인덱스"><h3>목차</h3></a>
+      <ol>
+        <a href="#연결연산자 ||"><li>연결연산자 ||</li></a><hr>
+        <a href="#DISTINCT"><li>DISTINCT</li></a><hr>
+        <a href="#WHERE"><li>WHERE</li></a><hr>
+        <a href="#집합연산자"><li>집합연산자</li></a><hr>
+        <a href="#문자함수"><li>문자함수</li></a><hr>
+        <a href="#숫자함수"><li>숫자함수</li></a><hr>
+        <a href="#날짜함수"><li>날짜함수</li></a><hr>
+        <a href="#형변환함수"><li>형변환함수</li></a><hr>
+        <a href="#일반함수"><li>일반함수</li></a><hr>
+      </ol>
+      <a href="#인덱스" name="연결연산자 ||"><h3>연결연산자 ||</h3></a><hr>
+      <ul>
+        <a href="#연결연산자"><h4>연결연산자</h4></a>
+      </ul>
+      <a href="#인덱스" name="DISTINCT"><h3>DISTINCT</h3></a><hr>
+      <ul>
+        <a href="#칼럼하나 중복제거"><h4>칼럼하나 중복제거</h4></a>
+        <a href="#칼럼다중 중복제거"><h4>칼럼다중 중복제거</h4></a>
+      </ul>
+      <a href="#인덱스" name="WHERE"><h3>WHERE</h3></a><hr>
+      <ul>
+        <a href="#날짜 <,<=,>,>="><h4>날짜 <,<=,>,>=</h4></a>
+        <a href="#BETWEEN"><h4>BETWEEN</h4></a>
+        <a href="#IN"><h4>IN</h4></a>
+        <a href="#LIKE"><h4>LIKE</h4></a>
+        <a href="#AND"><h4>AND</h4></a>
+        <a href="#OR"><h4>OR</h4></a>
+        <a href="#AND&OR"><h4>AND&OR</h4></a>
+        <a href="#PARAM"><h4>PARAM</h4></a>
+        <a href="#ORDER BY"><h4>ORDER BY</h4></a>
+      </ul>
+      <a href="#인덱스" name="집합연산자"><h3>집합연산자</h3></a><hr>
+      <ul>
+        <a href="#UNION"><h4>UNION</h4></a>
+        <a href="#UNION ALL"><h4>UNION ALL</h4></a>
+        <a href="#INTERSECT"><h4>INTERSECT</h4></a>
+        <a href="#MINUS"><h4>MINUS</h4></a>
+      </ul>
+      <a href="#인덱스" name="문자함수"><h3>문자함수</h3></a><hr>
+      <ul>
+        <a href="#INITCAP"><h4>INITCAP</h4></a>
+        <a href="#LOWER | UPPER"><h4>LOWER | UPPER</h4></a>
+        <a href="#LENGTH | LENGTHB"><h4>LENGTH | LENGTHB</h4></a>
+        <a href="#CONCAT"><h4>CONCAT</h4></a>
+        <a href="#SUBSTR"><h4>SUBSTR</h4></a>
+        <a href="#INSTR"><h4>INSTR</h4></a>
+        <a href="#LPAD"><h4>LPAD</h4></a>
+        <a href="#RPAD"><h4>RPAD</h4></a>
+        <a href="#LTRIM | RTRIM"><h4>LTRIM | RTRIM</h4></a>
+        <a href="#REPLACE"><h4>REPLACE</h4></a>
+      </ul>
+      <a href="#인덱스" name="숫자함수"><h3>숫자함수</h3></a><hr>
+      <ul>
+        <a href="#ROUND"><h4>ROUND</h4></a>
+        <a href="#TRUNC"><h4>TRUNC</h4></a>
+        <a href="#MOD"><h4>MOD</h4></a>
+        <a href="#CEIL"><h4>CEIL</h4></a>
+        <a href="#FLOOR"><h4>FLOOR</h4></a>
+        <a href="#POWER"><h4>POWER</h4></a>
+        <a href="#ABS"><h4>ABS</h4></a>
+        <a href="#SIGN"><h4>SIGN</h4></a>
+      </ul>
+      <a href="#인덱스" name="날짜함수"><h3>날짜함수</h3></a><hr>
+      <ul>
+        <a href="#SYSDATE"><h4>SYSDATE</h4></a>
+        <a href="#MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a>
+        <a href="#ADD_MONTHS"><h4>ADD_MONTHS</h4></a>
+        <a href="#NEXT_DAY"><h4>NEXT_DAY</h4></a>
+        <a href="#LAST_DAY"><h4>LAST_DAY</h4></a>
+        <a href="#ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
+        <a href="#EXTRACT"><h4>EXTRACT</h4></a>
+        <a href="#TO_DATE"><h4>TO_DATE</h4></a>
+      </ul>
+      <a href="#인덱스" name="형변환함수"><h3>형변환함수</h3></a><hr>
+      <ul>
+        <a href="#DATA_TYPE"><h4>DATA_TYPE</h4></a>
+        <a href="#TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a>
+        <a href="#TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a>
+        <a href="#TO_NUMBER"><h4>TO_NUMBER</h4></a>
+        <a href="#TO_DATE"><h4>TO_DATE</h4></a>
+      </ul>
+      <a href="#인덱스" name="일반함수"><h3>일반함수</h3></a><hr>
+      <ul>
+        <a href="#NVL"><h4>NVL</h4></a>
+        <a href="#NVL2"><h4>NVL2</h4></a>
+        <a href="#DECODE"><h4>DECODE</h4></a>
+        <a href="#CASE"><h4>CASE</h4></a>
+      </ul>
+    </div>
   </header>
-  <a href="#인덱스" name="날짜함수"><h3>날짜함수</h3></a>
-  <ul>
-    <a href="#SYSDATE"><h4>SYSDATE</h4></a>
-    <a href="#MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a>
-    <a href="#ADD_MONTHS"><h4>ADD_MONTHS</h4></a>
-    <a href="#NEXT_DAY"><h4>NEXT_DAY</h4></a>
-    <a href="#LAST_DAY"><h4>LAST_DAY</h4></a>
-    <a href="#ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
-    <a href="#EXTRACT"><h4>EXTRACT</h4></a>
-    <a href="#TO_DATE"><h4>TO_DATE</h4></a>
-  </ul>
-  <a href="#인덱스" name="형변환함수"><h3>형변환함수</h3></a>
-  <ul>
-    <a href="#DATA_TYPE"><h4>DATA_TYPE</h4></a>
-    <a href="#TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a>
-    <a href="#TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a>
-    <a href="#TO_NUMBER"><h4>TO_NUMBER</h4></a>
-    <a href="#TO_DATE"><h4>TO_DATE</h4></a>
-  </ul>
-  <a href="#인덱스" name="일반함수"><h3>일반함수</h3></a>
-  <ul>
-    <a href="#NVL"><h4>NVL</h4></a>
-    <a href="#NVL2"><h4>NVL2</h4></a>
-    <a href="#DECODE"><h4>DECODE</h4></a>
-    <a href="#CASE"><h4>CASE</h4></a>
-  </ul>
   <pre>
-    <a href="#날짜함수" name="SYSDATE"><h4>SYSDATE</h4></a>
+<a href="#연결연산자 ||" name="연결연산자"><h4>연결연산자</h4></a><hr>
+--연결연산자: ||
+--컬럼을 붙여서 출력
+--작은 따옴표를 쓰기 위해서는 ' '(') ' ()안의 작은따옴표만 출력
+
+--example01
+
+<div class = "code">
+SELECT ename || ' ''s job is ' || job AS "NAME AND JOB"
+FROM emp;
+--NAME AND JOB
+--------------------------------------------------------------
+--SMITH 's job is CLERK
+--ALLEN 's job is SALESMAN
+--WARD 's job is SALESMAN
+--JONES 's job is MANAGER
+--MARTIN 's job is SALESMAN
+--BLAKE 's job is MANAGER
+--CLARK 's job is MANAGER
+--KING 's job is PRESIDENT
+--TURNER 's job is SALESMAN
+--JAMES 's job is CLERK
+--FORD 's job is ANALYST
+--MILLER 's job is CLERK
+</div>
+--example02
+
+<div class = "code">
+SELECT name ||' ''s ID : ' || id ||', WEIGHT is ' || weight ||'Kg' AS "ID AND WEIGHT"
+FROM student;
+--
+--ID AND WEIGHT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--James Seo 's ID : 75true, WEIGHT is 72Kg
+--Rene Russo 's ID : Russo, WEIGHT is 64Kg
+--Sandra Bullock 's ID : Bullock, WEIGHT is 52Kg
+--Demi Moore 's ID : Moore, WEIGHT is 83Kg
+--Danny Glover 's ID : Glover, WEIGHT is 70Kg
+--Billy Crystal 's ID : Crystal, WEIGHT is 48Kg
+--Nicholas Cage 's ID : Cage, WEIGHT is 42Kg
+--Micheal Keaton 's ID : Keaton, WEIGHT is 55Kg
+--Bill Murray 's ID : Murray, WEIGHT is 58Kg
+--Macaulay Culkin 's ID : Culkin, WEIGHT is 54Kg
+--Richard Dreyfus 's ID : Dreyfus, WEIGHT is 72Kg
+--Tim Robbins 's ID : Robbins, WEIGHT is 70Kg
+--Wesley Snipes 's ID : Snipes, WEIGHT is 82Kg
+--Steve Martin 's ID : Martin, WEIGHT is 51Kg
+--Daniel Day-Lewis 's ID : Day-Lewis, WEIGHT is 62Kg
+--Danny Devito 's ID : Devito, WEIGHT is 48Kg
+--Sean Connery 's ID : Connery, WEIGHT is 63Kg
+--Christian Slater 's ID : Slater, WEIGHT is 69Kg
+--Charlie Sheen 's ID : Sheen, WEIGHT is 81Kg
+--Anthony Hopkins 's ID : Hopkins, WEIGHT is 51Kg
+</div>
+<a href="#DISTINCT" name="칼럼하나 중복제거"><h4>칼럼하나 중복제거</h4></a><hr>
+--칼럼하나 중복제거
+
+<div class = "code">
+SELECT DISTINCT job
+FROM emp
+ORDER BY job;
+--JOB
+--------------------
+--ANALYST
+--CLERK
+--MANAGER
+--PRESIDENT
+--SALESMAN
+</div>
+<a href="#DISTINCT" name="칼럼다중 중복제거"><h4>칼럼다중 중복제거</h4></a><hr>
+--칼럼다중 중복제거
+
+<div class = "code">
+SELECT DISTINCT ename, job
+FROM emp
+ORDER BY 1,2;
+--ENAME                JOB
+---------------------- ------------------
+--ALLEN                SALESMAN
+--BLAKE                MANAGER
+--CLARK                MANAGER
+--FORD                 ANALYST
+--JAMES                CLERK
+--JONES                MANAGER
+--KING                 PRESIDENT
+--MARTIN               SALESMAN
+--MILLER               CLERK
+--SMITH                CLERK
+--TURNER               SALESMAN
+--WARD                 SALESMAN
+</div>
+<a href="#WHERE" name="날짜 <,<=,>,>="><h4>날짜 <,<=,>,>=</h4></a><hr>
+--날짜 <,<=,>,>=
+
+<div class = "code">
+SELECT ename, hiredate
+FROM emp
+WHERE hiredate > '81/05/01';
+--ENAME                HIREDATE
+---------------------- --------
+--MARTIN               81/09/28
+--CLARK                81/06/09
+--KING                 81/11/17
+--TURNER               81/09/08
+--JAMES                81/12/03
+--FORD                 81/12/03
+--MILLER               82/01/23
+</div>
+<a href="#WHERE" name="BETWEEN"><h4>BETWEEN</h4></a><hr>
+--BETWEEN num AND num
+--BETWEEN 보다 부등호가 연산이 빠르다
+
+<div class = "code">
+SELECT empno, ename, sal
+FROM emp
+WHERE sal BETWEEN 2000 AND 3000
+ORDER BY sal;
+--    EMPNO ENAME                       SAL
+------------ -------------------- ----------
+--      7782 CLARK                      2450
+--      7698 BLAKE                      2850
+--      7566 JONES                      2975
+--      7902 FORD                       3000
+</div>
+<a href="#WHERE" name="IN"><h4>IN</h4></a><hr>
+--IN(a,b,c): a이거나 b이거나 c이거나
+
+<div class = "code">
+SELECT empno, ename, deptno
+FROM emp
+WHERE deptno IN(10,20);
+--     EMPNO ENAME                    DEPTNO
+------------ -------------------- ----------
+--      7369 SMITH                        20
+--      7566 JONES                        20
+--      7782 CLARK                        10
+--      7839 KING                         10
+--      7902 FORD                         20
+--      7934 MILLER                       10
+</div>
+<a href="#WHERE" name="LIKE"><h4>LIKE</h4></a><hr>
+--LIKE
+--%는 *와 같다(모든것)
+--_는 한 글자(어떤 글자가 와도 상관없다.)
+--작은따옴표로 감싸줘야함
+
+<div class = "code">
+SELECT empno, ename, sal
+FROM emp
+WHERE sal LIKE '1%';
+--     EMPNO ENAME                       SAL
+------------ -------------------- ----------
+--      7499 ALLEN                      1600
+--      7521 WARD                       1250
+--      7654 MARTIN                     1250
+--      7844 TURNER                     1500
+--      7934 MILLER                     1300
+</div>
+<a href="#WHERE" name="AND"><h4>AND</h4></a><hr>
+--AND
+
+<div class = "code">
+SELECT ename,hiredate,sal
+FROM emp
+WHERE hiredate >= '82/01/23' AND sal >= 1300;
+--ENAME                HIREDATE        SAL
+---------------------- -------- ----------
+--MILLER               82/01/23       1300
+</div>
+<a href="#WHERE" name="OR"><h4>OR</h4></a><hr>
+--2.OR
+
+<div class = "code">
+SELECT ename,hiredate,sal
+FROM emp
+WHERE hiredate >= '82/01/23' OR sal >= 1300;
+--ENAME                HIREDATE        SAL
+---------------------- -------- ----------
+--ALLEN                81/02/20       1600
+--JONES                81/04/02       2975
+--BLAKE                81/05/01       2850
+--CLARK                81/06/09       2450
+--KING                 81/11/17       5000
+--TURNER               81/09/08       1500
+--FORD                 81/12/03       3000
+--MILLER               82/01/23       1300
+</div>
+<a href="#WHERE" name="AND&OR"><h4>AND&OR</h4></a><hr>
+--AND와 OR함께 사용
+--우선순위는 AND > OR
+--괄호를 통해 우선순위 지정가능
+
+<div class = "code">
+SELECT ename,hiredate,sal,comm
+FROM emp
+WHERE (sal > 1000 OR comm > 1000) AND comm IS NULL;
+ENAME                HIREDATE        SAL       COMM
+---------------------- -------- ---------- ----------
+--JONES                81/04/02       2975
+--BLAKE                81/05/01       2850
+--CLARK                81/06/09       2450
+--KING                 81/11/17       5000
+--FORD                 81/12/03       3000
+--MILLER               82/01/23       1300
+</div>
+<a href="#WHERE" name="PARAM"><h4>PARAM</h4></a><hr>
+--PARAM
+--사용자에게 조건을 입력받아서 출력
+--7369 찾기
+
+--1.WHERE 칼럼 = &칼럼
+--위와 같이 입력하면 칼럼값을 입력받아 찾아 출력한다.
+
+<div class = "code">
+SELECT ename,hiredate,sal,comm
+FROM emp
+WHERE empno = &empno;
+--Enter value for empno: 7369
+--ENAME                HIREDATE        SAL       COMM
+---------------------- -------- ---------- ----------
+--SMITH                80/12/17        800
+</div>
+--2.SELECT에서도 조건받아 출력
+
+<div class = "code">
+SELECT ename,hiredate, sal,&age AS age
+FROM emp
+WHERE empno = &empno;
+--ENAME                HIREDATE        SAL        AGE
+---------------------- -------- ---------- ----------
+--SMITH                80/12/17        800         28
+</div>
+<a href="#WHERE" name="ORDER BY"><h4>ORDER BY</h4></a><hr>
+--정렬하여 출력하기: ORDER BY 컬럼,컬럼
+--정렬하여 출력하기: ORDER BY 1 ASC, 2 DESC
+--DEFAULT는 ASC
+--ORDER BY는 성능을 저하시키므로 사용하지 않는 것이 좋다.
+--하지만 적은 수의 데이터의 경우에는 인덱스를 만드는 것보다 나음
+
+--ASC
+--한글: 가나다
+--영문: ABC
+--숫자: 1234
+--날짜: 예전날짜부터
+
+--1.sal값을 오름차순으로 정렬
+
+<div class = "code">
+SELECT ename,sal,hiredate
+FROM emp
+ORDER BY sal DESC;
+--ENAME                       SAL HIREDATE
+---------------------- ---------- --------
+--KING                       5000 81/11/17
+--FORD                       3000 81/12/03
+--JONES                      2975 81/04/02
+--BLAKE                      2850 81/05/01
+--CLARK                      2450 81/06/09
+--ALLEN                      1600 81/02/20
+--TURNER                     1500 81/09/08
+--MILLER                     1300 82/01/23
+--MARTIN                     1250 81/09/28
+--WARD                       1250 81/02/22
+--JAMES                       950 81/12/03
+--SMITH                       800 80/12/17
+</div>
+--2.칼럼순서로 정렬지정
+
+<div class = "code">
+SELECT deptno,ename,sal,hiredate
+FROM emp
+ORDER BY 1 DESC, 3ASC;
+   -- DEPTNO ENAME                       SAL HIREDATE
+------------ -------------------- ---------- --------
+   --     30 JAMES                       950 81/12/03
+   --     30 WARD                       1250 81/02/22
+   --     30 MARTIN                     1250 81/09/28
+   --     30 TURNER                     1500 81/09/08
+   --     30 ALLEN                      1600 81/02/20
+   --     30 BLAKE                      2850 81/05/01
+   --     20 SMITH                       800 80/12/17
+   --     20 JONES                      2975 81/04/02
+   --     20 FORD                       3000 81/12/03
+   --     10 MILLER                     1300 82/01/23
+   --     10 CLARK                      2450 81/06/09
+   --     10 KING                       5000 81/11/17
+</div>
+<a href="#집합연산자" name="UNION"><h4>UNION</h4></a><hr>
+--1.UNION -> 중복값제거와 정렬
+--ORDER BY가 들어가 있기때문에 성능 많이 먹음
+
+<div class = "code">
+SELECT studno,name
+FROM student
+WHERE deptno1 = 101
+UNION
+SELECT studno,name
+FROM student
+WHERE deptno2 = 201;
+--    STUDNO NAME
+------------ ------------------------------------------------------------
+--      9411 James Seo
+--      9511 Billy Crystal
+--      9512 Nicholas Cage
+--      9611 Richard Dreyfus
+--      9711 Danny Devito
+</div>
+<a href="#집합연산자" name="UNION ALL"><h4>UNION ALL</h4></a><hr>
+--2.UNION ALL -> 그냥합침
+
+<div class = "code">
+SELECT studno,name
+FROM student
+WHERE deptno1 = 101
+UNION ALL
+SELECT studno,name
+FROM student
+WHERE deptno2 = 201;
+--    STUDNO NAME
+------------ ------------------------------------------------------------
+--      9411 James Seo
+--      9511 Billy Crystal
+--      9611 Richard Dreyfus
+--      9711 Danny Devito
+--      9411 James Seo
+--      9512 Nicholas Cage
+</div>
+<a href="#집합연산자" name="INTERSECT"><h4>INTERSECT</h4></a><hr>
+
+<div class = "code">
+SELECT studno,name
+FROM student
+WHERE deptno1 = 101
+INTERSECT
+SELECT studno,name
+FROM student
+WHERE deptno2 = 201;
+--    STUDNO NAME
+------------ ------------------------------------------------------------
+--      9411 James Seo
+</div>
+<a href="#집합연산자" name="MINUS"><h4>MINUS</h4></a><hr>
+--4.MINUS -> 차집합
+
+<div class = "code">
+SELECT studno,name
+FROM student
+WHERE deptno1 = 101
+MINUS
+SELECT studno,name
+FROM student
+WHERE deptno2 = 201;
+--    STUDNO NAME
+------------ ------------------------------------------------------------
+--      9511 Billy Crystal
+--      9611 Richard Dreyfus
+--      9711 Danny Devito
+</div>
+<a href="#문자함수" name="INITCAP"><h4>INITCAP</h4></a><hr>
+--INITCAP(): 영어에서 첫 글자만 대문자로 출력
+--INITCAP('ABCD') -> Abcd
+
+<div class = "code">
+SELECT ename , INITCAP(ename) "INITCAP"
+FROM emp
+WHERE deptno = 10;
+--ENAME                INITCAP
+---------------------- --------------------
+--CLARK                Clark
+--KING                 King
+--MILLER               Miller
+</div>
+<a href="#문자함수" name="LOWER | UPPER"><h4>LOWER | UPPER</h4></a><hr>
+--LOWER(), UPPER()
+
+<div class = "code">
+SELECT ename, LOWER(ename) "LOWER", UPPER(ename) "UPPER"
+FROM emp
+WHERE deptno = 10;
+--ENAME                LOWER                UPPER
+---------------------- -------------------- --------------------
+--CLARK                clark                CLARK
+--KING                 king                 KING
+--MILLER               miller
+</div>
+<a href="#문자함수" name="LENGTH | LENGTHB"><h4>LENGTH | LENGTHB</h4></a><hr>
+--LENGTH(), LENGTHB()
+--LENGTH(문자열 또는 컬럼): 입력된 문자열의 길이를 RETURN
+--LENGTHB(문자열 또는 컬럼): 입력된 문자열의 길이를 BYTE로 RETURN
+
+<div class = "code">
+SELECT ename, LENGTH(ename) "LENGTH", LENGTHB(ename) "LENGTHB"
+FROM emp
+WHERE deptno = 10;
+--ENAME                    LENGTH    LENGTHB
+---------------------- ---------- ----------
+--CLARK                         5          5
+--KING                          4          4
+--MILLER                        6          6
+</div>
+<a href="#문자함수" name="CONCAT"><h4>CONCAT</h4></a><hr>
+--CONCAT(): 두 문자열을 결합해서 출력. ||연산자와 동일
+--CONCAT('A','B') -> AB
+
+<div class = "code">
+SELECT CONCAT(ename,job)
+FROM emp
+WHERE deptno = 10;
+--CONCAT(ENAME,JOB)
+----------------------------------------
+--CLARKMANAGER
+--KINGPRESIDENT
+--MILLERCLERK
+</div>
+<a href="#문자함수" name="SUBSTR"><h4>SUBSTR</h4></a><hr>
+--SUBSTR(): 주어진 문자열에서 특정 길이의 문자를 잘라 낼때 사용
+--SUBSTR('문자열 또는 컬럼',num1,num2)
+--num1부터 num2개만큼 출력
+--num1이 양수이면 왼쪽에서 num1부터 num2개만큼 출력
+--num1이 음수이면 오른쪽에서 num1부터 num2개만큼 출력
+
+<div class = "code">
+COL "3,2" FOR a6
+COL "-3,2" FOR a6
+COL "-3,4" FOR a6
+SELECT SUBSTR('ABCDE',3,2) "3,2",SUBSTR('ABCDE',-3,2) "-3,2",SUBSTR('ABCDE',-3,4) "-3,4"
+FROM dual;
+--3,2    -3,2   -3,4
+-------- ------ ------
+--CD     CD     CDE
+</div>
+<div class = "code">
+SELECT name, jumin , SUBSTR(jumin,3,4) "BIRTHDAY", SUBSTR(jumin,3,4)-1 "BIRTHDAY -1"
+from student
+WHERE deptno1 = 101;
+--NAME            JUMIN               BIRTHDAY       BIRTHDAY -1
+----------------- -------------       -------------- -----------
+--James Seo       7510231901813       1023                  1022
+--Billy Crystal   7601232186327       0123                   122
+--Richard Dreyfus 7711291186223       1129                  1128
+--Danny Devito    7808192157498       0819                   818
+</div>
+<a href="#문자함수" name="INSTR"><h4>INSTR</h4></a><hr>
+--INSTR(): 주어진 문자열에서 특정 글자의 위치를 찾아주는 함수
+--INSTR(문자열 또는 칼럼, char, num(DEFAULT 1))
+--문자열 또는 칼럼에서 num번째 글자부터 char의 위치를 찾아 반환
+--ex.INSTR('ABADA','A',2) -> 3 (B부터 탐색시작)
+--num이 음수이면 오른쪽에서 부터
+
+<div class = "code">
+SELECT 'A-B-C-D', INSTR('A-B-C-D','-')"INSTR"
+FROM dual;
+--'A-B-C-D'      INSTR
+---------------- -----
+--A-B-C-D            2
+</div>
+<div class = "code">
+SELECT 'A-B-C-D', INSTR('A-B-C-D','-',3)"INSTR"
+FROM dual;
+--'A-B-C-D'      INSTR
+---------------- -----
+--A-B-C-D            4
+</div>
+<div class = "code">
+SELECT 'A-B-C-D', INSTR('A-B-C-D','-',-1)"INSTR"
+FROM dual;
+--'A-B-C-D'      INSTR
+---------------- -----
+--A-B-C-D            6
+</div>
+<div class = "code">
+COL name FOR a16
+COL tel FOR a14
+COL "INSTR" FOR 9
+COL "SUBSTR" FOR a4
+SELECT name, tel, INSTR(tel,')') "INSTR", SUBSTR(tel,1,INSTR(tel,')')-1) "SUBSTR"
+FROM student
+WHERE deptno1 = 201;
+--NAME             TEL            INSTR SUBS
+------------------ -------------- ----- ----
+--Demi Moore       02)6255-9875       3 02
+--Macaulay Culkin  02)312-9838        3 02
+--Wesley Snipes    053)736-4981       4 053
+--Steve Martin     02)6175-3945       3 02
+--Sean Connery     02)381-5440        3 02
+--Christian Slater 031)345-5677       4 031
+</div>
+<a href="#문자함수" name="LPAD"><h4>LPAD</h4></a><hr>
+--LPAD(): 주어진 문자열에서 왼쪽으로 특정문자를 채움
+--LPAD('love',6,'*') -> **love
+
+<div class = "code">
+COL name FOR a16
+COL ID FOR a10
+COL "10LENGTH WITH *" FOR a20
+SELECT name, ID, LPAD(ID,10,'*') "10LENGTH WITH *"
+FROM student
+WHERE deptno1 = 201;
+--NAME             ID         10LENGTH WITH *
+------------------ ---------- --------------------
+--Demi Moore       Moore      *****Moore
+--Macaulay Culkin  Culkin     ****Culkin
+--Wesley Snipes    Snipes     ****Snipes
+--Steve Martin     Martin     ****Martin
+--Sean Connery     Connery    ***Connery
+--Christian Slater Slater     ****Slater
+</div>
+--LPAD연습문제
+--emp테이블, deptno가 10번인 사원들의 ename을 총 9바이트로 출력하되
+--빈자리에는 해당 자리의 숫자로 채우시오
+--ex.1234CLARK
+
+<div class = "code">
+SELECT LPAD(ename,9,'123456789') "LPAD"
+FROM emp
+WHERE deptno = 10;
+--LPAD
+---------------
+--1234CLARK
+--12345KING
+--123MILLER
+</div>
+<a href="#문자함수" name="RPAD"><h4>RPAD</h4></a><hr>
+--RPAD(): 주어진 문자열에서 오른쪽으로 특정문자를 채움
+--RPAD('love',6,'*') -> love**
+
+<div class = "code">
+SELECT RPAD(ename,10,'*')
+FROM emp
+WHERE deptno = 10;
+--RPAD(ENAME,10,'*')
+------------------
+--CLARK*****
+--KING******
+--MILLER****
+</div>
+--RPAD연습문제
+--emp테이블, deptno가 10번인 사원들의 ename을 총 9자리로 출력하되
+--오른쪽 빈자리에는 해당 자릿수에 해당되는 숫자를 출력되도록 하세요.
+
+<div class = "code">
+SELECT RPAD(ename,9,SUBSTR('123456789',LENGTH(ename)+1))"RPAD"
+FROM emp
+WHERE deptno = 10;
+--RPAD
+------------------
+--CLARK6789
+--KING56789
+--MILLER789
+</div>
+<a href="#문자함수" name="LTRIM | RTRIM"><h4>LTRIM | RTRIM</h4></a><hr>
+--LTRIM(): 주어진 문자열에서 왼쪽의 특정 문자를 삭제
+--LTRIM('*love','*') -> love
+--RTRIM(): 주어진 문자열에서 오른쪽의 특정 문자를 삭제
+--RTRIM('love*','*') -> love
+
+<div class = "code">
+SELECT ename, LTRIM(ename,'C'), RTRIM(ename,'R')
+FROM emp
+WHERE deptno = 10;
+--ENAME                LTRIM(ENAME,'C')     RTRIM(ENAME,'R')
+---------------------- -------------------- --------------------
+--CLARK                LARK                 CLARK
+--KING                 KING                 KING
+--MILLER               MILLER               MILLE
+</div>
+<a href="#문자함수" name="REPLACE"><h4>REPLACE</h4></a><hr>
+--REPLACE(): 주어진 문자열에서 A를 B로 치환
+--REPLACE('AB','A','E') -> EB
+
+<div class = "code">
+SELECT ename, REPLACE(ename,SUBSTR(ename,1,2),'**')"**name"
+FROM emp
+WHERE deptno = 10;
+--ENAME                **name
+---------------------- -----------
+--CLARK                **ARK
+--KING                 **NG
+--MILLER               **LLER
+</div>
+--REPLACE연습문제1
+--emp테이블, dept가 20, 소속된 직원들의 ename과 2~3번째 글자만 '-'으로 변경하여 출력
+
+<div class = "code">
+SELECT ename, REPLACE(ename,SUBSTR(ename,3,2),'--')"REPLACE"
+FROM emp
+WHERE deptno = 20;
+--ENAME                REPLACE
+---------------------- ----------------------------------------
+--SMITH                SM--H
+--JONES                JO--S
+--FORD                 FO--
+</div>
+--REPLACE연습문제2
+--student테이블, deptno1이 101, name, jumin과 뒤의 일곱자리가 -와 /로 교대로 출력되게 하시오
+
+<div class = "code">
+SELECT name, jumin, REPLACE(jumin,SUBSTR(jumin,7),'-/-/-/-')"REPLACE"
+FROM student
+WHERE deptno1 = 101;
+--NAME             JUMIN         REPLACE
+------------------ ------------- -----------------
+--James Seo        7510231901813 751023-/-/-/-
+--Billy Crystal    7601232186327 760123-/-/-/-
+--Richard Dreyfus  7711291186223 771129-/-/-/-
+--Danny Devito     7808192157498 780819-/-/-/-
+</div>
+--REPLACE연습문제3
+--student테이블, deptno1이 102, name, tel, 국번을 '*'처리하여 출력
+
+<div class = "code">
+SELECT name, tel, REPLACE(tel,SUBSTR(tel,5,3),'***')"REPLACE"
+FROM student
+WHERE deptno1 = 102;
+--NAME             TEL            REPLACE
+------------------ -------------- -----------------
+--Rene Russo       051)426-1700   051)***-1700
+--Nicholas Cage    051)418-9627   051)***-9627
+--Tim Robbins      055)488-2998   055)***-2998
+--Charlie Sheen    055)423-9870   055)***-9870
+</div>
+--REPLACE연습문제4
+--student테이블, deptno1이 101, name, tel, 지역번호와 국번외의 번호를 '*'처리 출력
+
+<div class = "code">
+SELECT name, tel
+	, REPLACE
+		(tel
+		,SUBSTR(tel,INSTR(tel,'-',-1)+1,LENGTH(SUBSTR(tel,INSTR(tel,'-',-1)+1)))
+		--전화번호에서 가장 오른쪽에 있는 '-'의 위치 = INSTR(tel,'-',-1)
+		--가장 마지막 번호나열은 = INSTR(tel,'-',-1)+1 부터
+		--그 번호나열의 길이는 = LENGTH(SUBSTR(tel,INSTR(tel,'-',-1)+1))
+		,'****')
+	"REPLACE"
+FROM student
+WHERE deptno1 = 101;
+--NAME             TEL            REPLACE
+------------------ -------------- ---------------
+--James Seo        055)381-2158   055)381-****
+--Billy Crystal    055)333-6328   055)333-****
+--Richard Dreyfus  02)6788-4861   02)6788-****
+--Danny Devito     055)278-3649   055)278-****
+</div>
+<a href="#숫자함수" name="ROUND"><h4>ROUND</h4></a><hr>
+--ROUND(num1, num2): 주어진 숫자를 반올림한 후 출력함
+--num1의 소숫점을 num2자리로 반올림. num2를 따로 지정안하면 소수 첫째자리에서 반올림
+--ROUND(12.345,2) -> 12.35
+
+<div class = "code">
+SELECT ROUND(987.654), ROUND(987.654,1), ROUND(987.654,2), ROUND(987.654,-1)
+FROM dual;
+--ROUND(987.654) ROUND(987.654,1) ROUND(987.654,2) ROUND(987.654,-1)
+---------------- ---------------- ---------------- -----------------
+--           988            987.7           987.65               990
+</div>
+<a href="#숫자함수" name="TRUNC"><h4>TRUNC</h4></a><hr>
+--TRUNC(num1, num2): 주어진 숫자를 올림한 후 출력함
+--num1의 소숫값을 num2자리로 버리고 올림. num2를 따로 지정안하면 소수 첫째자리에서 올림
+--TRUNC(12.345,2) -> 12.34
+
+<div class = "code">
+SELECT TRUNC(987.654), TRUNC(987.654,1), TRUNC(987.654,2), TRUNC(987.654,-1)
+FROM dual;
+--TRUNC(987.654) TRUNC(987.654,1) TRUNC(987.654,2) TRUNC(987.654,-1)
+---------------- ---------------- ---------------- -----------------
+--           987            987.6           987.65               980
+</div>
+<a href="#숫자함수" name="MOD"><h4>MOD</h4></a><hr>
+--MOD(num1, num2): 주어진 숫자를 나눈 후 나머지 값을 출력함
+--num1을 num2로 나눈 나머지
+--MOD(12,2) -> 2
+
+<div class = "code">
+SELECT MOD(121,10)
+FROM dual;
+--MOD(121,10)
+-------------
+--          1
+</div>
+<a href="#숫자함수" name="CEIL"><h4>CEIL</h4></a><hr>
+--CEIL(num1): 주어진 숫자와 가장 근접한 큰 정수를 출력함
+--CELL(12.345) -> 13
+
+<div class = "code">
+SELECT CEIL(121.10)
+FROM dual;
+--CEIL(121.10)
+--------------
+--         122
+</div>
+--CEIL을 이용한 페이징
+
+<div class = "code">
+SELECT rownum, CEIL(rownum/3), ename
+FROM emp;
+--    ROWNUM CEIL(ROWNUM/3) ENAME
+------------ -------------- --------------------
+--         1              1 SMITH
+--         2              1 ALLEN
+--         3              1 WARD
+--         4              2 JONES
+--         5              2 MARTIN
+--         6              2 BLAKE
+--         7              3 CLARK
+--         8              3 KING
+--         9              3 TURNER
+--        10              4 JAMES
+--        11              4 FORD
+--        12              4 MILLER
+</div>
+<a href="#숫자함수" name="FLOOR"><h4>FLOOR</h4></a><hr>
+--FLOOR(num1): 주어진 숫자와 가장 근접한 작은 정수를 출력함
+--FLOOR(12.345) -> 12
+
+<div class = "code">
+SELECT FLOOR(121.10)
+FROM dual;
+--FLOOR(121.10)
+---------------
+--          121
+</div>
+<a href="#숫자함수" name="POWER"><h4>POWER</h4></a><hr>
+--POWER(num1, num2): 주어진 숫자 1의 숫자2제곱을 출력함.
+--num1의 num2제곱
+--POWER(3,2) -> 9
+
+<div class = "code">
+SELECT POWER(2,5)
+FROM dual;
+--POWER(2,5)
+------------
+--        32
+</div>
+<a href="#숫자함수" name="ABS"><h4>ABS</h4></a><hr>
+--ABS(num): 주어진 숫자의 절대값을 출력
+
+<div class = "code">
+SELECT ABS(-33)
+FROM dual;
+--  ABS(-33)
+------------
+--        33
+</div>
+<a href="#숫자함수" name="SIGN"><h4>SIGN</h4></a><hr>
+--SIGN(): 숫자가 양수인지 음수인지, 0인지 구분
+
+<div class = "code">
+SELECT SIGN(33),SIGN(-33),SIGN(0)
+FROM dual;
+--  SIGN(33)  SIGN(-33)    SIGN(0)
+------------ ---------- ----------
+--         1         -1          0
+</div>
+<a href="#날짜함수" name="SYSDATE"><h4>SYSDATE</h4></a><hr>
 --SYSDATE: 시스템의 현재 날짜와 시간
 --ALTER SESSION SET NLS_DATE_FORMAT = 'RRRR-MM-DD:HH24:MI:SS';
 --데이트 포맷을 바꿔줌
@@ -55,7 +866,7 @@ FROM dual;
 ---------------------
 --2021-02-01:09:19:49
 </div>
-<a href="#날짜함수" name="MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a>
+<a href="#날짜함수" name="MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a><hr>
 --MONTHS_BETWEEN: 두 날짜 사이의 개월 수
 
 <div class = "code">
@@ -67,7 +878,7 @@ FROM dual;
 ------------ ---------- ----------
 --2.41935484         -2          0
 </div>
-<a href="#날짜함수" name="ADD_MONTHS"><h4>ADD_MONTHS</h4></a>
+<a href="#날짜함수" name="ADD_MONTHS"><h4>ADD_MONTHS</h4></a><hr>
 --ADD_MONTHS: 주어진 날짜에 개월을 더함
 
 <div class = "code">
@@ -81,7 +892,7 @@ FROM dual;
 ---------- --------------- --------------------
 --21/02/01 21/03/01        20/12/01
 </div>
-<a href="#날짜함수" name="NEXT_DAY"><h4>NEXT_DAY</h4></a>
+<a href="#날짜함수" name="NEXT_DAY"><h4>NEXT_DAY</h4></a><hr>
 --NEXT_DAY: 주어진 날짜를 기준으로 돌아오는 날짜 출력
 --WINDOWS: NEXT_DAY(SYSDATE,'수')
 --UNIX: NEXT_DAY(SYSDATE,'WED')
@@ -94,7 +905,7 @@ FROM dual;
 ---------- --------
 --21/02/01 21/02/03
 </div>
-<a href="#날짜함수" name="LAST_DAY"><h4>LAST_DAY</h4></a>
+<a href="#날짜함수" name="LAST_DAY"><h4>LAST_DAY</h4></a><hr>
 --LAST_DAY: 주어진 날짜가 속한 달의 마지막 날짜출력
 
 <div class = "code">
@@ -105,7 +916,7 @@ FROM dual;
 ---------- --------
 --21/02/01 21/02/28
 </div>
-<a href="#날짜함수" name="ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
+<a href="#날짜함수" name="ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a><hr>
 --ROUND: 주어진 날짜를 반올림
 --예)상품접수 및 배송(12:00 이후 그 다음날)
 --TRUNC: 주어진 날짜를 버림
@@ -120,7 +931,7 @@ FROM dual;
 ---------- ---------------
 --21/02/01 21/02/01
 </div>
-<a href="#날짜함수" name="EXTRACT"><h4>EXTRACT</h4></a>
+<a href="#날짜함수" name="EXTRACT"><h4>EXTRACT</h4></a><hr>
 --EXTRACT: 날짜에서 년,월,일 추출
 
 <div class = "code">
@@ -144,7 +955,7 @@ FROM emp;
 --FORD                 81/12/03       1981         12          3
 --MILLER               82/01/23       1982          1         23
 </div>
-<a href="#날짜함수" name="TO_DATE"><h4>TO_DATE</h4></a>
+<a href="#날짜함수" name="TO_DATE"><h4>TO_DATE</h4></a><hr>
 --TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
 
 <div class = "code">
@@ -155,7 +966,7 @@ FROM dual;
 --21/02/01
 </div>
 
-<a href="#형변환함수" name="DATA_TYPE"><h4>DATA_TYPE</h4></a>
+<a href="#형변환함수" name="DATA_TYPE"><h4>DATA_TYPE</h4></a><hr>
 --CHAR(n): 고정길이의 문자를 저장, 최댓값은 2000바이트(꼭 고정된 길이의 데이터에만 쓸 것)
 --VARCHAR2(n): 변하는 길이의 문자를 저장, 최댓값은 4000바이트
 --NUMBER(p,s): 숫자 값을 저장, P는 전체 자릿수로 1~38자리까지 가능, s는 소술점 이하 자릿수로 -84~127자리까지 가능
@@ -176,7 +987,7 @@ FROM dual;
 -- '11'+'13'
 ------------
 </div>
-<a href="#형변환함수" name="TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a>
+<a href="#형변환함수" name="TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a><hr>
 --TO_CHAR: 날짜 -> 문자
 --TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
 --	종류		의미								  	사용예
@@ -244,7 +1055,7 @@ WHERE ename = 'ALLEN';
 --     EMPNO ENAME                       SAL       COMM SALARY
 ------------ -------------------- ---------- ---------- ----------------
 --      7499 ALLEN                      1600        300  $19,500
-<a href="#형변환함수" name="TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a>
+<a href="#형변환함수" name="TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a><hr>
 --TO_CHAR: 숫자 -> 문자
 --종류		의미					사용 예			  결과
 -- 9 | 9의 개수만큼 자릿수 | TO_CHAR(1234,'99999')   | 1234
@@ -277,7 +1088,7 @@ WHERE comm IS NOT NULL;
 --      7654 MARTIN               1981-09-28             $16,400            $18,860
 --      7844 TURNER               1981-09-08             $18,000            $20,700
 </div>
-<a href="#형변환함수" name="TO_NUMBER"><h4>TO_NUMBER</h4></a>
+<a href="#형변환함수" name="TO_NUMBER"><h4>TO_NUMBER</h4></a><hr>
 --TO_NUMBER: 숫자가 아닌 숫자문자를 숫자로 바꾸어주는 함수
 
 <div class = "code">
@@ -294,7 +1105,7 @@ FROM dual;
 ------------
 --        65
 </div>
-<a href="#형변환함수" name="TO_DATE"><h4>TO_DATE</h4></a>
+<a href="#형변환함수" name="TO_DATE"><h4>TO_DATE</h4></a><hr>
 --TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
 
 <div class = "code">
@@ -307,7 +1118,7 @@ FROM dual;
 
 
 
-<a href="#일반함수" name="NVL"><h4>NVL</h4></a>
+<a href="#일반함수" name="NVL"><h4>NVL</h4></a><hr>
 --NVL(컬럼,치환값): NULL값을 만나면 치환값을 출력
 
 <div class = "code">
@@ -337,7 +1148,7 @@ WHERE deptno = 201;
 --      4001 Meryl Streep                                    570          130       6970
 --      4002 Susan Sarandon                                  330            0       3960
 </div>
-<a href="#일반함수" name="NVL2"><h4>NVL2</h4></a>
+<a href="#일반함수" name="NVL2"><h4>NVL2</h4></a><hr>
 --NVL2(COL1, COL2, COL3): 컬럼1이 NULL값이 아니면 COL2를, NULL이면 COL3를 출력
 
 <div class = "code">
@@ -368,7 +1179,7 @@ WHERE deptno = 30;
 --      7844 TURNER                        0 Exist
 --      7900 JAMES                           NULL
 </div>
-<a href="#일반함수" name="DECODE"><h4>DECODE</h4></a>
+<a href="#일반함수" name="DECODE"><h4>DECODE</h4></a><hr>
 --DECODE: 자바에서 사용하는 IF문을 오라클로 가져온 함수(오라클에만 있음)
 --유형1. A,B일 경우 1을 출력
 --DECODE(A,B,1,NULL) (단 마지막의 NULL은 생략가능)
@@ -563,7 +1374,7 @@ FROM student;
 --Anthony Hopkins      02)6122-2345                   SEOUL
 </div>
 
-<a href="#일반함수" name="CASE"><h4>CASE</h4></a>
+<a href="#일반함수" name="CASE"><h4>CASE</h4></a><hr>
 --CASE VS DECODE
 --DECODE는 == 조건인 경우
 --CASE는 == 조건이 아닌경우
