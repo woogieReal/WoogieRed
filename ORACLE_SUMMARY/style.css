@@ -1,0 +1,10 @@
+a {text-decoration: none;}
+a:hover {color: red;}
+a:visited {color: blue;}
+pre {font-size: 150%;}
+div.code {
+  color: white;
+  background-color: black;
+  max-width: 1000px;
+  border-radius: 10px;
+}

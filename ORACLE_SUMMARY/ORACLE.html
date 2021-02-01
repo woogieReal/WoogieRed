@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ORACLE_SUMMARY</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header>
+    <a name = "인덱스"><h2>목차</h2></a>
+    <ol>
+      <a href="#날짜함수"><li>날짜함수</li></a>
+      <a href="#형변환함수"><li>형변환함수</li></a>
+      <a href="#일반함수"><li>일반함수</li></a>
+    </ol>
+  </header>
+  <a href="#인덱스" name="날짜함수"><h3>날짜함수</h3></a>
+  <ul>
+    <a href="#SYSDATE"><h4>SYSDATE</h4></a>
+    <a href="#MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a>
+    <a href="#ADD_MONTHS"><h4>ADD_MONTHS</h4></a>
+    <a href="#NEXT_DAY"><h4>NEXT_DAY</h4></a>
+    <a href="#LAST_DAY"><h4>LAST_DAY</h4></a>
+    <a href="#ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
+    <a href="#EXTRACT"><h4>EXTRACT</h4></a>
+    <a href="#TO_DATE"><h4>TO_DATE</h4></a>
+  </ul>
+  <a href="#인덱스" name="형변환함수"><h3>형변환함수</h3></a>
+  <ul>
+    <a href="#DATA_TYPE"><h4>DATA_TYPE</h4></a>
+    <a href="#TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a>
+    <a href="#TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a>
+    <a href="#TO_NUMBER"><h4>TO_NUMBER</h4></a>
+    <a href="#TO_DATE"><h4>TO_DATE</h4></a>
+  </ul>
+  <a href="#인덱스" name="일반함수"><h3>일반함수</h3></a>
+  <ul>
+    <a href="#NVL"><h4>NVL</h4></a>
+    <a href="#NVL2"><h4>NVL2</h4></a>
+    <a href="#DECODE"><h4>DECODE</h4></a>
+    <a href="#CASE"><h4>CASE</h4></a>
+  </ul>
+  <pre>
+    <a href="#날짜함수" name="SYSDATE"><h4>SYSDATE</h4></a>
+--SYSDATE: 시스템의 현재 날짜와 시간
+--ALTER SESSION SET NLS_DATE_FORMAT = 'RRRR-MM-DD:HH24:MI:SS';
+--데이트 포맷을 바꿔줌
+
+<div class = "code">
+SELECT SYSDATE
+FROM dual;
+--SYSDATE
+---------------------
+--2021-02-01:09:19:49
+</div>
+<a href="#날짜함수" name="MONTHS_BETWEEN"><h4>MONTHS_BETWEEN</h4></a>
+--MONTHS_BETWEEN: 두 날짜 사이의 개월 수
+
+<div class = "code">
+SELECT MONTHS_BETWEEN('2021/04/14','2021/02/01')"SUBTRACT"
+	,MONTHS_BETWEEN('2021/02/01','2021/04/01')"SUBTRACT2"
+	,MONTHS_BETWEEN('2021/02/01','2021/02/01')"SUBTRACT3"
+FROM dual;
+--  SUBTRACT  SUBTRACT2  SUBTRACT3
+------------ ---------- ----------
+--2.41935484         -2          0
+</div>
+<a href="#날짜함수" name="ADD_MONTHS"><h4>ADD_MONTHS</h4></a>
+--ADD_MONTHS: 주어진 날짜에 개월을 더함
+
+<div class = "code">
+COL "ADD_ONE_MONTH" FOR a15
+COL "SUBTRACT_TWO_MONTH" FOR a20
+SELECT SYSDATE
+	,ADD_MONTHS(SYSDATE, 1)"ADD_ONE_MONTH"
+	,ADD_MONTHS(SYSDATE, -2)"SUBTRACT_TWO_MONTH"
+FROM dual;
+--SYSDATE  ADD_ONE_MONTH   SUBTRACT_TWO_MONTH
+---------- --------------- --------------------
+--21/02/01 21/03/01        20/12/01
+</div>
+<a href="#날짜함수" name="NEXT_DAY"><h4>NEXT_DAY</h4></a>
+--NEXT_DAY: 주어진 날짜를 기준으로 돌아오는 날짜 출력
+--WINDOWS: NEXT_DAY(SYSDATE,'수')
+--UNIX: NEXT_DAY(SYSDATE,'WED')
+
+<div class = "code">
+SELECT SYSDATE
+	,NEXT_DAY(SYSDATE,'수')
+FROM dual;
+--SYSDATE  NEXT_DAY
+---------- --------
+--21/02/01 21/02/03
+</div>
+<a href="#날짜함수" name="LAST_DAY"><h4>LAST_DAY</h4></a>
+--LAST_DAY: 주어진 날짜가 속한 달의 마지막 날짜출력
+
+<div class = "code">
+SELECT SYSDATE
+	,LAST_DAY(SYSDATE)
+FROM dual;
+--SYSDATE  LAST_DAY
+---------- --------
+--21/02/01 21/02/28
+</div>
+<a href="#날짜함수" name="ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
+--ROUND: 주어진 날짜를 반올림
+--예)상품접수 및 배송(12:00 이후 그 다음날)
+--TRUNC: 주어진 날짜를 버림
+--예)원서접수(무조건 당일)
+
+<div class = "code">
+SELECT SYSDATE
+	,ROUND(SYSDATE)
+	,TRUNC(SYSDATE)
+FROM dual;
+--SYSDATE  ROUND(SYSDATE)
+---------- ---------------
+--21/02/01 21/02/01
+</div>
+<a href="#날짜함수" name="EXTRACT"><h4>EXTRACT</h4></a>
+--EXTRACT: 날짜에서 년,월,일 추출
+
+<div class = "code">
+SELECT ename, hiredate
+	,EXTRACT(YEAR FROM hiredate)"입사년도"
+	,EXTRACT(MONTH FROM hiredate)"입사월"
+	,EXTRACT(DAY FROM hiredate)"입사일"
+FROM emp;
+--ENAME                HIREDATE   입사년도     입사월     입사일
+---------------------- -------- ---------- ---------- ----------
+--SMITH                80/12/17       1980         12         17
+--ALLEN                81/02/20       1981          2         20
+--WARD                 81/02/22       1981          2         22
+--JONES                81/04/02       1981          4          2
+--MARTIN               81/09/28       1981          9         28
+--BLAKE                81/05/01       1981          5          1
+--CLARK                81/06/09       1981          6          9
+--KING                 81/11/17       1981         11         17
+--TURNER               81/09/08       1981          9          8
+--JAMES                81/12/03       1981         12          3
+--FORD                 81/12/03       1981         12          3
+--MILLER               82/01/23       1982          1         23
+</div>
+<a href="#날짜함수" name="TO_DATE"><h4>TO_DATE</h4></a>
+--TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
+
+<div class = "code">
+SELECT TO_DATE('20210201')"date"
+FROM dual;
+--date
+----------
+--21/02/01
+</div>
+
+<a href="#형변환함수" name="DATA_TYPE"><h4>DATA_TYPE</h4></a>
+--CHAR(n): 고정길이의 문자를 저장, 최댓값은 2000바이트(꼭 고정된 길이의 데이터에만 쓸 것)
+--VARCHAR2(n): 변하는 길이의 문자를 저장, 최댓값은 4000바이트
+--NUMBER(p,s): 숫자 값을 저장, P는 전체 자릿수로 1~38자리까지 가능, s는 소술점 이하 자릿수로 -84~127자리까지 가능
+--DATE: 총 7바이트로 BC4712년 1월 1일부터 AD9999년 12월 31일까지의 날짜를 저장가능
+--LONG: 가변길이의 문자를 저장하며 최대 2GB까지 저장가능(앞으로 없어질 가능성이 있으므로 사용자제)
+--CLOB: 가변길이의 문자를 저장하며 최대 4GB까지 저장가능
+--BLOB: 가변길이의 바이너리 데이터를 최대 4GB까지 저장가능
+--RAW(n): 원시이진 데이터로 최대 2000바이트까지 저장가능
+--LONG RAW(n): 원시이진 데이터로 최대 2GB까지 저장가능
+--BFILE: 외부파일에 저장된 데이터로 최대 4GB까지 저장가능
+
+--묵시적(자동) 형변환
+--해당컬럼에 인덱스가 생성되어 있을 경우 못쓰게 되어 속도가 느려짐
+
+<div class = "code">
+SELECT '11'+'13'
+FROM dual;
+-- '11'+'13'
+------------
+</div>
+<a href="#형변환함수" name="TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a>
+--TO_CHAR: 날짜 -> 문자
+--TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+--	종류		의미								  	사용예
+-- YYYY | 연도를 4자리로 표시						| 2021
+-- RRRR | 위와 동일       	                  	| 2021
+-- YY   | 연도의 끝자리 2자리	                  	| 21
+-- RR	| 위와 동일 	   	                  	| 21
+-- YEAR | 연도의 영문명 전체 	                  	| TWENTY TWENTY ONE
+-- MM	| 월을 숫자 2자리로	                  	| 02
+-- MON	| 월(유닉스는 영3글자,윈도우는 MONTH와 동일)	| FEB
+-- MONTH| 월의 영문명 전체	                  	| FEBRUARY
+-- DD	| 일을 숫자 2자리로	                  	| 26
+-- DAY	| 요일(유닉스는 영문,윈도우는 한글)			| 월요일
+-- DDTH	| 몇 번째 날인지를 표시					| 22ND
+-- HH24 | 하루를 24시간으로 표시					| 23
+-- HH	| 하루를 12시간으로 표시					| 11
+-- MI	| 분									| 20
+-- SS	| 초									| 30
+
+<div class = "code">
+SELECT SYSDATE
+	,TO_CHAR(SYSDATE, 'YYYY')"YYYY"
+	,TO_CHAR(SYSDATE, 'MM')"MM"
+	,TO_CHAR(SYSDATE, 'DD')"DD"
+	,TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')"YYYY-MM-DD HH24:MI:SS"
+FROM dual;
+--SYSDATE  YYYY     MM   DD   YYYY-MM-DD HH24:MI:SS
+---------- -------- ---- ---- --------------------------------------
+--21/02/01 2021     02   01   2021-02-01 10:43:00
+</div>
+--P105퀴즈
+
+<div class = "code">
+SELECT studno, name, TO_CHAR(birthday, 'DD-MM-YY')
+FROM student
+WHERE EXTRACT(MONTH FROM birthday) = 1;
+--    STUDNO NAME                      TO_CHAR(BIRTHDAY
+------------ ------------------------- ----------------
+--      9511 Billy Crystal             23-01-76
+--      9514 Bill Murray               20-01-76
+--      9712 Sean Connery              05-01-78
+</div>
+--p106퀴즈
+
+<div class = "code">
+SELECT empno, ename, hiredate
+FROM emp
+WHERE EXTRACT(MONTH FROM hiredate) IN(1,2,3);
+--     EMPNO ENAME                HIREDATE
+------------ -------------------- --------
+--      7499 ALLEN                81/02/20
+--      7521 WARD                 81/02/22
+--      7934 MILLER               82/01/23
+</div>
+--TO_CHAR: 숫자 -> 문자
+--종류		의미					사용 예			  결과
+-- 9 | 9의 개수만큼 자릿수 | TO_CHAR(1234,'99999')   | 1234
+-- 0 | 빈자리를 0으로 채움 | TO_CHAR(1234,'099999')  | 001234
+-- $ | $표시를 붙여서 표시 | TO_CHAR(1234,'$9999')   | $1234
+-- . | 소숫점 이하를 표시  | TO_CHAR(1234,'9999.99') | 1234.00
+-- , | 천단위 구분을 표시  | TO_CHAR(12345,'99,999') | 12,345
+SELECT empno, ename, sal, comm, TO_CHAR((sal*12)+comm,'$99,999')"SALARY"
+FROM emp
+WHERE ename = 'ALLEN';
+--     EMPNO ENAME                       SAL       COMM SALARY
+------------ -------------------- ---------- ---------- ----------------
+--      7499 ALLEN                      1600        300  $19,500
+<a href="#형변환함수" name="TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a>
+--TO_CHAR: 숫자 -> 문자
+--종류		의미					사용 예			  결과
+-- 9 | 9의 개수만큼 자릿수 | TO_CHAR(1234,'99999')   | 1234
+-- 0 | 빈자리를 0으로 채움 | TO_CHAR(1234,'099999')  | 001234
+-- $ | $표시를 붙여서 표시 | TO_CHAR(1234,'$9999')   | $1234
+-- . | 소숫점 이하를 표시  | TO_CHAR(1234,'9999.99') | 1234.00
+-- , | 천단위 구분을 표시  | TO_CHAR(12345,'99,999') | 12,345
+
+<div class = "code">
+SELECT empno, ename, sal, comm, TO_CHAR((sal*12)+comm,'$99,999')"SALARY"
+FROM emp
+WHERE ename = 'ALLEN';
+--     EMPNO ENAME                       SAL       COMM SALARY
+------------ -------------------- ---------- ---------- ----------------
+--      7499 ALLEN                      1600        300  $19,500
+</div>
+--108P 퀴즈
+
+<div class = "code">
+SELECT empno, ename
+	,TO_CHAR(hiredate,'YYYY-MM-DD')"HIREDATE"
+	,TO_CHAR(sal*12+comm,'$999,999')"SAL"
+	,TO_CHAR((sal*12+comm)*1.15,'$999,999')"15% UP"
+FROM emp
+WHERE comm IS NOT NULL;
+--     EMPNO ENAME                HIREDATE             SAL                15% UP
+------------ -------------------- -------------------- ------------------ ------------------
+--      7499 ALLEN                1981-02-20             $19,500            $22,425
+--      7521 WARD                 1981-02-22             $15,500            $17,825
+--      7654 MARTIN               1981-09-28             $16,400            $18,860
+--      7844 TURNER               1981-09-08             $18,000            $20,700
+</div>
+<a href="#형변환함수" name="TO_NUMBER"><h4>TO_NUMBER</h4></a>
+--TO_NUMBER: 숫자가 아닌 숫자문자를 숫자로 바꾸어주는 함수
+
+<div class = "code">
+SELECT TO_NUMBER('5')
+FROM dual;
+--TO_NUMBER('5')
+----------------
+--             5
+</div>
+<div class = "code">
+SELECT ASCII('A')
+FROM dual;
+--ASCII('A')
+------------
+--        65
+</div>
+<a href="#형변환함수" name="TO_DATE"><h4>TO_DATE</h4></a>
+--TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
+
+<div class = "code">
+SELECT TO_DATE('20210201')"date"
+FROM dual;
+--date
+----------
+--21/02/01
+</div>
+
+
+
+<a href="#일반함수" name="NVL"><h4>NVL</h4></a>
+--NVL(컬럼,치환값): NULL값을 만나면 치환값을 출력
+
+<div class = "code">
+SELECT ename, comm
+	,NVL(comm,0)"NVL"
+	,comm*10
+	,NVL(comm*10,0)"NVL*10"
+FROM emp
+WHERE deptno = 30;
+--ENAME                      COMM        NVL    COMM*10     NVL*10
+---------------------- ---------- ---------- ---------- ----------
+--ALLEN                       300        300       3000       3000
+--WARD                        500        500       5000       5000
+--MARTIN                     1400       1400      14000      14000
+--BLAKE                                    0                     0
+--TURNER                        0          0          0          0
+--JAMES                                    0                     0
+</div>
+--연습
+
+<div class = "code">
+SELECT profno, name, pay, NVL(bonus,0), pay*12+NVL(bonus,0)"TOTAL"
+FROM professor
+WHERE deptno = 201;
+--    PROFNO NAME                                            PAY NVL(BONUS,0)      TOTAL
+------------ ---------------------------------------- ---------- ------------ ----------
+--      4001 Meryl Streep                                    570          130       6970
+--      4002 Susan Sarandon                                  330            0       3960
+</div>
+<a href="#일반함수" name="NVL2"><h4>NVL2</h4></a>
+--NVL2(COL1, COL2, COL3): 컬럼1이 NULL값이 아니면 COL2를, NULL이면 COL3를 출력
+
+<div class = "code">
+SELECT ename, empno, sal, comm, NVL2(comm,sal*comm,sal*0)"NVL2"
+FROM emp
+WHERE deptno = 30;
+--ENAME                     EMPNO        SAL       COMM       NVL2
+---------------------- ---------- ---------- ---------- ----------
+--ALLEN                      7499       1600        300     480000
+--WARD                       7521       1250        500     625000
+--MARTIN                     7654       1250       1400    1750000
+--BLAKE                      7698       2850                     0
+--TURNER                     7844       1500          0          0
+--JAMES                      7900        950                     0
+</div>
+--113p퀴즈
+
+<div class = "code">
+SELECT empno, ename, comm, NVL2(comm,'Exist','NULL')"NVL2"
+FROM emp
+WHERE deptno = 30;
+--     EMPNO ENAME                      COMM NVL2
+------------ -------------------- ---------- ----------
+--      7499 ALLEN                       300 Exist
+--      7521 WARD                        500 Exist
+--      7654 MARTIN                     1400 Exist
+--      7698 BLAKE                           NULL
+--      7844 TURNER                        0 Exist
+--      7900 JAMES                           NULL
+</div>
+<a href="#일반함수" name="DECODE"><h4>DECODE</h4></a>
+--DECODE: 자바에서 사용하는 IF문을 오라클로 가져온 함수(오라클에만 있음)
+--유형1. A,B일 경우 1을 출력
+--DECODE(A,B,1,NULL) (단 마지막의 NULL은 생략가능)
+--DECODE(A,B,1) (단 마지막의 NULL은 생략가능)
+
+<div class = "code">
+SELECT deptno, name, DECODE(deptno,101,'Computer Engineering',NULL)
+FROM professor;
+--    DEPTNO NAME                                     DNAME
+------------ ---------------------------------------- ----------------------------------------
+--       101 Audie Murphy                             Computer Engineering
+--       101 Angela Bassett                           Computer Engineering
+--       101 Jessica Lange                            Computer Engineering
+--       102 Winona Ryder
+--       102 Michelle Pfeiffer
+--       102 Whoopi Goldberg
+--       103 Emma Thompson
+--       103 Julia Roberts
+--       103 Sharon Stone
+--       201 Meryl Streep
+--       201 Susan Sarandon
+--       202 Nicole Kidman
+--       202 Holly Hunter
+--       203 Meg Ryan
+--       301 Andie Macdowell
+--       301 Jodie Foster
+</div>
+--유형2. DECODE(A,B,1,2)
+--A가 B일 경우 '1'을, 아니면 '2'를 출력
+
+<div class = "code">
+SELECT name, DECODE(deptno,101,'Computer Engineering','ETC')"DNAME"
+FROM professor;
+--NAME                                     DNAME
+------------------------------------------ ----------------------------------------
+--Audie Murphy                             Computer Engineering
+--Angela Bassett                           Computer Engineering
+--Jessica Lange                            Computer Engineering
+--Winona Ryder                             ETC
+--Michelle Pfeiffer                        ETC
+--Whoopi Goldberg                          ETC
+--Emma Thompson                            ETC
+--Julia Roberts                            ETC
+--Sharon Stone                             ETC
+--Meryl Streep                             ETC
+--Susan Sarandon                           ETC
+--Nicole Kidman                            ETC
+--Holly Hunter                             ETC
+--Meg Ryan                                 ETC
+--Andie Macdowell                          ETC
+--Jodie Foster                             ETC
+</div>
+--유형3. DECODE(A,B,1,C,2,3)
+--IF(A==B) -> 1
+--ELSE IF(A==C) -> 2
+--ELSE -> 3
+
+<div class = "code">
+SELECT name, deptno
+	,DECODE(deptno,101,'Computer Engineering'
+				  ,102,'Multimedia Engineering'
+				  ,103,'Software Engineering'
+				  ,'ETC')"DNAME"
+FROM professor;
+--NAME                                         DEPTNO DNAME
+------------------------------------------ ---------- --------------------------------------------
+--Audie Murphy                                    101 Computer Engineering
+--Angela Bassett                                  101 Computer Engineering
+--Jessica Lange                                   101 Computer Engineering
+--Winona Ryder                                    102 Multimedia Engineering
+--Michelle Pfeiffer                               102 Multimedia Engineering
+--Whoopi Goldberg                                 102 Multimedia Engineering
+--Emma Thompson                                   103 Software Engineering
+--Julia Roberts                                   103 Software Engineering
+--Sharon Stone                                    103 Software Engineering
+--Meryl Streep                                    201 ETC
+--Susan Sarandon                                  201 ETC
+--Nicole Kidman                                   202 ETC
+--Holly Hunter                                    202 ETC
+--Meg Ryan                                        203 ETC
+--Andie Macdowell                                 301 ETC
+--Jodie Foster                                    301 ETC
+</div>
+--유형4. DECODE(A,B,DECODE(C,D,1,NULL)) (NULL은 생략가능)
+--IF(A==B){
+--	IF(C==D){
+--		1
+--	}
+--}
+
+<div class = "code">
+SELECT deptno,name
+	,DECODE(deptno,101,DECODE(name,'Audie Murphy','BEST!'))"DNAME"
+FROM professor;
+--    DEPTNO NAME                                     DNAME
+------------ ---------------------------------------- ----------
+--       101 Audie Murphy                             Best!
+--       101 Angela Bassett
+--       101 Jessica Lange
+--       102 Winona Ryder
+--       102 Michelle Pfeiffer
+--       102 Whoopi Goldberg
+--       103 Emma Thompson
+--       103 Julia Roberts
+--       103 Sharon Stone
+--       201 Meryl Streep
+--       201 Susan Sarandon
+--       202 Nicole Kidman
+--       202 Holly Hunter
+--       203 Meg Ryan
+--       301 Andie Macdowell
+--       301 Jodie Foster
+</div>
+--유형5.
+--DECODE(A,B,DECODE(C,D,'1','2'),'3')
+--IF(A==B){
+--	IF(C==D){
+--		1
+--	}ELSE '2'
+--}ELSE '3'
+
+<div class = "code">
+SELECT deptno,name
+	,DECODE(deptno,101,DECODE(name,'Audie Murphy','BEST!','GOOD!'),'NOT MY MAJOR')"DNAME"
+FROM professor;
+--    DEPTNO NAME                                     DNAME
+------------ ---------------------------------------- ------------------------
+--       101 Audie Murphy                             BEST!
+--       101 Angela Bassett                           GOOD!
+--       101 Jessica Lange                            GOOD!
+--       102 Winona Ryder                             NOT MY MAJOR
+--       102 Michelle Pfeiffer                        NOT MY MAJOR
+--       102 Whoopi Goldberg                          NOT MY MAJOR
+--       103 Emma Thompson                            NOT MY MAJOR
+--       103 Julia Roberts                            NOT MY MAJOR
+--       103 Sharon Stone                             NOT MY MAJOR
+--       201 Meryl Streep                             NOT MY MAJOR
+--       201 Susan Sarandon                           NOT MY MAJOR
+--       202 Nicole Kidman                            NOT MY MAJOR
+--       202 Holly Hunter                             NOT MY MAJOR
+--       203 Meg Ryan                                 NOT MY MAJOR
+--       301 Andie Macdowell                          NOT MY MAJOR
+--       301 Jodie Foster                             NOT MY MAJOR
+</div>
+--연습1
+
+<div class = "code">
+SELECT name, jumin, DECODE(SUBSTR(jumin,7,1),'1','MAN','WOMEN')"Gender"
+FROM student
+WHERE deptno1 = 101;
+--NAME                 JUMIN                      Gender
+---------------------- -------------------------- ----------
+--James Seo            7510231901813              MAN
+--Billy Crystal        7601232186327              WOMEN
+--Richard Dreyfus      7711291186223              MAN
+--Danny Devito         7808192157498              WOMEN
+</div>
+--연습2
+
+<div class = "code">
+COL name FOR a20
+SELECT name, tel
+	,DECODE(SUBSTR(tel,1,INSTR(tel,')')-1),'02','SEOUL'
+              ,'031','GYEONGGI'
+              ,'051','BUSAN'
+              ,'052','ULSAN'
+              ,'055','GYEONGNAM'
+              ,'ETC'
+	)"LOC"
+FROM student;
+--NAME                 TEL                            LOC
+---------------------- ------------------------------ ------------------
+--James Seo            055)381-2158                   GYEONGNAM
+--Rene Russo           051)426-1700                   BUSAN
+--Sandra Bullock       053)266-8947                   ETC
+--Demi Moore           02)6255-9875                   SEOUL
+--Danny Glover         031)740-6388                   GYEONGGI
+--Billy Crystal        055)333-6328                   GYEONGNAM
+--Nicholas Cage        051)418-9627                   BUSAN
+--Micheal Keaton       051)724-9618                   BUSAN
+--Bill Murray          055)296-3784                   GYEONGNAM
+--Macaulay Culkin      02)312-9838                    SEOUL
+--Richard Dreyfus      02)6788-4861                   SEOUL
+--Tim Robbins          055)488-2998                   GYEONGNAM
+--Wesley Snipes        053)736-4981                   ETC
+--Steve Martin         02)6175-3945                   SEOUL
+--Daniel Day-Lewis     051)785-6984                   BUSAN
+--Danny Devito         055)278-3649                   GYEONGNAM
+--Sean Connery         02)381-5440                    SEOUL
+--Christian Slater     031)345-5677                   GYEONGGI
+--Charlie Sheen        055)423-9870                   GYEONGNAM
+--Anthony Hopkins      02)6122-2345                   SEOUL
+</div>
+
+<a href="#일반함수" name="CASE"><h4>CASE</h4></a>
+--CASE VS DECODE
+--DECODE는 == 조건인 경우
+--CASE는 == 조건이 아닌경우
+
+--CASE 조건 WHEN 결과 THEN 출력 END
+
+<div class = "code">
+SELECT name, tel
+	,CASE(SUBSTR(tel,1,INSTR(tel,')')-1)) WHEN '02' THEN 'SEOUL'
+              WHEN '031' THEN 'GYEONGGI'
+              WHEN '051' THEN 'BUSAN'
+              WHEN '052' THEN 'ULSAN'
+              WHEN '055' THEN 'GYEONGNAM'
+              ELSE 'ETC'
+	END "LOC"
+FROM student;
+--NAME                 TEL                            LOC
+---------------------- ------------------------------ ------------------
+--James Seo            055)381-2158                   GYEONGNAM
+--Rene Russo           051)426-1700                   BUSAN
+--Sandra Bullock       053)266-8947                   ETC
+--Demi Moore           02)6255-9875                   SEOUL
+--Danny Glover         031)740-6388                   GYEONGGI
+--Billy Crystal        055)333-6328                   GYEONGNAM
+--Nicholas Cage        051)418-9627                   BUSAN
+--Micheal Keaton       051)724-9618                   BUSAN
+--Bill Murray          055)296-3784                   GYEONGNAM
+--Macaulay Culkin      02)312-9838                    SEOUL
+--Richard Dreyfus      02)6788-4861                   SEOUL
+--Tim Robbins          055)488-2998                   GYEONGNAM
+--Wesley Snipes        053)736-4981                   ETC
+--Steve Martin         02)6175-3945                   SEOUL
+--Daniel Day-Lewis     051)785-6984                   BUSAN
+--Danny Devito         055)278-3649                   GYEONGNAM
+--Sean Connery         02)381-5440                    SEOUL
+--Christian Slater     031)345-5677                   GYEONGGI
+--Charlie Sheen        055)423-9870                   GYEONGNAM
+--Anthony Hopkins      02)6122-2345                   SEOUL
+</div>
+--비교조건이 == 이 아닌경우
+
+<div class = "code">
+COL "QUARTER" FOR a10
+SELECT name, jumin
+	, CASE WHEN SUBSTR(jumin,3,2) BETWEEN '01' AND '03' THEN '1/4'
+		   WHEN SUBSTR(jumin,3,2) BETWEEN '04' AND '07' THEN '2/4'
+		   WHEN SUBSTR(jumin,3,2) BETWEEN '07' AND '10' THEN '3/4'
+		   WHEN SUBSTR(jumin,3,2) BETWEEN '10' AND '12' THEN '4/4'
+	END "QUARTER"
+FROM student;
+--NAME                 JUMIN                      QUARTER
+---------------------- -------------------------- ----------
+--James Seo            7510231901813              3/4
+--Rene Russo           7502241128467              1/4
+--Sandra Bullock       7506152123648              2/4
+--Demi Moore           7512251063421              4/4
+--Danny Glover         7503031639826              1/4
+--Billy Crystal        7601232186327              1/4
+--Nicholas Cage        7604122298371              2/4
+--Micheal Keaton       7609112118379              3/4
+--Bill Murray          7601202378641              1/4
+--Macaulay Culkin      7610122196482              3/4
+--Richard Dreyfus      7711291186223              4/4
+--Tim Robbins          7704021358674              2/4
+--Wesley Snipes        7709131276431              3/4
+--Steve Martin         7702261196365              1/4
+--Daniel Day-Lewis     7712141254963              4/4
+--Danny Devito         7808192157498              3/4
+--Sean Connery         7801051776346              1/4
+--Christian Slater     7808091786954              3/4
+--Charlie Sheen        7803241981987              1/4
+--Anthony Hopkins      7802232116784              1/4
+</div>
+--123p 퀴즈
+
+<div class = "code">
+SELECT empno, ename, sal
+	,CASE   WHEN sal BETWEEN 1 AND 1000 THEN 'LEVEL 1'
+			WHEN sal BETWEEN 1001 AND 2000 THEN 'LEVEL 2'
+			WHEN sal BETWEEN 2001 AND 3000 THEN 'LEVEL 3'
+			WHEN sal BETWEEN 3001 AND 4000 THEN 'LEVEL 4'
+			WHEN sal > 4001 THEN 'LEVEL 5'
+	END "LEVEL"
+FROM emp
+ORDER BY 4 DESC;
+--     EMPNO ENAME                       SAL LEVEL
+------------ -------------------- ---------- --------------
+--      7839 KING                       5000 LEVEL 5
+--      7698 BLAKE                      2850 LEVEL 3
+--      7902 FORD                       3000 LEVEL 3
+--      7782 CLARK                      2450 LEVEL 3
+--      7566 JONES                      2975 LEVEL 3
+--      7934 MILLER                     1300 LEVEL 2
+--      7654 MARTIN                     1250 LEVEL 2
+--      7844 TURNER                     1500 LEVEL 2
+--      7521 WARD                       1250 LEVEL 2
+--      7499 ALLEN                      1600 LEVEL 2
+--      7900 JAMES                       950 LEVEL 1
+--      7369 SMITH                       800 LEVEL 1
+</div>
+
+</pre>
+</body>
+
+</html>

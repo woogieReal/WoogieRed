@@ -55,11 +55,11 @@ FROM dual;
 SELECT studno, name, TO_CHAR(birthday, 'DD-MM-YY')
 FROM student
 WHERE EXTRACT(MONTH FROM birthday) = 1;
---    STUDNO NAME                                                         TO_CHAR(BIRTHDAY
------------- ------------------------------------------------------------ ----------------
---      9511 Billy Crystal                                                23-01-76
---      9514 Bill Murray                                                  20-01-76
---      9712 Sean Connery                                                 05-01-78
+--    STUDNO NAME                      TO_CHAR(BIRTHDAY
+------------ ------------------------- ----------------
+--      9511 Billy Crystal             23-01-76
+--      9514 Bill Murray               20-01-76
+--      9712 Sean Connery              05-01-78
 
 --p106퀴즈
 SELECT empno, ename, hiredate
@@ -109,8 +109,16 @@ FROM dual;
 --TO_NUMBER('5')
 ----------------
 --             5
+
 SELECT ASCII('A')
 FROM dual;
 --ASCII('A')
 ------------
 --        65
+
+--TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
+SELECT TO_DATE('20210201')"date"
+FROM dual;
+--date
+----------
+--21/02/01
