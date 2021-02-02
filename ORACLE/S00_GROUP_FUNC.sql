@@ -25,10 +25,13 @@ FROM emp;
 ------------ ---------- ----------
 --       550 183.333333     183.33
 
---MAX&MIN: 입력데이터의 최대값&최소값
+--MAX | MIN: 입력데이터의 최대값&최소값
 --내부적으로 ORDER BY를 돌려서 값을 구함
 SELECT MAX(sal),MIN(sal)
 FROM emp;
+--  MAX(SAL)   MIN(SAL)
+------------ ----------
+--      5000        800
 
 --VARIANCE: 입력데이터의 분산
 --분산이란 평균에 대한 편차제곱의 평균을 구한 것이다.
@@ -40,7 +43,7 @@ FROM emp;
 --------------- ----------- ---------------
 --   1488347.54   1219.9785      2077.08333
 
---GROUP BY: 특정조건으로 세부적인 그룹을 지정
+--GROUP_BY: 특정조건으로 세부적인 그룹을 지정
 --원리: GROUP BY 뒤에오는 컬럼값을 기준으로 먼저 데이터를 모아놓고,
 --SELECT절에 있는 그룹함수를 적용.
 
@@ -267,6 +270,126 @@ GROUP BY deptno, ROLLUP(position);
 --       301                               2        510
 
 --CUBE: 입력데이터의 소계 및 전체 총계를 계산
+--GROUP BY CUBE(컬럼1, 컬럼2, ....)
+--2^n LEVEL의 소계출력
+--모든 경우에 대한 소계를 구하기 때문에 컬럼의 순서는 중요하지 않음
+
+--부서별 평균급여와 사원수, 직급별 평균급여와 사원수, 부서와 직급별 평균급여와 사원수, 전체 평균 급여와 사원수
+--1. 부서별 평균급여와 사원수
+--UNION ALL
+--2. 직급별 평균급여와 사원수
+--UNION ALL
+--3. 부서와 직급별 평균급여와 사원수
+--UNION ALL
+--4. 전체 평균 급여와 사원수
+----> CUBE
+
+--1. 부서별 평균급여와 사원수
+SELECT deptno, NULL job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY deptno;
+--    DEPTNO JOB                     AVERAGE   COUNT(*)
+------------ -------------------- ---------- ----------
+--        30                          1566.7          6
+--        20                          2258.3          3
+--        10                          2916.7          3
+
+--2. 직급별 평균급여와 사원수
+SELECT NULL deptno, job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY job;
+--D JOB                   AVERAGE   COUNT(*)
+--- ------------------ ---------- ----------
+--  CLERK                  1016.7          3
+--  SALESMAN                 1400          4
+--  PRESIDENT                5000          1
+--  MANAGER                2758.3          3
+--  ANALYST                  3000          1
+
+--3. 부서와 직급별 평균급여와 사원수
+SELECT deptno, job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY deptno,job;
+--    DEPTNO JOB                   AVERAGE   COUNT(*)
+------------ ------------------ ---------- ----------
+--        20 CLERK                     800          1
+--        30 SALESMAN                 1400          4
+--        20 MANAGER                  2975          1
+--        30 CLERK                     950          1
+--        10 PRESIDENT                5000          1
+--        30 MANAGER                  2850          1
+--        10 CLERK                    1300          1
+--        10 MANAGER                  2450          1
+--        20 ANALYST                  3000          1
+
+--4. 전체 평균 급여와 사원수
+SELECT NULL deptno, NULL job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp;
+--D J    AVERAGE   COUNT(*)
+--- - ---------- ----------
+--        2077.1         12
+
+--UNIONALL로 재현한 CUBE의 원리
+SELECT deptno, NULL job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY deptno
+UNION ALL
+SELECT NULL deptno, job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY job
+UNION ALL
+SELECT deptno, job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY deptno,job
+UNION ALL
+SELECT NULL deptno, NULL job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp;
+--    DEPTNO JOB                   AVERAGE   COUNT(*)
+------------ ------------------ ---------- ----------
+--        30                        1566.7          6
+--        20                        2258.3          3
+--        10                        2916.7          3
+--           CLERK                  1016.7          3
+--           SALESMAN                 1400          4
+--           PRESIDENT                5000          1
+--           MANAGER                2758.3          3
+--           ANALYST                  3000          1
+--        20 CLERK                     800          1
+--        30 SALESMAN                 1400          4
+--        20 MANAGER                  2975          1
+--        30 CLERK                     950          1
+--        10 PRESIDENT                5000          1
+--        30 MANAGER                  2850          1
+--        10 CLERK                    1300          1
+--        10 MANAGER                  2450          1
+--        20 ANALYST                  3000          1
+--                                  2077.1         12
+
+--CUBE 사용예
+SELECT deptno, job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
+FROM emp
+GROUP BY CUBE(deptno, job)
+ORDER BY deptno, job;
+--    DEPTNO JOB                   AVERAGE   COUNT(*)
+------------ ------------------ ---------- ----------
+--        10 CLERK                    1300          1
+--        10 MANAGER                  2450          1
+--        10 PRESIDENT                5000          1
+--        10                        2916.7          3
+--        20 ANALYST                  3000          1
+--        20 CLERK                     800          1
+--        20 MANAGER                  2975          1
+--        20                        2258.3          3
+--        30 CLERK                     950          1
+--        30 MANAGER                  2850          1
+--        30 SALESMAN                 1400          4
+--        30                        1566.7          6
+--           ANALYST                  3000          1
+--           CLERK                  1016.7          3
+--           MANAGER                2758.3          3
+--           PRESIDENT                5000          1
+--           SALESMAN                 1400          4
+--                                  2077.1         12
 
 
 
