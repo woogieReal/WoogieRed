@@ -1,6 +1,6 @@
 div.index {
   display: inline-block;
-  background-color: lightgreen;
+  background-color: #bbdefb;
   border-radius: 10px;
   max-width: 200px;
   max-height: 600px;
@@ -18,7 +18,7 @@ a {text-decoration: none;}
 a:hover {color: red;}
 a:visited {color: blue;}
 h4 {
-  background-color: lightgreen;
+  background-color: #bbdefb;
   padding: 10px;
   border-radius: 10px;
 }
@@ -37,3 +37,11 @@ div.code {
   padding-right: 30px;
   padding-bottom: 30px;
 }
+table {
+  /* border-spacing: 10px; */
+}
+tr,td{
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+tr:nth-child(odd) {background-color: #F3F3F3;}

@@ -19,6 +19,8 @@
         <a href="#날짜함수"><li>날짜함수</li></a><hr>
         <a href="#형변환함수"><li>형변환함수</li></a><hr>
         <a href="#일반함수"><li>일반함수</li></a><hr>
+        <a href="#정규식"><li>정규식</li></a><hr>
+        <a href="#그룹함수"><li>그룹함수</li></a><hr>
       </ol>
       <a href="#인덱스" name="연결연산자 ||"><h3>연결연산자 ||</h3></a><hr>
       <ul>
@@ -97,6 +99,19 @@
         <a href="#NVL2"><h4>NVL2</h4></a>
         <a href="#DECODE"><h4>DECODE</h4></a>
         <a href="#CASE"><h4>CASE</h4></a>
+      </ul>
+      <a href="#인덱스" name="정규식"><h3>정규식</h3></a><hr>
+      <ul>
+        <a href="#META_CHARACTER"><h4>META_CHARACTER</h4></a>
+        <a href="#REGEXP_LIKE"><h4>REGEXP_LIKE</h4></a>
+        <a href="#REGEXP_REPLACE"><h4>REGEXP_REPLACE</h4></a>
+        <a href="#REGEXP_SUBSTR"><h4>REGEXP_SUBSTR</h4></a>
+        <a href="#REGEXP_COUNT"><h4>REGEXP_COUNT</h4></a>
+      </ul>
+      <a href="#인덱스" name="그룹함수"><h3>그룹함수</h3></a><hr>
+      <ul>
+        <a href="#그룹함수의_종류"><h4>그룹함수의_종류</h4></a>
+        <a href="#COUNT"><h4>COUNT</h4></a>
       </ul>
     </div>
   </header>
@@ -990,23 +1005,89 @@ FROM dual;
 <a href="#형변환함수" name="TO_CHAR(DATE_TO_CHAR)"><h4>TO_CHAR(DATE_TO_CHAR)</h4></a><hr>
 --TO_CHAR: 날짜 -> 문자
 --TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
---	종류		의미								  	사용예
--- YYYY | 연도를 4자리로 표시						| 2021
--- RRRR | 위와 동일       	                  	| 2021
--- YY   | 연도의 끝자리 2자리	                  	| 21
--- RR	| 위와 동일 	   	                  	| 21
--- YEAR | 연도의 영문명 전체 	                  	| TWENTY TWENTY ONE
--- MM	| 월을 숫자 2자리로	                  	| 02
--- MON	| 월(유닉스는 영3글자,윈도우는 MONTH와 동일)	| FEB
--- MONTH| 월의 영문명 전체	                  	| FEBRUARY
--- DD	| 일을 숫자 2자리로	                  	| 26
--- DAY	| 요일(유닉스는 영문,윈도우는 한글)			| 월요일
--- DDTH	| 몇 번째 날인지를 표시					| 22ND
--- HH24 | 하루를 24시간으로 표시					| 23
--- HH	| 하루를 12시간으로 표시					| 11
--- MI	| 분									| 20
--- SS	| 초									| 30
-
+<table>
+  <tr>
+    <th>종류</th>
+    <th>의미</th>
+    <th>사용예</th>
+  </tr>
+  <tr>
+    <td>YYYY</td>
+    <td>연도를 4자리로 표시</td>
+    <td>2021</td>
+  </tr>
+  <tr>
+    <td>RRRR</td>
+    <td>위와 동일</td>
+    <td>2021</td>
+  </tr>
+  <tr>
+    <td>YY</td>
+    <td>연도의 끝자리 2자리</td>
+    <td>21</td>
+  </tr>
+  <tr>
+    <td>RR</td>
+    <td>위와 동일</td>
+    <td>21</td>
+  </tr>
+  <tr>
+    <td>YEAR</td>
+    <td>연도의 영문명 전체</td>
+    <td>TWENTY TWENTY ONE</td>
+  </tr>
+  <tr>
+    <td>MM</td>
+    <td>월을 숫자 2자리로</td>
+    <td>02</td>
+  </tr>
+  <tr>
+    <td>MON</td>
+    <td>월(유닉스는 영3글자,윈도우는 MONTH와 동일)</td>
+    <td>FEB</td>
+  </tr>
+  v
+  <tr>
+    <td>MONTH</td>
+    <td>월의 영문명 전체</td>
+    <td>FEBRUARY</td>
+  </tr>
+  <tr>
+    <td>DD</td>
+    <td>일을 숫자 2자리로</td>
+    <td>26</td>
+  </tr>
+  <tr>
+    <td>DAY</td>
+    <td>요일(유닉스는 영문,윈도우는 한글)	</td>
+    <td>월요일</td>
+  </tr>
+  <tr>
+    <td>DDTH</td>
+    <td>몇 번째 날인지를 표시</td>
+    <td>22ND</td>
+  </tr>
+  <tr>
+    <td>HH24</td>
+    <td>하루를 24시간으로 표시</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>HH</td>
+    <td>하루를 12시간으로 표시</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>MI</td>
+    <td>분</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>SS</td>
+    <td>초</td>
+    <td>30</td>
+  </tr>
+</table>
 <div class = "code">
 SELECT SYSDATE
 	,TO_CHAR(SYSDATE, 'YYYY')"YYYY"
@@ -1042,19 +1123,6 @@ WHERE EXTRACT(MONTH FROM hiredate) IN(1,2,3);
 --      7521 WARD                 81/02/22
 --      7934 MILLER               82/01/23
 </div>
---TO_CHAR: 숫자 -> 문자
---종류		의미					사용 예			  결과
--- 9 | 9의 개수만큼 자릿수 | TO_CHAR(1234,'99999')   | 1234
--- 0 | 빈자리를 0으로 채움 | TO_CHAR(1234,'099999')  | 001234
--- $ | $표시를 붙여서 표시 | TO_CHAR(1234,'$9999')   | $1234
--- . | 소숫점 이하를 표시  | TO_CHAR(1234,'9999.99') | 1234.00
--- , | 천단위 구분을 표시  | TO_CHAR(12345,'99,999') | 12,345
-SELECT empno, ename, sal, comm, TO_CHAR((sal*12)+comm,'$99,999')"SALARY"
-FROM emp
-WHERE ename = 'ALLEN';
---     EMPNO ENAME                       SAL       COMM SALARY
------------- -------------------- ---------- ---------- ----------------
---      7499 ALLEN                      1600        300  $19,500
 <a href="#형변환함수" name="TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a><hr>
 --TO_CHAR: 숫자 -> 문자
 --종류		의미					사용 예			  결과
@@ -1181,8 +1249,10 @@ WHERE deptno = 30;
 </div>
 <a href="#일반함수" name="DECODE"><h4>DECODE</h4></a><hr>
 --DECODE: 자바에서 사용하는 IF문을 오라클로 가져온 함수(오라클에만 있음)
---유형1. A,B일 경우 1을 출력
+
+--유형1.
 --DECODE(A,B,1,NULL) (단 마지막의 NULL은 생략가능)
+-- A가 B일 경우 1을 출력
 --DECODE(A,B,1) (단 마지막의 NULL은 생략가능)
 
 <div class = "code">
@@ -1475,6 +1545,380 @@ ORDER BY 4 DESC;
 --      7900 JAMES                       950 LEVEL 1
 --      7369 SMITH                       800 LEVEL 1
 </div>
+<a href="#정규식" name="META_CHARACTER"><h4>META_CHARACTER</h4></a><hr>
+--^ : 문자열 시작
+--$ : 문자열 종료
+--. : 임의의 문자 [단 ‘'는 넣을 수 없습니다.]
+--* : 앞 문자가 0개 이상의 개수가 존재할 수 있습니다.
+--+ : 앞 문자가 1개 이상의 개수가 존재할 수 있습니다.
+--? : 앞 문자가 없거나 하나 있을 수 있습니다.
+--[] : 문자의 집합이나 범위를 표현합니다. -기호를 통해 범위를 나타낼 수 있습니다. ^가 존재하면 not을 나타냅니다.
+--{} : 횟수 또는 범위를 나타냅니다.
+--() : 괄호안의 문자를 하나의 문자로 인식합니다.
+--| : 패턴을 OR 연산을 수행할 때 사용합니다.
+--\s : 공백 문자
+--\S : 공백 문자가 아닌 나머지 문자
+--\w : 알파벳이나 문자
+--\W : 알파벳이나 숫자를 제외한 문자
+--\d : [0-9] 숫자
+--\D : 숫자를 제외한 모든 문자
+--(?i) : 대소문자를 구분하지 않습니다.
+<a href="#정규식" name="REGEXP_LIKE"><h4>REGEXP_LIKE</h4></a><hr>
+-- REGEXP_LIKE: LIKE연산과 유사한 정규식
+
+--유형 1. 특정문자가 들어있는 데이터 출력
+--소문자가 들어있는 텍스트 추출('[a-z]')
+--대문자가 들어있는 텍스트 추출('[A-Z]')
+--영문자가 들어있는 텍스트 추출('[a-zA-Z]')
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'[a-zA-Z]');
+--TEXT
+----------------------
+--ABC123
+--ABC 123
+--ABC  123
+--abc 123
+--abc  123
+--a1b2c3
+--aabbcc123
+--123abc
+--abc
+</div>
+--유형2. 공백을 포함(하나 이상)하는 데이터 출력
+--영문자로시작, 공백이 하나이상 있는 행 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'[a-zA-Z] ');
+--TEXT
+----------------------
+--ABC 123
+--ABC  123
+--abc 123
+--abc  123
+</div>
+--유형3. 공백을 하나만 포함하는 데이터 출력
+--영문자로시작, 공백이 하나, 숫자가 있는 행 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'[a-zA-Z] [0-9]');
+--TEXT
+----------------------
+--ABC 123
+--abc 123
+</div>
+--유형4. 반복하는 문자를 가지는 데이터 출력
+-- {} 횟수 또는 범위를 나타냅니다.
+--영문대문자 3번반복하는 행 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'[A-Z]{3}');
+--TEXT
+----------------------
+--ABC123
+--ABC 123
+--ABC  123
+</div>
+--유형5. 특정 문자로 시작하는 데이터 출력
+-- ^ 문자열 시작
+--영문자로 시작하는 데이터 출력('^[a-zA-Z]')
+--숫자와 대문자로 시작하는 데이터 출력('^[0-9A-Z]')
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'^[a-zA-Z]');
+--TEXT
+----------------------
+--ABC123
+--ABC 123
+--ABC  123
+--abc 123
+--abc  123
+--a1b2c3
+--aabbcc123
+--abc
+</div>
+--유형6. 두 개 이상의 정규식 조건을 지정하여 데이터 출력
+-- | 패턴은 OR 연산을 수행할 때 사용합니다.
+--영문소문자로 시작하거나 OR 숫자로 시작하는 데이터 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'^[a-z]|^[0-9]');
+--TEXT
+----------------------
+--abc 123
+--abc  123
+--a1b2c3
+--aabbcc123
+--123123
+--123abc
+--abc
+</div>
+--유형7. 특정 문자들로 시작하는 데이터 출력
+--id가 MO or MA로 시작하는 데이터 출력
+-- () 괄호안의 문자를 하나의 문자로 인식합니다.
+
+<div class = "code">
+SELECT name, id
+FROM student
+WHERE REGEXP_LIKE(id,'^M(o|a)');
+--NAME                                                         ID
+-------------------------------------------------------------- ----------------------------------------
+--Demi Moore                                                   Moore
+--Steve Martin                                                 Martin
+</div>
+--유형8. 특정문자로 끝나는 데이터 출력
+-- $ 문자열 종료
+--영문자로 끝나는 데이터 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'[a-zA-z]$');
+--TEXT
+----------------------
+--123abc
+--abc
+</div>
+--유형9. 특정문자를 제외한 데이터 출력
+-- [^] 해당문자에 해당하지 않는 한 문자
+-- 소문자로 시작하지 않는 데이터 출력
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE REGEXP_LIKE(text,'^[^a-z]');
+--TEXT
+----------------------
+--ABC123
+--ABC 123
+--ABC  123
+--?/!@#$*&
+--\~*().,
+--123123
+--123abc
+</div>
+--유형10. 특수문자를 사용한 정규식으로 데이터 출력
+--지역번호 2자리, 국번 4자리가 나오는 값을 출력
+--괄호는 역슬래쉬(\)를 붙혀 사용한다.
+
+<div class = "code">
+SELECT name, tel
+FROM student
+WHERE REGEXP_LIKE(tel,'^[0-9]{2}\)[0-9]{4}');
+--NAME                                                         TEL
+-------------------------------------------------------------- ------------------------------
+--Demi Moore                                                   02)6255-9875
+--Richard Dreyfus                                              02)6788-4861
+--Steve Martin                                                 02)6175-3945
+--Anthony Hopkins                                              02)6122-2345
+</div>
+--유형11. 특정문자가 몇 번째에 들어있는지 정규식으로 지정하여 데이터 출력
+-- . 임의의 문자 [단 '는 넣을 수 없습니다.]
+--id에서 네 번째 글자가 'r'인 데이터 출력
+
+<div class = "code">
+SELECT name, id
+FROM student
+WHERE REGEXP_LIKE(id,'^...r');
+--NAME                                                         ID
+-------------------------------------------------------------- ----------------------------------------
+--James Seo                                                    75true
+--Demi Moore                                                   Moore
+--Bill Murray                                                  Murray
+</div>
+--유형12. 특정문자를 제외한 데이터출력2
+--not을 붙히면 서술한 정규식의 데이터는 제외하고 출력한다는 것
+
+<div class = "code">
+SELECT *
+FROM t_reg
+WHERE NOT REGEXP_LIKE(text,'[a-zA-Z]');
+--TEXT
+----------------------
+--?/!@#$*&
+--\~*().,
+--123123
+</div>
+<a href="#정규식" name="REGEXP_REPLACE"><h4>REGEXP_REPLACE</h4></a><hr>
+--REGEXP_REPLACE: 정규식을 검색하여 대체 문자열로 변경
+--숫자를 찾아서 * 로 치환
+
+<div class = "code">
+COL "REGEXP_REPLACE" FOR a15
+SELECT text
+	,REGEXP_REPLACE(text,'[0-9]','*') "REGEXP_REPLACE"
+FROM t_reg;
+--TEXT                 REGEXP_REPLACE
+---------------------- ---------------
+--ABC123               ABC***
+--ABC 123              ABC ***
+--ABC  123             ABC  ***
+--abc 123              abc ***
+--abc  123             abc  ***
+--a1b2c3               a*b*c*
+--aabbcc123            aabbcc***
+--?/!@#$*&             ?/!@#$*&
+--\~*().,              \~*().,
+--123123               ******
+--123abc               ***abc
+--abc                  abc
+</div>
+<a href="#정규식" name="REGEXP_SUBSTR"><h4>REGEXP_SUBSTR</h4></a><hr>
+-- REGEXP_SUBSTR: 정규식을 검색하여 문자추출
+
+<div class = "code">
+SELECT 'ABC* *DEF $GHI %KLM'"SENTENCE"
+	,REGEXP_SUBSTR('ABC* *DEF $GHI %KLM','[^ ]+[DEF]')"EXTRACT"
+FROM dual;
+--SENTENCE                               EXTRACT
+---------------------------------------- --------
+--ABC* *DEF $GHI %KLM                    *DEF
+</div>
+--홈페이지 주소에서 'http://' 부분 제거, '.'으로 구분되는 필드 3~4개 출력
+-- ? 앞 문자가 없거나 하나 있을 수 있습니다.
+
+<div class = "code">
+COL name FOR a20
+COL hpage FOR a30
+COL "URL" FOR a20
+SELECT name, hpage
+	,LTRIM(REGEXP_SUBSTR(hpage,'/([A-Za-z0-9]+\.?){3,4}'),'/')"URL"
+FROM professor
+WHERE hpage IS NOT NULL;
+--NAME                 HPAGE                          URL
+---------------------- ------------------------------ --------------------
+--Audie Murphy         http://www.abc.net             www.abc.net
+--Angela Bassett       http://www.abc.net             www.abc.net
+--Jessica Lange        http://www.power.com           www.power.com
+--Michelle Pfeiffer    http://num1.naver.com          num1.naver.com
+</div>
+<a href="#정규식" name="REGEXP_COUNT"><h4>REGEXP_COUNT</h4></a><hr>
+--REGEXP_COUNT(11g): 정규식을 검색하여 발견한 횟수
+--REGEXP_COUNT (source_char, pattern [, position [, match_param]])
+
+<div class = "code">
+SELECT text,
+	REGEXP_COUNT(text,'a')"COUNT"
+FROM t_reg;
+--TEXT                      COUNT
+---------------------- ----------
+--ABC123                        0
+--ABC 123                       0
+--ABC  123                      0
+--abc 123                       1
+--abc  123                      1
+--a1b2c3                        1
+--aabbcc123                     2
+--?/!@#$*&                      0
+--\~*().,                       0
+--123123                        0
+--123abc                        1
+--abc                           1
+</div>
+<a href="#정규식" name="그룹함수의_종류"><h4>그룹함수의_종류</h4></a><hr>
+<table>
+  <tr>
+    <th>함수명</th>
+    <th>의미</th>
+  </tr>
+  <tr>
+    <td>COUNT</td>
+    <td>입력데이터의 총 건수 출력</td>
+  </tr>
+  <tr>
+    <td>SUM</td>
+    <td>입력데이터의 합계</td>
+  </tr>
+  <tr>
+    <td>AVG</td>
+    <td>입력데이터의 평균</td>
+  </tr>
+  <tr>
+    <td>MAX</td>
+    <td>입력데이터의 최대값</td>
+  </tr>
+  <tr>
+    <td>MIN</td>
+    <td>입력데이터의 최소값</td>
+  </tr>
+  <tr>
+    <td>STDDEV</td>
+    <td>입력데이터의 표준편차</td>
+  </tr>
+  <tr>
+    <td>VARIANCE</td>
+    <td>입력데이터의 분산</td>
+  </tr>
+  <tr>
+    <td>ROLLUP</td>
+    <td>입력데이터의 소계를 계산해 출력</td>
+  </tr>
+  <tr>
+    <td>CUBE</td>
+    <td>입력데이터의 소계 및 전체 총계를 계산</td>
+  </tr>
+  <tr>
+    <td>GROUPINGSET</td>
+    <td>한 번의 쿼리로 여러개의 함수들을 그룹으로 수행</td>
+  </tr>
+  <tr>
+    <td>LISTAGG</td>
+    <td>여러 ROW를 하나의 ROW에 합쳐서 출력(DATA 제한있음-XMLAGG를 사용하자)</td>
+  </tr>
+  <tr>
+    <td>XMLAGG</td>
+    <td>여러 ROW를 하나의 ROW에 합쳐서 출력(DATA 제한없음)</td>
+  </tr>
+  <tr>
+    <td>PIVOT</td>
+    <td>열을 행으로, 행을 열로 출력</td>
+  </tr>
+  <tr>
+    <td>LAG</td>
+    <td>이전 행 값을 가져올 때 사용(앞뒤 비교해서 보여줄 때 사용)</td>
+  </tr>
+  <tr>
+    <td>LEAD</td>
+    <td>이후 행 값을 가져올 때 사용(앞뒤 비교해서 보여줄 때 사용)</td>
+  </tr>
+  <tr>
+    <td>RANK</td>
+    <td>순위 출력함수(ex.2위 3개 뒤에는 5위)</td>
+  </tr>
+  <tr>
+    <td>DENSE_RANK</td>
+    <td>순위 출력함수(ex.2위 3개 뒤에는 3위)</td>
+  </tr>
+  <tr>
+    <td>누계집계하기</td>
+    <td></td>
+  </tr>
+</table>
+<a href="#정규식" name="COUNT"><h4>COUNT</h4></a><hr>
+--COUNT :입력데이터의 총 건수 출력
+--복수행 함수에 *를 사용하면 NULL을 포함
+--복수행 함수에 이름을 쓰면 NULL을 포함하지 않음
+
+<div class = "code">
+SELECT COUNT(*), COUNT(comm)
+FROM emp;
+--  COUNT(*) COUNT(COMM)
+------------ -----------
+--        12           4
+</div>
+
 
 </pre>
 </body>

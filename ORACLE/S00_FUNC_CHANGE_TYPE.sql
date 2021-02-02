@@ -25,16 +25,16 @@ FROM dual;
 
 --TO_CHAR: 날짜 -> 문자
 --TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
---	종류		의미								  	사용예
+--	종류		의미								  사용예
 -- YYYY | 연도를 4자리로 표시						| 2021
--- RRRR | 위와 동일       	                  	| 2021
--- YY   | 연도의 끝자리 2자리	                  	| 21
--- RR	| 위와 동일 	   	                  	| 21
--- YEAR | 연도의 영문명 전체 	                  	| TWENTY TWENTY ONE
--- MM	| 월을 숫자 2자리로	                  	| 02
+-- RRRR | 위와 동일							| 2021
+-- YY   | 연도의 끝자리 2자리						| 21
+-- RR	| 위와 동일							| 21
+-- YEAR | 연도의 영문명 전체						| TWENTY TWENTY ONE
+-- MM	| 월을 숫자 2자리로						| 02
 -- MON	| 월(유닉스는 영3글자,윈도우는 MONTH와 동일)	| FEB
--- MONTH| 월의 영문명 전체	                  	| FEBRUARY
--- DD	| 일을 숫자 2자리로	                  	| 26
+-- MONTH| 월의 영문명 전체						| FEBRUARY
+-- DD	| 일을 숫자 2자리로						| 26
 -- DAY	| 요일(유닉스는 영문,윈도우는 한글)			| 월요일
 -- DDTH	| 몇 번째 날인지를 표시					| 22ND
 -- HH24 | 하루를 24시간으로 표시					| 23

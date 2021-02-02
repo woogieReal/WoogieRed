@@ -1,4 +1,4 @@
-TCP_HTML_1~16.html
+			TCP_HTML_1~16.html
 
 <pre> (preformatted text)
 작성한 텍스트 서식을 그대로 표현
@@ -94,7 +94,7 @@ shape = "rect" 의 경우 coords = "x1,y1,x2,y2"
 shape = "circle" 의 경우 coords = "x,y,반지름"
 원의 중심점 좌표와 반지름을 명시함.
 
-TCP_HTML_17~18.html
+			TCP_HTML_17~18.html
 
 <ul style="list-style-type:square"> unordered list
 - disc : 검정색 작은 원 모양 (기본설정)
@@ -131,7 +131,7 @@ TCP_HTML_17~18.html
 <caption>테이블이름</caption>
 테이블 상단에 제목이나 짧은 설명을 붙일 수 있음
 
-TCP_HTML_19~20.html
+			TCP_HTML_19~20.html
 
 블록(block) 타입의 요소
 언제나 새로운 라인(line)에서 시작하며, 해당 라인의 모든 너비를 차지
@@ -160,7 +160,7 @@ iframe 객체에 name을 설정
 <a href="https://google.co.kr" target="frame_target"> 구글로 이동
 기존의 iframe의 연결된 페이지를 네이버에서 구글로 변경
 
-TCP_HTML_21~23.html
+			TCP_HTML_21~23.html
 
 form 요소
 form 요소를 사용하여 사용자로부터 입력을 받을 수 있음
@@ -257,7 +257,7 @@ size
 입력 필드에 보여지는 input 요소의 크기(size)를 설정
 maxlength 속성과는 달리 입력 필드가 한 번에 보여줄 수 있는 문자의 최대 개수만을 의미합니다.
 
-TCP_HTML_24.html
+			TCP_HTML_24.html
 
 스타일 시트(style sheet)
 <head> 태그내에 <link rel = "stylesheet" href = "/스타일시트 이름.css"> 작성
@@ -280,7 +280,7 @@ TCP_HTML_24.html
 .explane {color : #00838f}
 <div class = "explane">
 
-TCP_HTML_26~30.html
+			TCP_HTML_26~30.html
 
 XHTML(EXtensible HTML)
 XHTML 문서는 하나의 XML 문서로서 문법적으로 정확하므로, 표준 XML 라이브러리를 이용한 자동화된 처리가 가능해짐
@@ -318,7 +318,7 @@ HTML 문서를 XHTML 문서로 변환하는 방법
 5. 모든 속성 이름을 소문자로 바꿔줍니다.
 6. 모든 속성값을 따옴표로 둘러쌉니다.
 
-TCP HTML 30
+			TCP HTML 30
 의미 요소(semantic element)
 요소가 자기 스스로 브라우저와 개발자 모두에게 자신이 사용된 의미를 명확히 전달해 주는 요소
 
@@ -351,7 +351,7 @@ footer 요소
 한 문서 내에 여러 개의 footer 요소가 존재할 수 있습니다.
 
 
-TCP HTML 31
+			TCP HTML 31
 HTML5에서 추가된 Input 요소
 
 datalist 요소
@@ -373,7 +373,7 @@ keygen 요소는 익스플로러에서 지원하지 않습니다.
 output 요소
 스크립트 등으로 실행된 계산의 결과를 바로 표시해주는 요소입니다.
 
-TCP HTML 32
+			TCP HTML 32
 HTML5에서 추가된 input 요소의 타입
 
 1. 숫자 입력(number)
@@ -418,7 +418,7 @@ type 속성값을 "search"로 설정하면, input 요소는 사용자가 검색�
 검색 필드는 보통의 텍스트 필드(text field)와 동일하게 동작
 다른 점은 입력 필드 우측에 입력된 검색어를 바로 삭제할 수 있는 엑스(X) 표시가 생기는 점
 
-TCP HTML 33
+			TCP HTML 33
 Input 요소의 속성
 
 1. autocomplete 속성
@@ -492,7 +492,7 @@ input 요소에 입력되어야 할 값에 대한 힌트를 제공
 input 요소에 입력할 수 있도록 허용된 숫자 간격을 명시
 - number, range, date, time, datetime-local, month, week 타입
 
-TCP HTML 34~37
+			TCP HTML 34~37
 멀티미디어 파일 형식
 
 비디오(video) 파일 형식
@@ -535,7 +535,7 @@ empty tag(빈태그)
 속성은 object와 동일 다만 HTML5 이전까지는 HTML 표준이 아니었으므로, HTML5에서는 유효하지만, HTML4에서는 유효하지 않음
 <embed src = "/img/2021-01-12.txt" style = "width:600px; height:250px" />
 
-TCP HTML 38
+			TCP HTML 38
 
 canvas 요소
 웹 페이지에 그래픽을 그려주는 쉽고 강력한 방법을 제공
@@ -666,7 +666,7 @@ drawImage()	canvas 요소에 그릴 이미지의 주소와 이미지가 그려�
     </script>
 drawImage 라는 기존의 함수를 이용하여 drawPic()이라는 메소드를 만들어줌
 
-TCP HTML 39
+			TCP HTML 39
 svg 요소
 Scalable Vector Graphics를 의미하며, XML기반의 W3C 그래픽 표준 권고안
 기존에 사용해 왔던 canvas 요소로는 벡터(vector) 이미지를 표현할 수 없었음
@@ -719,7 +719,7 @@ points	다각형의 각 꼭짓점이 표시될 위치의 좌표를 설정
 points 속성은 다각형을 이루는 각 꼭짓점의 x좌표와 y좌표를 명시함
 이때 첫번째 꼭짓점부터 시작하여 마지막 꼭짓점까지 차례대로 선으로 연결되어 다각형을 표현하게 됨
 
-TCP HTML 40
+			TCP HTML 40
 
 Canvas vs SVG
 canvas 요소의 성능은 화면이 작거나, 픽셀 수가 많을 경우(>10k)
@@ -734,7 +734,7 @@ Canvas				SVG
 스크립트를 통해서만 수정		스크립트 및 CSS를 통해서도 수정
 그래픽이 주작업인 게임에 적합	렌더링 영역이 넓은 응용프로그램에 적합
 
-TCP HTML 41
+			TCP HTML 41
 
 
 
