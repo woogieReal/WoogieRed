@@ -120,6 +120,11 @@
         <a href="#HAVING"><h4>HAVING</h4></a>
         <a href="#ROLLUP"><h4>ROLLUP</h4></a>
         <a href="#CUBE"><h4>CUBE</h4></a>
+        <a href="#GROUPING_SETS"><h4>GROUPING_SETS</h4></a>
+        <a href="#PLAN"><h4>PLAN</h4></a>
+        <a href="#LISTAGG"><h4>LISTAGG</h4></a>
+        <a href="#XMLAGG"><h4>XMLAGG</h4></a>
+        <a href="#PIVOT | UNPIVOT"><h4>PIVOT | UNPIVOT</h4></a>
       </ul>
     </div>
   </header>
@@ -1835,7 +1840,7 @@ FROM t_reg;
 --123abc                        1
 --abc                           1
 </div>
-<a href="#정규식" name="그룹함수의_종류"><h4>그룹함수의_종류</h4></a><hr>
+<a href="#그룹함수" name="그룹함수의_종류"><h4>그룹함수의_종류</h4></a><hr>
 <table>
   <tr>
     <th>함수명</th>
@@ -1914,7 +1919,7 @@ FROM t_reg;
     <td></td>
   </tr>
 </table>
-<a href="#정규식" name="COUNT"><h4>COUNT</h4></a><hr>
+<a href="#그룹함수" name="COUNT"><h4>COUNT</h4></a><hr>
 --COUNT:입력데이터의 총 건수 출력
 --복수행 함수에 *를 사용하면 NULL을 포함
 --복수행 함수에 이름을 쓰면 NULL을 포함하지 않음
@@ -1926,7 +1931,7 @@ FROM emp;
 ------------ -----------
 --        12           4
 </div>
-<a href="#정규식" name="SUM"><h4>SUM</h4></a><hr>
+<a href="#그룹함수" name="SUM"><h4>SUM</h4></a><hr>
 --SUM:입력데이터의 합계
 
 <div class = "code">
@@ -1937,7 +1942,7 @@ FROM emp;
 ------------ ----------
 --      2200          4
 </div>
-<a href="#정규식" name="AVG"><h4>AVG</h4></a><hr>
+<a href="#그룹함수" name="AVG"><h4>AVG</h4></a><hr>
 --AVG: 입력데이터의 평균
 --전체인원에 대한 평균을 구하기 위해서는
 
@@ -1950,7 +1955,7 @@ FROM emp;
 ------------ ---------- ----------
 --       550 183.333333     183.33
 </div>
-<a href="#정규식" name="MAX | MIN"><h4>MAX | MIN</h4></a><hr>
+<a href="#그룹함수" name="MAX | MIN"><h4>MAX | MIN</h4></a><hr>
 --MAX | MIN: 입력데이터의 최대값&최소값
 --내부적으로 ORDER BY를 돌려서 값을 구함
 
@@ -1961,7 +1966,7 @@ FROM emp;
 ------------ ----------
 --      5000        800
 </div>
-<a href="#정규식" name="VARIANCE | STDDEV"><h4>VARIANCE | STDDEV</h4></a><hr>
+<a href="#그룹함수" name="VARIANCE | STDDEV"><h4>VARIANCE | STDDEV</h4></a><hr>
 --VARIANCE: 입력데이터의 분산
 --분산이란 평균에 대한 편차제곱의 평균을 구한 것이다.
 --STDDEV: 입력데이터의 표준편차
@@ -1974,7 +1979,7 @@ FROM emp;
 --------------- ----------- ---------------
 --   1488347.54   1219.9785      2077.08333
 </div>
-<a href="#정규식" name="GROUP_BY"><h4>GROUP_BY</h4></a><hr>
+<a href="#그룹함수" name="GROUP_BY"><h4>GROUP_BY</h4></a><hr>
 --GROUP_BY: 특정조건으로 세부적인 그룹을 지정
 --원리: GROUP BY 뒤에오는 컬럼값을 기준으로 먼저 데이터를 모아놓고,
 --SELECT절에 있는 그룹함수를 적용.
@@ -2014,7 +2019,7 @@ ORDER BY 1,3 DESC;
 --        30 SALESMAN                 1400
 --        30 CLERK                     950
 </div>
-<a href="#정규식" name="HAVING"><h4>HAVING</h4></a><hr>
+<a href="#그룹함수" name="HAVING"><h4>HAVING</h4></a><hr>
 --HAVING: 그룹핑한 조건으로 검색
 --HAVING 조건으로 부서평균월급이 2000을 넘을 것을 지정
 
@@ -2029,7 +2034,7 @@ ORDER BY 1;
 --        10 2916.66667
 --        20 2258.33333
 </div>
-<a href="#정규식" name="ROLLUP"><h4>ROLLUP</h4></a><hr>
+<a href="#그룹함수" name="ROLLUP"><h4>ROLLUP</h4></a><hr>
 --ROLLUP: 입력데이터의 소계를 계산해 출력
 --ROLLUP에 지정된 컬럼들은 소계의 기준이 되는 컬럼이다.
 --N+1 LEVEL에 소계출력
@@ -2075,7 +2080,7 @@ GROUP BY ROLLUP(job);
 --SALESMAN                      1400          4
 --                            2317.5         10
 </div>
-<a href="#정규식" name="CUBE"><h4>CUBE</h4></a><hr>
+<a href="#그룹함수" name="CUBE"><h4>CUBE</h4></a><hr>
 --CUBE: 입력데이터의 소계 및 전체 총계를 계산
 --GROUP BY CUBE(컬럼1, 컬럼2, ....)
 --2^n LEVEL의 소계출력
@@ -2140,6 +2145,219 @@ ORDER BY deptno, job;
   --           SALESMAN                 1400
   --                                    1811
 </div>
+<a href="#그룹함수" name="GROUPING_SETS"><h4>GROUPING_SETS</h4></a><hr>
+--GROUPING_SETS: 그룹핑 조건이 여러개일 경우 유용하게 사용가능
+--GROUPING SETS(expr1,expr2,expr3......)
+
+--학년별로 인원수, 키 평균, 몸무게 평균을 구함
+--이 경우 GROUP이 하나이기 때문에 GROUP BY로 가능
+
+<div class = "code">
+SELECT grade
+	,COUNT(*)"NUMBER"
+	,ROUND(AVG(NVL(height,0)))"AVG_HEIGHT"
+	,ROUND(AVG(NVL(weight,0)))"AVG_WEIGHT"
+FROM student
+GROUP BY grade;
+--     GRADE     NUMBER AVG_HEIGHT AVG_WEIGHT
+------------ ---------- ---------- ----------
+--         1          5        170         62
+--         2          5        176         67
+--         4          5        176         68
+--         3          5        167         51
+</div>
+--학년별 + 학과별로 인원수, 키 평균, 몸무게 평균을 구할경우
+--GROUPING SETS을 이용하면 한 테이블에 간단하게 출력가능
+
+<div class = "code">
+SELECT grade, deptno1
+	,COUNT(*)"NUMBER"
+	,ROUND(AVG(NVL(height,0)))"AVG_HEIGHT"
+	,ROUND(AVG(NVL(weight,0)))"AVG_WEIGHT"
+FROM student
+GROUP BY GROUPING SETS(grade, deptno1);
+--     GRADE    DEPTNO1     NUMBER AVG_HEIGHT AVG_WEIGHT
+------------ ---------- ---------- ---------- ----------
+--                  102          4        171         64
+--                  201          6        173         67
+--                  301          2        172         60
+--                  101          4        172         60
+--                  202          2        180         63
+--                  103          2        166         52
+--         1                     5        170         62
+--         2                     5        176         67
+--         4                     5        176         68
+--         3                     5        167         51
+</div>
+<a href="#그룹함수" name="PLAN"><h4>PLAN</h4></a><hr>
+1. explain plan for 입력
+2. 수행할 쿼리 입력
+3. col plan_table_output format a80 SELECT * FROM table(dbms_xplan.display); 입력
+
+1. ROLLUP을 UNION ALL로 구현했을 때의 PLAN
+--세부 쿼리부터 실행 후 큰 단위로 합쳐나가는 방식(UNION ALL)으로 실행될 것을 알 수 있음
+--EMP 테이블이 3번 조회 되었음.
+
+<div class = "code">
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 3259471421
+--                                                                             실행순서
+-------------------------------------------------------------------------------
+--| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT     |      |    15 |   190 |    12  (25)| 00:00:01 |   8
+--|   1 |  SORT ORDER BY       |      |    15 |   190 |    11  (73)| 00:00:01 |   7
+--|   2 |   UNION-ALL          |      |       |       |            |          |   6
+--|   3 |    HASH GROUP BY     |      |    11 |   165 |     4  (25)| 00:00:01 |   2
+--|   4 |     TABLE ACCESS FULL| EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
+--|   5 |    HASH GROUP BY     |      |     3 |    21 |     4  (25)| 00:00:01 |   4
+--|   6 |     TABLE ACCESS FULL| EMP  |    12 |    84 |     3   (0)| 00:00:01 |   3
+--|   7 |    SORT AGGREGATE    |      |     1 |     4 |            |          |   6
+--|   8 |     TABLE ACCESS FULL| EMP  |    12 |    48 |     3   (0)| 00:00:01 |   5
+-------------------------------------------------------------------------------
+</div>
+2. ROLLUP 함수를 사용하였을 때의 PLAN
+--UNION ALL 방식보다 더 적은 수행단계를 가짐
+--EMP테이블은 1번 조회되었음
+--PLAN을 통해 UNION ALL보다 ROLLUP이 실행속도가 빠를 것임을 알 수 있음
+
+<div class = "code">
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 52302870
+--                                                                            실행순서
+-------------------------------------------------------------------------------
+--| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT     |      |    11 |   165 |     4  (25)| 00:00:01 |   3
+--|   1 |  SORT GROUP BY ROLLUP|      |    11 |   165 |     4  (25)| 00:00:01 |   2
+--|   2 |   TABLE ACCESS FULL  | EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
+-------------------------------------------------------------------------------
+</div>
+<a href="#그룹함수" name="LISTAGG"><h4>LISTAGG</h4></a><hr>
+--LISTAGG: 여러 ROW데이터를 하나의 ROW에서 합쳐서 보여주는 함수
+--RETURN 데이터 4000BYTE를 넘으면 안됨
+--LISTAGG(컬럼,'구분자') WITHIN GROUP (ORDER BY 컬럼2)
+
+--부서별 직원의 이름을 하나의 ROW로 출력
+
+<div class = "code">
+COL "LISTAGG" FOR A50
+SELECT deptno, LISTAGG(ename,'-') WITHIN GROUP(ORDER BY hiredate)"LISTAGG"
+FROM emp
+GROUP BY deptno;
+--    DEPTNO LISTAGG
+------------ --------------------------------------------------
+--        10 CLARK-KING-MILLER
+--        20 SMITH-JONES-FORD
+--        30 ALLEN-WARD-BLAKE-TURNER-MARTIN-JAMES
+</div>
+<a href="#그룹함수" name="XMLAGG"><h4>XMLAGG</h4></a><hr>
+--XMLAGG
+--LISTAGG는 4000BYTE를 넘을경우 오류가 발생한다.
+--이 경우 사용하는 것이 XMLAGG
+--리턴타입이 VARCHAR2인지 CLOB인지에 따라 형태가 달라지므로 주의
+
+--유형1. 부서별로 직원들의 이름을 하나의 ROW로 출력. 순서는 입사일
+--XMLELEMENT(태그,'구분자',컬럼): 컬럼의 데이터에 태그를 붙혀 XML데이터로 만들어줌
+--EXTRACT('//text()'): 텍스트로 추출
+--getStringVal(): 문자열로 get함
+--SUBSTR: 맨 앞의 쉼표를 제외한 문자열을 출력
+
+<div class = "code">
+COL "XMLAGG" FOR A100
+SELECT deptno
+	,SUBSTR(
+		XMLAGG(XMLELEMENT(X,',',ename) ORDER BY hiredate).EXTRACT('//text()').getStringVal()
+	,2)"XMLAGG"
+FROM emp
+GROUP BY deptno;
+--    DEPTNO XMLAGG
+------------ ----------------------------------------------------------------------------------------------------
+--        10 CLARK,KING,MILLER
+--        20 SMITH,JONES,FORD
+--        30 ALLEN,WARD,BLAKE,TURNER,MARTIN,JAMES
+</div>
+--유형2. 직업별로 직원들의 이름을 하나의 ROW로 출력. 순서는 월급순
+
+--1. 직원들의 이름 앞뒤로 태그를 붙혀줌
+--XMLELEMENT(태그,'구분자',컬럼): 컬럼의 데이터에 태그를 붙혀 XML데이터로 만들어줌
+
+<div class = "code">
+COL "NAME" FOR A50
+SELECT job, XMLELEMENT(NAME,'-',ename)"NAME"
+FROM emp;
+--JOB                NAME
+-------------------- --------------------------------------------------
+--CLERK              <NAME>-SMITH</NAME>
+--SALESMAN           <NAME>-ALLEN</NAME>
+--SALESMAN           <NAME>-WARD</NAME>
+--MANAGER            <NAME>-JONES</NAME>
+--SALESMAN           <NAME>-MARTIN</NAME>
+--MANAGER            <NAME>-BLAKE</NAME>
+--MANAGER            <NAME>-CLARK</NAME>
+--PRESIDENT          <NAME>-KING</NAME>
+--SALESMAN           <NAME>-TURNER</NAME>
+--CLERK              <NAME>-JAMES</NAME>
+--ANALYST            <NAME>-FORD</NAME>
+--CLERK              <NAME>-MILLER</NAME>
+</div>
+--2. 직업별로 직원들의 이름을 하나의 ROW로 출력
+--XMLAGG(컬럼1 ORDER BY 컬럼2): 컬럼1을 컬럼2의 순서로 정렬하여 하나의 ROW에 출력
+
+<div class = "code">
+COL "NAME" FOR A80
+SELECT job, XMLAGG(XMLELEMENT(NAME,'-',ename)ORDER BY sal)"NAME"
+FROM emp
+GROUP BY job;
+--JOB                NAME
+-------------------- --------------------------------------------------------------------------------
+--ANALYST            <NAME>-FORD</NAME>
+--CLERK              <NAME>-SMITH</NAME><NAME>-JAMES</NAME><NAME>-MILLER</NAME>
+--MANAGER            <NAME>-CLARK</NAME><NAME>-BLAKE</NAME><NAME>-JONES</NAME>
+--PRESIDENT          <NAME>-KING</NAME>
+--SALESMAN           <NAME>-WARD</NAME><NAME>-MARTIN</NAME><NAME>-TURNER</NAME><NAME>-ALLEN</NAME>
+</div>
+--3. 태그를 제외한 데이터만 뽑아서 출력
+--EXTRACT('//text()')
+
+<div class = "code">
+COL "NAME" FOR A50
+SELECT job, XMLAGG(XMLELEMENT(NAME,'-',ename)ORDER BY sal).EXTRACT('//text()')"NAME"
+FROM emp
+GROUP BY job;
+--JOB                NAME
+-------------------- --------------------------------------------------
+--ANALYST            -FORD
+--CLERK              -SMITH-JAMES-MILLER
+--MANAGER            -CLARK-BLAKE-JONES
+--PRESIDENT          -KING
+--SALESMAN           -WARD-MARTIN-TURNER-ALLEN
+</div>
+--4. 맨 앞의 구분자 - 를제거
+--getStringVal(): 문자열로 받음
+--SUBSTR: 맨 앞의 - 구분자를 제외한 문자열을 출력
+
+<div class = "code">
+COL "NAME" FOR A50
+SELECT job
+	, SUBSTR(
+		XMLAGG(XMLELEMENT(NAME,'-',ename)ORDER BY sal).EXTRACT('//text()').getStringVal()
+	,2)"NAME"
+FROM emp
+GROUP BY job;
+--JOB                NAME
+-------------------- --------------------------------------------------
+--ANALYST            FORD
+--CLERK              SMITH-JAMES-MILLER
+--MANAGER            CLARK-BLAKE-JONES
+--PRESIDENT          KING
+--SALESMAN           WARD-MARTIN-TURNER-ALLEN
+</div>
+<a href="#그룹함수" name="PIVOT"><h4>PIVOT</h4></a><hr>
+
+
 
 
 </pre>

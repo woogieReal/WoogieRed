@@ -343,7 +343,8 @@ FROM emp
 GROUP BY deptno,job
 UNION ALL
 SELECT NULL deptno, NULL job, ROUND(AVG(NVL(sal,0)),1)"AVERAGE", COUNT(*)
-FROM emp;
+FROM emp
+ORDER BY deptno, job;
 --    DEPTNO JOB                   AVERAGE   COUNT(*)
 ------------ ------------------ ---------- ----------
 --        30                        1566.7          6
