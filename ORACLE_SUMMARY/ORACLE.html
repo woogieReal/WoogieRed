@@ -124,7 +124,7 @@
         <a href="#PLAN"><h4>PLAN</h4></a>
         <a href="#LISTAGG"><h4>LISTAGG</h4></a>
         <a href="#XMLAGG"><h4>XMLAGG</h4></a>
-        <a href="#PIVOT | UNPIVOT"><h4>PIVOT | UNPIVOT</h4></a>
+        <a href="#PIVOT"><h4>PIVOT</h4></a>
       </ul>
     </div>
   </header>
@@ -2356,6 +2356,258 @@ GROUP BY job;
 --SALESMAN           WARD-MARTIN-TURNER-ALLEN
 </div>
 <a href="#그룹함수" name="PIVOT"><h4>PIVOT</h4></a><hr>
+--PIVOT: ROW단위를 COLUMN 단위로 변경
+--컬럼 값을 기준으로 새로운 컬럼을 도출하여 다양한 집계함수를 적용가능
+
+--유형1.달력만들기
+--아래 테이블을 사용하여 달력을 출력한다.
+--주차: WEEKNO VARCHAR2(1)
+--요일: DAY VARCHAR2(5)
+--날짜: DAYNO VARCHAR2(2)
+
+<div class = "code">
+  COL weekno FOR A6
+  COL dayno FOR A5
+  SELECT weekno, day, dayno
+  FROM cal;
+  --WEEKNO DAY        DAYNO
+  -------- ---------- -----
+  --1      SUN        1
+  --1      MON        2
+  --1      TUE        3
+  --1      WED        4
+  --1      THU        5
+  --1      FRI        6
+  --1      SAT        7
+  --2      SUN        8
+  --2      MON        9
+  --2      TUE        10
+  --2      WED        11
+  --2      THU        12
+  --2      FRI        13
+  --2      SAT        14
+  --3      SUN        15
+  --3      MON        16
+  --3      TUE        17
+  --3      WED        18
+  --3      THU        19
+  --3      FRI        20
+  --3      SAT        21
+  --4      SUN        22
+  --4      MON        23
+  --4      TUE        24
+  --4      WED        25
+  --4      THU        26
+  --4      FRI        27
+  --4      SAT        28
+  --5      SUN        29
+  --5      MON        30
+  --5      TUE        31
+</div>
+--유형1-1. DECODE함수로 달력 출력
+--DECODE로 데이터의 요일(day)이 지정한 문자열과 같을 경우 해당날짜(dayno) 출력하도록 함
+
+<div class = "code">
+SELECT DECODE(day,'SUN',dayno,NULL)"SUN"
+	  ,DECODE(day,'MON',dayno,NULL)"MON"
+	  ,DECODE(day,'TUE',dayno,NULL)"TUE"
+	  ,DECODE(day,'WED',dayno,NULL)"WED"
+	  ,DECODE(day,'THU',dayno,NULL)"THU"
+	  ,DECODE(day,'FRI',dayno,NULL)"FRI"
+	  ,DECODE(day,'SAT',dayno,NULL)"SAT"
+FROM cal;
+--SUN  MON  TUE  WED  THU  FRI  SAT
+------ ---- ---- ---- ---- ---- ----
+--1
+--     2
+--          3
+--               4
+--                    5
+--                         6
+--                              7
+--8
+--     9
+--          10
+--               11
+--                    12
+--                         13
+--                              14
+--15
+--     16
+--          17
+--               18
+--                    19
+--                         20
+--                              21
+--22
+--     23
+--          24
+--               25
+--                    26
+--                         27
+--                              28
+--29
+--     30
+--          31
+</div>
+
+--빈칸을 제거하기 위해 MAX함수를 사용함
+--데이터의 요일(day)이 지정한 문자열과 같아 해당날짜(dayno)이 출력된 곳 외에는 모두
+--빈칸이기 때문에 MAX함수를 이용하면 해당 데이터만 출력되어 빈칸이 사라진다.
+
+<div class = "code">
+SELECT MAX(DECODE(day,'SUN',dayno,NULL))"SUN"
+	  ,MAX(DECODE(day,'MON',dayno,NULL))"MON"
+	  ,MAX(DECODE(day,'TUE',dayno,NULL))"TUE"
+	  ,MAX(DECODE(day,'WED',dayno,NULL))"WED"
+	  ,MAX(DECODE(day,'THU',dayno,NULL))"THU"
+	  ,MAX(DECODE(day,'FRI',dayno,NULL))"FRI"
+	  ,MAX(DECODE(day,'SAT',dayno,NULL))"SAT"
+FROM cal
+GROUP BY weekno
+ORDER BY weekno;
+--SUN  MON  TUE  WED  THU  FRI  SAT
+------ ---- ---- ---- ---- ---- ----
+--1    2    3    4    5    6    7
+--8    9    10   11   12   13   14
+--15   16   17   18   19   20   21
+--22   23   24   25   26   27   28
+--29   30   31
+</div>
+--유형1-2. PIVOT함수로 달력출력
+--SELECT문의 FROM에 SELECT문이 중첩된 것은 나중에 배우므로 일단 패스
+--중첩된 SELECT문에 출력에 사용할 칼럼이 모두 입력이 되어있어야함
+--PIVOT까지 하나의 쿼리이기 때문에 SELECT문에 세미콜론을 붙히지 않는다.
+--MAX()함수의 파라미터에는 출력될 날짜(dayno)을 입력
+--FOR에는 그룹핑할 컬럼인 요일(day)을 입력(요일별로 날짜를 출력할 것임)
+--IN안에는 FOR에서 지정한 컬럼인 요일(day)의 값들을 넣는다.(반드시 FOR의 요소와 같아야함)
+--AS로 컬럼명을 지정할 수 있다(변경가능)
+--마지막에 주차(weekno)로 정렬해주면 완성
+
+<div class = "code">
+  SELECT * FROM(SELECT weekno"Wn",day,dayno FROM cal)
+  PIVOT(
+  	MAX(dayno) FOR day IN(
+  		 'SUN' AS "토"
+  		,'MON' AS "MON"
+  		,'TUE' AS "TUE"
+  		,'WED' AS "WED"
+  		,'THU' AS "THU"
+  		,'FRI' AS "FRI"
+  		,'SAT' AS "일"
+  	)
+  )
+  ORDER BY "Wn";
+  --Wn 토   MON  TUE  WED  THU  FRI  일
+  ---- ---- ---- ---- ---- ---- ---- ----
+  --1  1    2    3    4    5    6    7
+  --2  8    9    10   11   12   13   14
+  --3  15   16   17   18   19   20   21
+  --4  22   23   24   25   26   27   28
+  --5  29   30   31
+</div>
+--만약 토요일과 일요일을 제외한 달력을 출력하고 싶다면
+--'SUN' AS "SUN" 과 ,'SAT' AS "SAT"를 제거하면 된다.
+
+<div class = "code">
+  SELECT * FROM(SELECT weekno"Wn",day,dayno FROM cal)
+  PIVOT(
+  	MAX(dayno) FOR day IN(
+  		 'MON' AS "MON"
+  		,'TUE' AS "TUE"
+  		,'WED' AS "WED"
+  		,'THU' AS "THU"
+  		,'FRI' AS "FRI"
+  	)
+  )
+  ORDER BY "Wn";
+  --Wn MON  TUE  WED  THU  FRI
+  ---- ---- ---- ---- ---- ----
+  --1  2    3    4    5    6
+  --2  9    10   11   12   13
+  --3  16   17   18   19   20
+  --4  23   24   25   26   27
+  --5  30   31
+</div>
+--그리고 토요일과 일요일 칸을 남겨둔채 날짜만 제외해서 출력하고 싶다면
+--아래와 같이 IN함수에서 컬럼은 남겨둔채 파라미터만 NULL로 지정해 주면 된다.
+--그러면 요일(day)값이 NULL인 데이터는 없으므로 칼럼명만 출력된채 데이터는 출력되지 않음
+
+<div class = "code">
+SELECT * FROM(SELECT weekno"Wn",day,dayno FROM cal)
+PIVOT(
+	MAX(dayno) FOR day IN(
+		 NULL AS "SUN"
+		,'MON' AS "MON"
+		,'TUE' AS "TUE"
+		,'WED' AS "WED"
+		,'THU' AS "THU"
+		,'FRI' AS "FRI"
+		,NULL AS "SAT"
+	)
+)
+ORDER BY "Wn";
+--Wn SUN  MON  TUE  WED  THU  FRI  SAT
+---- ---- ---- ---- ---- ---- ---- ----
+--1       2    3    4    5    6
+--2       9    10   11   12   13
+--3       16   17   18   19   20
+--4       23   24   25   26   27
+--5       30   31
+</div>
+--유형2. PIVOT함수로 부서별로 직무별 인원을 출력
+--SELECT문의 FROM에 SELECT문이 중첩된 것은 나중에 배우므로 일단 패스
+--중첩된 SELECT문에 출력에 사용할 칼럼이 모두 입력이 되어있어야함
+--PIVOT까지 하나의 쿼리이기 때문에 SELECT문에 세미콜론을 붙히지 않는다.
+--사원번호(empno)를 기준으로 인원을 COUNT할 것이기때문에 empno를 COUNT의 파라미터로
+--FOR에는 그룹핑할 컬럼인 job을 입력(직무별로 인원을 출력할 것임)
+--IN안에는 FOR에서 지정한 컬럼인 직무(job)의 값들을 넣는다.(반드시 FOR의 요소와 같아야함)
+--AS로 컬럼명을 지정할 수 있다(변경가능)
+--마지막에 부서번호(deptno)로 정렬해주면 완성
+
+<div class = "code">
+SELECT * FROM(SELECT deptno,job,empno FROM emp)
+PIVOT(
+	COUNT(empno) FOR job IN(
+		 'CLERK'     AS "CLERK"
+		,'SALESMAN'  AS "SALESMAN"
+		,'PRESIDENT' AS "PRESIDENT"
+		,'MANAGER'   AS "MANAGER"
+		,'ANALYST'   AS "ANALYST"
+	)
+)
+ORDER BY deptno;
+--    DEPTNO   CLERK SALESMAN PRESIDENT MANAGER ANALYST
+------------ ------- -------- --------- ------- -------
+--        10       1        0         1       1       0
+--        20       1        0         0       1       1
+--        30       1        4         0       1       0
+</div>
+
+--유형3. 부서별로 직무별 인원수와 월급의 총합을 출력
+--PIVOT안에 두 개의 그룹함수를 사용함
+--FOR와 IN에서 지정한 컬럼인 직무(job)을 기준으로 인원수(CNT)와 임금합계(SUM)가 계산됨
+
+<div class = "code">
+SELECT * FROM(SELECT deptno,job,empno,sal FROM emp)
+PIVOT(
+	COUNT(empno) AS CNT,
+	SUM(sal) AS sum FOR job IN(
+		 'CLERK'     AS "CLERK"
+		,'SALESMAN'  AS "SALESMAN"
+		,'PRESIDENT' AS "PRESIDENT"
+		,'MANAGER'   AS "MANAGER"
+		,'ANALYST'   AS "ANALYST"
+	)
+)
+ORDER BY deptno;
+--    DEPTNO  CLERK_CNT  CLERK_SUM SALESMAN_CNT SALESMAN_SUM PRESIDENT_CNT PRESIDENT_SUM MANAGER_CNT MANAGER_SUM ANALYST_CNT ANALYST_SUM
+------------ ---------- ---------- ------------ ------------ ------------- ------------- ----------- ----------- ----------- -----------
+--        10          1       1300            0                          1          5000           1        2450           0
+--        20          1        800            0                          0                         1        2975           1        3000
+--        30          1        950            4         5600             0                         1        2850           0
+</div>
+
 
 
 
