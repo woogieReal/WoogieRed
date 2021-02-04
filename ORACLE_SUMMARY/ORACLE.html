@@ -127,6 +127,11 @@
         <a href="#PIVOT"><h4>PIVOT</h4></a>
         <a href="#UNPIVOT"><h4>UNPIVOT</h4></a>
         <a href="#LAG"><h4>LAG</h4></a>
+        <a href="#LEAD"><h4>LEAD</h4></a>
+        <a href="#RANK"><h4>RANK</h4></a>
+        <a href="#RANK_OVER/DENSE_RANK/ROW_NUMBER"><h4>RANK_OVER/DENSE_RANK/ROW_NUMBER</h4></a>
+        <a href="#SUM() OVER"><h4>SUM() OVER</h4></a>
+        <a href="#RATIO_TO_REPORT"><h4>RATIO_TO_REPORT</h4></a>
       </ul>
     </div>
   </header>
@@ -2676,8 +2681,160 @@ FROM emp;
 --FORD                 81/12/03       3000       1250
 --MILLER               82/01/23       1300       5000
 </div>
+<a href="#그룹함수" name="LEAD"><h4>LEAD</h4></a><hr>
+--LEAD: 이후 행의 값을 가져옴
+--LEAD(출력할 컬럼명,OFFSET,기본출력값)
+--OVER(Query_partition구문,ORDER BY 정렬할 컬럼)
+--OFFSET은 4번째 이후로 설정
+--기본값은 5609
 
+<div class = "code">
+SELECT ename
+	,hiredate
+	,sal
+	,LEAD(sal,4,5609) OVER(ORDER BY hiredate)"LEAD"
+FROM emp;
+--ENAME                HIREDATE        SAL       LEAD
+---------------------- -------- ---------- ----------
+--SMITH                80/12/17        800       2850
+--ALLEN                81/02/20       1600       2450
+--WARD                 81/02/22       1250       1500
+--JONES                81/04/02       2975       1250
+--BLAKE                81/05/01       2850       5000
+--CLARK                81/06/09       2450        950
+--TURNER               81/09/08       1500       3000
+--MARTIN               81/09/28       1250       1300
+--KING                 81/11/17       5000       5609
+--JAMES                81/12/03        950       5609
+--FORD                 81/12/03       3000       5609
+--MILLER               82/01/23       1300       5609
+</div>
+<a href="#그룹함수" name="RANK"><h4>RANK</h4></a><hr>
+--RANK: 특정데이터의 순위를 출력
+--RANK(조건값) WITHIN GROUP (ORDER BY 조건값 컬럼명 [ASC | DESC] )
 
+<div class = "code">
+SELECT RANK('SMITH') WITHIN GROUP (ORDER BY ename)"RANK"
+FROM emp
+ORDER BY ename;
+--      RANK
+------------
+--        10
+</div>
+<a href="#그룹함수" name="RANK_OVER/DENSE_RANK/ROW_NUMBER"><h4>RANK_OVER / DENSE_RANK / ROW_NUMBER</h4></a><hr>
+--A > B1,B2,B3 > C
+--RANK_OVER:  1위 A | 2위 B1,B2,B3 | 5위 C
+--DENSE_RANK: 1위 A | 2위 B1,B2,B3 | 3위 C
+--ROW_NUMBER: 1위 A | 2위 B1       | 3위 B2   | 4위 B3   | 5위 C
+--ROW_NUMBER는 동일 값이면 ROWID 순으로 순위부여(P405참고)
+
+<div class = "code">
+SELECT empno,ename,sal,ROWID
+	,RANK() OVER (ORDER BY sal DESC)"RANK_OVER"
+	,DENSE_RANK() OVER(ORDER BY sal DESC)"DENSE_RANK"
+	,ROW_NUMBER() OVER(ORDER BY sal DESC)"ROW_NUMBER"
+FROM emp;
+--  EMPNO ENAME    SAL ROWID               RANK_OVER DENSE_RANK ROW_NUMBER
+--------- ------ ----- ------------------ ---------- ---------- ----------
+--   7839 KING    5000 AAAE6LAAEAAAAK+AAH          1          1          1
+--   1000 Tiger   3600 AAAE6LAAEAAAAK9AAA          2          2          2
+--   7902 FORD    3000 AAAE6LAAEAAAAK+AAK          3          3          3
+--   2000 Cat     3000 AAAE6LAAEAAAAK9AAB          3          3          4
+--   7566 JONES   2975 AAAE6LAAEAAAAK+AAD          5          4          5
+--   7698 BLAKE   2850 AAAE6LAAEAAAAK+AAF          6          5          6
+--   7782 CLARK   2450 AAAE6LAAEAAAAK+AAG          7          6          7
+--   7499 ALLEN   1600 AAAE6LAAEAAAAK+AAB          8          7          8
+--   7844 TURNER  1500 AAAE6LAAEAAAAK+AAI          9          8          9
+--   7934 MILLER  1300 AAAE6LAAEAAAAK+AAL         10          9         10
+--   7521 WARD    1250 AAAE6LAAEAAAAK+AAC         11         10         11
+--   7654 MARTIN  1250 AAAE6LAAEAAAAK+AAE         11         10         12
+--   7900 JAMES    950 AAAE6LAAEAAAAK+AAJ         13         11         13
+--   7369 SMITH    800 AAAE6LAAEAAAAK+AAA         14         12         14
+</div>
+<a href="#그룹함수" name="SUM() OVER"><h4>SUM() OVER</h4></a><hr>
+--SUM() OVER: 누계 구하기
+--지점(P_STORE)별로 매출(P_STORE)누계를 구한다.
+--SUM()_OVER 칼럼에서 매출이 누적되어 출력된다.
+
+<div class = "code">
+SELECT P_DATE, P_STORE, P_TOTAL
+	,SUM(P_TOTAL) OVER(PARTITION BY P_STORE ORDER BY P_TOTAL)"SUM()_OVER"
+FROM panmae;
+--P_DATE           P_STORE       P_TOTAL SUM()_OVER
+------------------ ---------- ---------- ----------
+--20110103         1000             1600       1600
+--20110102         1000             2000       3600
+--20110101         1000             2400       6000
+--20110102         1000             3000       9000
+--20110103         1001             2400       2400
+--20110104         1001             2700       5100
+--20110104         1001             4000       9100
+--20110101         1001             4500      13600
+--20110104         1002             1600       1600
+--20110104         1002             2000       3600
+--20110102         1002             2400       6000
+--20110104         1002             3600       9600
+--20110102         1002             4500      14100
+--20110104         1003             1800       1800
+--20110101         1003             2000       3800
+--20110104         1003             2700       6500
+--20110104         1003             3200       9700
+--20110103         1003             3600      13300
+--20110104         1004             4000       4000
+--20110101         1004             5400       9400
+--20110103         1004             8000      17400
+</div>
+--SUM() OVER()에서 OVER에 PARTITION을 입력안하면 아래와 같이 총합/평균만 계속
+--출력되도록 할 수 있다.
+
+<div class = "code">
+SELECT deptno, ename, sal
+	,SUM(sal) OVER()"TOTAL"
+	,ROUND(AVG(sal) OVER())"AVERAGE"
+FROM emp;
+-- DEPTNO ENAME                       SAL      TOTAL    AVERAGE
+--------- -------------------- ---------- ---------- ----------
+--     10 Tiger                      3600      31525       2252
+--     10 Cat                        3000      31525       2252
+--     20 SMITH                       800      31525       2252
+--     30 ALLEN                      1600      31525       2252
+--     30 WARD                       1250      31525       2252
+--     20 JONES                      2975      31525       2252
+--     30 MARTIN                     1250      31525       2252
+--     30 BLAKE                      2850      31525       2252
+--     10 CLARK                      2450      31525       2252
+--     10 KING                       5000      31525       2252
+--     30 TURNER                     1500      31525       2252
+--     30 JAMES                       950      31525       2252
+--     20 FORD                       3000      31525       2252
+--     10 MILLER                     1300      31525       2252
+</div>
+<a href="#그룹함수" name="RATIO_TO_REPORT"><h4>RATIO_TO_REPORT</h4></a><hr>
+--RATIO_TO_REPORT: 비율을 구하는 함수
+--직원별 월급이 차지하는 비율 출력
+
+<div class = "code">
+SELECT deptno, ename, sal
+	, ROUND(RATIO_TO_REPORT(sal) OVER()*100) "RATIO"
+FROM emp
+ORDER BY RATIO DESC;
+--    DEPTNO ENAME                       SAL      RATIO
+------------ -------------------- ---------- ----------
+--        10 KING                       5000         16
+--        10 Tiger                      3600         11
+--        20 FORD                       3000         10
+--        10 Cat                        3000         10
+--        20 JONES                      2975          9
+--        30 BLAKE                      2850          9
+--        10 CLARK                      2450          8
+--        30 ALLEN                      1600          5
+--        30 TURNER                     1500          5
+--        10 MILLER                     1300          4
+--        30 WARD                       1250          4
+--        30 MARTIN                     1250          4
+--        20 SMITH                       800          3
+--        30 JAMES                       950          3
+</div>
 
 
 
