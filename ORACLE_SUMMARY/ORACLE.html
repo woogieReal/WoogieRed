@@ -125,6 +125,8 @@
         <a href="#LISTAGG"><h4>LISTAGG</h4></a>
         <a href="#XMLAGG"><h4>XMLAGG</h4></a>
         <a href="#PIVOT"><h4>PIVOT</h4></a>
+        <a href="#UNPIVOT"><h4>UNPIVOT</h4></a>
+        <a href="#LAG"><h4>LAG</h4></a>
       </ul>
     </div>
   </header>
@@ -2607,6 +2609,79 @@ ORDER BY deptno;
 --        20          1        800            0                          0                         1        2975           1        3000
 --        30          1        950            4         5600             0                         1        2850           0
 </div>
+<a href="#그룹함수" name="UNPIVOT"><h4>UNPIVOT</h4></a><hr>
+--UNPIVOT
+--PIVOT된 결과를 되돌리는 기능이 아닌 합쳐있는 것을 단지 풀어서 보여주는 역할
+
+--PIVOT된 테이블 unpivot
+
+<div class = "code">
+--   DEPTNO      CLERK   SALESMAN  PRESIDENT    MANAGER    ANALYST
+----------- ---------- ---------- ---------- ---------- ----------
+--       10          1          0          1          1          0
+--       20          1          0          0          1          1
+--       30          1          4          0          1          0
+</div>
+--위의 테이블을 UNPIVOT
+--PIVOT된 결과를 되돌리는 기능이 아닌 합쳐있는 것을 단지 풀어서 보여주는 역할
+
+<div class = "code">
+SELECT * FROM unpivot
+UNPIVOT(
+	empno FOR job IN(
+		CLERK,SALESMAN,PRESIDENT,MANAGER,ANALYST
+	)
+);
+--    DEPTNO JOB                     EMPNO
+------------ ------------------ ----------
+--        10 CLERK                       1
+--        10 SALESMAN                    0
+--        10 PRESIDENT                   1
+--        10 MANAGER                     1
+--        10 ANALYST                     0
+--        20 CLERK                       1
+--        20 SALESMAN                    0
+--        20 PRESIDENT                   0
+--        20 MANAGER                     1
+--        20 ANALYST                     1
+--        30 CLERK                       1
+--        30 SALESMAN                    4
+--        30 PRESIDENT                   0
+--        30 MANAGER                     1
+--        30 ANALYST                     0
+</div>
+<a href="#그룹함수" name="LAG"><h4>LAG</h4></a><hr>
+--LAG: 이전 행 값을 가져올 때 사용
+--LAG(출력할 컬럼명,OFFSET,기본출력값)
+--OVER(Query_partition구문,ORDER BY 정렬할 컬럼)
+
+<div class = "code">
+SELECT ename
+	,hiredate
+	,sal
+	,LAG(sal,3,999) OVER(ORDER BY hiredate)"LAG"
+FROM emp;
+--ENAME                HIREDATE        SAL        LAG
+---------------------- -------- ---------- ----------
+--SMITH                80/12/17        800        999
+--ALLEN                81/02/20       1600        999
+--WARD                 81/02/22       1250        999
+--JONES                81/04/02       2975        800
+--BLAKE                81/05/01       2850       1600
+--CLARK                81/06/09       2450       1250
+--TURNER               81/09/08       1500       2975
+--MARTIN               81/09/28       1250       2850
+--KING                 81/11/17       5000       2450
+--JAMES                81/12/03        950       1500
+--FORD                 81/12/03       3000       1250
+--MILLER               82/01/23       1300       5000
+</div>
+
+
+
+
+
+
 
 
 
