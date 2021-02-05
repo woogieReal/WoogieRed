@@ -146,6 +146,8 @@
       <ul>
         <a href="#JOIN_기본설명"><h4>JOIN_기본설명</h4></a>
         <a href="#CARTESIAN_PRODUCT"><h4>CARTESIAN_PRODUCT</h4></a>
+        <a href="#EQUI_JOIN"><h4>EQUI_JOIN</h4></a>
+        <a href="#NON_EQUI_JOIN"><h4>NON_EQUI_JOIN</h4></a>
       </ul>
     </div>
   </header>
@@ -3074,6 +3076,260 @@ FROM(
 --   7839 KING        PRESIDENT      5000      3
 --   7934 MILLER      CLERK          1300      3
 </div>
+<a href="#JOIN" name="EQUI_JOIN"><h4>EQUI_JOIN</h4></a><hr>
+--유형1. emp테이블과 dept테이블을 조회하여 직원번호, 직원이름, 부서번호, 부서이름을 출력하시오.
+
+<div class = "code">
+--  EMPNO ENAME          DEPTNO DNAME
+--------- ---------- ---------- -------------
+--   7839 KING               10 ACCOUNTING
+--   7782 CLARK              10 ACCOUNTING
+--   7934 MILLER             10 ACCOUNTING
+--   7902 FORD               20 RESEARCH
+--   7369 SMITH              20 RESEARCH
+--   7566 JONES              20 RESEARCH
+--   7900 JAMES              30 SALES
+--   7844 TURNER             30 SALES
+--   7654 MARTIN             30 SALES
+--   7521 WARD               30 SALES
+--   7499 ALLEN              30 SALES
+--   7698 BLAKE              30 SALES
+</div>
+--ORACLE
+
+<div class = "code">
+SELECT empno, ename, t1.deptno, t2.dname
+FROM emp t1, dept t2
+WHERE t1.deptno = t2.deptno;
+</div>
+--ANSI
+
+<div class = "code">
+SELECT empno, ename, t1.deptno, t2.dname
+FROM emp t1 JOIN dept t2
+ON t1.deptno = t2.deptno;
+</div>
+--유형2. 학생테이블과 교수테이블을 조인, 학생이름과 교수이름을 조인
+
+<div class = "code">
+--student             professor
+--------------------  -------------------
+--James Seo           Audie Murphy
+--Billy Crystal       Angela Bassett
+--Richard Dreyfus     Angela Bassett
+--Tim Robbins         Winona Ryder
+--Rene Russo          Winona Ryder
+--Nicholas Cage       Michelle Pfeiffer
+--Sandra Bullock      Julia Roberts
+--Demi Moore          Meryl Streep
+--Macaulay Culkin     Meryl Streep
+--Wesley Snipes       Susan Sarandon
+--Danny Glover        Nicole Kidman
+--Micheal Keaton      Nicole Kidman
+--Steve Martin        Nicole Kidman
+--Daniel Day-Lewis    Jodie Foster
+--Bill Murray         Jodie Foster
+</div>
+--ORACLE
+
+<div class = "code">
+SELECT t1.name"student", t2.name"professor"
+FROM student t1, professor t2
+WHERE t1.profno = t2.profno;
+</div>
+--ANSI
+
+<div class = "code">
+SELECT t1.name"student", t2.name"professor"
+FROM student t1 JOIN professor t2
+ON t1.profno = t2.profno;
+</div>
+--유형3. 학생이름, 학과이름, 학생의 지도교수 이름
+
+<div class = "code">
+--student_name         professor_name       dept_name
+---------------------- -------------------- -----------------------------------
+--James Seo            Audie Murphy         Computer Engineering
+--Billy Crystal        Angela Bassett       Computer Engineering
+--Richard Dreyfus      Angela Bassett       Computer Engineering
+--Tim Robbins          Winona Ryder         Multimedia Engineering
+--Rene Russo           Winona Ryder         Multimedia Engineering
+--Nicholas Cage        Michelle Pfeiffer    Multimedia Engineering
+--Sandra Bullock       Julia Roberts        Software Engineering
+--Macaulay Culkin      Meryl Streep         Electronic Engineering
+--Demi Moore           Meryl Streep         Electronic Engineering
+--Wesley Snipes        Susan Sarandon       Electronic Engineering
+--Micheal Keaton       Nicole Kidman        Mechanical Engineering
+--Danny Glover         Nicole Kidman        Mechanical Engineering
+--Steve Martin         Nicole Kidman        Electronic Engineering
+--Bill Murray          Jodie Foster         Library and Information science
+--Daniel Day-Lewis     Jodie Foster         Library and Information science
+</div>
+--ORACLE
+
+<div class = "code">
+COL "student_name" FOR A20
+COL "professor_name" FOR A20
+COL "dept_name"  FOR A35
+SELECT t1.name"student_name"
+	,t2.name"professor_name"
+	,t3.dname"dept_name"
+FROM student t1, professor t2, department t3
+WHERE t1.profno = t2.profno
+AND t1.deptno1 = t3.deptno
+;
+</div>
+--ANSI
+
+<div class = "code">
+COL "student_name" FOR A20
+COL "professor_name" FOR A20
+COL "dept_name"  FOR A35
+SELECT t1.name"student_name"
+	,t2.name"professor_name"
+	,t3.dname"dept_name"
+FROM student t1 JOIN professor t2
+ON t1.profno = t2.profno
+JOIN department t3
+ON t1.deptno1 = t3.deptno
+;
+</div>
+--유형4. student테이블과 professor테이블을 조회하여 학생의 제1전공이 101번인 학생들의
+--이름, 지도교수를 출력하세요.
+
+<div class = "code">
+--student_name         professor_name          DEPTNO1
+---------------------- -------------------- ----------
+--James Seo            Audie Murphy                101
+--Richard Dreyfus      Angela Bassett              101
+--Billy Crystal        Angela Bassett              101
+</div>
+--ORACLE
+
+<div class = "code">
+SELECT t1.name"student_name"
+	,t2.name"professor_name"
+	,t1.deptno1
+FROM student t1, professor t2
+WHERE t1.profno = t2.profno
+AND t1.deptno1 = 101
+;
+</div>
+--ANSI
+
+<div class = "code">
+SELECT t1.name"student_name"
+	,t2.name"professor_name"
+	,t1.deptno1
+FROM student t1 JOIN professor t2
+ON t1.profno = t2.profno
+WHERE t1.deptno1 = 101
+;
+</div>
+<a href="#JOIN" name="NON_EQUI_JOIN"><h4>NON_EQUI_JOIN</h4></a><hr>
+--NON_EQUI_JOIN: 비등가 조인
+
+--유형1. CUSTOMER 테이블과, GIFT테이블을 조회하여 고객별로 마일리지 포인트를 조회하여,
+--마일리지별 받을 수 있는 상품을 조회하여라.
+
+<div class = "code">
+CUSTOMER_NAME             POINT GIFT_NAME
+-------------------- ---------- --------------------
+Bill Pullman              65000 Tuna Set
+Mel Gibson                73000 Tuna Set
+Michael Douglas           99000 Tuna Set
+Brad Pitt                110000 Shampoo Set
+Samuel Jackson           153000 Shampoo Set
+Liam Neeson              180000 Shampoo Set
+Arnold Scharz            265000 Car wash Set
+Ahnjihye                 273000 Car wash Set
+Tom Hanks                298000 Car wash Set
+Jim Carrey               315000 Kitchen Supplies Set
+Bruce Willis             320000 Kitchen Supplies Set
+Angela Bassett           420000 Mountain bike
+Robin Williams           470000 Mountain bike
+Morgan Freeman           542000 LCD Monitor
+Jessica Lange            598000 LCD Monitor
+Winona Ryder             625000 Notebook
+Michelle Pfeiffer        670000 Notebook
+James Seo                980000 Refrigerator
+</div>
+--ORACLE
+
+<div class = "code">
+COL "CUSTOMER_NAME" FOR A20
+COL "GIFT_NAME" FOR A20
+SELECT t1.gname"CUSTOMER_NAME", t1.point"POINT", t2.gname"GIFT_NAME"
+FROM customer t1, gift t2
+WHERE t1.point BETWEEN t2.g_start AND t2.g_end
+;
+</div>
+--ANSI
+
+<div class = "code">
+COL "CUSTOMER_NAME" FOR A20
+COL "GIFT_NAME" FOR A20
+SELECT t1.gname"CUSTOMER_NAME", t1.point"POINT", t2.gname"GIFT_NAME"
+FROM customer t1 JOIN gift t2
+ON t1.point BETWEEN t2.g_start AND t2.g_end
+--ON t1.point >= t2.g_start
+--AND t1.point <= t2.g_end
+;
+</div>
+
+--유형2. 학생테이블과 SCORE테이블, HAKJUM테이블을 조회하여 학생이름, 점수, 학점을 출력하세요
+
+<div class = "code">
+--SCORE     TYPE    NULL     --HAKJUM    TYPE    NULL
+--STUDNO    NUMBER  YES      --GRADE     CHAR(3) YES
+--TOTAL     NUMBER  YES      --MIN_POINT NUMBER  YES
+                             --MAX_POINT NUMBER  YES
+
+--STUDENT_NAEM              SCORE GRADE
+---------------------- ---------- ------
+--James Seo                    97 A+
+--Macaulay Culkin              95 A0
+--Billy Crystal                92 A0
+--Danny Devito                 91 A0
+--Richard Dreyfus              89 B+
+--Sean Connery                 88 B+
+--Danny Glover                 88 B+
+--Nicholas Cage                87 B+
+--Daniel Day-Lewis             87 B+
+--Wesley Snipes                86 B+
+--Anthony Hopkins              84 B0
+--Sandra Bullock               83 B0
+--Charlie Sheen                83 B0
+--Steve Martin                 82 B0
+--Christian Slater             82 B0
+--Micheal Keaton               81 B0
+--Bill Murray                  79 C+
+--Rene Russo                   78 C+
+--Tim Robbins                  77 C+
+--Demi Moore                   62 D
+</div>
+--ORACLE
+
+<div class = "code">
+COL "STUDENT_NAEM" FOR A20
+SELECT t3.name"STUDENT_NAEM", t1.total"SCORE", t2.grade"GRADE"
+FROM score t1, hakjum t2, student t3
+WHERE t1.total BETWEEN t2.min_point AND t2.max_point
+AND t1.studno = t3.studno
+;
+</div>
+--ANSI
+
+<div class = "code">
+COL "STUDENT_NAEM" FOR A20
+SELECT t3.name"STUDENT_NAEM", t1.total"SCORE", t2.grade"GRADE"
+FROM score t1 JOIN hakjum t2
+ON t1.total BETWEEN t2.min_point AND t2.max_point
+JOIN student t3
+ON t1.studno = t3.studno
+;
+</div>
+
 
 
 
