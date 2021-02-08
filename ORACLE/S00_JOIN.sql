@@ -342,6 +342,226 @@ JOIN student t3
 ON t1.studno = t3.studno
 ;
 
+--OUTER_JOIN
+--한쪽 테이블에는 데이터가 있고 다른쪽에는 데이터가 없는 경우
+--데이터가 있는 쪽에 테이블의 내용을 모두 출력
+
+--유형1. 지도교수가 결정되지 않은 학생의 명단도 출력
+
+--STU_NAME                   PROF_NAME
+---------------------------- ---------------------
+--James Seo                  Audie Murphy
+--Richard Dreyfus            Angela Bassett
+--Billy Crystal              Angela Bassett
+--Tim Robbins                Winona Ryder
+--Rene Russo                 Winona Ryder
+--Nicholas Cage              Michelle Pfeiffer
+--Sandra Bullock             Julia Roberts
+--Macaulay Culkin            Meryl Streep
+--Demi Moore                 Meryl Streep
+--Wesley Snipes              Susan Sarandon
+--Steve Martin               Nicole Kidman
+--Micheal Keaton             Nicole Kidman
+--Danny Glover               Nicole Kidman
+--Daniel Day-Lewis           Jodie Foster
+--Bill Murray                Jodie Foster
+--Anthony Hopkins
+--Charlie Sheen
+--Christian Slater
+--Sean Connery
+--Danny Devito
+
+--ORACLE
+--데이터가 없는 쪽 조인조건에 (+)
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+FROM student t1, professor t2
+WHERE t1.profno = t2.profno(+);
+
+--ANSI
+--LEFT OUTER JOIN: 데이터가 있는 쪽이 왼쪽
+--RIGHT OUTER JOIN: 데이터가 있는 쪽이 오른쪽
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+--FROM student t1 LEFT OUTER JOIN professor t2
+FROM professor t2 RIGHT OUTER JOIN student t1
+ON t1.profno = t2.profno;
+
+--유형2. 지도학생이 결정되지 않은 교수의 명단도 출력
+
+--STU_NAME                                                     PROF_NAME
+-------------------------------------------------------------- -------------------
+--James Seo                                                    Audie Murphy
+--Billy Crystal                                                Angela Bassett
+--Richard Dreyfus                                              Angela Bassett
+--                                                             Jessica Lange
+--Tim Robbins                                                  Winona Ryder
+--Rene Russo                                                   Winona Ryder
+--Nicholas Cage                                                Michelle Pfeiffer
+--                                                             Whoopi Goldberg
+--                                                             Emma Thompson
+--Sandra Bullock                                               Julia Roberts
+--                                                             Sharon Stone
+--Demi Moore                                                   Meryl Streep
+--Macaulay Culkin                                              Meryl Streep
+--Wesley Snipes                                                Susan Sarandon
+--Danny Glover                                                 Nicole Kidman
+--Micheal Keaton                                               Nicole Kidman
+--Steve Martin                                                 Nicole Kidman
+--                                                             Holly Hunter
+--                                                             Meg Ryan
+--                                                             Andie Macdowell
+--Daniel Day-Lewis                                             Jodie Foster
+--Bill Murray                                                  Jodie Foster
+
+--ORACLE
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+FROM student t1, professor t2
+WHERE t1.profno(+) = t2.profno;
+
+--ANSI
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+--FROM student t1 LEFT OUTER JOIN professor t2
+FROM student t1 RIGHT OUTER JOIN professor t2
+ON t1.profno = t2.profno;
+
+--유형3. 지도학생이 결정되지 않은 교수들, 지도교수가 결정되지 않은 학생들의 이름 전부 출력
+
+--STU_NAME                 PROF_NAME
+-------------------------- -------------------------
+--Anthony Hopkins
+--Bill Murray              Jodie Foster
+--Billy Crystal            Angela Bassett
+--Charlie Sheen
+--Christian Slater
+--Daniel Day-Lewis         Jodie Foster
+--Danny Devito
+--Danny Glover             Nicole Kidman
+--Demi Moore               Meryl Streep
+--James Seo                Audie Murphy
+--Macaulay Culkin          Meryl Streep
+--Micheal Keaton           Nicole Kidman
+--Nicholas Cage            Michelle Pfeiffer
+--Rene Russo               Winona Ryder
+--Richard Dreyfus          Angela Bassett
+--Sandra Bullock           Julia Roberts
+--Sean Connery
+--Steve Martin             Nicole Kidman
+--Tim Robbins              Winona Ryder
+--Wesley Snipes            Susan Sarandon
+--                         Andie Macdowell
+--                         Emma Thompson
+--                         Holly Hunter
+--                         Jessica Lange
+--                         Meg Ryan
+--                         Sharon Stone
+--                         Whoopi Goldberg
+
+--ORACLE
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+FROM student t1, professor t2
+WHERE t1.profno = t2.profno(+)
+UNION
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+FROM student t1, professor t2
+WHERE t1.profno(+) = t2.profno;
+
+--ANSI
+SELECT t1.name"STU_NAME"
+	,t2.name"PROF_NAME"
+--FROM student t1 LEFT OUTER JOIN professor t2
+FROM student t1 FULL OUTER JOIN professor t2
+ON t1.profno = t2.profno;
+
+--ORACLE OUTER JOIN 주의사항
+--1.OUTER JOIN이 되는 컬럼들에 대해서는 전부 아우터 조인 연산자(+)를 붙여햐 한다.
+--하나라도 누락이 되면 일반 조인과 동일한 결과를 출력하게 된다.
+
+--ORACLE
+SELECT t1.deptno
+	,t2.dname
+	,t1.empno
+	,t1.ename
+	,t1.sal
+FROM emp t1, dept t2
+WHERE t1.deptno(+) = t2.deptno
+AND t1.deptno(+) = 20;
+--    DEPTNO DNAME                             EMPNO        SAL
+------------ ---------------------------- ---------- ----------
+--           ACCOUNTING
+--        20 RESEARCH                           7369        800
+--        20 RESEARCH                           7902       3000
+--        20 RESEARCH                           7566       2975
+--           SALES
+--           OPERATIONS
+
+--ANSI
+--직업이 CLERK인 사원정보(사원번호, 이름ㅁ, 직업)을 출력하고 그 중에 'CHICAGO'에 위치한 부서에
+--소속된 사원의 부서정보를 출력하세요
+--emp, dept
+--ANSI OUTER JOIN에서 WHERE절에 기술한 조건은 기준 테이블의
+--집합수를 결정하고 ON절에 기술한 조건은 기준 집합 중에 아우터 조인 대상이 되는
+--집합을 말하는 것으로 전체 집합에는 아무러 영향을 주지 않는다.
+SELECT t1.empno, t1.ename, t1.job, t2.deptno, t2.dname, t2.loc
+FROM emp t1 LEFT OUTER JOIN dept t2
+ON(
+	t1.deptno = t2.deptno
+	AND t2.loc = 'CHICAGO'
+	AND t1.job = 'CLERK'
+)
+--WHERE t1.job = 'CLERK'
+;
+--     EMPNO ENAME       JOB             DEPTNO DNAME   LOC
+------------ ----------- ----------- ---------- ------- ---------
+--      7900 JAMES       CLERK               30 SALES   CHICAGO
+--      2000 Cat
+--      1000 Tiger
+--      7369 SMITH       CLERK
+--      7782 CLARK       MANAGER
+--      7844 TURNER      SALESMAN
+--      7654 MARTIN      SALESMAN
+--      7521 WARD        SALESMAN
+--      7499 ALLEN       SALESMAN
+--      7566 JONES       MANAGER
+--      7934 MILLER      CLERK
+--      7902 FORD        ANALYST
+--      7839 KING        PRESIDENT
+--      7698 BLAKE       MANAGER
+
+--SELF_JOIN: 한 개의 테이블을 가지고 JOIN
+--사원과 해당 사원의 매니저의 이름을 출력
+
+--ENAME                ENAME
+---------------------- ------------
+--FORD                 JONES
+--JAMES                BLAKE
+--TURNER               BLAKE
+--WARD                 BLAKE
+--MARTIN               BLAKE
+--ALLEN                BLAKE
+--MILLER               CLARK
+--CLARK                KING
+--JONES                KING
+--BLAKE                KING
+--SMITH                FORD
+
+--ORACLE
+SELECT t1.ename
+	,t2.ename
+FROM emp t1, emp t2
+WHERE t1.mgr = t2.empno
+;
+
+--ANSI
+SELECT t1.ename
+	,t2.ename
+FROM emp t1 INNER JOIN emp t2
+ON t1.mgr = t2.empno
+;
 
 
 
