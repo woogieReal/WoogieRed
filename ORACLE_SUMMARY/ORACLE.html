@@ -24,10 +24,12 @@
         <a href="#그룹함수"><li>그룹함수</li></a><hr>
         <a href="#PIVOT"><li>PIVOT</li></a><hr>
         <a href="#JOIN"><li>JOIN</li></a><hr>
+        <a href="#DDL"><li>DDL</li></a><hr>
       </ol>
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
         <a href="#페이징"><h4>페이징</h4></a>
+        <a href="#DECODE_연결연산자"><h4>DECODE_연결연산자</h4></a>
       </ul>
       <a href="#인덱스" name="연결연산자 ||"><h3>연결연산자 ||</h3></a><hr>
       <ul>
@@ -146,6 +148,7 @@
         <a href="#달력구현"><h4>달력구현</h4></a>
         <a href="#다중조건"><h4>다중조건</h4></a>
         <a href="#가로세로컬럼"><h4>가로세로컬럼</h4></a>
+        <a href="#PIVOT_CUBE"><h4>PIVOT_CUBE</h4></a>
       </ul>
       <a href="#인덱스" name="JOIN"><h3>JOIN</h3></a><hr>
       <ul>
@@ -155,6 +158,13 @@
         <a href="#NON_EQUI_JOIN"><h4>NON_EQUI_JOIN</h4></a>
         <a href="#OUTER_JOIN"><h4>OUTER_JOIN</h4></a>
         <a href="#SELF_JOIN"><h4>SELF_JOIN</h4></a>
+      </ul>
+      <a href="#인덱스" name="DDL"><h3>DDL</h3></a><hr>
+      <ul>
+        <a href="#명령어_구분"><h4>명령어_구분</h4></a>
+        <a href="#CREATE"><h4>CREATE</h4></a>
+        <a href="#CTAS"><h4>CTAS</h4></a>
+        <a href="#ALTER"><h4>ALTER</h4></a>
       </ul>
     </div>
   </header>
@@ -218,7 +228,45 @@ WHERE rnum BETWEEN 1 AND 10
 --      9 Tommy Lee Jones      Deputy department head    1001
 --     10 Val Kilmer           Department head           1006
 </div>
+<a href="#구현기능" name="DECODE_연결연산자"><h4>DECODE_연결연산자</h4></a><hr>
+--DECODE와 연결연산자를 이용하여 피벗테이블을 생성
+--카운트 데이터 옆에 해당 데이터가 차지하는 비율을 출력
+--기존 PIVOT 함수로는 구현이 불가능하므로 DECODE를 사용
+--가장 안쪽의 SELECT문부터 읽어 나가면 쉽게 이해가능
 
+<div class = "code">
+COL "TOTAL"     FOR A15
+COL "SEOUL"     FOR A15
+COL "GYEONGGI"  FOR A15
+COL "BUSAN"     FOR A15
+COL "ULSAN"     FOR A15
+COL "DAEGU"     FOR A15
+COL "GYEONGNAM" FOR A22
+SELECT TOTAL     ||'EA ('|| (TOTAL/TOTAL)*100     ||'%)'  "TOTAL"
+      ,SEOUL     ||'EA ('|| (SEOUL/TOTAL)*100     ||'%)'  "SEOUL"
+	  ,GYEONGGI  ||'EA ('|| (GYEONGGI/TOTAL)*100  ||'%)'  "GYEONGGI"
+	  ,BUSAN     ||'EA ('|| (BUSAN/TOTAL)*100     ||'%)'  "BUSAN"
+	  ,ULSAN     ||'EA ('|| (ULSAN/TOTAL)*100     ||'%)'  "ULSAN"
+	  ,DAEGU     ||'EA ('|| (DAEGU/TOTAL)*100     ||'%)'  "DAEGU"
+	  ,GYEONGNAM ||'EA ('|| (GYEONGNAM/TOTAL)*100 ||'%)'  "GYEONGNAM"
+FROM (
+	SELECT MAX(TOTAL) "TOTAL"
+		  ,COUNT(DECODE(AREA_CD,'02' ,'1'))     "SEOUL"
+		  ,COUNT(DECODE(AREA_CD,'031','1'))     "GYEONGGI"
+		  ,COUNT(DECODE(AREA_CD,'051','1'))     "BUSAN"
+		  ,COUNT(DECODE(AREA_CD,'052','1'))     "ULSAN"
+		  ,COUNT(DECODE(AREA_CD,'053','1'))     "DAEGU"
+		  ,COUNT(DECODE(AREA_CD,'055','1'))     "GYEONGNAM"
+	FROM(
+			SELECT COUNT(*) OVER() "TOTAL"
+				  ,SUBSTR(tel,1,INSTR(tel,')')-1) "AREA_CD"
+			FROM student
+	)
+);
+--TOTAL       SEOUL       GYEONGGI   BUSAN      ULSAN    DAEGU       GYEONGNAM
+------------- ----------- ---------- ---------- -------- ----------- -----------
+--20EA (100%) 6EA (30%)   2EA (10%)  4EA (20%)  0EA (0%) 2EA (10%)   6EA (30%)
+</div>
 <a href="#연결연산자 ||" name="연결연산자"><h4>연결연산자</h4></a><hr>
 --연결연산자: ||
 --컬럼을 붙여서 출력
@@ -3032,6 +3080,68 @@ PIVOT(
 --PRESIDENT             0    0    0    0    0    0    0    0    0    0    1    0
 --SALESMAN              0    2    0    0    0    0    0    0    2    0    0    0
 </div>
+<a href="#JOIN" name="PIVOT_CUBE"><h4>PIVOT_CUBE</h4></a><hr>
+
+<div class = "code">
+SELECT * FROM(
+--'TOTAL'을 변경하기 위해서는 PIVOT문의 IN절 안의 'TOTAL'도 동일하게 변경해야함
+	SELECT NVL(TO_CHAR(deptno),'TOTAL') deptno,
+	--NVL안의 'TOTAL'은 자유롭게 변경가능
+		NVL(job,'TOTAL')JOB,
+		SUM(sal) SAL
+	FROM emp
+	GROUP BY CUBE(deptno,job)
+	ORDER BY deptno,job
+)
+PIVOT(
+	SUM(sal) FOR deptno IN(
+		10,
+		20,
+		30,
+		'TOTAL'
+	)
+)ORDER BY 1
+;
+--JOB                        10         20         30    'TOTAL'
+-------------------- ---------- ---------- ---------- ----------
+--ANALYST                             3000                  3000
+--CLERK                    1300        800        950       3050
+--MANAGER                  2450       2975       2850       8275
+--PRESIDENT                5000                             5000
+--SALESMAN                                       5600       5600
+--TOTAL                    8750       6775       9400      24925
+</div>
+
+<div class = "code">
+COL deptno FOR A7
+SELECT * FROM(
+--NVL안의 'TOTAL'은 자유롭게 변경가능
+	SELECT NVL(TO_CHAR(deptno),'TOTAL') deptno,
+	--'TOTAL'을 변경하기 위해서는 PIVOT문의 IN절 안의 'TOTAL'도 동일하게 변경해야함
+		NVL(job,'TOTAL') job,
+		SUM(sal) SAL
+	FROM emp
+	GROUP BY CUBE(deptno,job)
+	ORDER BY deptno,job
+)
+PIVOT(
+	SUM(sal) FOR job IN(
+		 'CLERK'     AS "CLERK",
+		 'SALESMAN'  AS "SALESMAN",
+		 'PRESIDENT' AS "PRESIDENT",
+		 'MANAGER'   AS "MANAGER",
+		 'ANALYST'   AS "ANALYST",
+		 'TOTAL'
+	)
+)ORDER BY deptno
+;
+--DEPTNO       CLERK   SALESMAN  PRESIDENT    MANAGER    ANALYST    'TOTAL'
+--------- ---------- ---------- ---------- ---------- ---------- ----------
+--10            1300                  5000       2450                  8750
+--20             800                             2975       3000       6775
+--30             950       5600                  2850                  9400
+--TOTAL         3050       5600       5000       8275       3000      24925
+</div>
 <a href="#JOIN" name="JOIN_기본설명"><h4>JOIN_기본설명</h4></a><hr>
 --JOIN
 --여러 테이블에 흩어져 있는 데이터들을 조합해서 가져오는 기술
@@ -3643,6 +3753,137 @@ FROM emp t1 INNER JOIN emp t2
 ON t1.mgr = t2.empno
 ;
 </div>
+<a href="#DDL" name="명령어_구분"><h4>명령어_구분</h4></a><hr>
+--DDL(Data Discription Language)
+--CREATE, ALTER, TRUNCATE, DROP
+
+--DML(Data Manipulation Language)
+--INSERT, UPDATE, DELETE, MERGE
+
+--DCL(Data Control Language)
+--GRANT, REVOKE
+
+--TCL(transaction Control Language)
+--COMMIT, ROLLBACK
+
+--DQL(Data Query Language)
+--SELECT
+<a href="#DDL" name="CREATE"><h4>CREATE</h4></a><hr>
+--테이블생성 제약사항
+--테이블이름은 반드시 문자로 시작해야 함(숫자로 시작할 수 없음)
+--테이블 컬럼의 이름은 30BYTE까지 가능
+--테이블 이름은 한 명의 사용자가 다른 오브젝트의 이름과 중복으로 사용할 수 없다.
+--테이블 이름이나 컬럼이름을 오라클 키워드로 지정해서는 안됨
+
+--DEFAULT 설정하기
+
+<div class = "code">
+CREATE TABLE tt02(
+	no NUMBER(3,1) DEFAULT 0,
+	name VARCHAR2(10 BYTE) DEFAULT 'No NAME',
+	hiredate DATE DEFAULT SYSDATE
+);
+</div>
+--한글테이블 생성
+--생성은 가능하나 쓰는 경우는 없다.
+
+<div class = "code">
+CREATE TABLE 한글테이블(
+	컬럼1 NUMBER,
+	컬럼2 VARCHAR2,
+	컬럼3 DATE
+);
+</div>
+<a href="#DDL" name="CTAS"><h4>CTAS</h4></a>
+--테이블 복사하기(CTAS)
+--유형1. 모든컬럼 복사,데이터 복사
+
+<div class = "code">
+CREATE
+TABLE dept3
+AS
+SELECT * FROM dept;
+</div>
+--테이블 존재여부 확인
+
+<div class = "code">
+SELECT *
+FROM tab
+WHERE tname LIKE 'DEPT3%';
+</div>
+--유형2. 테이블 구조만 가져오기(CATA)
+
+<div class = "code">
+CREATE TABLE dept4
+AS
+SELECT * FROM dept
+WHERE 1=2;
+</div>
+--유형3. 특정 컬럼만 가져오기
+
+<div class = "code">
+CREATE TABLE dept5
+AS
+SELECT deptno, dname
+FROM dept;
+</div>
+<a href="#DDL" name="ALTER"><h4>ALTER</h4></a>
+--ALTER
+--OBJECT를 변경하는 명령어
+--컬럼 추가, 삭제, 데이터 타입수정
+--부하가 많이 걸리는 명령어로 사용량이 많은 시간에 수행하면 안됨
+
+--컬럼추가
+
+<div class = "code">
+ALTER TABLE dept6
+ADD (LOCATION VARCHAR2(10 BYTE));
+</div>
+--컬럼추가&디폴트값
+
+<div class = "code">
+ALTER TABLE dept6
+ADD (LOCATION2 VARCHAR2(10 BYTE) DEFAULT 'SEOUL')
+;
+</div>
+--테이블 컬럼이름 변경
+
+<div class = "code">
+ALTER TABLE dept6
+RENAME COLUMN LOCATION2 TO LOC02
+;
+</div>
+--테이블이름 변경
+
+<div class = "code">
+RENAME TABLE dept6 TO dept7
+;
+</div>
+--컬럼의 데이터크기 변경
+
+<div class = "code">
+ALTER TABLE dept6
+MODIFY (LOC VARCHAR2(20 BYTE))
+;
+</div>
+--컬럼 삭제
+
+<div class = "code">
+ALTER TABLE dept6
+DROP COLUMN LOC
+;
+</div>
+--참조키가 있는 컬럼삭제
+
+<div class = "code">
+ALTER TABLE dept6
+DROP COLUMN LOC CASCADE CONSTRAINTS
+;
+</div>
+
+
+
+
 
 </pre>
 </body>

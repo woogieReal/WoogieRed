@@ -563,6 +563,56 @@ FROM emp t1 INNER JOIN emp t2
 ON t1.mgr = t2.empno
 ;
 
+--4
+--CUST_NAME                 POINT GIFT_NAME
+---------------------- ---------- --------------
+--James Seo                980000 Notebook
+--Winona Ryder             625000 Notebook
+--Michelle Pfeiffer        670000 Notebook
+
+--ORACLE
+SELECT t1.gname CUST_NAME
+	,t1.point POINT
+	,t2.GNAME GIFT_NAME
+FROM customer t1, gift t2
+WHERE t1.point >= t2.G_START
+AND t2.GNAME = 'Notebook'
+;
+
+--ANSI
+SELECT t1.gname CUST_NAME
+	,t1.point POINT
+	,t2.GNAME GIFT_NAME
+FROM customer t1 JOIN gift t2
+ON t1.point >= t2.G_START
+WHERE t2.GNAME = 'Notebook'
+;
+
+
+--5
+--야매
+SELECT profno
+		,name
+		,TO_CHAR(hiredate,'YYYY/MM/DD') HIREDATE
+		,ROWNUM-1 COUNT
+FROM(
+	SELECT *
+	FROM professor
+	ORDER BY hiredate
+)
+;
+
+--정석
+SELECT t1.profno
+	,t1.name
+	,TO_CHAR(t1.hiredate,'YYYY/MM/DD') HIREDATE
+	,COUNT(t2.hiredate) COUNT
+FROM professor t1, professor t2
+WHERE t1.hiredate > t2.hiredate(+)
+GROUP BY t1.profno, t1.name, t1.hiredate
+ORDER BY t1.hiredate
+;
+
 
 
 
