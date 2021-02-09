@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_23</title>
+    <style>
+      div.margin_auto{
+        border: 3px solid darkblue;
+        width: 300px;
+        padding: 10px;
+        margin: auto;
+      }
+      div.position_absolute{
+        border: 3px solid darkgrey;
+        width: 500px;
+        padding: 10px;
+        margin: 0;
+        position: absolute;
+        right: 0;
+      }
+      body{
+        padding: 10;
+        margin: 10;
+      }
+      div.float_left{
+        border: 3px solid darkorange;
+        width: 350px;
+        padding: 10px;
+        margin: 0;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>margin 속성을 이용한 가운데 정렬</h2>
+    <div class="margin_auto">
+      margin의 속성값을 auto로 하면,<br />
+      수평으로 가운데 정렬을 할 수 있음<br />
+      반드시 width 속성값을 지정해야 함
+    </div>
+    <h2>position 속성을 이용한 좌우 정렬</h2>
+    <div class="position_absolute">
+      position 속성값을 absolut로 하면,<br />
+      수평으로 좌우정렬을 할 수 있음<br />
+      웹 브라우저마다 레이아웃이 다르게 보이는 것을 미리 방지하기위해<br />
+      <body>요소에 margin과 padding 속성값을 설정하는 것이 좋음
+    </div><br /><br /><br /><br /><br /><br />
+    <h2>float 속성을 이용한 좌우 정렬</h2>
+    <div class="float_left">
+      float 속성값으로 left 또는 right를 사용하면,<br>
+	    수평으로 좌우 정렬을 할 수 있어요!
+    </div>
+  </body>
+</html>

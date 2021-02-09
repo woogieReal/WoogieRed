@@ -166,6 +166,7 @@
         <a href="#CREATE"><h4>CREATE</h4></a>
         <a href="#CTAS"><h4>CTAS</h4></a>
         <a href="#ALTER"><h4>ALTER</h4></a>
+        <a href="#TRUNCATE"><h4>TRUNCATE</h4></a>
       </ul>
     </div>
   </header>
@@ -3899,9 +3900,14 @@ ALTER TABLE dept6
 DROP COLUMN LOC CASCADE CONSTRAINTS
 ;
 </div>
+<a href="#DDL" name="TRUNCATE"><h4>TRUNCATE</h4></a>
+--TRUNCATE
+--테이블의 데이터를 삭제하고 사용하고 있던 공간을 반납(DELETE는 데이터만 삭제함)
+--테이블 자체는 유지됨
 
-
-
+<div class = "code">
+TRUNCATE TABLE dept6;
+</div>
 
 
 </pre>
