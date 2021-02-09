@@ -30,6 +30,7 @@
       <ul>
         <a href="#페이징"><h4>페이징</h4></a>
         <a href="#DECODE_연결연산자"><h4>DECODE_연결연산자</h4></a>
+        <a href="#SUM_CASE"><h4>SUM_CASE</h4></a>
       </ul>
       <a href="#인덱스" name="연결연산자 ||"><h3>연결연산자 ||</h3></a><hr>
       <ul>
@@ -266,6 +267,22 @@ FROM (
 --TOTAL       SEOUL       GYEONGGI   BUSAN      ULSAN    DAEGU       GYEONGNAM
 ------------- ----------- ---------- ---------- -------- ----------- -----------
 --20EA (100%) 6EA (30%)   2EA (10%)  4EA (20%)  0EA (0%) 2EA (10%)   6EA (30%)
+</div>
+<a href="#구현기능" name="SUM_CASE"><h4>SUM_CASE</h4></a><hr>
+--SUM/COUNT하는 조건을 줄 수 있다.
+--해당하는 조건의 데이터를 카운트 하는 경우 아래와 같이 사용하면 된다.
+
+<div class = "code">
+SELECT SUM(CASE WHEN YEAR BETWEEN 0 AND 10 THEN 1 END) "10년",
+	SUM(CASE WHEN YEAR BETWEEN 11 AND 15 THEN 1 END) "15년",
+	SUM(CASE WHEN YEAR BETWEEN 16 AND 20 THEN 1 END) "20년"
+FROM(
+	SELECT TRUNC((SYSDATE-hire_date)/365)YEAR
+	FROM employees
+);
+--      10년       15년       20년
+------------ ---------- ----------
+--                   80         27
 </div>
 <a href="#연결연산자 ||" name="연결연산자"><h4>연결연산자</h4></a><hr>
 --연결연산자: ||
@@ -923,8 +940,8 @@ FROM dual;
 --           988            987.7           987.65               990
 </div>
 <a href="#숫자함수" name="TRUNC"><h4>TRUNC</h4></a><hr>
---TRUNC(num1, num2): 주어진 숫자를 올림한 후 출력함
---num1의 소숫값을 num2자리로 버리고 올림. num2를 따로 지정안하면 소수 첫째자리에서 올림
+--TRUNC(num1, num2): 소숫값을 버림
+--num1의 소수 자리를 num2자리로 맞추고 소숫값은 버림. num2를 따로 지정안하면 소수 첫째자리에서 올림
 --TRUNC(12.345,2) -> 12.34
 
 <div class = "code">
@@ -1089,13 +1106,15 @@ FROM dual;
 --예)원서접수(무조건 당일)
 
 <div class = "code">
+COL ROUND(SYSDATE) FOR A15
+COL TRUNC(SYSDATE) FOR A15
 SELECT SYSDATE
 	,ROUND(SYSDATE)
 	,TRUNC(SYSDATE)
 FROM dual;
---SYSDATE  ROUND(SYSDATE)
----------- ---------------
---21/02/01 21/02/01
+SYSDATE  ROUND(SYSDATE)  TRUNC(SYSDATE)
+-------- --------------- ---------------
+21/02/09 21/02/10        21/02/09
 </div>
 <a href="#날짜함수" name="EXTRACT"><h4>EXTRACT</h4></a><hr>
 --EXTRACT: 날짜에서 년,월,일 추출
@@ -1226,7 +1245,7 @@ FROM dual;
   <tr>
     <td>HH</td>
     <td>하루를 12시간으로 표시</td>
-    <td>23</td>
+    <td>11</td>
   </tr>
   <tr>
     <td>MI</td>
@@ -1276,7 +1295,7 @@ WHERE EXTRACT(MONTH FROM hiredate) IN(1,2,3);
 </div>
 <a href="#형변환함수" name="TO_CHAR(NUMBER_TO_CHAR)"><h4>TO_CHAR(NUMBER_TO_CHAR)</h4></a><hr>
 --TO_CHAR: 숫자 -> 문자
---종류		의미					사용 예			  결과
+--종류		의미	         예	                      결과
 -- 9 | 9의 개수만큼 자릿수 | TO_CHAR(1234,'99999')   | 1234
 -- 0 | 빈자리를 0으로 채움 | TO_CHAR(1234,'099999')  | 001234
 -- $ | $표시를 붙여서 표시 | TO_CHAR(1234,'$9999')   | $1234
@@ -1368,7 +1387,7 @@ WHERE deptno = 201;
 --      4002 Susan Sarandon                                  330            0       3960
 </div>
 <a href="#일반함수" name="NVL2"><h4>NVL2</h4></a><hr>
---NVL2(COL1, COL2, COL3): 컬럼1이 NULL값이 아니면 COL2를, NULL이면 COL3를 출력
+--NVL2(COL1, COL2, COL3): COL1이 NULL값이 아니면 COL2를, NULL이면 COL3를 출력
 
 <div class = "code">
 SELECT ename, empno, sal, comm, NVL2(comm,sal*comm,sal*0)"NVL2"
