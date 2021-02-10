@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_29</title>
+    <style>
+      span {margin-left: 5px;}
+      input {color: red;}
+      input:checked + span {color: lime;}
+      input:disabled + span {color: tomato;}
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="checkbox" name="lecture" value="html" checked="checked" /><span>HTML</span><br />
+      <input type="checkbox" name="lecture" value="css" /><span>CSS</span><br />
+      <input type="checkbox" name="lecture" value="java" /><span>JAVA</span><br />
+      <input type="checkbox" name="lecture" value="cpp" disabled="disabled"/><span>C++</span>
+    </form>
+  </body>
+</html>

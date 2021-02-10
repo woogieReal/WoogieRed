@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_30</title>
+    <style>
+      div.first{border:5px solid orangered;}
+      div.second{border:5px dashed orchid;}
+      div.third{
+        border:5px dashed seagreen;
+        margin-top: 3px;
+      }
+      p:first-child{
+        color: royalblue;
+        font-weight: bold;
+      }
+      p:last-child{
+        color: saddlebrown;
+        font-weight: 800;
+        font-style: italic;
+      }
+      div.nth:nth-child(2n){
+        color: slateblue;
+        font-weight: bold;
+      }
+      div.first-child span:first-child{color: yellowgreen;}
+      div.first-of-type span:first-of-type {color: yellowgreen;}
+    </style>
+  </head>
+  <body>
+  <h1>:first-child & :last-child를 이용한 선택</h1>
+	<div class="first">
+		<p>이 p 태그는 div 태그의 첫 번째 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+		<p>이 p 태그는 div 태그의 child 입니다!</p>
+    <div class="second">
+			<p>이 p 태그는 div 태그의 첫 번째 child 입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+		</div>
+    <div class="third">
+			<p>이 p 태그는 div 태그의 첫 번째 child 입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+		</div>
+	</div>
+  <h1>:nth-child를 이용한 선택</h1>
+  <div>
+		<div class="nth">이 p 태그는 div 태그의 첫 번째 child 입니다!</div>
+		<div class="nth">이 p 태그는 div 태그의 두 번째 child 입니다!</div>
+		<div class="nth">이 p 태그는 div 태그의 세 번째 child 입니다!</div>
+		<div class="nth">이 p 태그는 div 태그의 네 번째 child 입니다!</div>
+		<div class="nth">이 p 태그는 div 태그의 다섯 번째 child 입니다!</div>
+		<div class="nth">이 p 태그는 div 태그의 여섯 번째 child 입니다!</div>
+	</div><br />
+  <h1>:first-of-type이 :first-child과 다른점</h1>
+  <h3>:first-of-type</h3>
+  <div class="first-child">
+    <div>text1</div>
+    <span>text2</span><br />
+    <span>text3</span><br />
+  </div>
+  <h3>:first-child</h3>
+  <div class="first-of-type">
+    <div>text1</div>
+    <span>text2</span><br />
+    <span>text3</span><br />
+  </div>
+
+
+
+
+  </body>
+</html>

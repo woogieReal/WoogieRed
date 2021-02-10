@@ -610,11 +610,48 @@ ex. div p {스타일;}
 인접 동위 선택자는 해당 요소와 동위 관계에 있으며, 해당 요소의 '바로' 뒤에 존재하는 특정 타입의 요소를 모두 선택
 
 
+			TCP CSS 29
 
 
+의사 클래스(pseudo-class)
+CSS에서 의사 클래스(pseudo-class)는 선택하고자 하는 HTML 요소의 특별한 '상태(state)'를 명시할 때 사용
+
+상태 의사 클래스(UI element states pseudo-class)
+상태 의사 클래스를 사용하면 입력 양식의 상태에 따라 각각의 스타일을 별도로 설정할 수 있음
+
+:checked
+input 요소 중에서 체크된(checked) 상태의 input 요소를 선택
+:enabled
+input 요소 중에서 사용할 수 있는
+:disabled
+input 요소 중에서 사용할 수 없는
 
 
+			TCP CSS 30
 
+
+구조 의사 클래스(structural pseudo-class)
+HTML 요소의 계층 구조에서 특정 위치에 있는 요소를 선택
+
+:first-child
+모든 자식(child) 요소 중에서 맨 앞에 위치하는 자식(child) 요소를 모두 선택
+:last-child
+모든 자식(child) 요소 중에서 맨 마지막에 위치하는 자식(child) 요소를 모두 선택
+
+:first-of-type
+모든 자식(child) 요소 중에서 맨 처음으로 등장하는 '특정' 타입의 요소를 선택
+first-child과 다른점은 '맨 앞에' 위치하지 않아도 된다는 점.
+ex)
+<div> 
+     <div>text1</div> 
+     <p>text2</p> 
+     <p>text3</p> 
+</div>
+이경우 div p:first-child 로 지정하면 text2에 어떠한 영향도 안감. 그 이유는 부모요소의 '맨 앞에' 위치하기 않기 때문.
+그러므로 div p:first-of-type 로 지정해야함
+
+:last-of-type
+:last-of-type는 모든 자식(child) 요소 중에서 맨 마지막으로 등장하는 특정 타입의 요소를 모두 선택. 위의 :first-of-type과 성질 동일
 
 
 
