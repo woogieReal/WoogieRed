@@ -129,7 +129,149 @@ DROP COLUMN LOC CASCADE CONSTRAINTS;
 --테이블의 데이터를 삭제하고 사용하고 있던 공간을 반납(DELETE는 데이터만 삭제함)
 TRUNCATE TABLE dept6;
 
+--read_only 테이블 설정
 
+CREATE TABLE t_readonly(
+	no NUMBER,
+	name VARCHAR2(10 BYTE)
+);
+
+ALTER TABLE t_readonly read only;
+
+INSERT INTO t_readonly VALUES(1,'CCC')
+;
+ORA-12081: update operation not allowed on table "SCOTT"."T_READONLY"
+
+ALTER TABLE t_readonly
+ADD (tel VARCHAR2(15))
+;
+ORA-12081: update operation not allowed on table "SCOTT"."T_READONLY"
+
+--가상컬럼
+--테이블 생성시 가상 컬럼을 설정할 수 있다.
+
+--1. 가상 컬럼을 가지는 테이블 생성: 두 컬럼을 더하기
+CREATE TABLE vt01(
+	COL1 NUMBER,
+	COL2 NUMBER,
+	COL3 NUMBER GENERATED ALWAYS AS (COL1+COL2)
+);
+
+--2. 데이터 입력
+
+--가상컬럼에는 직접 값을 입력할 수 없음
+INSERT INTO vt01 VALUES(1,2,3)
+;
+ORA-54013: INSERT operation disallowed on virtual columns
+
+INSERT INTO vt01(COL1,COL2) VALUES(1,2)
+;
+--      COL1       COL2       COL3
+------------ ---------- ----------
+--         1          2          3
+
+--3. 데이터 수정
+UPDATE vt01 SET COL1 = 5
+;
+--      COL1       COL2       COL3
+------------ ---------- ----------
+--         5          2          7
+
+--4. 새로운 가상컬럼 추가
+ALTER TABLE vt01
+ADD (COL4 GENERATED ALWAYS AS (COL1*COL2))
+;
+--      COL1       COL2       COL3       COL4
+------------ ---------- ---------- ----------
+--         5          2          7         10
+
+--5. 가상컬럼을 DICTIONARY
+COL column_name FOR A11
+COL data_type FOR A10
+COL data_default FOR A20
+SELECT column_name,
+	data_type,
+	data_default
+FROM user_tab_columns
+WHERE table_name = 'VT01'
+ORDER BY column_id
+;
+--COLUMN_NAME DATA_TYPE  DATA_DEFAULT
+------------- ---------- -----------------
+--COL1        NUMBER
+--COL2        NUMBER
+--COL3        NUMBER     "COL1"+"COL2"
+--COL4        NUMBER     "COL1"*"COL2"
+
+--조건절(CASE)을 활용한 가상컬럼 생성
+CREATE TABLE sales10(
+	NO NUMBER,
+	PCODE CHAR(4),
+	PDATE CHAR(8),
+	PQTY NUMBER,
+	PBUNGI NUMBER(1) GENERATED ALWAYS AS(
+		CASE
+			WHEN SUBSTR(PDATE,5,2) IN('01','02','03') THEN 1
+			WHEN SUBSTR(PDATE,5,2) IN('04','05','06') THEN 2
+			WHEN SUBSTR(PDATE,5,2) IN('07','08','09') THEN 3
+			WHEN SUBSTR(PDATE,5,2) IN('10','11','12') THEN 4
+			END
+	)virtual
+)
+;
+
+INSERT INTO sales10(NO, PCODE, PDATE, PQTY) VALUES(1,'1000','20210210',1)
+;
+--        NO PCODE    PDATE                  PQTY     PBUNGI
+------------ -------- ---------------- ---------- ----------
+--         1 1000     20210210                  1          1
+
+--DATA_DICTIONARY
+--오라클의 데이터베이스를 운영하기 위한 정보들을 모두 특정한 테이블에 모아두고 관리
+--데이터베이스 메모리 구조
+--오브젝트들이 사용하는 공간정보
+--제약조건
+--사용자에데한 정보
+--권한이나 프로파일, 롤에대한 정보
+--감사에 대한 정보
+
+--DICTIONARY 구분
+--STATIC DICTIONARY(수동): USER_XXX, ALL_XXX, DBA_XXX
+--DYNAMIC DICTIONARY(동적반영): V$_XXX
+
+--1. TABLE 생성
+CREATE TABLE st_table(
+	no number
+);
+
+--2. 데이터 입력
+BEGIN
+	FOR i IN 1..1000 LOOP
+		INSERT INTO st_table VALUES(i);
+	END LOOP;
+	COMMIT;
+END;
+/
+
+--3. STATIC조회: 반영되지 않은부분 확인
+SELECT * FROM st_table
+;
+
+--4. 수동반영
+SELECT num_rows,
+	blocks
+FROM user_tables
+WHERE table_name = 'ST_TABLE'
+;
+--  NUM_ROWS     BLOCKS
+------------ ----------
+
+--4.1 딕셔너리를 관리자가 수동으로 반영
+ANALYZE TABLE ST_TABLE COMPUTE STATISTICS
+;
+--  NUM_ROWS     BLOCKS
+------------ ----------
+--      1000          5
 
 
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_26(2)</title>
+    <style>
+      div{
+        border: 4px dashed gold;
+      }
+      div + p{
+        background-color: indianred;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>인접 동위 선택자를 이용한 선택</h1>
+	<div>
+		<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+		<div>
+			<p>이 p 태그는 div 태그의 child 입니다!</p>
+		</div>
+		<p>이 p 태그는 div 태그 바로 뒤에 나오는 sibling 입니다!</p>
+		<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+	</div>
+	<p>이 p 태그는 div 태그 바로 뒤에 나오는 sibling 입니다!</p>
+	<p>이 p 태그는 div 태그의 sibling 입니다!</p>
+  </body>
+</html>
