@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_18</title>
+    <style>
+      div {
+        background-color: lightgreen;
+        border: 2px solid teal;
+      }
+      div.mar {
+        margin-top: -30px;
+        margin-right: 10px;
+        margin-bottom: 30px;
+        margin-left: 100px;
+      }
+      div.mar_child {
+        background-color: red;
+        color: white;
+        margin: inherit;
+      }
+      div.mar_grandchild {
+        background-color: blue;
+        color: white;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>마진(margin) 영역 설정</h1>
+	  <div>아무런 margin 속성값도 설정하지 않은 요소입니다.</div><br>
+	  <div class="mar">
+      margin 속성값을 각 측면마다 별도로 지정한 요소입니다.
+      <div class="mar_child">
+        위의 클래스(mar)의 margin속성을 inherit 받음
+        <div class="mar_grandchild">
+          margin 속성값을 auto로 설정한 요소
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

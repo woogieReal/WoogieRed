@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_9</title>
+    <style>
+      a:link, a:visited{
+        background-color: burlywood;
+        color: black;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+      a:hover, a:active {background-color: red;}
+    </style>
+  </head>
+  <body>
+    <h2>링크를 활용한 버튼</h2>
+    <p>
+      <a href="https://naver.com/" target="_blank">네이버 열기</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_7</title>
+    <style>
+      .rightToLeft {direction:rtl;}
+      #minus3px {letter-spacing: -3px;}
+      #plus10px {letter-spacing: 10px;}
+      .plusSpace {word-spacing: 20px}
+      .firstRowIndent {text-indent: 30px;}
+      h2 {text-align: center;}
+      h2 {text-transform: capitalize;}
+      a {text-decoration: none;}
+      .wideLine {line-height: 3;}
+      .lightShadow {text-shadow: 5px 10px lightgray}
+    </style>
+  </head>
+  <body>
+    <h2 name = "top">direction 텍스트 방향설정</h2>
+    <div>
+      일반적인 왼쪽에서 오른쪽으로 써지는 텍스트
+    </div>
+    <div class="rightToLeft">
+      direction:rtl 속성으로 오른쪽에서 왼쪽으로 써지는 텍스트
+    </div>
+    <h2>letter-spacing</h2>
+    <div id="minus3px">
+      letter-spacing: -3px 로 줄어든 글자간격
+    </div>
+    <div id="plus10px">
+      letter-spacing: 10px 로 늘어난 글자간격
+    </div>
+    <h2>word-spacing</h2>
+    <div class="plusSpace">
+      word-spacing: 20px 로 단어 간격이 들어났다!
+    </div>
+    <h2>text-indent</h2>
+    <div class="firstRowIndent">
+      들여쓰기가 되었나? <br />
+      text-indent 로 들여쓰기가 된 문장입니다.<br  />
+      문장을 쓰면 지정된 구역의 첫 줄만 들여쓰기가 됨
+    </div>
+    <h2>text-decoration</h2>
+    <a href="#top">링크에 생기는 밑줄을 제거</a>
+    <h2>text-transform 속성</h2>
+    <h2>line-height</h2>
+    <div class="wideLine">
+      줄간격을 늘려서 <br />
+      문장을 강조해 봅시다 <br />
+      잘 보입니다.
+    </div>
+    <h2>text-shadow</h2>
+    <div class="lightShadow">
+      텍스트에 간단한 그림자 효과가 설정되었습니다.
+    </div>
+  </body>
+</html>

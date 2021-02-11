@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_31</title>
+    <style>
+      p::first-letter {
+        color: cadetblue;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      p::first-line {
+        font-style: italic;
+        font-weight: bold;
+      }
+      p::before {
+        content: url("/img/smallwoogie.png");
+      }
+      p::after {
+        content: url("/img/circle.png");
+      }
+      p::selection {
+        color: cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>1. 아래의 단락에서 첫 글자만을 선택합니다!</h3>
+    <h3>2. 아래의 단락에서 첫 라인만을 선택합니다!</h3>
+    <h3>3. 아래의 단락에서 콘텐츠 부분 바로 앞에 이미지를 삽입합니다!</h3>
+    <h3>4. 아래의 단락에서 콘텐츠 부분 바로 뒤에 이미지를 삽입합니다!</h3>
+    <h3>5. 마우스로 드래그하면 색깔이 변합니다!</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at tellus et neque luctus tincidunt at vitae ligula. Donec a accumsan magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed dolor nunc, facilisis in felis efficitur, sodales maximus nunc. Integer congue lectus vitae velit aliquam vehicula. Nunc mauris massa, sodales vitae augue ut, pulvinar mollis erat. Sed feugiat, mauris vitae convallis iaculis, nibh magna pretium diam, a sagittis quam urna quis augue. Nam feugiat accumsan ante id porttitor. Morbi tempus accumsan sem vitae venenatis. Duis mattis consequat ipsum nec interdum. Curabitur placerat vulputate faucibus. Cras consectetur elit ut metus consectetur tristique.</p>
+    <br />
+    <p>단락마다 첫 글자를 선택합니다! 그리고 첫줄은 italic의 bold입니다!</p>
+  </body>
+</html>

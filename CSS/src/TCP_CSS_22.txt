@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_22</title>
+    <style>
+      img{
+        float: left;
+        margin-right: 20px;
+      }
+      div.left{
+        background-color: aqua;
+        width: 250px;
+        height: 50px;
+        float: left;
+      }
+      div.right{
+        background-color: antiquewhite;
+        width: 250px;
+        height: 50px;
+        float: right;
+      }
+      div.clear{
+        clear: both;
+      }
+      div.nothing{
+        border: 3px solid aquamarine;
+      }
+      div.overflow{
+        border: 3px solid burlywood;
+        overflow: auto;
+      }
+      div.page{
+        border: 4px solid cadetblue;
+        overflow: auto;
+      }
+      h2{
+        text-align: center;
+      }
+      header{
+        border: 3px dashed chocolate;
+      }
+      nav{
+        border: 3px dashed coral;
+        width: 200px;
+        float: left;
+      }
+      section{
+        border: 3px dashed cornflowerblue;
+        margin-left: 206px;
+      }
+      footer{
+        border: 3px dashed crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>float 속성을 이용한 위치 설정</h2>
+    <p>
+      <img src="/img/woogie.png" alt="My character" style="width:300px; height:300px;" />
+      float속성
+      float 속성은 해당 HTML 요소가 주변의 다른 요소들과 자연스럽게 어울리도록
+      만들어 줌. 본래 이와 같은 목적으로 만들어졌지만,
+      현재는 웹페이지의 레이아웃을 작성할 때 자주 사용됨
+      float속성
+      float 속성은 해당 HTML 요소가 주변의 다른 요소들과 자연스럽게 어울리도록
+      만들어 줌. 본래 이와 같은 목적으로 만들어졌지만,
+      현재는 웹페이지의 레이아웃을 작성할 때 자주 사용됨
+      float속성
+      float 속성은 해당 HTML 요소가 주변의 다른 요소들과 자연스럽게 어울리도록
+      만들어 줌. 본래 이와 같은 목적으로 만들어졌지만,
+      현재는 웹페이지의 레이아웃을 작성할 때 자주 사용됨
+      float속성
+      float 속성은 해당 HTML 요소가 주변의 다른 요소들과 자연스럽게 어울리도록
+      만들어 줌. 본래 이와 같은 목적으로 만들어졌지만,
+      현재는 웹페이지의 레이아웃을 작성할 때 자주 사용됨
+      float속성
+      float 속성은 해당 HTML 요소가 주변의 다른 요소들과 자연스럽게 어울리도록
+      만들어 줌. 본래 이와 같은 목적으로 만들어졌지만,
+      현재는 웹페이지의 레이아웃을 작성할 때 자주 사용됨
+    </p><br /><br />
+    <div class="left">
+      왼쪽 끝에 위치하고 싶은 요소
+    </div>
+    <div class="right">
+      오른쪽 끝에 위치파고 싶은 요소
+    </div>
+    <div>
+      이 문장은 아래쪽에 제대로 출력하고 싶음
+    </div>
+    <div class="left">
+      왼쪽 끝에 위치하고 싶은 요소
+    </div>
+    <div class="right">
+      오른쪽 끝에 위치파고 싶은 요소
+    </div>
+    <div class="clear">
+      clear: both로 설정하면 이와 같이 출력됨
+    </div><br /><br />
+    <div class="nothing">
+      이미지와 함께 하고 싶은 내용<br />
+      하지만 이미지가 삐져나온다.
+      <img src="/img/woogie.png" alt="My character" style="width:300px; height: 300px;" />
+    </div><br />
+    <div class="overflow">
+      이미지와 함께 하고 싶은 내용<br />
+      overflow: auto로 설정하면 이미지가 삐져나오지 않는다.
+      <img src="/img/woogie.png" alt="My character" style="width:300px; height: 300px;" />
+    </div>
+    <div class="page">
+      <header>
+        <h2>header 영역</h2>
+      </header>
+      <nav>
+        <h2>nav 영역</h2>
+        <p>여기에는 보통 메뉴가 들어감</p>
+      </nav>
+      <section>
+        <h2>section</h2>
+        <p>
+          여기에는 페이지에 해당하는 내용이 들어갑니다.<br />
+          현재 웹페이지의 레이아웃은 대부분 float 속성을 이용하여 작성되고 있음
+        </p>
+      </section>
+      <footer>
+        <h2>footer 영역</h2>
+      </footer>
+    </div>
+  </body>
+</html>

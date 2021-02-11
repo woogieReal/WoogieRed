@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_20</title>
+    <style>
+      li {display: inline;}
+      div.inlineBlock{
+        display: inline-block;
+        color: white;
+      }
+      #first {background-color: red;}
+      #second {background-color: blue;}
+      #third {background-color: green;}
+      div {background-color: lightblue;}
+      p.none {display: none;}
+      p.hidden {visibility: hidden;}
+      img {opacity: 0.4; filter: alpha(opacity = 40);}
+      img:hover {opacity: 1.0; filter: alpha(opacity = 100);}
+    </style>
+  </head>
+  <body>
+    <h2>display속성을 이용하여 인라인요소로 변경</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JAVASCRIPT</li>
+    </ul>
+    <h2>diplay속성을 inline-block으로 지정</h2>
+    <div class = "inlineBlock" id = "first">
+      inlineBlock, id는 first
+    </div>
+    <div class = "inlineBlock" id = "second">
+      inlineBlock, id는 second
+    </div>
+    <div class = "inlineBlock" id = "third">
+      inlineBlock, id는 third
+    </div>
+    <div>
+      div요소는 블록요소이지만 display속성을 inline-block으로 설정하였기 때문에
+      위와 같이 일렬로 나란히 배치되었다.
+    </div>
+    <h2>HTML 요소 숨기기</h2>
+    <div>
+      이 문장 아래의 문장은 display속성값을 none으로 설정하였습니다.
+      <p class = "none">안보임</p><br />
+      위의 쓴 문장은 보이지도 않고 레이아웃에도 영향을 미치지 않음
+    </div><br />
+    <div>
+      이 문장 아래의 문장은 visibility속성값을 hidden으로 설정하였습니다.
+      <p class = "hidden">안보임</p><br />
+      보이지는 않지만 레이아웃에는 영향을 끼침
+    </div>
+    <h2>opacity속성을 이용한 투명도 조정</h2>
+    <img src = "\img\naver.png" width="100" height="100" alt = "네이버">
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_25</title>
+    <style>
+      div {
+        border: 3px double darkviolet;
+      }
+      div p{
+        background-color: deepskyblue;
+      }
+      div > h5 {
+        background-color: dodgerblue;
+      }
+    </style>
+  </head>
+
+  <body>
+  <h1>자손 선택자를 이용한 선택</h1>
+	<p>div 태그 외부의 p 태그는 선택되지 않습니다.</p>
+	<div>
+		<p>div 태그 내부의 p 태그만 선택됩니다!</p>
+		<p>div 태그 내부의 p 태그만 선택됩니다!</p>
+    <span>
+      <p>
+        이 문장은 div-span-p 태그 안에 있습니다. <br />
+        div p{background-color: deepskyblue;} 처럼 자손 선택자를 활용하였기 때문에<br />
+        div 안의 모든 p 요소는 해당 스타일이 적용됩니다.
+      </p>
+    </span>
+	</div>
+	<p>div 태그 외부의 p 태그는 선택되지 않습니다.</p>
+
+  <h1>자식 선택자를 이용한 선택</h1>
+	<h5>div 태그 외부의 h5 태그는 선택되지 않습니다.</h5>
+	<div>
+		<h5>div 태그 바로 밑에 존재하는 h5 태그만 선택됩니다!</h5>
+		<h5>div 태그 바로 밑에 존재하는 h5 태그만 선택됩니다!</h5>
+		<span>
+			<h5>이 h5 태그는 span 태그로 둘러 쌓여 있습니다.<br>
+				따라서 div 태그 바로 밑에 존재하는 h5 태그가 아니므로 선택되지 않습니다!
+			</h5>
+		</span>
+	</div>
+	<h5>div 태그 외부의 h5 태그는 선택되지 않습니다.</h5>
+  </body>
+</html>

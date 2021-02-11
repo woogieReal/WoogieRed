@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_12</title>
+    <style>
+    .up, .down, .right, .left {
+    background: url("/img/img_css_image_sprites.png") no-repeat;
+  }
+  .up {
+    width: 21px;
+    height: 20px;
+    background-position: 0 0;
+  }
+  .down {
+    width: 21px;
+    height: 20px;
+    background-position: -21px 0;
+  }
+  .right {
+    width: 22px;
+    height: 20px;
+    background-position: -42px 0;
+  }
+  .left {
+    width: 22px;
+    height: 20px;
+    background-position: -65px 0;
+  }
+    </style>
+  </head>
+  <body>
+    <h2>이미지 스프라이트를 이용한 이미지 로딩</h2>
+	<p>- 원본 이미지 -</p>
+	<img src="/img/img_css_image_sprites.png"><br><br>
+	<p>- 추출한 이미지 -</p>
+	<div class="up"></div><br>
+	<div class="down"></div><br>
+	<div class="right"></div><br>
+	<div class="left"></div><br>
+  </body>
+</html>

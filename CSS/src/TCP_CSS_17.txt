@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>TCP_CSS_17</title>
+  <style>
+    p {border-color: red;}
+    .dotted{border-style: dotted;}
+    .dashed{border-style: dashed;}
+    .solid{border-style: solid;}
+    .double{border-style: double;}
+    .groove{border-style: groove;}
+    .ridge{border-style: ridge;}
+    .inset{border-style:inset;}
+    .outset{border-style: outset;}
+    .none{border-style:none;}
+    .hidden{border-style: hidden;}
+    .mix{border-style: solid dashed dotted double;}
+
+    .dottedA{
+      border-style:dotted;
+      border-width:2px;
+    }
+    .dottedB{
+      border-style: dotted;
+      border-width: 5px;
+    }
+    .dashedA{
+      border-style: dashed;
+      border-width: thin;
+    }
+    .dashedB{
+      border-style: dashed;
+      border-width: thick;
+    }
+    .doubleA{
+      border-style: double;
+      border-width: 5px;
+    }
+    .doubleB{
+      border-style: double;
+      border-width: thick;
+    }
+    .mixB{
+      border-style: solid;
+      border-width: 1px 2px 10px thick;
+    }
+    .each{
+      /* border-top-style: dashed;
+      border-top-width: thick;
+      border-top-color: blue; */
+      border-top: dashed thick blue;
+      /* border-right-style: dotted;
+      border-right-width: thin;
+      border-right-color: red; */
+      border-right: dotted thin red;
+      /* border-bottom-style: double;
+      border-bottom-width: 5px;
+      border-bottom-color: green; */
+      border-bottom: double 5px green;
+      /* border-left-style: solid;
+      border-left-width: 10px;
+      border-left-color: black; */
+      border-left: solid 10px black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>border-style 속성을 이용한 테두리의 모양 변경</h1>
+  <p class="dotted">border-style 속성값을 dotted로 한 단락입니다.</p>
+  <p class="dashed">border-style 속성값을 dashed로 한 단락입니다.</p>
+  <p class="solid">border-style 속성값을 solid로 한 단락입니다.</p>
+  <p class="double">border-style 속성값을 double로 한 단락입니다.</p>
+  <p class="groove">border-style 속성값을 groove로 한 단락입니다.</p>
+  <p class="ridge">border-style 속성값을 ridge로 한 단락입니다.</p>
+  <p class="inset">border-style 속성값을 inset으로 한 단락입니다.</p>
+  <p class="outset">border-style 속성값을 outset으로 한 단락입니다.</p>
+  <p class="none">border-style 속성값을 none으로 한 단락입니다.</p>
+  <p class="hidden">border-style 속성값을 hidden으로 한 단락입니다.</p>
+  <p class="mix">border마다 각각의 border-style 속성값을 적용한 단락입니다.</p>
+  <br />
+  <h1>border-width 속성을 이용한 테두리의 두께 설정</h1>
+	<p class="dottedA">border-width 속성값을 2px로 한 단락입니다.</p>
+	<p class="dottedB">border-width 속성값을 5px로 한 단락입니다.</p>
+	<p class="dashedA">border-width 속성값을 thin으로 한 단락입니다.</p>
+	<p class="dashedB">border-width 속성값을 thick으로 한 단락입니다.</p>
+	<p class="doubleA">border-width 속성값을 5px로 한 단락입니다.</p>
+	<p class="doubleB">border-width 속성값을 thick으로 한 단락입니다.</p>
+	<p class="mixB">border마다 각각의 border-width 속성값을 적용한 단락입니다.</p>
+  <br />
+  <h1>테두리의 각부분에 대한 별도의 스타일 설정</h1>
+  <div class="each">
+    top은 dashed, thick, blue로 합니다.<br />
+    right는 dotted, thin, red로 합니다.<br />
+    bottom은 double, 5px, green으로 합니다.<br />
+    left는 solid, 10px, black으로 합니다.<br />
+  </div>
+
+</body>
+
+</html>
