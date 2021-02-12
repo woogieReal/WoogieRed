@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_36</title>
+    <style>
+      body {text-align: center;}
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        margin: auto;
+      }
+      .tooltip .content {
+        visibility: hidden;
+        width: 220px;
+        background-color: orangered;
+        padding: 0;
+        color: white;
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+        bottom: 180%;
+        left: 50%;
+        margin-left: -110px;
+      }
+      .tooltip .content::after {
+        content: " ";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: orangered transparent transparent;
+      }
+      .tooltip:hover .content {visibility: visible;}
+    </style>
+  </head>
+  <body>
+    <h2>툴팁의 모양 변경</h2>
+    <br /><br /><br />
+    <div class="tooltip">
+      <span>여기에 마우스를 올려보세요!</span>
+      <div class="content">
+        <p>
+          위쪽에 나타나는 툴팁입니다.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

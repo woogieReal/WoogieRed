@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_37</title>
+    <style>
+      input[type] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        margin: 5px 0px;
+        border: none;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        background-color: salmon;
+        border-radius: 5px;
+      }
+      input[type]:focus {
+        background-color: white;
+        background-image: none;
+      }
+      input.search {
+        background-image: url("/img/smallwoogie.png");
+        background-repeat: no-repeat;
+        background-position: 0px -5px;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: salmon;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>input타입의 스타일설정</h2>
+    <form>
+      사용자 : <input type="text" name="username" /><br />
+      비밀번호 : <input type="password" name="password" /><br />
+      검색 : <input class="search" type="text" name="search" /><br />
+      학력 :
+      <select name="study">
+        <option value="대학원">대학원</option>
+        <option value="대학교" selected>대학교</option>
+        <option value="고등학교">고등학교</option>
+      </select>
+    </form>
+  </body>
+</html>
