@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_35</title>
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: lightcoral;
+        min-width: 150px;
+        padding: 5px;
+        box-shadow: 5px 5px 5px 0px gray;
+      }
+      .dropdown:hover .dropdown-content {display: block;}
+      .dropmenu {
+        position: relative;
+        display: inline-block;
+      }
+      .dropmenu-button{
+        background-color: gold;
+        padding: 8px;
+        font-size: 15px;
+        border: none;
+      }
+      .dropmenu-content {
+        display: none;
+        position: absolute;
+        background-color: gold;
+        min-width: 75px;
+        padding: 5px;
+        box-shadow: 5px 5px 5px 0px gray;
+      }
+      .dropmenu-content a {
+        color: indianred;
+        padding: 8px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropmenu-content a:hover {
+        background-color: indianred;
+        color: gold;
+      }
+      .dropmenu:hover .dropmenu-content {display: block;}
+      .dropmenu:hover .dropmenu-button {background-color: indianred;}
+    </style>
+  </head>
+  <body>
+    <h2>드롭다운효과</h2>
+    <div class="dropdown">
+      <span>여기에 마우스를 올려보세요!</span>
+      <div class="dropdown-content">
+        <p>
+          마우스를 올려야만 나타나는 div요소입니다.
+        </p>
+      </div>
+    </div>
+    <h2>드롭다운메뉴</h2>
+    <div class="dropmenu">
+      <button class="dropmenu-button">Dropdown</button>
+      <div class="dropmenu-content">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">JAVA</a>
+        <a href="#">C++</a>
+      </div>
+    </div>
+  </body>
+</html>

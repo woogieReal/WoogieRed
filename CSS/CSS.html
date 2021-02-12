@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <ul class="navi">
+    <li><a href="http://www.tcpschool.com/css/intro" target="_blank">TCP_CSS</a></li>
+    <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=lucky3luck&logNo=220571294988&proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank">색상표</a></li>
+    <li style="float:right;"><a href=""></a></li>
+    <li style="float:right;"><a href=""></a></li>
+  </ul>
   <nav>
     <div class = "index">
       <a name = "인덱스"><h3>목차</h3></a>
@@ -35,6 +41,7 @@
         <a href="#속성선택자 "><li>속성선택자</li></a><hr>
         <a href="#기타의사클래스 "><li>기타의사클래스</li></a><hr>
         <a href="#네이게이션바 "><li>네이게이션바</li></a><hr>
+        <a href="#드롭다운 "><li>드롭다운</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -42,40 +49,24 @@
 <a name="CSS_선택자"><h4>CSS_선택자</h4></a><hr>
 CSS_선택자
 - HTML 요소 선택자
- ex) h1~6, p, div, ol 등의 태그 / h2 { color: teal; text-decoration: underline; }
+ ex) h1~6, p, div, ol 등의 태그
 
 - 아이디(id) 선택자
 특정 아이디 이름을 가지는 요소만을 선택
 HTML과 CSS에서는 아이디 이름이 중복되어도 잘 작동하지만 자바스크립트에서는 오류 나므로 아이디 값은 중복되지 않도록 설정. 묶어 주고 싶으면 클래스 사용
- ex)  #heading { color: teal; text-decoration: line-through; }
 
 - 클래스(class) 선택자
 같은 클래스 이름을 가지는 요소들을 모두 선택
- ex)  .headings { color: lime; text-decoration: overline; }
 
 - 그룹(group) 선택자
 여러 선택자를 같이 사용하고자 할 때 사용
- ex) h1, h2, p { background-color: lightgray; }
-<a name="background"><h4>background</h4></a><hr>
+&lt;a name="background"&gt;&lt;h4&gt;background&lt;/h4&gt;&lt;/a&gt;&lt;hr&gt;
 background-repeat 속성
 배경 이미지를 수평이나 수직 방향으로만 반복되도록 설정할 수 있음
 
-body {background-image: url("/img/circle.png");}
-이미지 반복출력
-body {background-image: url("/img/circle.png"); background-repeat: repeat-x;}
-가로로 이미지 반복
-body {background-image: url("/img/circle.png"); background-repeat: repeat-y;}
-세로로 이미지 반복
-body {background-image: url("/img/circle.png"); background-repeat: no-repeat;}
-이미지 반복 없음
-
 background-position 속성
 반복되지 않는 배경 이미지의 상대 위치를 설정
- body {
-       background-image: url("/img/circle.png");
-       background-repeat: no-repeat;
-       background-position: right top;
-     }
+
 속성 값으로 사용할 수 있는 키워드
 left top		center top		right top
 
@@ -429,9 +420,9 @@ list-style-position: inside 로 설정하면 리스트가 화면 중앙에 가�
 
 4. list-style 속성 한 번에 적용하기
 위에서 언급한 모든 list-style 속성을 한 줄로 설정가능
-<style>
+&lt;style&gt;
      ul { list-style: square inside url("/img/circle.png"); }
-</style>
+&lt;/style&gt;
 
 5. 리스트에 배경색 적용
 리스트 전체 또는 리스트 요소별로 각각의 배경색을 설정가능
@@ -2161,13 +2152,184 @@ border 속성을 이용하면 내비게이션 바에 경계선을 표현할 수 
   &lt;/html&gt;
 </div>
 <object class="page" data="/TCP_CSS_34.html" width="100%"></object>
+수평 내비게이션 바
 
+display 속성의 inline 속성값을 이용한 방법
+링크를 사용한 리스트 메뉴에서 &lt;li&gt;요소의 display 속성값을 inline으로 설정
+그러면 블록 요소였던 &lt;li&gt;요소가 인라인 요소의 성질을 갖도록 변경됨
+&lt;li&gt;요소가 수평으로 늘어서게 되며, 이것을 이용하여 수평 내비게이션바 생성
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_34(2)&lt;/title&gt;
+      &lt;style&gt;
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          background-color: gold;
+          width: 550px;
+          height: 50px;
+          border: 3px double midnightblue;
+        }
+        li {
+          display: inline;
+        }
+        li a {
+          text-decoration: none;
+          color: indianred;
+          font-weight: bold;
+          font-size: 2em;
+          padding: 22px;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="https://woogiereal.tistory.com/" target="_blank"&gt;blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://github.com/woogieReal" target="_blank"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.naver.com" target="_blank"&gt;네이버&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.google.com" target="_blank"&gt;구글&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_34(2).html" width="100%"></object>
+floating 속성을 이용한 방법
+링크를 사용한 리스트 메뉴의 리스트요소에 float 속성을 설정
+이때 float 속성값을 left로 설정하면, 모든 메뉴가 왼쪽으로 정렬
+또한, float 속성값을 right로 설정하면, 모든 메뉴가 오른쪽으로 정렬
+리스트 요소의 float 속성값을 조절하면, 왼쪽 메뉴뿐만 아니라 오른쪽 메뉴도 같이 설정할 수 있음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_34(3)&lt;/title&gt;
+      &lt;style&gt;
+        ul {
+          background-color: gold;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border-top: 3px double black;
+          border-bottom: 3px double black;
+        }
+        li a {
+          display: block;
+          color: indianred;
+          padding: 10px;
+          text-decoration: none;
+          font-weight: bold;
+          float: left;
+        }
+        li a:hover {
+          background-color: indianred;
+          color: gold;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="https://woogiereal.tistory.com/" target="_blank"&gt;blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://github.com/woogieReal" target="_blank"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.naver.com" target="_blank"&gt;네이버&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.google.com" target="_blank"&gt;구글&lt;/a&gt;&lt;/li&gt;
+        &lt;li style="float:right;"&gt;&lt;a href=""&gt;로그인&lt;/a&gt;&lt;/li&gt;
+        &lt;li style="float:right;"&gt;&lt;a href=""&gt;회원가입&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_34(3).html" width="100%"></object>
+<a name="드롭다운"><h4>드롭다운</h4></a><hr>
+드롭다운(dropdown) 효과
+해당 요소에 마우스를 올려서 다른 요소나 텍스트가 나타나게 하는 효과
+사용자가 마우스를 올리면 나타날 <div>요소의 display 속성값을 none으로 설정
+특정 요소에 마우스를 올리면 해당 <div>요소의 display 속성값이 블록(block)으로 변경
+box-shadow: (오른쪽) (아래쪽) (그림자의뿌연정도) (4면에그림자)
 
-
-
-
-
-
+드롭다운(Dropdown) 메뉴
+메뉴에 마우스를 올리면 하위 메뉴가 나타나게 하는 메뉴
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_35&lt;/title&gt;
+      &lt;style&gt;
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: lightcoral;
+          min-width: 150px;
+          padding: 5px;
+          box-shadow: 5px 5px 5px 0px gray;
+        }
+        .dropdown:hover .dropdown-content {display: block;}
+        .dropmenu {
+          position: relative;
+          display: inline-block;
+        }
+        .dropmenu-button{
+          background-color: gold;
+          padding: 8px;
+          font-size: 15px;
+          border: none;
+        }
+        .dropmenu-content {
+          display: none;
+          position: absolute;
+          background-color: gold;
+          min-width: 75px;
+          padding: 5px;
+          box-shadow: 5px 5px 5px 0px gray;
+        }
+        .dropmenu-content a {
+          color: indianred;
+          padding: 8px;
+          text-decoration: none;
+          display: block;
+        }
+        .dropmenu-content a:hover {
+          background-color: indianred;
+          color: gold;
+        }
+        .dropmenu:hover .dropmenu-content {display: block;}
+        .dropmenu:hover .dropmenu-button {background-color: indianred;}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;드롭다운효과&lt;/h2&gt;
+      &lt;div class="dropdown"&gt;
+        &lt;span&gt;여기에 마우스를 올려보세요!&lt;/span&gt;
+        &lt;div class="dropdown-content"&gt;
+          &lt;p&gt;
+            마우스를 올려야만 나타나는 div요소입니다.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h2&gt;드롭다운메뉴&lt;/h2&gt;
+      &lt;div class="dropmenu"&gt;
+        &lt;button class="dropmenu-button"&gt;Dropdown&lt;/button&gt;
+        &lt;div class="dropmenu-content"&gt;
+          &lt;a href="#"&gt;HTML&lt;/a&gt;
+          &lt;a href="#"&gt;CSS&lt;/a&gt;
+          &lt;a href="#"&gt;JAVA&lt;/a&gt;
+          &lt;a href="#"&gt;C++&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_35.html" width="100%"></object>
 
 
 

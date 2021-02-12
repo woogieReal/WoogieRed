@@ -3,11 +3,14 @@ div.index {
   background-color: #bbdefb;
   border-radius: 10px;
   max-width: 200px;
-  max-height: 600px;
-  margin-top: -15px;
+  max-height: 610px;
+  margin-top: -55px;
   padding: 5px 20px;
   overflow: auto;
   position: fixed;
+}
+a li:hover {
+  background-color: gold;
 }
 h3 {color: red;}
 ul {
@@ -43,7 +46,7 @@ object.page {
   border: 6px double black;
   padding: 10px;
   max-width: 850px;
-  min-height: 550px;
+  min-height: 300px;
   overflow: auto;
   border-radius: 10px;
   margin-top: 10px;
@@ -66,3 +69,25 @@ tr,td{
   border-bottom: 1px solid black;
 }
 tr:nth-child(odd) {background-color: #F3F3F3;}
+
+ul.navi {
+  margin-left: 250px;
+  background-color: gold;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  border-top: 3px double black;
+  border-bottom: 3px double black;
+}
+li a {
+  display: block;
+  color: indianred;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  float: left;
+}
+li a:hover {
+  background-color: indianred;
+  color: gold;
+}
