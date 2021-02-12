@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_33</title>
+    <style>
+      input:not([type="password"]) {
+        background-color: forestgreen;
+      }
+      q:lang(en){
+        quotes: '"' '"'  "'"  "'";
+      }
+      q:lang(fr){
+        quotes: "<<" ">>" "<" ">";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>:not을 이용한 선택</h1>
+    <form>
+      사용자 : <input type="text" name="username" /><br />
+      비밀번호 : <input type="password" name="password" /><br />
+      주소 : <input type="text" name="address" /><br />
+      <div>
+        영어에서는 영어에서는 <q lang="en">인용의 표현</q>을 이렇게 사용합니다.
+      </div>
+      <div>
+        프랑스어에서는 <q lang="fr">인용의 표현</q>을 이렇게 사용합니다.
+      </div>
+    </form>
+  </body>
+</html>

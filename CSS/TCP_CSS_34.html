@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_34</title>
+    <style>
+      ul {
+        background-color: goldenrod;
+        width: 150px;
+        list-style: none;
+        margin: 0;
+        padding: 0px;
+        border: solid 2px black;
+      }
+      li a {
+        display: block;
+        color: ivory;
+        padding: 8px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      li a.current {
+        background-color: deepskyblue;
+      }
+      li a:hover:not(.current) {
+        background-color: indianred;
+      }
+      li {border-bottom: solid 2px black;}
+      li:last-child {border-bottom: none;}
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="https://woogiereal.tistory.com/" target="_blank">blog</a></li>
+      <li><a class="current" href="https://github.com/woogieReal" target="_blank">GitHub</a></li>
+      <li><a href="https://www.naver.com" target="_blank">네이버</a></li>
+      <li><a href="https://www.google.com" target="_blank">구글</a></li>
+    </ul>
+  </body>
+</html>
