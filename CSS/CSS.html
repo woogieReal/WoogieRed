@@ -45,6 +45,8 @@
         <a href="#툴팁 "><li>툴팁</li></a><hr>
         <a href="#form요소 "><li>form요소</li></a><hr>
         <a href="#@규칙 "><li>@규칙</li></a><hr>
+        <a href="#CSS3개요"><li>CSS3개요</li></a><hr>
+        <a href="#벤더프리픽스"><li>벤더프리픽스</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -2541,9 +2543,64 @@ CSS2에서는 @media 규칙을 통해 서로 다른 미디어 타입을 위한 �
       }
   &lt;/style&gt;
 </div>
+<a name="CSS3개요"><h4>CSS3개요</h4></a><hr>
+CSS3 개요
+CSS3는 이전 버전 CSS와 완전히 호환되는 CSS의 최신 표준 권고안
 
+CSS3 변경사항
+- 선택자(Selectors) Level 3
+- 미디어 쿼리(Media Queries) Level 3
+- 색(Color) Level 3
+- 네임스페이스(Namespaces)
 
+CSS3 모듈(module)
+CSS3는 새롭게 정의된 기능과 함께 이전 버전의 CSS 기능까지도 함께 포함하고 있는 모듈(module)
+이라는 것으로 구성
+SS3를 구성하고 있는 주요 모듈은 다음과 같음
+- 선택자(Selectors)
+- 박스 모델(Box Model)
+- 배경(Backgrounds)
+- 이미지(Image Values and Replaced Content)
+- 텍스트 효과(Text Effects)
+- 2D 변형(Transformations)
+- 3D 변형(Transformations)
+- 애니메이션(Animations)
+- 다중 칼럼(Multiple Column) 레이아웃
+- 사용자 인터페이스(User Interface)
+<a name="벤더프리픽스"><h4>벤더프리픽스</h4></a><hr>
+벤더 프리픽스(Vendor Prefix)
+벤더 프리픽스(vendor prefix)란 주요 웹 브라우저 공급자가 새로운 실험적인 기능을 제공할 때
+이전 버전의 웹 브라우저에 그 사실을 알려주기 위해 사용하는 접두사(prefix)를 의미
+아직 CSS 권고안에 포함되지 못한 기능이나, CSS 권고안에는 포함되어 있지만 아직 완벽하게 제정된
+상태가 아닌 기능을 사용하고자 할 때 벤더 프리픽스를 사용
+그렇게 하면 해당 기능이 포함되어 있지 않은 이전 버전의 웹 브라우저에서도 그 기능을 사용가능
 
+주요 웹 브라우저의 벤더 프리픽스(vendor prefix)
+익스플로러 : -ms-
+크롬 : -webkit-
+파이어폭스 : -moz-
+사파리 : -webkit-
+오페라 : -o-
+
+[예제]
+<div class="code">
+  &lt;style&gt;
+    .button {
+        background: red;          <!-- gradient 속성을 지원하지 않는 모든 브라우저를 위한 코드 -->
+        background: -webkit-linear-gradient(red, yellow); <!-- 크롬과 사파리 4.0 이상을 위한 코드 -->
+        background: -moz-linear-gradient(red, yellow);    <!-- 파이어폭스 3.6 이상을 위한 코드 -->
+        background: -ms-linear-gradient(red, yellow);     <!-- 익스플로러 10.0 이상을 위한 코드 -->
+        background: -o-linear-gradient(red, yellow);      <!-- 오페라 10.0 이상을 위한 코드 -->
+        background: linear-gradient(red, yellow);         <!-- CSS 표준 문법 코드 -->
+    }
+  &lt;/style&gt;
+</div>
+예제에서 가장 먼저 나오는 background는 gradient 속성을 지원하지 않는 모든 브라우저를 위한 것
+맨 마지막에 나오는 background 속성은 CSS 표준 문법으로 작성된 코드
+CSS 표준 문법 코드는 벤더 프리픽스로 작성된 코드가 모두 나오고 난 후에 나와야만,
+벤더 프리픽스가 포함된 코드가 정상적으로 동작
+이러한 벤더 프리픽스는 실험적인 해당 기능들이 CSS 표준 권고안에 포함되거나, 완벽하게 제정된
+상태가 되면 더는 사용할 필요가 없어짐
 
 
 
