@@ -47,6 +47,7 @@
         <a href="#@규칙 "><li>@규칙</li></a><hr>
         <a href="#CSS3개요"><li>CSS3개요</li></a><hr>
         <a href="#벤더프리픽스"><li>벤더프리픽스</li></a><hr>
+        <a href="#CSS3색"><li>CSS3색</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -2601,6 +2602,136 @@ CSS 표준 문법 코드는 벤더 프리픽스로 작성된 코드가 모두 �
 벤더 프리픽스가 포함된 코드가 정상적으로 동작
 이러한 벤더 프리픽스는 실험적인 해당 기능들이 CSS 표준 권고안에 포함되거나, 완벽하게 제정된
 상태가 되면 더는 사용할 필요가 없어짐
+<a name="CSS3색"><h4>CSS3색</h4></a><hr>
+CSS3에서 새롭게 추가된 색 표현 방법은 다음과 같음
+1. RGBA 색상값으로 표현
+2. HSL 색상값으로 표현
+3. HSLA 색상값으로 표현
+4. opacity 속성
+
+RGBA 색상값으로 표현
+RGBA 색상값은 RGB 색상값에 알파 채널 값을 더한 색상값
+알파 채널(alpha channel)이란 색상의 투명도를 나타내는 채널
+알파 채널 값은 완전한 투명 상태인 0.0부터 투명도가 전혀 없는 1.0 사이의 값을 가짐
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: rgba(0,255,0,0);}
+        #header_02 {background-color: rgba(0,255,0,0.2);}
+        #header_03 {background-color: rgba(0,255,0,0.4);}
+        #header_04 {background-color: rgba(0,255,0,0.6);}
+        #header_05 {background-color: rgba(0,255,0,0.8);}
+        #header_06 {background-color: rgba(0,255,0,1);}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h3 id="header_01"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 0.0&lt;/h3&gt;
+    	&lt;h3 id="header_02"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 0.2&lt;/h3&gt;
+    	&lt;h3 id="header_03"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 0.4&lt;/h3&gt;
+    	&lt;h3 id="header_04"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 0.6&lt;/h3&gt;
+    	&lt;h3 id="header_05"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 0.8&lt;/h3&gt;
+    	&lt;h3 id="header_06"&gt;RGBA 색상값으로 표현된 녹색 : 알파 값 1.0&lt;/h3&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42.html" width="100%"></object>
+HSL 색상값으로 표현
+빛의 삼원색으로 색을 표현하는 RGB 색상값과는 달리 색상, 채도, 명도를 사용해서 색을 표현
+HSL은 각각 색상(Hue), 채도(Saturation), 명도(Lightness)를 의미
+
+색상(Hue)
+색상은 0부터 360 사이의 값을 가지며, 색상환(color wheel)의 각도를 나타냄
+색상 값이 0 또는 360이면 빨간색(red)이 되며, 120이면 녹색(green), 240이면 파란색(blue)
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42(2)&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: hsl(0, 100%, 50%);}
+        #header_02 {background-color: hsl(90, 100%, 50%);}
+        #header_03 {background-color: hsl(180, 100%, 50%);}
+        #header_04 {background-color: hsl(270, 100%, 50%);}
+        #header_05 {background-color: hsl(360, 100%, 50%);}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 id="header_01"&gt;HSL 색상값에서 색상값을 변경 : 색상 0&lt;/h1&gt;
+    	&lt;h1 id="header_02"&gt;HSL 색상값에서 색상값을 변경 : 색상 90&lt;/h1&gt;
+    	&lt;h1 id="header_03"&gt;HSL 색상값에서 색상값을 변경 : 색상 180&lt;/h1&gt;
+    	&lt;h1 id="header_04"&gt;HSL 색상값에서 색상값을 변경 : 색상 270&lt;/h1&gt;
+    	&lt;h1 id="header_05"&gt;HSL 색상값에서 색상값을 변경 : 색상 360&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42(2).html" width="100%"></object>
+채도(Saturation)
+채도는 0%부터 100% 사이의 값을 가지며, 색상의 연하고 짙은 정도를 나타냄
+채도 값이 0%면 회색이 되고, 100%면 원래 색상
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42(3)&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: hsl(0, 0%, 50%);}
+  		  #header_02 {background-color: hsl(0, 20%, 50%);}
+  	  	#header_03 {background-color: hsl(0, 40%, 50%);}
+  		  #header_04 {background-color: hsl(0, 60%, 50%);}
+  		  #header_05 {background-color: hsl(0, 80%, 50%);}
+  		  #header_06 {background-color: hsl(0, 100%, 50%);}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 id="header_01"&gt;HSL 색상값에서 채도 값을 변경 : 채도 0%&lt;/h1&gt;
+    	&lt;h1 id="header_02"&gt;HSL 색상값에서 채도 값을 변경 : 채도 20%&lt;/h1&gt;
+    	&lt;h1 id="header_03"&gt;HSL 색상값에서 채도 값을 변경 : 채도 40%&lt;/h1&gt;
+    	&lt;h1 id="header_04"&gt;HSL 색상값에서 채도 값을 변경 : 채도 60%&lt;/h1&gt;
+    	&lt;h1 id="header_05"&gt;HSL 색상값에서 채도 값을 변경 : 채도 80%&lt;/h1&gt;
+    	&lt;h1 id="header_06"&gt;HSL 색상값에서 채도 값을 변경 : 채도 100%&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42(3).html" width="100%"></object>
+색상환(color wheel)
+명도는 0%부터 100% 사이의 값을 가지며, 색상의 밝고 어두운 정도를 나타냄
+명도 값이 0%면 검정색이 되고, 50%면 원래 색상, 100%면 흰색
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42(4)&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: hsl(0, 100%, 0%);}
+  		  #header_02 {background-color: hsl(0, 100%, 20%);}
+  		  #header_03 {background-color: hsl(0, 100%, 40%);}
+  		  #header_04 {background-color: hsl(0, 100%, 50%);}
+  		  #header_05 {background-color: hsl(0, 100%, 60%);}
+  		  #header_06 {background-color: hsl(0, 100%, 80%);}
+  		  #header_07 {background-color: hsl(0, 100%, 100%);}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 id="header_01"&gt;HSL 색상값에서 명도 값을 변경 : 명도 0%&lt;/h1&gt;
+    	&lt;h1 id="header_02"&gt;HSL 색상값에서 명도 값을 변경 : 명도 20%&lt;/h1&gt;
+    	&lt;h1 id="header_03"&gt;HSL 색상값에서 명도 값을 변경 : 명도 40%&lt;/h1&gt;
+    	&lt;h1 id="header_04"&gt;HSL 색상값에서 명도 값을 변경 : 명도 50%&lt;/h1&gt;
+    	&lt;h1 id="header_05"&gt;HSL 색상값에서 명도 값을 변경 : 명도 60%&lt;/h1&gt;
+    	&lt;h1 id="header_06"&gt;HSL 색상값에서 명도 값을 변경 : 명도 80%&lt;/h1&gt;
+    	&lt;h1 id="header_07"&gt;HSL 색상값에서 명도 값을 변경 : 명도 100%&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42(4).html" width="100%"></object>
+HSLA 색상값으로 표현
+HSLA 색상값은 HSL 색상값에 알파 채널 값을 더한 색상값
 
 
 
