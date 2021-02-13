@@ -2732,6 +2732,79 @@ HSL은 각각 색상(Hue), 채도(Saturation), 명도(Lightness)를 의미
 <object class="page" data="/TCP_CSS_42(4).html" width="100%"></object>
 HSLA 색상값으로 표현
 HSLA 색상값은 HSL 색상값에 알파 채널 값을 더한 색상값
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42(5)&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: hsla(0, 100%, 50%, 0);}
+  		  #header_02 {background-color: hsla(0, 100%, 50%, 0.2);}
+  		  #header_03 {background-color: hsla(0, 100%, 50%, 0.4);}
+  		  #header_04 {background-color: hsla(0, 100%, 50%, 0.6);}
+  		  #header_05 {background-color: hsla(0, 100%, 50%, 0.8);}
+  		  #header_06 {background-color: hsla(0, 100%, 50%, 1);}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 id="header_01"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 0.0&lt;/h1&gt;
+    	&lt;h1 id="header_02"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 0.2&lt;/h1&gt;
+    	&lt;h1 id="header_03"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 0.4&lt;/h1&gt;
+    	&lt;h1 id="header_04"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 0.6&lt;/h1&gt;
+    	&lt;h1 id="header_05"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 0.8&lt;/h1&gt;
+    	&lt;h1 id="header_06"&gt;HSLA 색상값으로 표현된 빨간색 : 알파 값 1.0&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42(5).html" width="100%"></object>
+opacity 속성
+opacity 속성은 색상에 대한 투명도를 설정
+완전한 투명 상태인 0.0부터 투명도가 전혀 없는 1.0 사이의 값을 가짐
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_42(6)&lt;/title&gt;
+      &lt;style&gt;
+        #header_01 {background-color: rgb(0,255,0); opacity:0}
+  		  #header_02 {background-color: rgb(0,255,0); opacity:0.2}
+  	  	#header_03 {background-color: rgb(0,255,0); opacity:0.4}
+  	  	#header_04 {background-color: rgb(0,255,0); opacity:0.6}
+  	  	#header_05 {background-color: rgb(0,255,0); opacity:0.8}
+  	  	#header_06 {background-color: rgb(0,255,0); opacity:1}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 id="header_01"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 0.0&lt;/h1&gt;
+    	&lt;h1 id="header_02"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 0.2&lt;/h1&gt;
+    	&lt;h1 id="header_03"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 0.4&lt;/h1&gt;
+    	&lt;h1 id="header_04"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 0.6&lt;/h1&gt;
+    	&lt;h1 id="header_05"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 0.8&lt;/h1&gt;
+    	&lt;h1 id="header_06"&gt;RGB 색상값으로 표현된 녹색 : opacity 값 1.0&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_42(6).html" width="100%"></object>
+opacity 속성과 알파 채널과의 차이점
+위에서 살펴본 opacity 속성과 알파 채널 모두 투명도를 조절한다는 공통점을 가짐
+opacity 속성은 투명도를 설정했을 때 설정한 요소의 모든 자식요소까지 전부 같은 투명도로 설정
+하지만 알파 채널은 투명도를 설정한 요소에만 투명도를 설정하는 차이점이 존재
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
