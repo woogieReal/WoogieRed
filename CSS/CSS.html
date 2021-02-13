@@ -44,6 +44,7 @@
         <a href="#드롭다운 "><li>드롭다운</li></a><hr>
         <a href="#툴팁 "><li>툴팁</li></a><hr>
         <a href="#form요소 "><li>form요소</li></a><hr>
+        <a href="#@규칙 "><li>@규칙</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -2455,6 +2456,96 @@ background-image: input 요소에 아이콘(icon)이나 이미지를 삽입
   &lt;/html&gt;
 </div>
 <object class="page" data="/TCP_CSS_37.html" width="100%"></object>
+<a name="@규칙"><h4>@규칙</h4></a><hr>
+@규칙(at-rule)
+CSS에서는 W3C에서 규정하고 있는 몇몇 규칙을 사용가능
+
+@import
+다른 스타일 시트에서 스타일 규칙을 가져올 수 있는 규칙
+이 규칙은 스타일 시트에 사용되는 문자 인코딩을 지정하는 @charset 규칙을 제외하고
+모든 다른 규칙보다 앞서 명시되어야함
+
+보통 HTML 문서에는 다음과 같이 여러 개의 &lt;link&gt;태그를 사용하여 스타일 시트를 추가
+
+[HTML 문서]
+<div class="code">
+  &lt;head&gt;
+    &lt;title&gt;@import 규칙&lt;/title&gt;
+    &lt;link rel="stylesheet" href="firstStyleSheet.css"&gt;
+    &lt;link rel="stylesheet" href="secondStyleSheet.css"&gt;
+    ...
+  &lt;link rel="stylesheet" href="hundredStyleSheet.css"&gt;
+&lt;/head&gt;
+</div>
+하지만 이렇게 추가하는 CSS 파일의 개수가 늘어날수록 웹 서버의 부하도 같이 커짐
+
+따라서 HTML 문서에는 일정 개수의 CSS 파일만을 추가하고, 추가된 CSS 파일에서 @import 규칙을 이용해
+또 다른 CSS 파일을 추가하는 방법을 사용
+
+[HTML 문서]
+<div class="code">
+  &lt;head&gt;
+    &lt;title&gt;@import 규칙&lt;/title&gt;
+    &lt;link rel="stylesheet" href="firstStyleSheet.css"&gt;
+    &lt;link rel="stylesheet" href="secondStyleSheet.css"&gt;
+  &lt;/head&gt;
+</div>
+[firstStyleSheet.css]
+<div class="code">
+  @import url("thirdStyleSheet.css");
+  @import "fourthStyleSheet.css";
+  ...
+</div>
+@import규칙을 사용해도 추가하는 CSS 파일의 개수가 늘어나면 웹 서버의 부하는 커질 수밖에 없음
+따라서 웹 서버의 부하를 줄이기 위해 작성한 CSS 파일들을 적절히 분산해서 추가하는 방법이 필요
+
+@import 규칙을 이용하면 미디어 쿼리(media query)의 조건에 따라 필요한
+CSS 파일만을 선별적으로 불러올 수 있음
+
+다음 예제는 프린트할 때에는 firstStyleSheet.css 파일을 불러오고,
+스크린이 가로 방향으로 설정되어 있을 때는 secondStyleSheet.css 파일을 불러오는 예제
+<div class="code">
+  &lt;head&gt;
+    &lt;title&gt;@import 규칙&lt;/title&gt;
+    @import url("firstStyleSheet.css") print;
+    @import "secondStyleSheet.css" screen and (orientation:landscape);
+  &lt;/head&gt;
+</div>
+@font-face 규칙
+@font-face 규칙은 웹 폰트(web font)를 정의할 때 사용하는 규칙
+웹 폰트(web font)는 사용자의 컴퓨터에 설치되어 있지 않은 글꼴(font)을 웹 브라우저가
+사용할 수 있게 해줌
+우선 웹 폰트를 서버에 올려놓고, CSS 파일에 @font-face 규칙을 사용하여 웹 폰트를 정의하고 추가
+그러면 해당 웹 페이지에 접속하는 모든 웹 브라우저는 자동으로 서버에서 웹 폰트를 내려받아
+해당 글꼴을 표시
+<div class="code">
+  &lt;style&gt;
+    @font-face {
+        font-family: "myWebFont";
+        src: local("NanumGothic"), url("NanumGothic.eot"), url("NanumGothic.ttf"), url("NanumGothic.woff");
+    }
+    * { font-family: "myWebFont"; }
+  &lt;/style&gt;
+</div>
+@media 규칙
+CSS2에서는 @media 규칙을 통해 서로 다른 미디어 타입을 위한 맞춤식 스타일 시트를 지원
+다음 예제는 HTML 문서가 스크린에 표현될 때와 프린트할 때 서로 다른 스타일을 적용해 주는 예제
+<div class="code">
+  &lt;style&gt;
+      body { background-color: darkorange; }
+      @media screen {
+          body { background-color: black; color: white; }
+      }
+      @media print {
+          body { background-color: white; color: black; }
+      }
+  &lt;/style&gt;
+</div>
+
+
+
+
+
 
 
 
