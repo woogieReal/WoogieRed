@@ -48,6 +48,7 @@
         <a href="#CSS3개요"><li>CSS3개요</li></a><hr>
         <a href="#벤더프리픽스"><li>벤더프리픽스</li></a><hr>
         <a href="#CSS3색"><li>CSS3색</li></a><hr>
+        <a href="#CSS3선형그래디언트"><li>CSS3선형그래디언트</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -2791,20 +2792,204 @@ opacity 속성과 알파 채널과의 차이점
 위에서 살펴본 opacity 속성과 알파 채널 모두 투명도를 조절한다는 공통점을 가짐
 opacity 속성은 투명도를 설정했을 때 설정한 요소의 모든 자식요소까지 전부 같은 투명도로 설정
 하지만 알파 채널은 투명도를 설정한 요소에만 투명도를 설정하는 차이점이 존재
+<a name="CSS3선형그래디언트"><h4>CSS3선형그래디언트</h4></a><hr>
+그래디언트(gradient)란 둘 이상의 색 사이의 색상 표현을 부드럽게 전환해주는 효과
 
+선형 그래디언트(linear gradient)
+적용된 HTML 요소에 선형으로 그래디언트(gradient) 효과를 적용
+선형 그래디언트를 만들기 위해서는 최소한 두 개 이상의 색상 지정점이 필요
 
+문법
+background: linear-gradient(진행방향, 색상지정점1, 색상지정점2, ...);
+색상 지정점에는 그래디언트 효과로 그 사이의 색상 표현을 부드럽게 전환해주고 싶은 색상을 명시
 
+가장 먼저 나오는 background 속성은 linear-gradient 속성을 지원하지 않는 모든 브라우저를 위한 것
+맨 마지막에 나오는 background 속성은 CSS 표준 문법으로 작성된 코드
+CSS 표준 문법 코드는 벤더 프리픽스(vendor prefix)로 작성된 코드가 모두 나오고 난 후에 나와야만,
+벤더 프리픽스가 포함된 코드가 정상적으로 동작할 수 있음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: red;
+          background: -webkit-linear-gradient(left, red, orange, yellow, green, blue, indigo, purple);
+          background: -moz-linear-gradient(left, red, orange, yellow, green, blue, indigo, purple);
+          background: -o-linear-gradient(left, red, orange, yellow, green, blue, indigo, purple);
+          background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, purple);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43.html" width="100%"></object>
+선형 그래디언트의 진행 방향 설정
+그래디언트의 진행 방향은 top, right, bottom, left 뿐만 아니라 대각선으로도 설정할 수 있음
 
+선형 그래디언트(linear gradient) 효과의 기본 진행 방향은 위쪽에서 아래쪽
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: green;
+          background: -webkit-linear-gradient(green, yellow);
+          background: -moz-linear-gradient(green, yellow);
+          background: -o-linear-gradient(green, yellow);
+          background: linear-gradient(green, yellow);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(2).html" width="100%"></object>
+오른쪽에서 왼쪽으로 진행되는 선형 그래디언트 예제
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: green;
+          background: -webkit-linear-gradient(right, green, yellow);
+          background: -moz-linear-gradient(right, green, yellow);
+          background: -o-linear-gradient(right, green, yellow);
+          background: linear-gradient(to left, green, yellow);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(3).html" width="100%"></object>
+왼쪽 아래에서 오른쪽 위로 진행되는 선형 그래디언트 예제
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: green;
+          background: -webkit-linear-gradient(left bottom, green, yellow);
+          background: -moz-linear-gradient(left bottom, green, yellow);
+          background: -o-linear-gradient(left bottom, green, yellow);
+          background: linear-gradient(to top right, green, yellow);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(4).html" width="100%"></object>
+선형 그래디언트 효과의 진행 방향을 각도로 명시하여 설정할 수 있음
+기준 각도인 0도는 아래쪽에서 위쪽으로의 진행을 의미
+각도가 양수일 때는 기준 각도를 중심으로 시계방향으로 회전하며, 음수일 때는 반시계방향으로 회전
 
+225도의 진행 방향을 가지는 선형 그래디언트 예제
+(-135도의 진행 방향을 가지는 선형 그래디언트와 같은 그래디언트 효과)
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: black;
+          background: -webkit-linear-gradient(225deg, black, yellow);
+          background: -moz-linear-gradient(225deg, black, yellow);
+          background: -o-linear-gradient(225deg, black, yellow);
+          background: linear-gradient(225deg, black, yellow);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(6).html" width="100%"></object>
+선형 그래디언트의 투명도 설정
+CSS3에서는 그래디언트의 투명도를 지원하며, 지정된 색상이 서서히 사라지는 효과를 사용할 수 있음
+그래디언트에 투명도를 추가할 때에는 RGBA 색상값을 사용
+완전한 투명 상태인 0.0부터 투명도가 전혀 없는 1.0 사이
 
+왼쪽 아래에서 오른쪽 위로 서서히 사라지는 선형 그래디언트 예제
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: green;
+          background: -webkit-linear-gradient(left bottom, rgba(0,255,0,1), rgba(0,255,0,0));
+          background: -moz-linear-gradient(left bottom,  rgba(0,255,0,1), rgba(0,255,0,0));
+          background: -o-linear-gradient(left bottom,  rgba(0,255,0,1), rgba(0,255,0,0));
+          background: linear-gradient(to top right,  rgba(0,255,0,1), rgba(0,255,0,0));
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(7).html" width="100%"></object>
+repeating-linear-gradient() 메소드
+선형 그래디언트 효과가 계속 반복되도록 설정
 
-
-
-
-
-
-
-
+150도의 진행 방향을 가지고 반복되는 선형 그래디언트 예제
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_43&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 200px;
+          background: green;
+          background: -webkit-repeating-linear-gradient(150deg, red, white 10%, blue 20%);
+          background: -moz-repeating-linear-gradient(150deg, red, white 10%, blue 20%);
+          background: -o-repeating-linear-gradient(150deg, red, white 10%, blue 20%);
+          background: repeating-linear-gradient(150deg, red, white 10%, blue 20%);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_43(8).html" width="100%"></object>
 
 
 
