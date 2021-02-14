@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_44</title>
+    <style>
+      #grad_01 {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background: red;
+        background: -webkit-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+        background: -moz-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+        background: -o-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+        background: radial-gradient(closest-side at 35% 35%, red, yellow, orange);
+      }
+      #grad_02 {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background: red;
+        background: -webkit-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+        background: -moz-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+        background: -o-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+        background: radial-gradient(farthest-side at 35% 35%, red, yellow, orange);
+      }
+      #grad_03 {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background: red;
+        background: -webkit-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+        background: -moz-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+        background: -o-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+        background: radial-gradient(closest-corner at 35% 35%, red, yellow, orange);
+      }
+      #grad_04 {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background: red;
+        background: -webkit-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+        background: -moz-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+        background: -o-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+        background: radial-gradient(farthest-corner at 35% 35%, red, yellow, orange);
+      }
+    </style>
+  </head>
+  <body>
+    <h3>---closest-side-----farthest-side-----closest-corner-----farthest-corner</h3>
+    <div id="grad_01"></div>
+    <div id="grad_02"></div>
+    <div id="grad_03"></div>
+    <div id="grad_04"></div>
+  </body>
+</html>

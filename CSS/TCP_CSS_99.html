@@ -49,6 +49,7 @@
         <a href="#벤더프리픽스"><li>벤더프리픽스</li></a><hr>
         <a href="#CSS3색"><li>CSS3색</li></a><hr>
         <a href="#CSS3선형그래디언트"><li>CSS3선형그래디언트</li></a><hr>
+        <a href="#CSS3원형그래디언트"><li>CSS3원형그래디언트</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -2990,7 +2991,182 @@ repeating-linear-gradient() 메소드
   &lt;/html&gt;
 </div>
 <object class="page" data="/TCP_CSS_43(8).html" width="100%"></object>
+<a name="CSS3원형그래디언트"><h4>CSS3원형그래디언트</h4></a><hr>
+원형 그래디언트(radial gradient)
+원형 그래디언트를 만들기 위해서는 최소한 두 개 이상의 색상 지정점이 필요
 
+문법
+background: radial-gradient(모양 크기 at 중심점, 색상지정점1, 색상지정점2, ...);
+기본값으로 모양은 ellipse(타원), 크기는 farthest-corner, 중심좌표는 center로 설정됨
+
+가장 먼저 나오는 background 속성은 redial-gradient 속성을 지원하지 않는 모든 브라우저를 위한 것
+맨 마지막에 나오는 background 속성은 CSS 표준 문법으로 작성된 코드
+CSS 표준 문법 코드는 벤더 프리픽스로 작성된 코드가 모두 나오고 난 후에 나와야만,
+벤더 프리픽스가 포함된 코드가 정상적으로 동작할 수 있음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_44&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 300px;
+          background: red;
+          background: -webkit-radial-gradient(red, orange, yellow, green, blue, indigo, purple);
+          background: -moz-radial-gradient(red, orange, yellow, green, blue, indigo, purple);
+          background: -o-radial-gradient(red, orange, yellow, green, blue, indigo, purple);
+          background: radial-gradient(red, orange, yellow, green, blue, indigo, purple);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_44.html" width="100%"></object>
+색상 지정점 사이의 간격 조절
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_44&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          height: 300px;
+          background: red;
+          background: -webkit-radial-gradient(red 5%, yellow 20%, orange 50%);
+          background: -moz-radial-gradient(red 5%, yellow 20%, orange 50%);
+          background: -o-radial-gradient(red 5%, yellow 20%, orange 50%);
+          background: radial-gradient(red 5%, yellow 20%, orange 50%);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_44(2).html" width="100%"></object>
+원형 그래디언트의 모양 설정
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_44&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          width: 500px;
+          height: 300px;
+          background: red;
+          background: -webkit-radial-gradient(circle, red, yellow, orange);
+          background: -moz-radial-gradient(circle, red, yellow, orange);
+          background: -o-radial-gradient(circle, red, yellow, orange);
+          background: radial-gradient(circle, red, yellow, orange);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_44(3).html" width="100%"></object>
+원형 그래디언트의 크기 설정
+- closest-side : 원형 그래디언트의 크기가 가장 가까운 면에 닿을 만큼의 크기로 설정
+- farthest-side : 원형 그래디언트의 크기가 가장 먼 면에 닿을 만큼의 크기로 설정
+- closest-corner : 원형 그래디언트의 크기가 가장 가까운 모서리에 닿을 만큼의 크기로 설정
+- farthest-corner : 원형 그래디언트의 크기가 가장 먼 모서리에 닿을 만큼의 크기로 설정(기본값)
+
+다양하게 크기를 조절한 원형 그래디언트 예제
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_44&lt;/title&gt;
+      &lt;style&gt;
+        #grad_01 {
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          background: red;
+          background: -webkit-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+          background: -moz-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+          background: -o-radial-gradient(35% 35%, closest-side, red, yellow, orange);
+          background: radial-gradient(closest-side at 35% 35%, red, yellow, orange);
+        }
+        #grad_02 {
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          background: red;
+          background: -webkit-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+          background: -moz-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+          background: -o-radial-gradient(35% 35%, farthest-side, red, yellow, orange);
+          background: radial-gradient(farthest-side at 35% 35%, red, yellow, orange);
+        }
+        #grad_03 {
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          background: red;
+          background: -webkit-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+          background: -moz-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+          background: -o-radial-gradient(35% 35%, closest-corner, red, yellow, orange);
+          background: radial-gradient(closest-corner at 35% 35%, red, yellow, orange);
+        }
+        #grad_04 {
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          background: red;
+          background: -webkit-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+          background: -moz-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+          background: -o-radial-gradient(35% 35%, farthest-corner, red, yellow, orange);
+          background: radial-gradient(farthest-corner at 35% 35%, red, yellow, orange);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h3&gt;closest-side&lt;/h3&gt;
+      &lt;div id="grad_01"&gt;&lt;/div&gt;
+      &lt;div id="grad_02"&gt;&lt;/div&gt;
+      &lt;div id="grad_03"&gt;&lt;/div&gt;
+      &lt;div id="grad_04"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_44(4).html" width="100%"></object>
+repeating-radial-gradient() 메소드
+원형 그래디언트 효과가 계속 반복되도록 설정
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_44&lt;/title&gt;
+      &lt;style&gt;
+        #grad {
+          width: 500px;
+          height: 300px;
+          background: red;
+          background: -webkit-repeating-radial-gradient(ellipse, red, yellow 10%, orange 20%);
+          background: -moz-repeating-radial-gradient(ellipse, red, yellow 10%, orange 20%);
+          background: -o-repeating-radial-gradient(ellipse, red, yellow 10%, orange 20%);
+          background: repeating-radial-gradient(ellipse, red, yellow 10%, orange 20%);
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="grad"&gt;&lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_44(5).html" width="100%"></object>
 
 
 
