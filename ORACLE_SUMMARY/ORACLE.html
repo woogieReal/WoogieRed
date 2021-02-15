@@ -175,6 +175,10 @@
       <a href="#인덱스" name="DML"><h3>DML</h3></a><hr>
       <ul>
         <a href="#INSERT"><h4>INSERT</h4></a>
+        <a href="#UPDATE"><h4>UPDATE</h4></a>
+        <a href="#DELETE"><h4>DELETE</h4></a>
+        <a href="#MERGE"><h4>MERGE</h4></a>
+        <a href="#TRANSACTION"><h4>TRANSACTION</h4></a>
       </ul>
     </div>
   </header>
@@ -4135,6 +4139,276 @@ INSERT INTO professor3
 SELECT * FROM professor
 ;
 </div>
+--INSERT ALL
+--여러 테이블에 여러행 입력
+
+--유형1
+--각각의 테이블에 같은 데이터를 입력
+--professor테이블에서 교수번호가 3000에서 3999사이인 데이터를 prof_3과 prof_4에 입력
+
+<div class = "code">
+INSERT ALL
+INTO prof_3 VALUES(profno, name)
+INTO prof_4 VALUES(profno, name)
+SELECT profno
+	,name
+FROM professor
+WHERE profno BETWEEN 3000 AND 3999
+;
+</div>
+--유형2
+--각각의 테이블에 조건에 따라 다른 데이터를 입력
+--교수번호가 1000에서 1999사이이면 prof_3 테이블에 데이터를 삽입
+--교수번호가 2000에서 2999사이이면 prof_4 테이블에 데이터를 삽입
+--데이터는 professor 테이블에서 가져옴
+
+<div class = "code">
+INSERT ALL
+WHEN profno BETWEEN 1000 AND 1999 THEN
+	INTO prof_3 VALUES(profno, name)
+WHEN profno BETWEEN 2000 AND 2999 THEN
+	INTO prof_4 VALUES(profno, name)
+SELECT profno
+	,name
+FROM professor
+;
+</div>
+<a href="#DML" name="UPDATE"><h4>UPDATE</h4></a><hr>
+--UPDATE
+--기존의 데이터를 다른 데이터로 변경할 때 사용
+--(SELECT를 먼저 수행, 결과를 확인하고 수행할 것)
+--실수한 경우: ROLLBACK;
+
+--유형1
+--Sharon Stone의 position과 같은 교수들의 pay를 15% 인상하시오
+
+<div class = "code">
+UPDATE professor
+SET pay = pay*1.15
+WHERE position = (
+	SELECT position
+	FROM professor
+	WHERE name = 'Sharon Stone'
+)
+AND pay < 250
+;
+</div>
+<a href="#DML" name="DELETE"><h4>DELETE</h4></a><hr>
+--데이터를 삭제하는 구분
+--DELETE FROM table
+--하지만 데이터는 삭제되지 않고 특별한 툴(BBED 등)을 사용하면 복구가능
+<a href="#DML" name="MERGE"><h4>MERGE</h4></a><hr>
+--여러 테이블의 데이터를 합치는 병합을 의미
+
+--[문법]
+--MERGE INTO TABLE1
+--USING TABLE2
+--ON (병합조건)
+--WHEN MATCHED THEN
+--	UPDATE(DELETE) SET 업데이트내용
+--WHEN NOT MATCHED THEN
+--	INSERT VALUES(값)
+--테이블 1과 테이블2의 데이터를 합쳐서 테이블1에 모으는 것
+
+--유형1
+--(MERGE/USING) ch_total과 charge01의 데이터를 합쳐서 ch_total에 모음
+--(ON) 만약 ch_total의 u_date에 charge01의 u_date가 같은 데이터가 있다면
+--(WHEN) ch_total의 t1.cust_no를 t2.cust_no의 값으로 UPDATE
+--(ON) 만약 ch_total의 u_date에 charge01의 u_date가 같은 데이터가 없다면
+--(WHEN) ch_total에 charge01의 데이터들을 INSERT
+
+<div class = "code">
+MERGE INTO ch_total t1
+USING charge01 t2
+ON (t1.u_date = t2.u_date)
+WHEN MATCHED THEN
+	UPDATE SET t1.cust_no = t2.cust_no
+WHEN NOT MATCHED THEN
+	INSERT VALUES(t2.u_date, t2.cust_no, t2.u_time, t2.change
+);
+</div>
+--UPDATE 조인
+--다른 테이블과 조인을 하는 UPDATE문
+--WHERE절에만 다른 테이블과 조인
+
+--유형1
+--emp테이블에서 부서가 DALLAS에 위치하는 부서에 근무하는 사원의 급여를 10%인상
+
+<div class = "code">
+UPDATE emp t1
+SET sal = sal*1.10
+WHERE EXISTS(
+	SELECT *
+	FROM dept t2
+	WHERE t2.loc = 'DALLAS'
+	AND t1.deptno = t2.deptno
+);
+</div>
+<a href="#DML" name="TRANSACTION"><h4>TRANSACTION</h4></a><hr>
+--TRANSACTION 관리
+--논리적인 작업단위를 의미
+--DML작업들을 하나의 단위로 묶어 둔 것을 의미
+--해당 트랜잭션 내에 있는 모든 DML이 성공해야 해당 트랜잭션이 성공하는것이고
+--만약 1개의 DML이라도 실패하면 전체가 실패하게 된다.
+--DML작업을 한 후에는 반드시 COMMIT 이나 ROLLBACK 명령을 수행해야 작업이 마무리됨
+
+--DELETE 이후 테이블 용량확인
+--1. 테스트 테이블을 생성한다.
+--1.1. 대량의 데이터 입력
+--2. 테이블의 크기 측정
+--3. 데이터 삭제 후 테이블의 크기 확인
+--C:\oraclexe\app\oracle\oradata\XE\USERS.DBF
+
+--USERS.DBF 자동으로 증가하도록 변경.
+--ALTER DATABASE DATAFILE 'C:\oraclexe\app\oracle\oradata\XE\USERS.DBF' AUTOEXTEND on;
+
+--1. 테스트 테이블을 생성한다.
+
+<div class = "code">
+CREATE TABLE scott.reorg(
+	no NUMBER,
+	name VARCHAR2(20 BYTE),
+	address VARCHAR2(20 BYTE)
+);
+</div>
+--1.1. 대량의 데이터 입력
+
+<div class = "code">
+BEGIN
+	FOR i IN 1..500000 LOOP
+		INSERT INTO scott.reorg VALUES(i, DBMS_RANDOM.STRING('U',19), DBMS_RANDOM.STRING('U',19));
+	END LOOP;
+	COMMIT;
+
+END;
+/
+</div>
+--DBMS_RANDOM.STRING
+--랜던 문자열 생성한다
+--SYSNTAX: DBMS_RANDOM.STRING opt IN CHAR, len IN NUMBER
+--opt(옵션)은 아래와 같다.
+--'u', 'U': 대문자
+--'l', 'L': 소문자
+--'a', 'A': 대소문자 구분없는 영문자
+--'x', 'X': 영문자와 숫자 혼합
+--'p', 'P': 문자 혼합
+
+--2. 테이블의 크기 측정
+
+<div class = "code">
+SELECT bytes/(1024*1024) "MB"
+FROM dba_segments
+WHERE owner = 'SCOTT'
+AND segment_name = 'REORG'
+;
+--        MB
+------------
+--        28
+</div>
+--2.1. dba_tables
+--static dictionary 수동으로 정보 update
+
+<div class = "code">
+ANALYZE TABLE scott.reorg COMPUTE STATISTICS;
+SELECT table_name,
+	num_rows,
+	blocks
+FROM dba_tables
+WHERE owner = 'SCOTT'
+AND table_name = 'REORG'
+;
+--TABLE_NAME     NUM_ROWS     BLOCKS
+-------------- ---------- ----------
+--REORG            500000       3520
+</div>
+--3. 데이터 삭제 후 테이블의 크기 확인
+
+<div class = "code">
+DELETE
+FROM scott.reorg;
+commit
+;
+</div>
+
+--50만건의 데이터가 삭제되어 카운트는 0건
+<div class = "code">
+SELECT COUNT(*) FROM scott.reorg;
+--  COUNT(*)
+------------
+--         0
+</div>
+
+--커밋까지 했지만 아직 칸을 차지하고 있기 때문에 용량은 그대로
+--용량까지 줄이고 싶다면 REORG작업을 별도로 해야함
+
+<div class = "code">
+SELECT bytes/(1024*1024) "MB"
+FROM dba_segments
+WHERE owner = 'SCOTT'
+AND segment_name = 'REORG'
+;
+--        MB
+------------
+--        28
+</div>
+--실제 사용하고 있는 block조회
+--데이터가 들어 있는 블록은 없지만 용량을 차지하고 있음
+
+<div class = "code">
+SELECT COUNT(DISTINCT DBMS_ROWID.ROWID_BLOCK_NUMBER(rowid)
+	|| DBMS_ROWID.ROWID_RELATIVE_FNO(rowid)) "REAL_USED"
+FROM scott.reorg
+;
+-- REAL_USED
+------------
+--         0
+</div>
+--테이블 reorg(재구성)수행.
+--tablespace_name확인
+
+<div class = "code">
+SELECT table_name,
+	tablespace_name
+FROM dba_tables
+WHERE owner = 'SCOTT'
+AND table_name = 'REORG'
+;
+--TABLE_NAME     TABLESPACE_NAME
+---------------- ------------------
+--REORG          USERS
+</div>
+--테이블을 다른장소로 옮기는 명령어지만 현재 테이블 스페이스 이름만 적어주면 용량이 적어짐
+
+<div class = "code">
+ALTER TABLE scott.reorg MOVE TABLESPACE USERS;
+</div>
+--확인해 보면 용량이 줄어든 것을 확인할 수 있음
+
+<div class = "code">
+SELECT bytes/(1024*1024) "MB"
+FROM dba_segments
+WHERE owner = 'SCOTT'
+AND segment_name = 'REORG'
+;
+--        MB
+------------
+--     .0625
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
