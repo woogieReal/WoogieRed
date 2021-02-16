@@ -4237,6 +4237,32 @@ WHEN NOT MATCHED THEN
 --다른 테이블과 조인을 하는 UPDATE문
 --WHERE절에만 다른 테이블과 조인
 
+--유형2
+--(MERGE) no, name, age 칼럼으로 이루어진 ALIST테이블에
+--(USING) 같은 스키마를 가진 ALIST2와 ALIST3의 데이터를 통합
+--(ON) 만약 이미 해당 데이터를 가지고 있다면(no 칼럼으로 비교)
+--(WHEN) 데이터를 덮어씀
+--(ON) 만약 해당 데이터가 없다면(no 칼럼으로 비교)
+--(WHEN) 데이터를 추가
+
+<div class = "code">
+MERGE INTO ALIST t1
+USING ALIST2 t2
+ON (t1.no = t2.no)
+WHEN MATCHED THEN
+    UPDATE SET t1.name = t2.name, t1.age = t2.age
+WHEN NOT MATCHED THEN
+    INSERT VALUES(t2.no, t2.name, t2.age)
+;
+MERGE INTO ALIST t1
+USING ALIST3 t3
+ON (t1.no = t3.no)
+WHEN MATCHED THEN
+    UPDATE SET t1.name = t3.name, t1.age = t3.age
+WHEN NOT MATCHED THEN
+    INSERT VALUES(t3.no, t3.name, t3.age)
+;
+</div>
 --유형1
 --emp테이블에서 부서가 DALLAS에 위치하는 부서에 근무하는 사원의 급여를 10%인상
 
