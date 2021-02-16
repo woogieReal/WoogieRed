@@ -91,3 +91,6 @@ li a:hover {
   background-color: indianred;
   color: gold;
 }
+img {
+  margin: 10px 0px;
+}
