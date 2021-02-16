@@ -40,7 +40,7 @@ div.code {
   padding-bottom: 30px;
 }
 table {
-  /* border-spacing: 10px; */
+  margin-top: 10px;
 }
 tr,td{
   padding: 8px;
