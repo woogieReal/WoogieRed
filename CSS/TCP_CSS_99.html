@@ -3772,9 +3772,42 @@ Microsoft가 웹 페이지에서 사용하기 위해 개발한 내장형 글꼴�
 @font-face 규칙을 사용하려면, 우선 font-family 속성으로 새로운 웹 글꼴을 위한 이름을 정의
 그 후에 해당 웹 글꼴이 사용할 글꼴 파일의 주소를 지정
 
-
-
-
+-- 글꼴 적용
+1. 나눔고딕 글꼴
+2. 나눔명조 글꼴
+3. 나눔명조 두꺼운 글꼴
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_49&lt;/title&gt;
+      &lt;style&gt;
+        @font-face {
+          font-family: myGothicFont;
+          src: url(/font/NanumFontSetup_OTF_GOTHIC/NanumGothic.otf);
+        }
+        @font-face {
+          font-family: myMyeongjoFont;
+          src: url(/font/NanumFontSetup_OTF_MYUNGJO/NanumMyeongjo.otf);
+        }
+        @font-face {
+          font-family: myMyeongjoFont;
+          src: url(/font/NanumFontSetup_OTF_MYUNGJO/NanumMyeongjoBold.otf);
+          font-weight: bold;
+        }
+        #nGothic {font-family: myGothicFont;}
+        #nMyeongjo {font-family: myMyeongjoFont;}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;p id="nGothic"&gt;웹 글꼴을 사용하여 나눔고딕 글꼴을 적용해 보았어요!&lt;/p&gt;
+      &lt;p id="nMyeongjo"&gt;웹 글꼴을 사용하여 나눔명조 글꼴을 적용해 보았어요!&lt;/p&gt;
+      &lt;p id="nMyeongjo"&gt;웹 글꼴을 사용하여 &lt;b&gt;나눔명조 두꺼운 글꼴&lt;/b&gt;을 적용해 보았어요!&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_49.html" width="100%"></object>
 
 
 
