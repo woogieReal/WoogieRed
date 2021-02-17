@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_CSS_48</title>
+    <style>
+      #p_01, #p_02 {
+        border: 1px solid black;
+        white-space: nowrap;
+        width: 200px;
+        overflow: hidden;
+      }
+      #p_01 {text-overflow: clip;}
+      #p_02 {text-overflow: ellipsis;}
+      #p_01:hover, #p_02:hover {overflow: visible;}
+    </style>
+  </head>
+  <body>
+    <h1>콘텐츠 영역을 벗어난 텍스트 처리 방법</h1>
+    <p id="p_01">콘텐츠 영역을 벗어난 텍스트 부분을 잘라냅니다.</p>
+    <p id="p_02">콘텐츠 영역을 벗어난 텍스트 부분을 생략 부호를 사용하여 표현합니다.</p>
+    <p>콘텐츠 영역에 마우스를 올려보세요!</p>
+  </body>
+</html>

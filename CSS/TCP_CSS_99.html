@@ -53,6 +53,7 @@
         <a href="#CSS3그림자효과"><li>CSS3그림자효과</li></a><hr>
         <a href="#CSS3배경"><li>CSS3배경</li></a><hr>
         <a href="#CSS3테두리"><li>CSS3테두리</li></a><hr>
+        <a href="#CSS3텍스트"><li>CSS3텍스트</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -3634,6 +3635,109 @@ border-image 속성은 실제로 다음 5가지 속성의 스타일을 한 줄�
 3. border-image-width
 4. border-image-outset
 5. border-image-repeat
+<a name="CSS3텍스트"><h4>CSS3텍스트</h4></a><hr>
+CSS3에서 새롭게 추가된 텍스트에 관한 속성
+1. text-overflow
+2. word-wrap
+3. word-break
+
+text-overflow 속성
+콘텐츠(content) 영역을 벗어난 텍스트를 어떻게 표현할지를 설정
+영역을 벗어난 텍스트 부분을 자를 수도 있으며, 생략 부호(…)를 사용하여 표현할 수도 있음
+overflow 속성값을 visible로 설정하면, 콘텐츠 영역을 벗어나 생략된 텍스트까지 보여줄 수 있음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_48&lt;/title&gt;
+      &lt;style&gt;
+        #p_01, #p_02 {
+          border: 1px solid black;
+          white-space: nowrap;
+          width: 200px;
+          overflow: hidden;
+        }
+        #p_01 {text-overflow: clip;}
+        #p_02 {text-overflow: ellipsis;}
+        #p_01:hover, #p_02:hover {overflow: visible;}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;콘텐츠 영역을 벗어난 텍스트 처리 방법&lt;/h1&gt;
+      &lt;p id="p_01"&gt;콘텐츠 영역을 벗어난 텍스트 부분을 잘라냅니다.&lt;/p&gt;
+      &lt;p id="p_02"&gt;콘텐츠 영역을 벗어난 텍스트 부분을 생략 부호를 사용하여 표현합니다.&lt;/p&gt;
+      &lt;p&gt;콘텐츠 영역에 마우스를 올려보세요!&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_48.html" width="100%"></object>
+word-wrap 속성
+word-wrap 속성은 콘텐츠 영역을 벗어난 길이가 긴 단어를 다음 줄에 나누어 표현할 수 있도록 해줌
+word-wrap 속성은 영문자로 구성된 단어에만 적용되며, 한글에는 적용되지 않음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_48&lt;/title&gt;
+      &lt;style&gt;
+        p {
+          border: 1px solid black;
+          width: 130px;
+          display: inline-block;
+          margin: 40px;
+        }
+        #p_01, #p_03 {word-wrap: break-word;}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;콘텐츠 영역을 벗어난 긴 단어의 처리 방법&lt;/h2&gt;
+      &lt;h3&gt;첫 번째와 세 번째에 word-wrap: break-word 속성 적용&lt;/h3&gt;
+    	&lt;p id="p_01"&gt;콘텐츠 영역을 벗어난 긴 단어단어단어단어단어단어가 어떻게 될까요?&lt;/p&gt;
+    	&lt;p id="p_02"&gt;콘텐츠 영역을 벗어난 긴 wordwordwordwordwordword가 어떻게 될까요?&lt;/p&gt;
+    	&lt;p id="p_03"&gt;콘텐츠 영역을 벗어난 긴 wordwordwordwordwordword를 다음 줄에 나누어 표현합니다.&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_48(2).html" width="100%"></object>
+word-break 속성
+word-break 속성은 길이가 긴 단어를 나누어 표현해야 할 때 단어가 나뉘는 기준을 설정
+단어를 문자별로 나눌 수도 있으며, 하이픈(-)을 기준으로 나눌 수도 있음
+word-break 속성은 영문자로 구성된 단어에만 적용되며, 한글은 자동으로 속성값이 break-all로 적용
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_CSS_48&lt;/title&gt;
+      &lt;style&gt;
+        p {
+          border: 1px solid black;
+          width: 130px;
+          display: inline-block;
+          margin: 20px;
+        }
+        #p_02 {word-wrap: break-word;}
+        #p_03 {word-break: break-all;}
+        #p_04 {word-break: keep-all;}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;긴 단어가 나뉘는 기준 명시&lt;/h1&gt;
+    	&lt;p id="p_01"&gt;콘텐츠 영역을 벗어난 긴 단어단어단어단어단어단어가 어떻게 될까요?&lt;/p&gt;
+    	&lt;p id="p_02"&gt;콘텐츠 영역을 벗어난 긴 wordwordwordwordwordword를 다음 줄에 나누어 표현합니다.&lt;/p&gt;
+    	&lt;p id="p_03"&gt;콘텐츠 영역을 벗어난 긴 wordwordwordwordwordword를 다음 줄에 나누어 표현합니다.&lt;/p&gt;
+    	&lt;p id="p_04"&gt;콘텐츠 영역을 벗어난 긴 word-word-word-word-word-word를 다음 줄에 나누어 표현합니다.&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_CSS_48(3).html" width="100%"></object>
+
+
+
+
+
 
 
 

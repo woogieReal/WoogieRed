@@ -50,6 +50,167 @@ REFERENCES emp2(name)
 --오류발생
 --ORA-02270: no matching unique or primary key for this column-list
 
+--ON DELETE CASCADE
+--외래키 설정이 있을시에 부모 테이블의 데이터가 지워지면 자식테이블의 데이터도 함께 삭제
+
+--테이블 생성
+CREATE TABLE C_TEST1(
+	no NUMBER,
+	name VARCHAR2(20),
+	deptno NUMBER
+);
+
+CREATE TABLE C_TEST2(
+	no NUMBER,
+	name VARCHAR2(20)
+);
+
+--C_TEST2의 no컬럼에 유니크키 지정
+ALTER TABLE C_TEST2
+ADD CONSTRAINT c_test2_no_uk UNIQUE(no)
+;
+
+--C_TEST1의 deptno를 C_TEST2의 no컬럼을 참조하는 외래키로 지정
+ALTER TABLE C_TEST1
+ADD CONSTRAINT c_test1_deptno_fk FOREIGN KEY(deptno)
+REFERENCES C_TEST2(no)
+;
+
+--ON DELETE CASCADE 옵션의 FK 생성
+ALTER TABLE C_TEST1
+ADD CONSTRAINT c_test1_deptno_fk FOREIGN KEY(deptno)
+REFERENCES C_TEST2(no)
+ON DELETE CASCADE
+;
+
+--제약조건 삭제
+ALTER TABLE C_TEST1
+DROP CONSTRAINT c_test1_deptno_fk
+;
+
+--C_TEST2에 데이터 입력
+INSERT INTO C_TEST2 VALUES(10, 'AAA');
+INSERT INTO C_TEST2 VALUES(20, 'BBB');
+INSERT INTO C_TEST2 VALUES(30, 'CCC');
+COMMIT;
+--   NO NAME
+------- ---------
+--   10 AAA
+--   20 BBB
+--   30 CCC
+
+--C_TEST1에 데이터 입력
+--C_TEST2 데이터 기반으로 C_TEST1의 deptno을 입력
+INSERT INTO C_TEST1 VALUES(1, 'apple', 10);
+INSERT INTO C_TEST1 VALUES(2, 'banana', 20);
+INSERT INTO C_TEST1 VALUES(3, 'cherry', 30);
+COMMIT;
+--    NO NAME          DEPTNO
+-------- --------- ----------
+--     1 apple             10
+--     2 banana            20
+--     3 cherry            30
+
+--참조하는 칼럼에 없는 데이터를 입력시 오류 발생
+INSERT INTO C_TEST1 VALUES(4, 'peach', 40);
+--ORA-02291: 
+--integrity constraint (SCOTT.C_TEST1_DEPTNO_FK) violated - parent key not found
+
+--참조하는 부모의 데이터를 삭제시 외래키가 ON DELETE CASCADE 설정되어있기 때문에
+--해당 데이터를 참조하는 자식 테이블의 데이터도 삭제된다.
+DELETE FROM C_TEST2
+WHERE no = 10
+;
+--1 row deleted.
+
+SELECT * FROM c_test1
+;
+--   NO NAME            DEPTNO
+------- ----------- ----------
+--    2 banana              20
+--    3 cherry              30
+
+--ON DELETE SET NULL
+--외래키 설정이 있을시에 부모 테이블의 데이터가 지워지면 자식테이블의 데이터를 NULL처리
+--외래키에 NOT NULL 제약조건이 있어서는 안된다.
+
+--제약조건 삭제
+ALTER TABLE C_TEST1
+DROP CONSTRAINT c_test1_deptno_fk
+;
+
+--ON DELETE SET NULL 속성의 외래키 지정
+ALTER TABLE C_TEST1
+ADD CONSTRAINT c_test1_deptno_fk FOREIGN KEY(deptno)
+REFERENCES C_TEST2(no)
+ON DELETE SET NULL
+;
+
+--참조하는 부모의 데이터를 삭제시 외래키가 ON DELETE SET NULL 설정되어있기 때문에
+--해당 데이터를 참조하는 자식 테이블의 데이터는 NULL 처리된다.
+DELETE FROM C_TEST2
+WHERE no = 20
+;
+--1 row deleted.
+
+SELECT * FROM c_test1
+;
+--  NO NAME         DEPTNO
+------ -------- ----------
+--   2 banana
+--   3 cherry           30
+
+--제약조건 조회하기
+--딕셔너리 USER_CONSTRAINTS, USER_CONS_COLUMNS
+--DBA DBA_CONSTRAINTS, DBA_CONS_COLUMNS
+
+--TABLE 이름은 반드시 대문자로 조회
+
+--CONSTRAINT 타입: 
+--          P -> PK
+--          U -> UNIQUE
+--          C-> CHECK
+--          R -> FK
+
+desc user_cons_columns;
+--이름               널?       유형             
+-----------------  -------- -------------- 
+--OWNER            NOT NULL VARCHAR2(30)   
+--CONSTRAINT_NAME  NOT NULL VARCHAR2(30)   
+--TABLE_NAME       NOT NULL VARCHAR2(30)   
+--COLUMN_NAME               VARCHAR2(4000) 
+--POSITION                  NUMBER         
+
+
+SELECT t1.owner,
+	t1.constraint_name
+FROM user_constraints t1
+WHERE t1.table_name = 'EMP'
+;
+--OWNER     CONSTRAINT_NAME    
+----------- -------------------
+--SCOTT     PK_EMP             
+--SCOTT     FK_DEPTNO          
+
+SELECT t1.owner,
+	t1.constraint_name,
+	t1.constraint_type,
+	t1.status
+FROM user_constraints t1
+WHERE t1.table_name = 'EMP'
+;
+--OWNER                          CONSTRAINT_NAME                C STATUS  
+-------------------------------- ------------------------------ - --------
+--SCOTT                          PK_EMP                         P ENABLED 
+--SCOTT                          FK_DEPTNO                      R ENABLED 
+
+SELECT owner,
+	constraint_name,
+	table_name,
+	column_name
+FROM user_cons_columns
+WHERE table_name = 'EMP'
+;
 
 
 
