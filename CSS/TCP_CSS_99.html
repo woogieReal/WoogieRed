@@ -54,6 +54,7 @@
         <a href="#CSS3배경"><li>CSS3배경</li></a><hr>
         <a href="#CSS3테두리"><li>CSS3테두리</li></a><hr>
         <a href="#CSS3텍스트"><li>CSS3텍스트</li></a><hr>
+        <a href="#CSS3웹글꼴"><li>CSS3웹글꼴</li></a><hr>
       </ol>
     </div>
   </nav>
@@ -3733,6 +3734,55 @@ word-break 속성은 영문자로 구성된 단어에만 적용되며, 한글은
   &lt;/html&gt;
 </div>
 <object class="page" data="/TCP_CSS_48(3).html" width="100%"></object>
+<a name="CSS3웹글꼴"><h4>CSS3웹글꼴</h4></a><hr>
+CSS3 웹 글꼴
+CSS3에서는 웹 글꼴을 위해 @font-face 규칙이 추가되었음
+
+웹 글꼴의 형식
+1. 트루 타입 글꼴(TrueType Fonts, TTF)
+Apple과 Microsoft가 공동으로 개발한 외곽선 글꼴 표준
+
+2. 오픈 타입 글꼴(OpenType Fonts, OTF)
+사용자가 자신의 컴퓨터에서 크기를 조절할 수 있는 글꼴 표준
+트루 타입 글꼴의 뒤를 잇기 위해 Microsoft에서 개발
+현재는 거의 모든 컴퓨터에서 사용되고 있음
+
+3. 웹 오픈 글꼴 1.0(The Web Open Font Format 1.0, WOFF 1.0)
+웹 페이지에서 사용할 수 있는 글꼴 표준이며, 현재 W3C에서 사용을 권장하고 있는 글꼴 표준
+추가 메타데이터(metadata)를 넣어 압축한 트루 타입 또는 오픈 타입 글꼴
+
+4. 웹 오픈 글꼴 2.0(The Web Open Font Format 2.0, WOFF 2.0)
+웹 오픈 글꼴 1.0 버전보다 더 나은 압축률을 제공하는 트루 타입 또는 오픈 타입 글꼴
+
+5. SVG 글꼴(SVG Fonts/Shapes)
+SVG 요소로 텍스트를 그릴 때 그 표본으로 사용되는 글꼴 표준
+SVG 문서에 CSS를 적용할 수 있도록 해줄 뿐만 아니라, @font-face 규칙도 적용할 수 있게 해줌
+
+6. 임베디드 오픈 타입 글꼴(Embedded OpenType Fonts, EOT)
+Microsoft가 웹 페이지에서 사용하기 위해 개발한 내장형 글꼴로, 오픈 타입 글꼴
+
+@font-face 규칙
+웹 폰트(web font)를 정의할 때 사용하는 규칙
+웹 폰트는 사용자의 컴퓨터에 설치되어 있지 않은 글꼴을 웹 브라우저가 사용할 수 있게 해줌
+
+우선 웹 폰트를 서버에 올려놓고, CSS 파일에 @font-face 규칙을 사용하여 웹 폰트를 정의하고 추가
+그러면 해당 웹 페이지에 접속하는 모든 웹 브라우저는 자동으로 서버에서 웹 폰트를
+내려받아 해당 글꼴을 표시하게 됨
+
+@font-face 규칙을 사용하려면, 우선 font-family 속성으로 새로운 웹 글꼴을 위한 이름을 정의
+그 후에 해당 웹 글꼴이 사용할 글꼴 파일의 주소를 지정
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
