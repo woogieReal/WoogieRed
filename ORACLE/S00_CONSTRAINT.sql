@@ -212,7 +212,96 @@ FROM user_cons_columns
 WHERE table_name = 'EMP'
 ;
 
+--제약조건관리
+--C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\utlexcpt.sql
 
+
+--361p
+--1
+DROP TABLE tcons;
+CREATE TABLE tcons(
+    no NUMBER(5) CONSTRAINT tcons_no_pk PRIMARY KEY,
+    name VARCHAR2(20) CONSTRAINT tcons_name_nn NOT NULL,
+    jumin VARCHAR2(13)
+        CONSTRAINT tcons_jumin_nn NOT NULL
+        CONSTRAINT tcons_jumin_uk UNIQUE,
+    area number(1) CONSTRAINT tcons_area_ck CHECK(area between 1 AND 4),
+    deptno VARCHAR2(6) 
+        CONSTRAINT tcons_deptno_fk REFERENCES dept2(decode)
+);
+
+--2
+ALTER TABLE emp2
+ADD CONSTRAINT tmp2_name_uk UNIQUE(name)
+;
+
+ALTER TABLE tcons
+ADD CONSTRAINT tcons_name_fk FOREIGN KEY(name)
+REFERENCES emp2(name)
+;
+
+--3
+SELECT t1.owner,
+	t1.constraint_name,
+	t1.constraint_type,
+	t1.status
+FROM user_constraints t1
+WHERE t1.table_name = 'TCONS'
+;
+--OWNER                          CONSTRAINT_NAME                C STATUS  
+-------------------------------- ------------------------------ - --------
+--SCOTT                          TCONS_NAME_NN                  C ENABLED 
+--SCOTT                          TCONS_JUMIN_NN                 C ENABLED 
+--SCOTT                          TCONS_AREA_CK                  C ENABLED 
+--SCOTT                          TCONS_NO_PK                    P ENABLED 
+--SCOTT                          TCONS_JUMIN_UK                 U ENABLED 
+--SCOTT                          TCONS_DEPTNO_FK                R ENABLED 
+--SCOTT                          TCONS_NAME_FK                  R ENABLED 
+
+ALTER TABLE tcons
+DISABLE VALIDATE CONSTRAINT tcons_jumin_uk
+;
+
+--OWNER                          CONSTRAINT_NAME                C STATUS  
+-------------------------------- ------------------------------ - --------
+--SCOTT                          TCONS_NAME_NN                  C ENABLED 
+--SCOTT                          TCONS_JUMIN_NN                 C ENABLED 
+--SCOTT                          TCONS_AREA_CK                  C ENABLED 
+--SCOTT                          TCONS_NO_PK                    P ENABLED 
+--SCOTT                          TCONS_JUMIN_UK                 U DISABLED
+--SCOTT                          TCONS_DEPTNO_FK                R ENABLED 
+--SCOTT                          TCONS_NAME_FK                  R ENABLED 
+
+ALTER TABLE tcons
+ENABLE VALIDATE CONSTRAINT tcons_jumin_uk
+;
+
+--OWNER                          CONSTRAINT_NAME                C STATUS  
+-------------------------------- ------------------------------ - --------
+--SCOTT                          TCONS_NAME_NN                  C ENABLED 
+--SCOTT                          TCONS_JUMIN_NN                 C ENABLED 
+--SCOTT                          TCONS_AREA_CK                  C ENABLED 
+--SCOTT                          TCONS_NO_PK                    P ENABLED 
+--SCOTT                          TCONS_JUMIN_UK                 U ENABLED 
+--SCOTT                          TCONS_DEPTNO_FK                R ENABLED 
+--SCOTT                          TCONS_NAME_FK                  R ENABLED
+
+--4
+ALTER TABLE tcons
+ENABLE VALIDATE CONSTRAINT tcons_jumin_uk
+EXCEPTIONS INTO exceptions
+;
+
+--5
+SELECT t1.owner,
+	t1.table_name,
+	t2.column_name,
+	t1.constraint_name
+FROM user_constraints t1, user_cons_columns t2
+WHERE t1.table_name = 'EMP'
+AND t1.constraint_name = t2.constraint_name
+AND t1.constraint_type IN ('P','U','C')
+;
 
 
 
