@@ -280,7 +280,7 @@ maxlength 속성과는 달리 입력 필드가 한 번에 보여줄 수 있는 �
 .explane {color : #00838f}
 <div class = "explane">
 
-			TCP_HTML_26~30.html
+			TCP_HTML_26~29.html
 
 XHTML(EXtensible HTML)
 XHTML 문서는 하나의 XML 문서로서 문법적으로 정확하므로, 표준 XML 라이브러리를 이용한 자동화된 처리가 가능해짐

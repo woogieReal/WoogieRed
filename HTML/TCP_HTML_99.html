@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML_SUMMARY</title>
+    <link rel="stylesheet" href="/style_html.css">
+  </head>
+  <body>
+    <ul class="navi">
+      <li><a href="http://www.tcpschool.com/html/intro" target="_blank">TCP_HTML</a></li>
+      <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=lucky3luck&logNo=220571294988&proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank">색상표</a></li>
+      <li style="float:right;"><a href=""></a></li>
+      <li style="float:right;"><a href=""></a></li>
+    </ul>
+    <nav>
+      <div class = "index">
+        <a name = "인덱스"><h3>목차</h3></a>
+        <ol>
+          <a href="#텍스트요소&기본요소"><li>텍스트요소&기본요소</li></a><hr>
+          <a href="#리스트&테이블"><li>리스트&테이블</li></a><hr>
+          <a href="#form요소"><li>form요소</li></a><hr>
+          <a href="#스타일시트"><li>스타일시트</li></a><hr>
+          <a href="#XHTML&HTML5"><li>XHTML&HTML5</li></a><hr>
+          <a href="#의미요소"><li>의미요소</li></a><hr>
+          <a href="#input요소"><li>input요소</li></a><hr>
+          <a href="#input요소의타입"><li>input요소의타입</li></a><hr>
+          <a href="#input요소의속성"><li>input요소의속성</li></a><hr>
+          <a href="#멀티미디어"><li>멀티미디어</li></a><hr>
+          <a href="#canvas"><li>canvas</li></a><hr>
+          <a href="#svg"><li>svg</li></a><hr>
+          <a href="#canvasVSsvg"><li>canvas VS svg</li></a><hr>
+        </ol>
+      </div>
+    </nav>
+    <pre>
+<a name="텍스트요소&기본요소"><h4>텍스트요소 & 기본요소</h4></a><hr>
+&lt;pre&gt; (preformatted text)
+작성한 텍스트 서식을 그대로 표현
+텍스트의 모든 띄어쓰기와 줄 나누기는 웹 브라우저에 그대로 표현
+텍스트의 글꼴은 고정폭 글꼴(fixed-width font)로 자동변환
+
+&lt;hr&gt; (horizontal rule)
+empty tag
+수평 가로 구분선
+
+&lt;strong&gt; 굵은글
+&lt;em&gt; 이탤릭체
+&lt;mark&gt; 하이라이트
+&lt;del&gt; 취소선
+&lt;ins&gt; 밑줄
+
+&lt;sup&gt; (superscript) 위첨자
+&lt;sub&gt; (subscript) 아래첨자
+
+&lt;q&gt; 짧은 인용구 " " 처리됨
+&lt;blockquote&gt; 긴 인용구. 들여쓰기 됨
+&lt;address&gt; 주소표현. 이탤릭체가 적용됨
+
+&lt;태그 style = "background-color:#bbdefb"&gt; 배경색 지정
+&lt;태그 style = "color:blue"&gt; 글자색 지정
+&lt;태그 style = "font-size:150%"&gt; 글씨크기 지정
+&lt;태그 style = "text-align:center"&gt; 문단정렬
+&lt;태그 style = "background-color:orange; color:blue; font-size:120%; text-align:center"&gt;
+속성간의 구분은 세미콜론(;)으로
+
+&lt;style&gt;
+  body {background-color: lightblue;}
+  h1 {color: lightred}
+  p {background-color: #7986cb}
+&lt;/style&gt;
+스타일 태그 안에 공통으로 지정할 수 있다.
+
+&lt;body background="/examples/images/img_background_good.png"&gt;
+배경이미지 지정
+배경으로 이미지를 사용하면 웹 페이지의 로딩시간이 증가
+보통은 작은 사이즈의 이미지를 패턴(pattern)으로 만들어 배경 이미지로 반복 설정
+
+&lt;a href = "https://www.naver.com/"&gt;네이버&lt;/a&gt; 링크
+&lt;a href = "https://www.naver.com/" target = "_blank"&gt; 새탭에서
+
+HTML 링크상태
+link	아직 한 번도 방문한 적이 없는 상태   파란색
+visited	한 번이라도 방문한 적이 있는 상태    보라색
+hover	링크 위에 마우스를 올려놓은 상태     없음
+active	링크를 마우스로 누르고 있는 상태     빨간색
+&lt;style&gt;
+    a:link    { color: teal; }
+    a:visited { color: maroon; text-decoration: none }
+    a:hover   { color: yellow; text-decoration: none }
+    a:active  { color: red; text-decoration: none }
+&lt;/style&gt;
+
+&lt;a name = "top"&gt; a &lt;/a&gt;
+....
+&lt;a href = "#top"&gt; b &lt;/a&gt;
+북마크 이동 name으로 지정한 곳으로 이동
+
+&lt;img src = "/20201126_133453.jpg" alt = "이미지가 안나오면 나오는 문장"
+    style = "width:900px; height:480px; border:3px solid black"&gt;
+이미지 삽입 및 크기와 테두리 지정
+
+&lt;a href = "#top"&gt;
+    &lt;img src = "/20201126_133324.jpg" alt = "대체 문장"&gt;
+&lt;/a&gt;
+이미지에 링크를 지정할 수도 있음
+
+&lt;img src = "/naver.png" alt = "네이버" usemap = "#vending"&gt;
+  &lt;map name = "vending"&gt;
+    &lt;area shape = "rect" coords = "50,50,150,150" alt = "네이버"
+    href = "https://www.naver.com/" target = "_blank"&gt;
+  &lt;/map&gt;
+&lt;img src = "/google.png" alt = "구글" usemap = "#google"&gt;
+  &lt;map name = "google"&gt;
+    &lt;area shape = "circle" coords = "100,100,50" alt = "구글"
+    href = "https://www.google.co.kr/" target = "_blank"&gt;
+  &lt;/map&gt;
+
+이미지의 일부를 클릭할 수 있도록 만들어서 버튼처럼 사용
+usemap 속성을 &lt;map&gt;태그의 name 속성과 연결
+shape = "rect" 의 경우 coords = "x1,y1,x2,y2"
+사각형의 왼쪽 위 모서리(top-left corner)와 오른쪽 아래 모서리(bottom-right corner)의 좌표를 명시함.
+shape = "circle" 의 경우 coords = "x,y,반지름"
+원의 중심점 좌표와 반지름을 명시함.
+<div class="code">
+  &lt;!doctype html&gt;
+  &lt;html lang="ko"&gt;
+   &lt;head&gt;
+     &lt;meta charset="utf-8"&gt;
+     &lt;title&gt;TCP_HTML_1~16&lt;/title&gt;
+     &lt;style&gt;
+      body {background-color: white}
+      h1 {color: lightred}
+      p {background-color: #7986cb}
+      a:hover {color:orange}
+     &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+    &lt;h1&gt;&lt;a name="top" href = "#bottom"&gt;a name = "top"로 지정되었습니다.&lt;/a&gt;&lt;/h1&gt;
+    &lt;pre&gt;
+      pre 태그를 사용하면
+      br 태그를 사용하지 않아도
+      띄어쓰기와
+      줄바꿈이 됩니다.
+    &lt;/pre&gt;
+    &lt;hr&gt;
+    &lt;h4"&gt;hr태그는 빈태그이며 수평가로줄을 출력합니다.&lt;/h4&gt;
+    &lt;q&gt;이 문장은 큰따옴표("")로 묶입니다.&lt;/q&gt;
+    &lt;h3&gt;blockquote&lt;/h3&gt;
+    &lt;blockquote&gt;
+      비교적 긴문장을 인용할때는 &lt;br&gt;
+      이렇게 blockquote 태그를 사용하면 &lt;br&gt;
+      보기 좋게 들여쓰기 처리됩니다.
+    &lt;/blockquote&gt;
+    &lt;address&gt;
+      인천광역시 서구 가정로 387 &lt;br&gt;
+      이탤릭체 처리
+    &lt;/address&gt;
+    &lt;!-- 주석처리 방법, ctrl + /, 이클립스와 같음 --&gt;
+    &lt;p style = "background-color:#bbdefb"&gt;
+      style = "background-color:색깔"로 배경색을 줄 수 있습니다.
+    &lt;/p&gt;
+    &lt;p style = "color:blue"&gt;
+      style = "color:blue"로 글자색을 줄 수 있습니다.
+    &lt;/p&gt;
+    &lt;p style = "font-size:150%"&gt;
+      style = "font-size:150%"와 같이 글씨 크기를 변경할 수 있습니다.
+    &lt;/p&gt;
+    &lt;h2 style = "text-align:center"&gt;
+      &lt;pre&gt;
+        style = "text-align:center"로
+        문단정렬을 할 수 있습니다.
+      &lt;/pre&gt;
+    &lt;/h2&gt;
+    &lt;h1 style = "background-color:orange; color:blue; font-size:120%; text-align:center"&gt;
+      &lt;pre&gt;
+        태그 하나에 여러가지 속성을 줄 수 있습니다.
+        큰 따옴표 안에 전부 작성하며
+        속성간에는 ;(세미콜론)으로 구분합니다.
+      &lt;/pre&gt;
+    &lt;/h1&gt;
+    &lt;a href = "https://www.naver.com/"&gt;네이버&lt;/a&gt;
+    &lt;a href = "https://www.naver.com/" target = "_blank"&gt;blank는 누르면 새탭에&lt;/a&gt;
+    &lt;a name = "bottom" href = "#top"&gt;&lt;p&gt;
+      a name = "top"로 지정한 곳으로 갑니다.
+    &lt;/p&gt;&lt;/a&gt;
+    &lt;img src = "/img/20201126_133453.jpg" alt = "이미지가 안나오면 나오는 문장"
+    style = "width:400px; height:240px; border:5px solid red"&gt;
+    &lt;a href = "#top"&gt;
+      &lt;img src = "/img/20201126_133324.jpg" alt = "대체 문장"
+      style = "width:240px; height:400px; border:5px solid blue"&gt;
+    &lt;/a&gt;
+    &lt;img src = "/img/naver.png" alt = "네이버" usemap = "#vending"&gt;
+    &lt;map name = "vending"&gt;
+      &lt;area shape = "rect" coords = "50,50,150,150" alt = "네이버"
+      href = "https://www.naver.com/" target = "_blank"&gt;
+    &lt;/map&gt;
+    &lt;img src = "/img/google.png" alt = "구글" usemap = "#google"&gt;
+    &lt;map name = "google"&gt;
+      &lt;area shape = "circle" coords = "100,100,65" alt = "구글"
+      href = "https://www.google.co.kr/" target = "_blank"&gt;
+    &lt;/map&gt;
+   &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_1~16.html" width="100%" height="500px"></object>
+<a name="리스트&테이블"><h4>리스트 & 테이블</h4></a><hr>
+&lt;ul style="list-style-type:square"&gt; unordered list
+- disc : 검정색 작은 원 모양 (기본설정)
+- circle : 흰색 작은 원 모양
+- square : 사각형 모양
+
+&lt;ol style="list-style-type:upper-roman"&gt; ordered list
+- decimal : 숫자 (기본설정)
+- upper-alpha : 영문 대문자
+- lower-alpha : 영문 소문자
+- upper-roman : 로마 숫자 대문자
+- lower-roman : 로마 숫자 소문자
+
+&lt;dl&gt; discription list
+&lt;dt&gt; 정의할 객체
+&lt;dd&gt; 정의 내용
+
+&lt;table style="width:50%"&gt; width 표 크기 지정
+&lt;tr&gt; 열구분
+&lt;th&gt; 각 열의 제목, 굵은글씨+중앙정렬
+&lt;td&gt; 데이터, 왼쪽정렬
+
+&lt;style&gt;
+   table, th, td {border:1px solid black; border-collapse:collapse}
+&lt;/style&gt;
+테이블 테두리 두르기
+
+&lt;td colspan="2"&gt;
+가로행 통합
+
+&lt;td rowspan="2"&gt;
+세로열 통합
+
+&lt;caption&gt;테이블이름&lt;/caption&gt;
+테이블 상단에 제목이나 짧은 설명을 붙일 수 있음
+<div class="code">
+  &lt;!doctype html&gt;
+  &lt;html lang="ko"&gt;
+   &lt;head&gt;
+     &lt;meta charset="utf-8"&gt;
+     &lt;title&gt;TCP_HTML_17~18&lt;/title&gt;
+     &lt;style&gt;
+       table, th, td {border:1px solid black; border-collapse:collapse}
+     &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+     &lt;h2&gt;ul:Unordered_List&lt;/h2&gt;
+     &lt;ul style="list-style-type:square"&gt;
+       &lt;li&gt;사과&lt;/li&gt;
+       &lt;li&gt;멜론&lt;/li&gt;
+       &lt;li&gt;바나나&lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;h2&gt;ol:Ordered_List&lt;/h2&gt;
+     &lt;ol style="list-style-type:upper-roman"&gt;
+       &lt;li&gt;초등학교&lt;/li&gt;
+       &lt;li&gt;중학교&lt;/li&gt;
+       &lt;li&gt;대학교&lt;/li&gt;
+     &lt;/ol&gt;
+     &lt;h2&gt;dl:Description_List&lt;/h2&gt;
+     &lt;dl&gt;
+       &lt;dt style="font-size:130%"&gt;유미연&lt;/dt&gt;
+       &lt;dd&gt;
+         유미연은 김포에 사는 31세 여성이다.&lt;br&gt;
+         별명은 우미다.
+       &lt;/dd&gt;
+     &lt;/dl&gt;
+     &lt;h2&gt;Table&lt;/h2&gt;
+     &lt;table style="width:50%"&gt;
+       &lt;tr style="background-color:lightgrey"&gt;
+         &lt;th&gt;동물&lt;/th&gt;
+         &lt;th&gt;식물&lt;/th&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td rowspan="2"&gt;개냥이&lt;/td&gt;
+         &lt;td&gt;해바라기&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td&gt;소나무&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td colspan="2"&gt;소&lt;/td&gt;
+       &lt;/tr&gt;
+     &lt;/table&gt;
+     &lt;br&gt;
+     &lt;h2&gt;복잡한 테이블&lt;/h2&gt;
+     &lt;table style="width:80%"&gt;
+       &lt;caption&gt;
+         동물, 식물, 무생물
+       &lt;/caption&gt;
+       &lt;tr&gt;
+        &lt;td colspan="3"&gt;복잡한 테이블&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td colspan="3"&gt;
+           colspan과 row span을 이용한 복잡한 테이블 구성
+         &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;th&gt;동물&lt;/th&gt;
+         &lt;th&gt;식물&lt;/th&gt;
+         &lt;th&gt;무생물&lt;/th&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td&gt;개&lt;/td&gt;
+         &lt;td&gt;소나무&lt;/td&gt;
+         &lt;td&gt;돌&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td&gt;고양이&lt;/td&gt;
+         &lt;td&gt;대나무&lt;/td&gt;
+         &lt;td&gt;바위&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+         &lt;td&gt;소&lt;/td&gt;
+         &lt;td&gt;장미&lt;/td&gt;
+         &lt;td&gt;막대기&lt;/td&gt;
+       &lt;/tr&gt;
+     &lt;/table&gt;
+   &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_17~18.html" width="100%" height="400px"></object>
+<a name="블록/인라인&iframe"><h4>블록/인라인 & iframe</h4></a><hr>
+블록(block) 타입의 요소
+언제나 새로운 라인(line)에서 시작하며, 해당 라인의 모든 너비를 차지
+&lt;p&gt;, &lt;div&gt;, &lt;h&gt;, &lt;ul&gt;, &lt;ol&gt;, &lt;form&gt;
+
+&lt;div&gt;
+다른 HTML 요소들을 하나로 묶는 데 자주 사용되는 대표적인 블록(block) 요소
+주로 여러 요소들의 스타일을 한 번에 적용하기 위해 사용
+
+인라인(inline) 타입의 요소
+새로운 라인(line)에서 시작하지 않음
+요소의 너비도 해당 라인 전체가 아닌 해당 HTML 요소의 내용(content)만큼만 차지
+&lt;span&gt;, &lt;a&gt;, &lt;img&gt;
+
+&lt;span&gt;
+텍스트(text)의 특정 부분을 묶는 데 자주 사용되는 인라인(inline) 요소
+주로 텍스트의 특정 부분에 따로 스타일을 적용하기 위해 사용
+
+&lt;iframe src="http://www.tcpschool.com/html/html_space_framesIframes"
+    style="width:600px; height:300px" border: 3px dashed maroon&gt;
+해당 웹 페이지 안에 어떠한 제한 없이 또 다른 하나의 웹 페이지를 삽입
+border: 3px dashed maroon : 테두리 점선
+
+&lt;iframe src="https://www.naver.com" name="frame_target"&gt;
+iframe 객체에 name을 설정
+&lt;a href="https://google.co.kr" target="frame_target"&gt; 구글로 이동
+기존의 iframe의 연결된 페이지를 네이버에서 구글로 변경
+<div class="code">
+  &lt;!doctype html&gt;
+  &lt;html lang="ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_19~20&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div style="background-color:lightgrey; color:red; text-align:center"&gt;
+        &lt;h2&gt;div요소를 이용한 스타일 적용&lt;/h2&gt;
+        &lt;p&gt;
+          이렇게 div요소로 여러 요소들을 묶은 다음에 &lt;br&gt;
+          style속성과 클래스 등을 이용하여 &lt;br&gt;
+          한 번에 스타일을 적용할 수 있습니다. &lt;br&gt;
+          &lt;span style="color:blue"&gt;
+            span요소로 텍스트의 일부분만을 따로 묶어서 &lt;br&gt;
+            스타일을 적용할 수도 있습니다.
+          &lt;/span&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;h2&gt;iframe을 이용하여 또 다른 하나의 웹 페이지를 삽입&lt;/h2&gt;
+      &lt;iframe src="http://www.tcpschool.com/html/html_space_framesIframes"
+      name="frame_target"
+      style="width:600px; height:300px; border: 3px dashed maroon"&gt;
+      &lt;/iframe&gt;
+      &lt;p&gt;
+        &lt;a href="http://www.tcpschool.com/html/intro"
+        target="frame_target"&gt;HTML 시작페이지로 이동&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_19~20.html" width="100%"></object>
+<a name="form요소"><h4>form요소</h4></a><hr>
+form 요소
+form 요소를 사용하여 사용자로부터 입력을 받을 수 있음
+사용자가 입력한 데이터를 서버로 보낼 때에도 form 요소를 사용
+&lt;form action="처리할페이지주소" method="get|post"&gt;&lt;/form&gt;
+action 속성은 입력받은 데이터를 처리할 서버 상의 스크립트 파일의 주소를 명시
+method 속성은 입력받은 데이터를 서버에 전달할 방식을 명시
+
+method 속성
+요소의 전달 방식은 GET 방식과 POST 방식으로 나눠짐
+
+GET 방식은 주소에 데이터(data)를 추가하여 전달하는 방식
+데이터가 주소 입력창에 그대로 나타나며, 전송할 수 있는 데이터의 크기 또한 제한적
+검색 엔진의 쿼리(query)와 같이 크기가 작고 중요도가 낮은 정보를 보낼 때 주로 사용
+
+POST 방식은 데이터(data)를 별도로 첨부하여 전달하는 방식
+데이터가 외부에 드러나지 않으며, 전송할 수 있는 데이터의 크기 또한 제한이 없음
+보안성 및 활용성이 GET 방식보다 좋음
+
+텍스트 입력
+&lt;form action = "https://google.co.kr/" method="get"&gt;
+      검색할 내용을 입력하세요 :
+      &lt;input type = "text" name = "search"&gt;
+&lt;/form&gt;
+&lt;input&gt;태그의 type 속성값을 "text"로 설정하면, 사용자로부터 한 줄의 텍스트를 입력받을 수 있음
+
+비밀번호 입력
+비밀번호 : &lt;input type = "password" name = "password"&gt;
+type 속성값을 "password"로 설정하면, 사용자로부터 비밀번호를 입력받을 수 있음
+
+라디오 버튼
+type 속성값을 "radio"로 설정
+반드시 모든 input 요소의 name 속성이 같아야함
+&lt;input type = "radio" name = "hobby" value = "exercise" checked &gt; exercise
+&lt;input type = "radio" name = "hobby" value = "youtube"&gt; movie
+&lt;input type = "radio" name = "hobby" value = "game"&gt; game &lt;br&gt;
+checked를 입력하면 디폴트값 지정
+
+체크박스
+type 속성값을 "checkbox"로 설정
+모든 input 요소의 name 속성이 같아야함
+&lt;input type = "checkbox" name = "hobby" value = "exercise"&gt; 운동
+&lt;input type = "checkbox" name = "hobby" value = "movie"&gt; 영화감상
+&lt;input type = "checkbox" name = "hobby" value = "war" disabled&gt; 전쟁 &lt;br&gt;
+disabled 속성을 이용하여 선택하지 못하도록 설정가능
+
+파일 선택
+ type 속성값을 "file"로 설정
+&lt;input type = "file" name = "upload_picture" accept = "image/*"&gt;
+accept 속성을 지정하여 파일의 확장자 및 종류를 명시가능
+
+선택 입력
+콤보박스 생성
+&lt;select name = "graduate"&gt;
+	&lt;option value = "middle_school"&gt; 중학교 &lt;/option&gt;
+	&lt;option value = "high_school"&gt; 고등학교 &lt;/option&gt;
+	&lt;option value = "college" selected&gt; 대학교 &lt;/option&gt;
+&lt;/select&gt;
+selected 속성을 이용하여 디폴트값 지정
+
+텍스트박스
+&lt;textarea name = "introduce" rows="5" cols="30"&gt;&lt;/textarea&gt;
+
+버튼
+&lt;button type = "button" onclick = "alert"&gt;버튼&lt;/button&gt;
+
+전송 버튼
+ type 속성값을 "submit"으로 설정
+사용자로부터 입력받은 데이터(data)를 서버의 폼 핸들러로 제출하는 버튼을 만들 수 있음.
+폼 핸들러(form-handler)란 입력받은 데이터를 처리하기 위한 서버 측의 웹 페이지
+form 요소의 action 속성을 이용하여 명시
+&lt;input type = "submit" value = "등록"&gt;
+
+필드셋(fieldset)
+form 요소와 관련된 데이터들을 하나로 묶어주는 역할
+legend 요소는 fieldset 요소의 제목을 나타냄
+&lt;form action = "https://google.co.kr/" method="post"&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;입력양식&lt;/legend&gt;
+	.........
+         &lt;/fieldset&gt;
+&lt;/form&gt;
+
+value 속성 & readonly 속성
+&lt;input type = "text" name = "additional" value = "입력불가" readonly&gt;
+value로 기본값 지정
+readonly로 수정할 수는 없도록 설정
+(disabled 속성과 다른 점은 전송 버튼(submit)을 누르면 초깃값이 서버로 전송된다는 점)
+
+maxlength
+입력할 수 있는 문자의 최대 길이(length)를 설정
+
+size
+입력 필드에 보여지는 input 요소의 크기(size)를 설정
+maxlength 속성과는 달리 입력 필드가 한 번에 보여줄 수 있는 문자의 최대 개수만을 의미합니다.
+<div class="code">
+  &lt;!doctype html&gt;
+  &lt;html lang="ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_21~23&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action = "https://google.co.kr/" method="post"&gt;
+          &lt;fieldset&gt;
+            &lt;legend&gt;입력양식&lt;/legend&gt;
+            검색할 내용을 입력하세요 : &lt;input type = "text" name = "search"&gt; &lt;br&gt;
+            비밀번호 : &lt;input type = "password" name = "password"&gt; &lt;br&gt;
+            성별 : &lt;input type = "radio" name = "gender" value = "man" checked&gt; 남자
+                   &lt;input type = "radio" name = "gender" value = "woman"&gt; 여자 &lt;br&gt;
+            취미 : &lt;input type = "checkbox" name = "hobby" value = "exercise"&gt; 운동
+                   &lt;input type = "checkbox" name = "hobby" value = "movie"&gt; 영화감상
+                   &lt;input type = "checkbox" name = "hobby" value = "game"&gt; 게임
+                   &lt;input type = "checkbox" name = "hobby" value = "war" disabled&gt; 전쟁 &lt;br&gt;
+            사진 : &lt;input type = "file" name = "upload_picture" accept = "image/*"&gt; &lt;br&gt;
+            학력 : &lt;select name = "graduate"&gt;
+                      &lt;option value = "middle_school"&gt; 중학교 &lt;/option&gt;
+                      &lt;option value = "high_school"&gt; 고등학교 &lt;/option&gt;
+                      &lt;option value = "college" selected&gt; 대학교 &lt;/option&gt;
+                   &lt;/select&gt; &lt;br&gt;
+            자기소개 : &lt;br&gt; &lt;textarea name = "introduce" rows="5" cols="30" maxlength="10"&gt;&lt;/textarea&gt; &lt;br&gt;
+            추가 : &lt;br&gt; &lt;input type = "text" name = "additional" value = "입력불가" readonly&gt; &lt;br&gt;
+            버튼 : &lt;button type = "button" onclick = "alert"&gt;버튼&lt;/button&gt; &lt;br&gt;
+            전송 : &lt;input type = "submit" value = "등록"&gt;
+          &lt;/fieldset&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_21~23.html" width="100%" height="400px"></object>
+<a name="스타일시트"><h4>스타일시트</h4></a><hr>
+스타일 시트(style sheet)
+&lt;head&gt; 태그내에 &lt;link rel = "stylesheet" href = "/스타일시트 이름.css"&gt; 작성
+
+스타일 적용의 우선순위
+1. 인라인 스타일
+2. 내부 / 외부 스타일 시트
+3. 웹 브라우저 기본 스타일
+
+아이디(id) 선택자
+특정 아이디 이름을 가지는 요소만을 선택해 CSS 적용
+&lt;style&gt;
+      #unordered {color : red}
+&lt;/style&gt;
+	......
+     &lt;ol id = "unordered"&gt;
+
+클래스(class) 선택자
+특정 집단(class)의 여러 요소를 한 번에 선택할 때 사용
+.explane {color : #00838f}
+&lt;div class = "explane"&gt;
+<div class="code">
+  &lt;!doctype html&gt;
+  &lt;html lang="ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_24&lt;/title&gt;
+      &lt;link rel = "stylesheet" href = "/style.css"&gt;
+      &lt;style&gt;
+        #ordered {color : red}
+        .explane {color : #00838f}
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;Style Sheet 사용&lt;/h2&gt;
+      &lt;ol id = "ordered"&gt;
+        &lt;li&gt;인라인 스타일&lt;/li&gt;
+        &lt;li&gt;내부/외부 스타일 시트&lt;/li&gt;
+        &lt;li&gt;웹 브라우저 기본 스타일&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;div class = "explane"&gt;
+        클래스 선택자는 특정 집단의 여러 요소를 한 번에 선택할 때 사용합니다.
+      &lt;/div&gt;
+      &lt;div class = "explane"&gt;
+        이러한 특정 집단을 클래스(class)라고 하며, &lt;br&gt;
+        동일한 클래스 이름을 가지는 요소들을 모두 선택해 줍니다.
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_24.html" width="100%"></object>
+<a name="XHTML&HTML5"><h4>XHTML&HTML5</h4></a><hr>
+XHTML(EXtensible HTML)
+XHTML 문서는 하나의 XML 문서로서 문법적으로 정확하므로, 표준 XML 라이브러리를 이용한 자동화된 처리가 가능해짐
+XHTML에서의 변경 사항
+
+문서의 구조적 측면
+- XHTML DOCTYPE을 반드시 명시해야 합니다.
+- &lt;html&gt;태그의 xmlns 속성을 반드시 명시해야 합니다.
+- &lt;html&gt;, &lt;head&gt;, &lt;title&gt;, &lt;body&gt;태그를 반드시 사용해야 합니다.
+
+문서의 요소적 측면
+- 모든 태그는 반드시 닫혀야 합니다.
+- XHTML 문서는 반드시 하나의 root 요소를 포함해야 합니다.
+
+문서의 속성적 측면
+- 속성값 생략이 없어졌기 때문에 반드시 속성값을 명시해야 합니다.
+
+1. 종료 태그가 없는 빈 태그(empty tag)는 반드시 끝에 공백과 함께 슬래시(/)를 붙여야 합니다.
+XHTML : &lt;hr /&gt;
+
+4. &lt;img&gt;태그에는 반드시 alt 속성이 기술되어야 합니다.
+&lt;img src="alternative.png" alt="explanation" /&gt;
+
+8. 속성값 생략이 없어졌으므로, 반드시 속성값을 명시해야 합니다.
+XHTML : &lt;textarea readonly="readonly"&gt;읽기만 가능합니다.&lt;/textarea&gt;
+
+HTML 문서를 XHTML 문서로 변환하는 방법
+1. 첫줄에 다음 코드를 추가합니다.
+    &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+2. xmlns 속성을 추가합니다.
+    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+3. 모든 태그 이름을 소문자로 바꿔줍니다.
+4. 모든 빈 태그를 닫아줍니다.
+5. 모든 속성 이름을 소문자로 바꿔줍니다.
+6. 모든 속성값을 따옴표로 둘러쌉니다.
+<a name="의미요소"><h4>의미요소</h4></a><hr>
+의미 요소(semantic element)
+요소가 자기 스스로 브라우저와 개발자 모두에게 자신이 사용된 의미를 명확히 전달해 주는 요소
+
+HTML5에서 추가된 의미 요소
+
+header 요소
+도입부에 해당하는 콘텐츠를 가지고 있는 부분
+한 문서 내에 여러 개의 header 요소가 존재할 수 있음
+(ex. section 태그 안에도 section 부분에 대한 header가 있을 수 있음)
+
+nav 요소
+HTML 문서 사이를 탐색할 수 있는 링크의 집합을 정의
+
+section 요소
+섹션이란 제목을 가지고 있으며, HTML 문서의 전체적인 내용과 관련이 있는 콘텐츠들의 집합
+
+article 요소
+HTML 문서에서 독립적인 하나의 기사(article) 부분을 정의
+내용은 그 자체만으로도 이해가 되어야 하며, 웹 사이트의 나머지 부분과는 별도로 읽을 수 있어야 합니다.
+
+section요소와 article요소의 차이
+section 요소는 HTML 문서의 전체적인 내용에 포함되며, article 요소는 문서의 전체적인 내용과는 별도의 독립적인 내용이 들어갈 때 사용
+
+figure 요소와 figcaption 요소
+figure 요소는 HTML 문서에서 그래픽과 비디오 등의 독립적인 콘텐츠(content)를 정의할 때 사용
+figcaption 요소는 위와 같은 figure 요소를 위한 캡션을 정의할 때 사용합니다.
+
+footer 요소
+일반적으로 사이트의 작성자나 그에 따른 저작권 정보, 연락처 등을 명시
+한 문서 내에 여러 개의 footer 요소가 존재할 수 있습니다.
+<div class="code">
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  &lt;html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_30&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;h2&gt;전체 문서에 대한 header입니다.&lt;/h2&gt;
+      &lt;/header&gt;&lt;hr /&gt;
+      &lt;nav&gt;
+        &lt;header&gt;
+          &lt;dl&gt;
+            &lt;dt style = "font-size:150%"&gt;nav요소&lt;/dt&gt;
+            &lt;dd&gt;
+              nav 요소는 HTML 문서 사이를 탐색할 수 있는 링크의 집합을 정의합니다. &lt;br /&gt;
+              nav 요소는 링크의 커다란 집합을 의미하지만, &lt;br /&gt;
+              문서 내의 모든 링크가 nav 요소에 포함되는 것은 아닙니다.
+            &lt;/dd&gt;
+          &lt;/dl&gt;
+        &lt;/header&gt;
+        &lt;a href = "https://naver.com/"&gt;네이버&lt;/a&gt; |
+        &lt;a href = "https://google.com/"&gt;구글&lt;/a&gt; |
+        &lt;a href = "https://www.daum.net/"&gt;다음&lt;/a&gt;
+      &lt;/nav&gt;&lt;hr /&gt;
+      &lt;section&gt;
+        &lt;h2&gt;section 영역입니다.&lt;/h2&gt;
+        &lt;p&gt;
+          섹션(section)이란 제목을 가지고 있으며, &lt;br /&gt;
+          HTML 문서의 전체적인 내용과 관련이 있는 콘텐츠들의 집합을 의미합니다.
+        &lt;/p&gt;
+      &lt;/section&gt;&lt;hr /&gt;
+      &lt;article style = "color : red"&gt;
+        &lt;h2&gt;article 영역입니다.&lt;/h2&gt;
+        &lt;p&gt;
+          article 요소는 HTML 문서에서 독립적인 하나의 기사(article) 부분을 정의합니다. &lt;br /&gt;
+          article 요소의 내용은 그 자체만으로도 이해가 되어야 하며, &lt;br /&gt;
+          웹 사이트의 나머지 부분과는 별도로 읽을 수 있어야 합니다.
+        &lt;/p&gt;
+      &lt;/article&gt;&lt;hr /&gt;
+      &lt;figure&gt;
+        &lt;header&gt;
+          &lt;h2&gt;figure영역 입니다.&lt;/h2&gt;
+          &lt;p&gt;
+             HTML 문서에서 그래픽과 비디오 등의 독립적인 콘텐츠를 정의할 때 사용합니다.
+          &lt;/p&gt;
+        &lt;/header&gt;
+        &lt;img src = "/img/html_layout.png" alt = "의미요소" style = "width:350px; height:350px"/&gt;
+        &lt;figcaption&gt;
+          [그림1.위의 그림은 의미요소의 배치에 대한 그림]
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;&lt;hr /&gt;
+      &lt;footer&gt;
+        &lt;p&gt;전체 문서에 대한 footer 입니다. &lt;/p&gt;
+        &lt;p&gt;Copyright 2021. 김재욱 all rights reserved. &lt;/p&gt;
+      &lt;/footer&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_30.html" width="100%" height="500px"></object>
+<a name="input요소"><h4>input요소</h4></a><hr>
+HTML5에서 추가된 Input 요소
+
+datalist 요소
+input 요소에 대해 미리 정의된 옵션 리스트를 명시해 주는 요소입니다.
+사용자는 텍스트를 바로 입력해도 되고, 드롭다운 메뉴에서 미리 정의한 옵션 중의 하나를 골라도됨
+input 요소의 list 속성값이 datalist 요소의 id 속성값과 반드시 일치해야함
+&lt;input list = "lectures" name = "list" /&gt;
+        &lt;datalist id = "lectures"&gt;
+            &lt;option value = "HTML"&gt;&lt;/option&gt;
+            &lt;option value = "CSS"&gt;&lt;/option&gt;
+
+keygen 요소
+사용자가 인증할 수 있는 안전한 방법을 제공
+사용자가 입력한 데이터를 암호화하여 서버로 전송
+이때 생성된 키(key)를 가지고 서버는 해당 사용자의 인증을 수행
+keygen 요소는 익스플로러에서 지원하지 않습니다.
+&lt;keygen name = "security" /&gt;
+
+output 요소
+스크립트 등으로 실행된 계산의 결과를 바로 표시해주는 요소입니다.
+<div class="code">
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  &lt;html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_31&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;h2&gt;HTML5에서 추가된 다양한 타입의 input 요소&lt;/h2&gt;
+        &lt;ol&gt;
+          &lt;li&gt;datalist 요소&lt;/li&gt;
+          &lt;li&gt;keygen 요소&lt;/li&gt;
+          &lt;li&gt;output 요소&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/header&gt;&lt;hr /&gt;
+      &lt;nav&gt;
+        &lt;h2&gt;TCP HTML 참고&lt;/h2&gt;
+        &lt;a href = "http://www.tcpschool.com/html/html5_element_input"
+        target = "_blank"&gt;TCP_HTML_31&lt;/a&gt;
+      &lt;/nav&gt; &lt;br /&gt;&lt;hr /&gt;
+      &lt;section&gt;
+        &lt;h2&gt;datalist 요소&lt;/h2&gt;
+        &lt;form action = "https://www.google.co.kr" method = "get"&gt;
+          &lt;input list = "lectures" name = "lecture" /&gt;
+            &lt;datalist id = "lectures"&gt;
+              &lt;option value = "HTML"&gt;&lt;/option&gt;
+              &lt;option value = "CSS"&gt;&lt;/option&gt;
+              &lt;option value = "JAVA"&gt;&lt;/option&gt;
+              &lt;option value = "JAVASCRIPT"&gt;&lt;/option&gt;
+            &lt;/datalist&gt;
+          &lt;input type = "submit" value = "전송" /&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h2&gt;keygen 요소&lt;/h2&gt;
+        &lt;form action = "https://www.naver.com/" method = "post"&gt;
+          &lt;span&gt;사용자 : &lt;/span&gt;
+          &lt;input type = "text" name = "username" /&gt;&lt;br /&gt;&lt;br /&gt;
+          &lt;span&gt;암호화방법 : keygen&lt;/span&gt;
+          &lt;keygen name = "security" /&gt;
+          &lt;input type = "submit" value = "전송" /&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h2&gt;output 요소&lt;/h2&gt;
+        &lt;form action = "https://daum.net" method = "post"
+          oninput = "total.value = parseInt(value01.value)/parseInt(value02.value)"&gt;
+          &lt;input type = "number" id = "value01" name = "input01" value = "20" /&gt;
+          /
+          (0
+          &lt;input type = "range" id = "value02" name = "input02" value = "50" min = "0"
+          max = "100" /&gt;
+          100)
+          =
+          &lt;output name = "total" for = "value01 value02"&gt;&lt;/output&gt;&lt;br /&gt;&lt;br /&gt;
+          &lt;input type = "submit" value = "전송" /&gt;
+        &lt;/form&gt;
+      &lt;/section&gt;&lt;br /&gt;&lt;hr /&gt;
+      &lt;footer&gt;
+        &lt;p&gt;Copyright 2021. 김재욱 all rights reserved. &lt;/p&gt;
+      &lt;/footer&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_31.html" width="100%" height="500px"></object>
+<a name="input요소의타입"><h4>input요소의타입</h4></a><hr>
+HTML5에서 추가된 input 요소의 타입
+
+1. 숫자 입력(number)
+type 속성값을 "number"로 설정하면, input 요소는 사용자가 숫자를 입력할 수 있도록 해줌
+입력 필드 우측에 숫자의 크기를 조절할 수 있는 상하 버튼이 생성됨
+
+2. 입력 범위 지정(range)
+type 속성값을 "range"로 설정하면, input 요소는 사용자가 일정 범위 안의 값만을 입력할 수 있도록 해줌
+
+3. 색상 입력(color)
+type 속성값을 "color"로 설정하면, input 요소는 사용자가 색상을 입력할 수 있도록 해줌
+
+4. 날짜 입력(date)
+type 속성값을 "date"로 설정하면, input 요소는 사용자가 날짜를 입력할 수 있도록 해줌
+
+5. 시간 입력(time)
+type 속성값을 "time"로 설정하면, input 요소는 사용자가 시간을 입력할 수 있도록 해줌
+
+6. 날짜와 시간 입력(datetime-local)
+type 속성값을 "datetime-local"로 설정하면, input 요소는 사용자가 날짜와 시간을 입력할 수 있도록 해줌
+
+7. 연도와 월 입력(month)
+type 속성값을 "month"로 설정하면, input 요소는 사용자가 연도와 월을 입력할 수 있도록 해줌
+
+8. 연도와 주 입력(week)
+type 속성값을 "week"로 설정하면, input 요소는 사용자가 연도와 몇 번째 주인지를 입력할 수 있도록 해줌
+
+9. 이메일 입력(email)
+ type 속성값을 "email"로 설정하면, input 요소는 사용자가 email 주소를 입력할 수 있도록 해줌
+입력한 email 주소가 유효한 email 주소인지 자동으로 검사
+
+10. URL 주소 입력(url)
+type 속성값을 "url"로 설정하면, input 요소는 사용자가 URL 주소를 입력할 수 있도록 해줌
+입력한 URL 주소가 유효한 URL 주소인지 자동으로 검사
+
+11. 전화번호 입력(tel)
+type 속성값을 "tel"로 설정하면, input 요소는 사용자가 전화번호를 입력할 수 있도록 해줌
+tel 타입은 사파리 8에서만 지원합니다.
+
+12. 검색어 입력(search)
+type 속성값을 "search"로 설정하면, input 요소는 사용자가 검색어를 입력할 수 있도록 해줌
+검색 필드는 보통의 텍스트 필드(text field)와 동일하게 동작
+다른 점은 입력 필드 우측에 입력된 검색어를 바로 삭제할 수 있는 엑스(X) 표시가 생기는 점
+<div class="code">
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  &lt;html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_32&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;h2 name = "top"&gt;HTML5에서 추가된 input 요소의 타입&lt;/h2&gt;
+        &lt;ol&gt;
+          &lt;a href = "#숫자입력"&gt;&lt;li&gt;숫자 입력(number)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#입력범위지정"&gt;&lt;li&gt;입력 범위 지정(range)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#색상입력"&gt;&lt;li&gt;색상 입력(color)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#날짜입력"&gt;&lt;li&gt;날짜 입력(date)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#시간입력"&gt;&lt;li&gt;시간 입력(time)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#날짜와시간"&gt;&lt;li&gt;날짜와 시간 입력(datetime-local)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#연도와월"&gt;&lt;li&gt;연도와 월 입력(month)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#연도와주"&gt;&lt;li&gt;연도와 주 입력(week)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#이메일"&gt;&lt;li&gt;이메일 입력(email)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#URL"&gt;&lt;li&gt;URL 주소 입력(url)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#전화번호"&gt;&lt;li&gt;전화번호 입력(tel)&lt;/li&gt;&lt;/a&gt;
+          &lt;a href = "#검색어"&gt;&lt;li&gt;검색어 입력(search)&lt;/li&gt;&lt;/a&gt;
+        &lt;/ol&gt;
+      &lt;/header&gt;&lt;hr /&gt;
+      &lt;nav&gt;
+        &lt;h2&gt;TCP HTML 32&lt;/h2&gt;
+        &lt;a href = "http://www.tcpschool.com/html/html5_element_inputtype"
+        target = "_blank"&gt;TCP_HTML_32&lt;/a&gt;
+      &lt;/nav&gt;&lt;br /&gt;&lt;hr /&gt;
+      &lt;section&gt;
+        &lt;a href = "#top" name = "숫자입력" &gt;&lt;h3&gt;1. 숫자 입력(number)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "number" name = "favnum" min = "1" max = "9" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "입력범위지정"&gt;&lt;h3&gt;2. 입력 범위 지정(range)&lt;/h3&gt;&lt;/a&gt;
+        &lt;span&gt;0 &lt;input type = "range" name = "numrange" min = "1" max = "9" /&gt; 9 &lt;/span&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "색상입력"&gt;&lt;h3&gt;3. 색상 입력(color)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "color" name = "mycolor" value = "#CC6600" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "날짜입력"&gt;&lt;h3&gt;4. 날짜 입력(date)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "date" name = "mydate" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "시간입력"&gt;&lt;h3&gt;5. 시간 입력(time)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "time" name = "mytime" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "날짜와시간"&gt;&lt;h3&gt;6. 날짜와 시간 입력(datetime-local)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "datetime-local" name = "mydatetime" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "연도와월"&gt;&lt;h3&gt;7. 연도와 월 입력(month)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "month" name = "mymonth" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "연도와주"&gt;&lt;h3&gt;8. 연도와 주 입력(week)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "week" name = "myweek" /&gt;
+        &lt;hr /&gt;
+        &lt;a href =  "#top" name = "이메일"&gt;&lt;h3&gt;9. 이메일 입력(email)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "email" name = "myemail" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "URL"&gt;&lt;h3&gt;10. URL 주소 입력(url)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "url" name = "myurl" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "전화번호"&gt;&lt;h3&gt;11. 전화번호 입력(tel)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "tel" name = "mytel" /&gt;
+        &lt;hr /&gt;
+        &lt;a href = "#top" name = "검색어"&gt;&lt;h3&gt;12. 검색어 입력(search)&lt;/h3&gt;&lt;/a&gt;
+        &lt;input type = "search" name = "mysearch" /&gt;
+        &lt;hr /&gt;
+      &lt;/section&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_32.html" width="100%" height="300px"></object>
+<a name="input요소의속성"><h4>input요소의속성</h4></a><hr>
+Input 요소의 속성
+
+1. autocomplete 속성
+속성값이 on으로 설정되면, 브라우저는 사용자가 입력하는 정보를 자동으로 저장
+이 후에 입력되는 입력값을 저장된 정보를 바탕으로 자동 완성 해줌
+- text, password, range, color, date, datetime-local, month, week, email, url, tel, search 타입
+
+2. novalidate 속성
+form 요소의 속성
+입력한 정보(data)를 전송할 때 그 정보가 유효한지 아닌지를 검사하지 않았다는 것을 명시,
+서버 측에서 따로 유효성 검사를 실시해야함
+
+3. autofocus 속성
+웹 페이지가 로드(load)될 때, 속성이 적용된 input 요소에 자동으로 포커스됨
+
+4. form 속성
+input 요소의 위치에 상관없이 포함될 form 요소를 명시
+포함할 form 요소의 id 속성값을 공백으로 연결하여, 둘 이상의 form 요소에 포함할 수도 있음
+
+5. formaction 속성
+formaction 속성은 form 요소의 action 속성을 덮어씀
+입력된 정보를 넘겨줄 서버 측 파일을 input 요소에서 바꿀 수 있게됨
+submit 타입과 image 타입에서만 사용할 수 있음
+
+6. formenctype 속성
+입력한 정보(data)를 전송할 때 암호화하는 방법을 명시
+form 요소의 method 속성이 post일 때만 적용
+submit 타입과 image 타입에서만 사용할 수 있음
+
+7. formmethod 속성
+입력한 정보(data)를 전송할 때 사용하는 http 메소드(method)를 명시
+form 요소의 method 속성을 덮어쓰게됨
+submit 타입과 image 타입에서만 사용할 수 있음
+
+8. formnovalidate 속성
+입력한 정보(data)를 전송할 때 그 정보가 유효한지 아닌지를 검사하지 않았다는 것을 명시
+form 요소의 novalidate 속성을 덮어쓰게됨
+submit 타입에서만 사용할 수 있음
+
+9. formtarget 속성
+입력한 정보(data)를 전송한 후, 그 결과로 받은 응답 페이지를 어디에 출력할지를 명시, form 요소의
+target 속성을 덮어쓰게됨(submit 타입과 image 타입에서만 사용할 수 있음)
+
+10. height와 width 속성
+&lt;input&gt;태그의 type 속성이 "image"일 경우에는 height 속성과 width 속성을 사용하여
+이미지의 높이와 너비를 명시
+
+11. list 속성
+해당 input 요소에 대한 미리 정의된 옵션 리스트를 설정하는 datalist 요소와 관련이 있음,
+list 속성값이 datalist 요소의 id 속성값과 일치해야만 연결
+
+12. min과 max 속성
+min속성과 max 속성은 input 요소에 입력할 수 있는 최솟값과 최댓값을 명시
+- number, range, date, time, datetime-local, month, week 타입
+
+13. multiple 속성
+사용자가 input 요소에 값을 두 개 이상 입력하는 것을 허용
+이 속성은 email 타입과 file 타입에서만 사용할 수 있음
+
+14. pattern 속성
+정규 표현식(regular expression)을 명시
+- text, password, email, tel, url 타입
+
+15. placeholder 속성
+input 요소에 입력되어야 할 값에 대한 힌트를 제공
+해당 입력 필드에 포커스가 오게 되면 더 이상 표시되지 않음
+- text, password, email, tel, url, search 타입
+
+16. required 속성
+반드시 입력되어야 할 필수 input 요소를 명시
+이 속성이 설정된 모든 input 요소에 입력값이 존재해야만 서버로 전송(submit)할 수 있음
+
+17. step 속성
+input 요소에 입력할 수 있도록 허용된 숫자 간격을 명시
+- number, range, date, time, datetime-local, month, week 타입
+<div class="code">
+  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  &lt;html xmlns = "http://www.w3.org/1999/xhtml" lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset="utf-8"&gt;
+      &lt;title&gt;TCP_HTML_33&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;h2&gt;HTML5 input 요소의 속성&lt;/h2&gt;
+      &lt;/header&gt;
+      &lt;nav&gt;
+        &lt;a href = "http://www.tcpschool.com/html/html5_element_inputattr"
+        target = "_blank"&gt;TCP HTML 33&lt;/a&gt;
+      &lt;/nav&gt; &lt;br /&gt;&lt;hr /&gt;
+      &lt;section&gt;
+        &lt;h3&gt;1. autocomplete 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com/" autocomplete = "on"&gt;
+          &lt;div&gt;
+            이름 : &lt;input type = "text" name = "name" /&gt; &lt;br /&gt;
+            나이 : &lt;input type = "number" name = "age" min = "1" max = "99"
+                    autocomplete = "off"&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;2. novalidate 속성&lt;/h3&gt;
+        &lt;form action = "https://google.co.kr" novalidate&gt;
+          &lt;div&gt;
+            여러분이 자주 들리는 사이트의 URL 주소를 입력해 주세요 : &lt;br /&gt;&lt;br /&gt;
+            &lt;input type = "url" name = "myurl" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;3. autofocus 속성&lt;/h3&gt;
+        &lt;form action = "https://google.com"&gt;
+          &lt;div&gt;
+            사용자 : &lt;input type = "text" name = "myname" autofocus/&gt;&lt;br /&gt;
+            비밀번호 : &lt;input type = "password" name = "mypassword"/&gt;&lt;br /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;4. form 속성&lt;/h3&gt;
+        &lt;form action = "https://google.com/" id = "name"&gt;
+          &lt;div&gt;
+            사용자 : &lt;input type = "text" name = "username" /&gt;&lt;br /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+        &lt;form action = "https://google.com" id = "userpass"&gt;
+          &lt;div&gt;
+            비밀번호 : &lt;input type = "password" name = "password" form = "username userpass"/&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;5. formaction 속성&lt;/h3&gt;
+        &lt;form action = "https://google.co.kr"&gt;
+          &lt;div&gt;
+            생일 : &lt;input type = "date"  name = "birthday" /&gt;
+            &lt;input type = "submit" value = "전송" formaction = "https://naver.com" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;6. formenctype 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com" method = "post"&gt;
+          &lt;div&gt;
+            이메일 : &lt;input type = "email" name = "myemail" /&gt;
+            &lt;input type = "submit" value = "암호화 전송" formenctype = "multipart/form-data" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;7. formmethod 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com" method = "get"&gt;
+          &lt;div&gt;
+            검색 : &lt;input type = "search" name = "mysearch" /&gt;
+            &lt;input type = "submit" value = "post방식으로 전송" formmethod = "post" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;8. formnovalidate 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;div&gt;
+            이동을 원하는 URL : &lt;input type = "url" name = "hopeurl" /&gt;
+            &lt;input type = "submit" value = "novalidate방식으로 전송" formnovalidate /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;9. formtarget 속성&lt;/h3&gt;
+        &lt;form action = "https://google.co.kr"&gt;
+          &lt;div&gt;
+            이동을 원하는 URL : &lt;input type = "url" name = "hopeurl" /&gt;
+            &lt;input type = "submit" value = "새로운 화면으로 열기" formtarget = "_blanck" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;10. height와 width 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;div&gt;
+            이동할 사이트를 선택 : &lt;br /&gt;
+            &lt;input type = "image" src = "/img/naver.png" alt = "naver"
+            height = "50" width = "50" formtarget = "_blank"/&gt;
+            &lt;input type = "image" src = "/img/google.png" alt = "google"
+            height = "50" width = "50" formtarget = "_blank"/&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;11. list 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;input list = "location" name = "mylocation" /&gt;
+            &lt;datalist id = "location"&gt;
+              &lt;option value = "Seoul"&gt;&lt;/option&gt;
+              &lt;option value = "Incheon"&gt;&lt;/option&gt;
+              &lt;option value = "Gimpo"&gt;&lt;/option&gt;
+            &lt;/datalist&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;12. min과 max 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;input type = "date" name = "mydate" min = "1977-01-01" max = "2020-12-31" /&gt;
+          &lt;input type = "submit" value = "전송" /&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;13. multiple 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;input type = "file" name = "myfile" multiple = "multiple"/&gt;
+          &lt;input type = "email" name = "myemails" multiple /&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;14. pattern 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;input type = "email" name = "myemail"
+            pattern = "[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+            title = "이메일 양식" /&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;15. placeholder 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;div&gt;
+            특기 : &lt;input type = "text" name = "speciality"
+            placeholder = "없으면 입력하지 않아도 좋습니다." style = "width:500px"/&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;16. required 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;div&gt;
+            이름 : &lt;input type = "text" name = "name" required placeholder = "필입력" /&gt; &lt;br /&gt;
+            나이 : &lt;input type = "number" name = "age" required placeholder = "필입력"/&gt; &lt;br /&gt;
+            주민등록번호 : &lt;input type = "password" name = "secure" /&gt;&lt;br /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+        &lt;h3&gt;17. step 속성&lt;/h3&gt;
+        &lt;form action = "https://naver.com"&gt;
+          &lt;div&gt;
+            연령대 : &lt;input type = "number" name = "age" placeholder = "10단위로"
+            step = "10" /&gt;
+          &lt;/div&gt;
+        &lt;/form&gt; &lt;br /&gt;&lt;hr /&gt;
+      &lt;/section&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_33.html" width="100%" height="300px"></object>
+<a name="멀티미디어"><h4>멀티미디어</h4></a><hr>
+멀티미디어 파일 형식
+
+비디오(video) 파일 형식
+HTML5 표준이 공식적으로 지원하는 비디오 파일 형식은 MP4, WebM, OGV
+(MP4 H.264 파일로 변환해야함)
+
+  &lt;video controls style = "width:480px; height:320px" autoplay loop&gt;
+        &lt;source src="/img/umi.mp4" type="video/mp4" /&gt;
+        &lt;source src="/img/umi.ogg" type="video/ogg" /&gt;
+        &lt;span&gt;이 문장은 video 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+  &lt;/video&gt;
+
+autoplay : 자동재생
+loop : 무한반복
+poster : 비디오가 아직 준비 중일때 불러올 이미지 파일의 경로를 명시함.
+preload : 비디오를 재생하기 전에 파일의 내용을 모두 불러올지를 명시함.
+
+오디오(audio) 요소
+HTML5 표준이 공식적으로 지원하는 오디오 파일 형식은 MP3, WAV, Ogg
+&lt;audio controls&gt;
+        &lt;source src = "/img/필라멘트.mp3" type = "audio/mp3" /&gt;
+        &lt;source src = "/img/필라멘트.ogg" type = "audio/ogg" /&gt;
+        &lt;span&gt;이 문장은 audio 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+&lt;/audio&gt;
+autoplay : 자동재생
+loop : 무한반복
+preload : 오디오를 재생하기 전에 파일의 내용을 모두 불러올지를 명시함.
+
+플러그인(Plug-in)
+웹 브라우저의 표준 기능을 확장해 주는 프로그램
+
+object 요소
+HTML 문서에 삽입할 객체(object)를 명시하는데 사용
+이 요소는 모든 웹 브라우저에서 동작하며, 객체뿐만 아니라 또 다른 HTML 문서를 삽입가능
+object 요소는 이미지를 삽입할 때에도 사용할 수 있음
+&lt;object data = "/img/hotdog.jpg" style = "width:500px"&gt;&lt;/object&gt;
+
+embed 요소
+empty tag(빈태그)
+속성은 object와 동일 다만 HTML5 이전까지는 HTML 표준이 아니었으므로, HTML5에서는 유효하지만, HTML4에서는 유효하지 않음
+&lt;embed src = "/img/2021-01-12.txt" style = "width:600px; height:250px" /&gt;
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_HTML_34~37&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;h2&gt;멀티미디어 파일 형식&lt;/h2&gt;
+      &lt;/header&gt;
+      &lt;nav&gt;
+        &lt;a href = "http://www.tcpschool.com/html/html5_multimedia_filetype"
+        target = "_blank"&gt;TCP HTML 34&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;main&gt;
+        &lt;video controls style = "width:320px; height:240px" loop&gt;
+          &lt;source src="/img/room_H.264.mp4" type = "video/mp4" /&gt;
+          &lt;source src="/img/room_H.264.ogg" type = "video/ogg" /&gt;
+          &lt;span&gt;이 문장은 video 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+        &lt;/video&gt;
+        &lt;audio controls&gt;
+          &lt;source src = "/img/필라멘트.mp3" type = "audio/mp3" /&gt;
+          &lt;source src = "/img/필라멘트.ogg" type = "audio/ogg" /&gt;
+          &lt;span&gt;이 문장은 audio 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+        &lt;/audio&gt;
+        &lt;object data = "/img/2021-01-13.txt" style = "width:600px; height:250px"&gt;&lt;/object&gt;
+        &lt;object data = "/img/hotdog.jpg" style = "width:500px"&gt;&lt;/object&gt;
+        &lt;embed src = "/img/2021-01-12.txt" style = "width:600px; height:250px" /&gt;
+      &lt;/main&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_34~37.html" width="100%" height="300px"></object>
+<a name="canvas"><h4>canvas</h4></a><hr>
+canvas 요소
+웹 페이지에 그래픽을 그려주는 쉽고 강력한 방법을 제공
+그래픽을 위한 컨테이너(container) 역할만을 수행
+실제로 그래픽을 그리기 위해서는 자바스크립트(JavaScript) 등의 스크립트 언어를 이용해야함
+테두리(border)도 콘텐츠(content)도 없는 웹 페이지 내의 단순한 사각형의 공간
+그러므로 반드시 style 속성을 이용하여 캔버스의 크기를 설정해야함
+canvas 요소를 스크립트(script)에서 접근하기 위해서는 해당 요소의 id 속성을 이용하면됨
+&lt;canvas id = "drawCanvas" style = "width:400px; height:200px; border:2px solid blue;"&gt;&lt;/canvas&gt;
+
+사각형 그리기
+캔버스를 정의한 후에는 스크립트를 이용하여 canvas 요소에 그래픽을 그릴 수 있습니다.
+
+&lt;script&gt;
+      var paper = document.getElementById("drawCanvas");
+      var context = paper.getContext("2d");
+      context.strokeRect(10, 10, 275, 130);
+      context.fillStyle = "rgba(255,0,0,1)";
+      context.fillRect(10, 10, 100, 130);
+      context.clearRect(30, 30, 60, 60);
+&lt;/script&gt;
+
+다음 순서대로 인수를 전달
+1. 사각형의 왼쪽 위 꼭짓점의 x좌표
+2. 사각형의 왼쪽 위 꼭짓점의 y좌표
+3. 사각형의 너비
+4. 사각형의 높이
+
+사각형을 그리는데 사용하는 스크립트 함수
+strokeRect()	사각형 영역에 테두리를 그릴 때 사용함.
+fillStyle()		사각형 영역을 채울 색상을 설정함. 색상값만을 사용할 수
+		도 있고, 투명도까지 명시할 수 있음.
+fillRect()		사각형을 그리기 시작할 시작점의 x, y좌표와 사각형의 너비,
+		높이 등을 설정함.
+clearRect()		지정된 사각형 영역을 투명하게 만듦.
+
+선 그리기
+선을 그리는데 사용하는 스크립트 함수
+moveTo()		선이 시작될 좌표를 설정함.
+lineTo()		선이 끝나는 좌표를 설정함.
+		lineTo() 함수를 연속적으로 사용할 때의 시작 위치는 이전
+		선 그리기가 끝난 위치로 자동 설정됨.
+stroke()		선 그리기 시작함.
+
+&lt;script&gt;
+      var paper = document.getElementById("drawLine");
+      var context = paper.getContext("2d");
+      context.moveTo(0, 0);
+      context.lineTo(300, 200);
+      context.lineTo(150, 0);
+      context.lineTo(0, 0);
+      context.fillStyle = "#0099FF";
+      context.fill();
+      context.stroke();
+&lt;/script&gt;
+moveTo() 함수와 lineTo() 함수를 이용하여 선 그리기로 도형을 만듬
+그 후 fillStyle() 함수로 원하는 색상을 지정하고나서, fill() 함수를 사용하여 만든 도형에 색상을 칠함
+
+원 그리기
+원을 그리는데 사용하는 스크립트 함수
+beginPath()	도형 그리기를 시작함.
+arc()		원의 중심 좌표와 반지름, 원을 그리기 시작할 시작 위치와
+		종료 위치의 좌표, 그리는 방향 등을 설정함.
+closePath()	도형 그리기를 마침.
+&lt;script&gt;
+      var paper = document.getElementById("drawCircle");
+      var context = paper.getContext("2d");
+      context.beginPath();
+      context.moveTo(100, 100);
+      context.arc(100, 100, 100, 0, 90*Math.PI/180);
+      context.closePath();
+      context.stroke();
+    &lt;/script&gt;
+
+텍스트 그리기
+텍스트를 그리는데 사용하는 스크립트 함수
+font()		텍스트의 크기, 폰트(font)와 색상등을 설정함
+fillText()		텍스트의 내용과 텍스트를 그리기 시작할 시작위치의 좌표를
+		설정함
+strokeText()	테두리만 있는 텍스를 그릴 때 사용함
+    &lt;script&gt;
+      var paper = document.getElementById("drawText");
+      var context = paper.getContext("2d");
+      context.font = "40px Arial";
+      context.fillText("NAVER",50,50);
+      context.strokeText("HTML5",80,100);
+    &lt;/script&gt;
+
+그래디언트 그리기
+그래디언트를 그리는데 사용하는 스크립트 함수
+createLinearGradient()	선형 그래디언트를 그리기 시작할 시작위치와
+			종료 위치의 좌표를 설정함
+createRadialGradient()	원형 그래디언트를 그리기시작할 큰원의 중심좌표
+			반지름과 그래디언트가 끝날 작은 원의 중심좌표,
+			반지름 등을 설정함
+addColorStop()		그래디언트의 색을 설정함. 시작점인 0에서부터
+			종료점인 1까지 다양한 색 지정이 가능함
+    &lt;script&gt;
+      var paper = document.getElementById("drawLinearGradient");
+      var context = paper.getContext("2d");
+
+      var gradient = context.createLinearGradient(0,0,200,0);
+      gradient.addColorStop(0, "#FFCC00");
+      gradient.addColorStop(1, "red");
+
+      context.fillStyle = gradient;
+      context.font = "45px Arial black";
+      context.fillText("NAVER",15,50);
+    &lt;/script&gt;
+
+(0, "#FFCC00") -&gt; (1, "red")
+   - 0 위치의 색깔부터 1 위치의 색깔로 서서히 그래디언트됨
+context.fillStyle = gradient;
+   - fillStyle 색상을 채울 때 사용. 채우는 방식은 위에서 정의한 gradient
+context.fillText("NAVER",15,50);
+   - NAVER라는 글자를 쓰며 위치는 X:15 Y:50
+
+이미지 그리기
+drawImage()	canvas 요소에 그릴 이미지의 주소와 이미지가 그려질 시작
+		위치를 설정함
+    &lt;script&gt;
+      function drawPic(){
+        var paper = document.getElementById("drawPicture");
+        var context = paper.getContext("2d");
+        var srcImg = document.getElementById("signboard");
+        context.drawImage(srcImg,0,0);
+      }
+    &lt;/script&gt;
+drawImage 라는 기존의 함수를 이용하여 drawPic()이라는 메소드를 만들어줌
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_HTML_38&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;사각형 그리기&lt;/h2&gt;
+      &lt;canvas id = "drawCanvas" style = "width:400px; height:200px; border:2px
+      solid blue;"&gt;&lt;/canvas&gt;
+      &lt;script&gt;
+        var paper = document.getElementById("drawCanvas");
+        var context = paper.getContext("2d");
+        context.strokeRect(10, 10, 275, 130);
+        context.fillStyle = "rgba(255,0,0,1)";
+        context.fillRect(10, 10, 100, 130);
+        context.clearRect(30, 30, 60, 60);
+      &lt;/script&gt;
+      &lt;h2&gt;선 그리기&lt;/h2&gt;
+      &lt;canvas id = "drawLine" style = "width:300px; height:200px;
+      border:1px solid #993300"&gt;
+        &lt;span&gt;이 문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+      &lt;/canvas&gt;
+      &lt;script&gt;
+        var paper = document.getElementById("drawLine");
+        var context = paper.getContext("2d");
+        context.moveTo(0, 0);
+        context.lineTo(300, 200);
+        context.lineTo(150, 0);
+        context.lineTo(0, 0);
+        context.fillStyle = "#0099FF";
+        context.fill();
+        context.stroke();
+      &lt;/script&gt;
+      &lt;h2&gt;원 그리기&lt;/h2&gt;
+      &lt;canvas id = "drawCircle" style = "width:300px; height:200px; border:1px solid #993300"&gt;
+        &lt;span&gt;이문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+      &lt;/canvas&gt;
+      &lt;script&gt;
+        var paper = document.getElementById("drawCircle");
+        var context = paper.getContext("2d");
+        context.beginPath();
+        context.moveTo(100, 100);
+        context.arc(100, 100, 100, 0, 90*Math.PI/180);
+        context.closePath();
+        context.stroke();
+      &lt;/script&gt;
+      &lt;h2&gt;텍스트 그리기&lt;/h2&gt;
+      &lt;canvas id = "drawText" style = "width:300px; height:200px; border:1px solid #993300"&gt;
+        &lt;span&gt;이문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+      &lt;/canvas&gt;
+      &lt;script&gt;
+        var paper = document.getElementById("drawText");
+        var context = paper.getContext("2d");
+        context.font = "40px Arial";
+        context.fillText("NAVER",50,50);
+        context.strokeText("HTML5",80,100);
+      &lt;/script&gt;
+      &lt;h2&gt;그래디언트 선형&lt;/h2&gt;
+      &lt;canvas id = "drawLinearGradient" style = "width:300px; height:200px; border:1px solid #993300"&gt;
+        &lt;span&gt;이문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+      &lt;/canvas&gt;
+      &lt;script&gt;
+        var paper = document.getElementById("drawLinearGradient");
+        var context = paper.getContext("2d");
+
+        var gradient = context.createLinearGradient(0,0,200,0);
+        gradient.addColorStop(0, "#FFCC00");
+        gradient.addColorStop(1, "red");
+
+        context.fillStyle = gradient;
+        context.font = "45px Arial black";
+        context.fillText("NAVER",15,50);
+      &lt;/script&gt;
+      &lt;h2&gt;이미지 그리기&lt;/h2&gt;
+      &lt;img id = "signboard" src = "/img/20201126_133324 - 복사본.jpg" alt = "간판"
+      style = "width:250px; height:400px"/&gt;
+      &lt;canvas id = "drawPicture" style = "width:250px; height:400px; border:1px solid #993300"&gt;
+        &lt;span&gt;이문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타남&lt;/span&gt;
+      &lt;/canvas&gt;
+      &lt;button onclick="drawPic()"&gt;이미지 그리기&lt;/button&gt;
+      &lt;script&gt;
+        function drawPic(){
+          var paper = document.getElementById("drawPicture");
+          var context = paper.getContext("2d");
+          var srcImg = document.getElementById("signboard");
+          context.drawImage(srcImg,0,0);
+        }
+      &lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_38.html" width="100%" height="300px"></object>
+<a name="svg"><h4>svg</h4></a><hr>
+svg 요소
+Scalable Vector Graphics를 의미하며, XML기반의 W3C 그래픽 표준 권고안
+기존에 사용해 왔던 canvas 요소로는 벡터(vector) 이미지를 표현할 수 없었음
+하지만 svg요소는 픽셀 기반인 웹페이지에서 픽셀의 영향을 받지 않는 벡터 이미지를 표현할 수 있게 해줌
+따라서 이 요소는 도표나 그래프 등 벡터 기반의 다이어그램을 표현하는데 매우 효과적이다
+
+사각형 그리기
+사각형을 그리는데 필요한 속성
+width, height
+stroke 		도형의 테두리 색상을 설정함
+stroke-width	도형의 테두리 굵기를 설정함
+fill		도형을 체울 색상을 설정함
+opacity		도형의 투명도를 설정함
+
+&lt;svg width="200" height="150"&gt;
+     &lt;rect width="200" height="150" stroke="orange" stroke-width="5"      fill="yellow"/&gt;
+&lt;/svg&gt;
+
+둥근 사각형 그리기
+x	사각형의 왼쪽 위 꼭짓점의 x좌표를 설정
+y	사각형의 왼쪽 위 꼭짓점의 y좌표를 설정
+rx	사각형 모서리 굴곡의 x축 반지름을 설정
+ry	사각형 모서리 굴곡의 y축 반지름을 설정
+&lt;svg width="250" height="200"&gt;
+     &lt;rect width="200" height="150" x="20" y="20" rx="20" ry="20"
+        stroke="orange" stroke-width="5" fill="yellow"/&gt;
+
+선 그리기
+x1	선이 시작될 위치의 x좌표
+y1	선이 시작될 위치의 y좌표
+x2	선이 끝나는 위치의 x좌표
+y2	선이 끝나는 위치의 y좌표
+&lt;line x1="50" y1="50" x2="200" y2="150" stroke="orange" stroke-width="5"&gt;&lt;/line&gt;
+
+원 그리기
+cx	원의 중심 x좌표
+cy	원의 중심 y좌표
+r	원의 반지름
+&lt;circle cx="150" cy="150" r="100" stroke="red" stroke-width="10" fill="black"&gt;&lt;/circle&gt;
+
+타원 그리기
+cx	타원 중심의 x좌표
+cy	타원 중심의 y좌표
+rx	타원의 x축 반지름
+ry	타원의 y축 반지름
+&lt;ellipse cx="150" cy="100" rx="120" ry="70" stroke="blue" stroke-width="10"&gt;&lt;/ellipse&gt;
+
+다각형 그리기
+points	다각형의 각 꼭짓점이 표시될 위치의 좌표를 설정
+points 속성은 다각형을 이루는 각 꼭짓점의 x좌표와 y좌표를 명시함
+이때 첫번째 꼭짓점부터 시작하여 마지막 꼭짓점까지 차례대로 선으로 연결되어 다각형을 표현하게 됨
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_HTML_38&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;svg요소를 이용한 사각형 그리기&lt;/h2&gt;
+      &lt;svg width="200" height="150"&gt;
+  		    &lt;rect width="200" height="150" stroke="orange" stroke-width="5" fill="yellow"/&gt;
+  		이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+  	  &lt;/svg&gt;
+      &lt;h2&gt;rx/ry를 이용해 모서리가 둥근 사각형 그리기&lt;/h2&gt;
+      &lt;svg width="250" height="200"&gt;
+  		    &lt;rect width="200" height="150" x="20" y="20" rx="20" ry="20"
+          stroke="orange" stroke-width="5" fill="yellow"/&gt;
+  		이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+  	  &lt;/svg&gt;
+      &lt;h2&gt;svg요소를 이용한 선 그리기&lt;/h2&gt;
+      &lt;svg width="250" height="200"&gt;
+        &lt;line x1="50" y1="50" x2="200" y2="150" stroke="orange" stroke-width="5"&gt;&lt;/line&gt;
+        이 문장은 사용자의 웹 브라우저가 svg 요소를 지원하지 않을 때 나타납니다!
+      &lt;/svg&gt;
+      &lt;h2&gt;svg요소를 이용한 원 그리기&lt;/h2&gt;
+      &lt;svg width="300" height="300"&gt;
+        &lt;circle cx="150" cy="150" r="100" stroke="red" stroke-width="10" fill="grey"&gt;&lt;/circle&gt;
+      &lt;/svg&gt;
+      &lt;h2&gt;svg요소를 이용한 타원 그리기&lt;/h2&gt;
+      &lt;svg width="300" height="300"&gt;
+        &lt;ellipse cx="150" cy="100" rx="120" ry="70" stroke="blue" stroke-width="10"&gt;&lt;/ellipse&gt;
+      &lt;/svg&gt;
+      &lt;h2&gt;svg요소를 이용한 다각형 그리기&lt;/h2&gt;
+      &lt;svg width="300" height="300"&gt;
+        &lt;polygon points="10, 100 190, 100 30, 200 100, 40 170, 200"
+        stroke="purple" stroke-width="5" fill="pink" /&gt;
+      &lt;/svg&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_HTML_39.html" width="100%" height="300px"></object>
+<a name="canvasVSsvg"><h4>canvas VS svg</h4></a><hr>
+Canvas vs SVG
+canvas 요소의 성능은 화면이 작거나, 픽셀 수가 많을 경우(>10k)
+복잡하고 고성능의 애니메이션 작업이나 동영상 조작등에 작업에 좋음
+
+svg요소의 성능은 화면이 크거나 픽셀 수가 적을 경우(&lt;10k)
+고품질의 문서작업이나 정적이미지의 조작 작업들에 좋음
+<table>
+  <tr>
+    <th>Canvas</th>
+    <th>SVG</th>
+  </tr>
+  <tr>
+    <td>픽셀기반</td>
+    <td>모양기반</td>
+  </tr>
+  <tr>
+    <td>단일 HTML요소</td>
+    <td>DOM의 일부분이 되는 다중 그래픽요소</td>
+  </tr>
+  <tr>
+    <td>스크립트를 통해서만 수정</td>
+    <td>스크립트 및 CSS를 통해서도 수정</td>
+  </tr>
+  <tr>
+    <td>그래픽이 주작업인 게임에 적합</td>
+    <td>렌더링 영역이 넓은 응용프로그램에 적합</td>
+  </tr>
+</table>
+    </pre>
+  </body>
+</html>
