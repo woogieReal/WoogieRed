@@ -131,6 +131,329 @@ ON emp(ename, job)
 ;
 --Index created.
 
+--인덱스관리하기: DICTIONARY
+
+--user: USER_INDEXES, USER_IND_COLUMNS
+--DBA: DBA_INDEXES, DBA_IND_COLUMNS
+
+--인덱스 확인
+--WHERE절에서 테이블명은 대문자로 (EX.'EMP2')
+SELECT t1.table_name,
+    t1.column_name,
+    t1.index_name
+FROM user_ind_columns t1
+WHERE t1.table_name = 'EMP2'
+;
+--table_name  column_name  index_name
+-------------------------------------------
+--EMP2	         EMPNO	   SYS_C007016
+--EMP2	         NAME	   TMP2_NAME_UK
+
+SELECT t1.table_name,
+    t1.index_name
+FROM user_indexes t1
+WHERE t1.table_name = 'EMP2'
+;
+--TABLE_NAME    INDEX_NAME      
+--------------- ----------------
+--EMP2          SYS_C007016     
+--EMP2          TMP2_NAME_UK    
+
+--인덱스 사용여부 모니터링 하기
+--사용하지 않는 인덱스를 삭제하기 위함
+--모니터링 시작하기
+--ALTER INDEX 인덱스이름 MONITORING USAGE;
+--모니터링 중단
+--ALTER INDEX 인덱스이름 NOMONITORING USAGE;
+
+--모니터링 시작하기
+ALTER INDEX TMP2_NAME_UK MONITORING USAGE
+;
+--Index altered.
+
+--모니터링 사용여부 확인
+SELECT index_name,
+	used
+FROM v$object_usage
+WHERE index_name = 'TMP2_NAME_UK'
+;
+--INDEX_NAME       USED
+------------------ ------
+--TMP2_NAME_UK     NO
+
+--모니터링 중단
+ALTER INDEX TMP2_NAME_UK NOMONITORING USAGE
+;
+--Index altered.
+
+--INDEX_REBUILD
+--1. I_TEST 테이블 생성
+--2. 데이터 10000건 입력
+--3. 인덱스
+--4. 인덱스 상태 조회
+--5. 테이블에서 데이터 삭제
+--6. 인덱스 상태 조회
+--7. 인덱스 REBUILD
+--8. 인덱스 상태 조회
+
+--1. I_TEST 테이블 생성
+CREATE TABLE i_test(
+	no NUMBER,
+	name VARCHAR2(20)
+);
+
+--2. 데이터 10000건 입력
+BEGIN
+	FOR i IN 1..10000 LOOP
+		INSERT INTO i_test VALUES(i, 'eStudent'||i);
+	END LOOP;
+	COMMIT;
+END;
+/
+--      NO NAME
+---------- -----------------
+--       1 eStudent1
+--       2 eStudent2
+--       3 eStudent3
+--		...
+--    9997 eStudent9997
+--    9998 eStudent9998
+--    9999 eStudent9999
+--   10000 eStudent10000
+
+--3. 인덱스
+CREATE INDEX idx_test_no
+ON i_test(no DESC)
+;
+--Index created.
+
+--4. 인덱스 상태 조회
+--STATIC DICTIONARY 조회하므로 통계정보를 갱신해야함
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+
+--DESC index_stats;
+--LF_ROWS_LEN
+--DEL_LF_ROWS_LEN
+
+--balance가 0에 가까울 수록 우수
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--     159801               0          0
+
+--5. 테이블에서 데이터 삭제
+DELETE 
+FROM i_test
+WHERE no BETWEEN 1 AND 4000
+;
+COMMIT;
+--4000 rows deleted.
+--Commit complete.
+
+--6. 인덱스 상태 조회
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--     159801           63861 39.9628288
+
+--7. 인덱스 REBUILD
+ALTER INDEX IDX_TEST_NO REBUILD
+;
+--Index altered.
+
+--8. 인덱스 상태 조회
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--      95940               0          0
+
+--INVISIBLE INDEX
+--인덱스를 삭제하기 전에 사용안함 상태로 만듬
+--ALTER INDEX 인덱스이름 INVISIBLE
+
+--인덱스사용
+--1. new_emp4테이블 생성(no, name, sal)
+CREATE TABLE new_emp4(
+	no NUMBER, 
+	name VARCHAR2(20), 
+	sal NUMBER
+);
+
+--2. 데이터입력
+--no		name		sal	
+--1000		SMITH		300	
+--1001		ALLEN		250	
+--1002		KING		430	
+--1003		BLAKE		220	
+--1004		JAMES		620	
+--1005		MILLER		810	
+INSERT INTO new_emp4 VALUES(1000,		'SMITH',	300);
+INSERT INTO new_emp4 VALUES(1001,		'ALLEN',	250);
+INSERT INTO new_emp4 VALUES(1002,		'KING',	430    );
+INSERT INTO new_emp4 VALUES(1003,		'BLAKE',	220);
+INSERT INTO new_emp4 VALUES(1004,		'JAMES',	620);
+INSERT INTO new_emp4 VALUES(1005,		'MILLER',	810);
+
+--3. name컬럼에 인덱스 생성
+CREATE INDEX IDX_EMP4_NAME
+ON new_emp4(name ASC)
+;
+
+--4. 인덱스 사용 vs 미사용
+--미사용
+SELECT *
+FROM new_emp4
+;
+--        NO NAME             SAL
+------------ --------- ----------
+--      1000 SMITH            300
+--      1001 ALLEN            250
+--      1002 KING             430
+--      1003 BLAKE            220
+--      1004 JAMES            620
+--      1005 MILLER           810
+
+--사용
+--NAME 컬럼에 있는 인덱스를 써라(name > '0')
+--0보다 다 크므로
+SELECT *
+FROM new_emp4
+WHERE name > '0' 
+;
+--     NO NAME                SAL
+--------- ------------ ----------
+--   1001 ALLEN               250
+--   1003 BLAKE               220
+--   1004 JAMES               620
+--   1002 KING                430
+--   1005 MILLER              810
+--   1000 SMITH               300
+
+--4.1 실행계획
+--미사용
+explain plan for
+SELECT *
+FROM new_emp4
+;
+col plan_table_output format a80;
+select * from table(dbms_xplan.display)
+;
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 574968521
+--
+--------------------------------------------------------------------------------
+--| Id  | Operation         | Name     | Rows  | Bytes | Cost (%CPU)| Time     |
+--------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT  |          |     6 |   228 |     3   (0)| 00:00:01 |
+--|   1 |  TABLE ACCESS FULL| NEW_EMP4 |     6 |   228 |     3   (0)| 00:00:01 |
+--------------------------------------------------------------------------------
+
+--사용
+explain plan for
+SELECT *
+FROM new_emp4
+WHERE name > '0' 
+;
+col plan_table_output format a80;
+select * from table(dbms_xplan.display)
+;
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 1208544499
+-- 
+-----------------------------------------------------------------------------------------------
+--| Id  | Operation                   | Name          | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT            |               |     6 |   228 |     2   (0)| 00:00:01 |
+--|   1 |  TABLE ACCESS BY INDEX ROWID| NEW_EMP4      |     6 |   228 |     2   (0)| 00:00:01 |
+--|*  2 |   INDEX RANGE SCAN          | IDX_EMP4_NAME |     1 |       |     1   (0)| 00:00:01 |
+-----------------------------------------------------------------------------------------------
+
+--5. 최소/최대값을 min/max를 인덱스 사용으로 대처
+--min
+SELECT name
+FROM new_emp4
+WHERE name > '0'
+AND ROWNUM = 1
+;
+--NAME
+------------
+--ALLEN
+
+--max
+--INDEX 힌트를 이용
+SELECT /*+ INDEX_DESC(new_emp4 idx_emp4_name) */
+	name
+FROM new_emp4
+WHERE name > '0'
+AND ROWNUM = 1
+;
+--NAME
+---------------
+--ALLEN
+
+--ROWID
+--오라클에서 데이터의 주소를 주소라 하지 않고 ROWID라 한다.
+SELECT ROWID,
+	empno,
+	ename
+FROM emp
+;
+--ROWID                   EMPNO ENAME
+-------------------- ---------- --------------
+--AAAE6LAAEAAAAK+AAA       7369 SMITH
+--AAAE6LAAEAAAAK+AAB       7499 ALLEN
+--AAAE6LAAEAAAAK+AAC       7521 WARD
+--AAAE6LAAEAAAAK+AAD       7566 JONES
+--AAAE6LAAEAAAAK+AAE       7654 MARTIN
+--AAAE6LAAEAAAAK+AAF       7698 BLAKE
+--AAAE6LAAEAAAAK+AAG       7782 CLARK
+--AAAE6LAAEAAAAK+AAH       7839 KING
+--AAAE6LAAEAAAAK+AAI       7844 TURNER
+--AAAE6LAAEAAAAK+AAJ       7900 JAMES
+--AAAE6LAAEAAAAK+AAK       7902 FORD
+--AAAE6LAAEAAAAK+AAL       7934 MILLER
+--AAAE6LAAEAAAAK+AAM       7935 WOOGIE
+--AAAE6LAAEAAAAK+AAN       7937 WOOGIE2
+
+--AAAE+6 :데이터 오브젝트 번호
+--LAA :파일번호
+--EAAAAK : 블록번호
+--AAN :로우번호
+
+SELECT ROWID,
+	empno,
+	ename
+FROM emp
+WHERE ROWID = 'AAAE6LAAEAAAAK+AAN'
+;
+--ROWID                   EMPNO ENAME
+-------------------- ---------- ----------------
+--AAAE6LAAEAAAAK+AAN       7937 WOOGIE2
 
 
 

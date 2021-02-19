@@ -32,8 +32,9 @@
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
         <a href="#페이징"><h4>페이징</h4></a>
-        <a href="#DECODE_연결연산자"><h4>DECODE_연결연산자</h4></a>
         <a href="#SUM_CASE"><h4>SUM_CASE</h4></a>
+        <a href="#DECODE_연결연산자"><h4>DECODE_연결연산자</h4></a>
+        <a href="#PLAN"><h4>PLAN</h4></a>
       </ul>
       <a href="#인덱스" name="연결연산자 ||"><h3>연결연산자 ||</h3></a><hr>
       <ul>
@@ -134,7 +135,6 @@
         <a href="#ROLLUP"><h4>ROLLUP</h4></a>
         <a href="#CUBE"><h4>CUBE</h4></a>
         <a href="#GROUPING_SETS"><h4>GROUPING_SETS</h4></a>
-        <a href="#PLAN"><h4>PLAN</h4></a>
         <a href="#LISTAGG"><h4>LISTAGG</h4></a>
         <a href="#XMLAGG"><h4>XMLAGG</h4></a>
         <a href="#PIVOT"><h4>PIVOT</h4></a>
@@ -198,6 +198,9 @@
         <a href="#Function_Based_Index"><h4>Function_Based_Index</h4></a>
         <a href="#Descending_Index"><h4>Descending_Index</h4></a>
         <a href="#Composite_Index"><h4>Composite_Index</h4></a>
+        <a href="#인덱스확인"><h4>인덱스확인</h4></a>
+        <a href="#INDEX_REBUILD"><h4>INDEX_REBUILD</h4></a>
+        <a href="#ROWID"><h4>ROWID</h4></a>
       </ul>
     </div>
   </header>
@@ -369,6 +372,52 @@ FROM student;
 --Christian Slater 's ID : Slater, WEIGHT is 69Kg
 --Charlie Sheen 's ID : Sheen, WEIGHT is 81Kg
 --Anthony Hopkins 's ID : Hopkins, WEIGHT is 51Kg
+</div>
+<a href="#그룹함수" name="PLAN"><h4>PLAN</h4></a><hr>
+1. explain plan for 입력
+2. 수행할 쿼리 입력
+3. col plan_table_output format a80; SELECT * FROM table(dbms_xplan.display); 입력
+
+1. ROLLUP을 UNION ALL로 구현했을 때의 PLAN
+--세부 쿼리부터 실행 후 큰 단위로 합쳐나가는 방식(UNION ALL)으로 실행될 것을 알 수 있음
+--EMP 테이블이 3번 조회 되었음.
+
+<div class = "code">
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 3259471421
+--                                                                             실행순서
+-------------------------------------------------------------------------------
+--| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT     |      |    15 |   190 |    12  (25)| 00:00:01 |   8
+--|   1 |  SORT ORDER BY       |      |    15 |   190 |    11  (73)| 00:00:01 |   7
+--|   2 |   UNION-ALL          |      |       |       |            |          |   6
+--|   3 |    HASH GROUP BY     |      |    11 |   165 |     4  (25)| 00:00:01 |   2
+--|   4 |     TABLE ACCESS FULL| EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
+--|   5 |    HASH GROUP BY     |      |     3 |    21 |     4  (25)| 00:00:01 |   4
+--|   6 |     TABLE ACCESS FULL| EMP  |    12 |    84 |     3   (0)| 00:00:01 |   3
+--|   7 |    SORT AGGREGATE    |      |     1 |     4 |            |          |   6
+--|   8 |     TABLE ACCESS FULL| EMP  |    12 |    48 |     3   (0)| 00:00:01 |   5
+-------------------------------------------------------------------------------
+</div>
+2. ROLLUP 함수를 사용하였을 때의 PLAN
+--UNION ALL 방식보다 더 적은 수행단계를 가짐
+--EMP테이블은 1번 조회되었음
+--PLAN을 통해 UNION ALL보다 ROLLUP이 실행속도가 빠를 것임을 알 수 있음
+
+<div class = "code">
+--PLAN_TABLE_OUTPUT
+----------------------------------------------------------------------------------
+--Plan hash value: 52302870
+--                                                                            실행순서
+-------------------------------------------------------------------------------
+--| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT     |      |    11 |   165 |     4  (25)| 00:00:01 |   3
+--|   1 |  SORT GROUP BY ROLLUP|      |    11 |   165 |     4  (25)| 00:00:01 |   2
+--|   2 |   TABLE ACCESS FULL  | EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
+-------------------------------------------------------------------------------
 </div>
 <a href="#DISTINCT" name="칼럼하나 중복제거"><h4>칼럼하나 중복제거</h4></a><hr>
 --칼럼하나 중복제거
@@ -2377,52 +2426,6 @@ GROUP BY GROUPING SETS(grade, deptno1);
 --         2                     5        176         67
 --         4                     5        176         68
 --         3                     5        167         51
-</div>
-<a href="#그룹함수" name="PLAN"><h4>PLAN</h4></a><hr>
-1. explain plan for 입력
-2. 수행할 쿼리 입력
-3. col plan_table_output format a80 SELECT * FROM table(dbms_xplan.display); 입력
-
-1. ROLLUP을 UNION ALL로 구현했을 때의 PLAN
---세부 쿼리부터 실행 후 큰 단위로 합쳐나가는 방식(UNION ALL)으로 실행될 것을 알 수 있음
---EMP 테이블이 3번 조회 되었음.
-
-<div class = "code">
---PLAN_TABLE_OUTPUT
-----------------------------------------------------------------------------------
---Plan hash value: 3259471421
---                                                                             실행순서
--------------------------------------------------------------------------------
---| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
--------------------------------------------------------------------------------
---|   0 | SELECT STATEMENT     |      |    15 |   190 |    12  (25)| 00:00:01 |   8
---|   1 |  SORT ORDER BY       |      |    15 |   190 |    11  (73)| 00:00:01 |   7
---|   2 |   UNION-ALL          |      |       |       |            |          |   6
---|   3 |    HASH GROUP BY     |      |    11 |   165 |     4  (25)| 00:00:01 |   2
---|   4 |     TABLE ACCESS FULL| EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
---|   5 |    HASH GROUP BY     |      |     3 |    21 |     4  (25)| 00:00:01 |   4
---|   6 |     TABLE ACCESS FULL| EMP  |    12 |    84 |     3   (0)| 00:00:01 |   3
---|   7 |    SORT AGGREGATE    |      |     1 |     4 |            |          |   6
---|   8 |     TABLE ACCESS FULL| EMP  |    12 |    48 |     3   (0)| 00:00:01 |   5
--------------------------------------------------------------------------------
-</div>
-2. ROLLUP 함수를 사용하였을 때의 PLAN
---UNION ALL 방식보다 더 적은 수행단계를 가짐
---EMP테이블은 1번 조회되었음
---PLAN을 통해 UNION ALL보다 ROLLUP이 실행속도가 빠를 것임을 알 수 있음
-
-<div class = "code">
---PLAN_TABLE_OUTPUT
-----------------------------------------------------------------------------------
---Plan hash value: 52302870
---                                                                            실행순서
--------------------------------------------------------------------------------
---| Id  | Operation            | Name | Rows  | Bytes | Cost (%CPU)| Time     |
--------------------------------------------------------------------------------
---|   0 | SELECT STATEMENT     |      |    11 |   165 |     4  (25)| 00:00:01 |   3
---|   1 |  SORT GROUP BY ROLLUP|      |    11 |   165 |     4  (25)| 00:00:01 |   2
---|   2 |   TABLE ACCESS FULL  | EMP  |    12 |   180 |     3   (0)| 00:00:01 |   1
--------------------------------------------------------------------------------
 </div>
 <a href="#그룹함수" name="LISTAGG"><h4>LISTAGG</h4></a><hr>
 --LISTAGG: 여러 ROW데이터를 하나의 ROW에서 합쳐서 보여주는 함수
@@ -4821,7 +4824,38 @@ WHERE deptno/10 = 1
 --오름차순으로 정렬을 했는데 내림차순으로 데이터를 보고 싶은 경우 새로운 인덱스를 생성하면 좋지않음
 --인덱스가 많으면 DML 성능에 악영향을 끼침
 --오라클에서는 이를 해결하기 위해 '힌트'라는 방법을 제공, 이를 통해 정렬을 한 효과를 내고
---최솟값, 최댓값을 구하기도 함(뒤에서 배움)
+--최솟값, 최댓값을 구하기도 함
+
+--최댓값 구하기
+--alist 테이블에 no칼럼을 오름차순으로 인덱스를 만들었다
+--인덱스를 사용하면 가장 작은 no칼럼의 값을 가진 데이터가 첫 줄에 온다.
+--ROWNUM = 1 을 이용하여 최댓값을 구한다.
+
+<div class="code">
+SELECT *
+FROM alist
+WHERE no > 0
+AND ROWNUM = 1
+;
+--   NO NAME             AGE
+------- --------- ----------
+--    1 woo1              28
+</div>
+--최솟값 구하기
+--문법
+--SELECT /*+ INDEX_DESC(테이블명 인덱스명) */
+
+<div class="code">
+SELECT /*+ INDEX_DESC(alist idx_alist_no) */
+	*
+FROM alist
+WHERE no > 0
+AND ROWNUM = 1
+;
+--   NO NAME             AGE
+------- --------- ----------
+--    5 woo5              28
+</div>
 <a href="#INDEX" name="Composite_Index"><h4>Composite_Index</h4></a><hr>
 --5. Composite Index(결합 인덱스)
 --두 개 이상의 컬럼을 합쳐서 인덱스를 생성하는 것
@@ -4834,6 +4868,286 @@ ON emp(ename, job)
 ;
 --Index created.
 </div>
+<a href="#INDEX" name="인덱스확인"><h4>인덱스확인</h4></a><hr>
+--인덱스관리하기: DICTIONARY
+
+--user: USER_INDEXES, USER_IND_COLUMNS
+--DBA: DBA_INDEXES, DBA_IND_COLUMNS
+
+--인덱스 확인
+--WHERE절에서 테이블명은 대문자로 (EX.'EMP2')
+
+--USER_IND_COLUMNS 사용
+
+<div class="code">
+SELECT t1.table_name,
+    t1.column_name,
+    t1.index_name
+FROM user_ind_columns t1
+WHERE t1.table_name = 'EMP2'
+;
+--table_name  column_name  index_name
+-------------------------------------------
+--EMP2	         EMPNO	   SYS_C007016
+--EMP2	         NAME	   TMP2_NAME_UK
+</div>
+--USER_INDEXES 사용
+
+<div class="code">
+SELECT t1.table_name,
+    t1.index_name
+FROM user_indexes t1
+WHERE t1.table_name = 'EMP2'
+;
+--TABLE_NAME    INDEX_NAME
+--------------- ----------------
+--EMP2          SYS_C007016
+--EMP2          TMP2_NAME_UK
+</div>
+--인덱스 사용여부 모니터링 하기
+--사용하지 않는 인덱스를 삭제하기 위함
+
+--모니터링 시작하기
+--ALTER INDEX 인덱스이름 MONITORING USAGE;
+
+<div class="code">
+ALTER INDEX TMP2_NAME_UK MONITORING USAGE
+;
+--Index altered.
+</div>
+--모니터링 사용여부 확인
+
+<div class="code">
+SELECT index_name,
+	used
+FROM v$object_usage
+WHERE index_name = 'TMP2_NAME_UK'
+;
+--INDEX_NAME       USED
+------------------ ------
+--TMP2_NAME_UK     NO
+</div>
+--모니터링 중단
+
+<div class="code">
+ALTER INDEX TMP2_NAME_UK NOMONITORING USAGE
+;
+--Index altered.
+</div>
+<a href="#INDEX" name="INDEX_REBUILD"><h4>INDEX_REBUILD</h4></a><hr>
+--테이블은 데이터의 입력/삭제가 되지만 인덱스는 입력만 되고 삭제는 되지 않음
+--테이블 상에서 데이터가 지워졌다 하더라고 인덱스 상에는 지워지지 않고 남아 있게됨
+--이 경우 인덱스 성능이 하락하게 됨
+--이것을 해결하는 것이 INDEX_REBUILD 임
+
+--미리 10000건의 데이터를 넣어 놓은 i_test 테이블에 인덱스를 생성
+
+<div class="code">
+CREATE INDEX idx_test_no
+ON i_test(no DESC)
+;
+--Index created.
+</div>
+--인덱스 상태를 조회
+--STATIC DICTIONARY 조회하므로 통계정보를 먼저 갱신해야함
+--balance가 0에 가까울 수록 우수
+
+<div class="code">
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--     159801               0          0
+</div>
+--테이블에서 데이터 삭제
+
+<div class="code">
+DELETE
+FROM i_test
+WHERE no BETWEEN 1 AND 4000
+;
+COMMIT;
+--4000 rows deleted.
+--Commit complete.
+</div>
+--다시 인덱스 상태를 조회
+--마찬가지로 먼저 통계정보를 갱신
+--balance 수치가 상승한 것을 볼 수 있음
+
+<div class="code">
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--     159801           63861 39.9628288
+</div>
+--인덱스를 REBUILD
+
+<div class="code">
+ALTER INDEX IDX_TEST_NO REBUILD
+;
+--Index altered.
+</div>
+--다시 인덱스 상태를 조회
+--마찬가지로 먼저 통계정보를 갱신
+--balance 수치가 0이 된 것을 볼 수 있음
+
+<div class="code">
+ANALYZE INDEX IDX_TEST_NO VALIDATE STRUCTURE
+;
+--Index analyzed.
+SELECT lf_rows_len,
+	del_lf_rows_len,
+	(del_lf_rows_len/lf_rows_len)*100 balance
+FROM index_stats
+WHERE name = 'IDX_TEST_NO'
+;
+--LF_ROWS_LEN DEL_LF_ROWS_LEN    BALANCE
+------------- --------------- ----------
+--      95940               0          0
+</div>
+--INVISIBLE INDEX
+--인덱스를 삭제하기 전에 사용안함 상태로 만듬
+--ALTER INDEX 인덱스이름 INVISIBLE
+<a href="#INDEX" name="INVISIBLE|VISIBLE"><h4>IINVISIBLE | VISIBLE</h4></a><hr>
+--인덱스가 많을 경우 DML 문장에 악영향을 주기 때문에 사용하지 않는 인덱스는 삭제 하는 것이 좋음
+--그전에 정말 사용하지 않는 것인지를 아는 것이 중요
+--그래서 삭제 대신 "사용안함" 상태로 만들어서 테스트 하도록 함
+--ALTER INDEX 인덱스이름 INVISIBLE(미사용)/VISIBLE(사용)
+
+--인덱스 생성
+
+<div class="code">
+CREATE INDEX idx_alist_no
+ON alist(no);
+</div>
+--인덱스 사용 상태에서 PLAN으로 실행계획을 확인
+--ID 2 INDEX RANGE SCAN: 인덱스를 스캔
+--ID 1 TABLE ACCESS BY INDEX ROWID: 인덱스의 ROWID를 기준으로 테이블 엑세스
+--ID 0 SELECT STATEMENT: SELECT
+
+<div class="code">
+explain plan for
+SELECT *
+FROM alist
+WHERE no > 0
+;
+--Explained.
+
+col plan_table_output format a80;
+SELECT * FROM table(dbms_xplan.display);
+
+--Plan hash value: 1424306355
+--
+----------------------------------------------------------------------------------------------
+--| Id  | Operation                   | Name         | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT            |              |     4 |    44 |     2   (0)| 00:00:01 |
+--|   1 |  TABLE ACCESS BY INDEX ROWID| ALIST        |     4 |    44 |     2   (0)| 00:00:01 |
+--|*  2 |   INDEX RANGE SCAN          | IDX_ALIST_NO |     4 |       |     1   (0)| 00:00:01 |
+----------------------------------------------------------------------------------------------
+--
+--Predicate Information (identified by operation id):
+-----------------------------------------------------
+--
+--   2 - access("NO">0)
+</div>
+--인덱스를 INVISIBLE로 "미사용"으로 변경
+--PLAN으로 실행계획을 확인
+--no 칼럼을 인덱스로 지정하였기에 인덱스를 사용하기 위하여
+--[WHERE no > 0]처럼 no칼럼을 where절에서 사용해 준다.
+--ID 1 TABLE ACCESS FULL: 인덱스를 미사용으로 변경 했기 때문에 테이블을 풀스캔
+--ID 0  SELECT STATEMENT: SELECT
+
+<div class="code">
+ALTER INDEX idx_alist_no INVISIBLE
+;
+--Index altered.
+
+explain plan for
+SELECT *
+FROM alist
+WHERE no > 0
+;
+--Explained.
+
+col plan_table_output format a80;
+SELECT * FROM table(dbms_xplan.display)
+;
+--Plan hash value: 3490873527
+--
+-----------------------------------------------------------------------------
+--| Id  | Operation         | Name  | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT  |       |     4 |    44 |     3   (0)| 00:00:01 |
+--|*  1 |  TABLE ACCESS FULL| ALIST |     4 |    44 |     3   (0)| 00:00:01 |
+-----------------------------------------------------------------------------
+--
+--Predicate Information (identified by operation id):
+-----------------------------------------------------
+--
+--   1 - filter("NO">0)
+</div>
+<a href="#INDEX" name="ROWID"><h4>ROWID</h4></a><hr>
+--ROWID
+--오라클에서 데이터의 주소를 주소라 하지 않고 ROWID라 한다.
+
+<div class="code">
+SELECT ROWID,
+	empno,
+	ename
+FROM emp
+;
+--ROWID                   EMPNO ENAME
+-------------------- ---------- --------------
+--AAAE6LAAEAAAAK+AAA       7369 SMITH
+--AAAE6LAAEAAAAK+AAB       7499 ALLEN
+--AAAE6LAAEAAAAK+AAC       7521 WARD
+--AAAE6LAAEAAAAK+AAD       7566 JONES
+--AAAE6LAAEAAAAK+AAE       7654 MARTIN
+--AAAE6LAAEAAAAK+AAF       7698 BLAKE
+--AAAE6LAAEAAAAK+AAG       7782 CLARK
+--AAAE6LAAEAAAAK+AAH       7839 KING
+--AAAE6LAAEAAAAK+AAI       7844 TURNER
+--AAAE6LAAEAAAAK+AAJ       7900 JAMES
+--AAAE6LAAEAAAAK+AAK       7902 FORD
+--AAAE6LAAEAAAAK+AAL       7934 MILLER
+--AAAE6LAAEAAAAK+AAM       7935 WOOGIE
+--AAAE6LAAEAAAAK+AAN       7937 WOOGIE2
+</div>
+<table>
+  <tr>
+    <th>AAAE6</th>
+    <th>LAA</th>
+    <th>EAAAAK</th>
+    <th>AAN</th>
+  </tr>
+  <tr>
+    <td>데이터 오브젝트 번호</td>
+    <td>파일번호</td>
+    <td>블록번호</td>
+    <td>로우번호</td>
+  </tr>
+</table>
+같은 테이블의 데이터의 경우 로우번호만 다르다
+
+
 
 
 
