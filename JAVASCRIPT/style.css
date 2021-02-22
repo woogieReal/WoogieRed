@@ -3,7 +3,9 @@ div.index {
   background-color: #bbdefb;
   border-radius: 10px;
   max-width: 200px;
+  width: 200px;
   max-height: 610px;
+  height: 610px;
   margin-top: -55px;
   padding: 5px 20px;
   overflow: auto;
@@ -31,6 +33,9 @@ h3.subchapter {
   margin-top: 30px;
   margin-bottom: -10px;
   margin-left: 10px;
+}
+div.entire_block {
+  /* background-color: red; */
 }
 pre {
   border-left-style: solid;

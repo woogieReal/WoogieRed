@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_JAVASCRIPT_</title>
+  </head>
+  <body>
+    <h1>심볼타입</h1>
+    <p id="result"></p>
+    <script>
+      var sym = Symbol("javascript"); //심볼타입
+      var symObj = Object(sym); //객체타입
+      document.getElementById("result").innerHTML =
+      (typeof sym) + "<br />" + (typeof symObj);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP_JAVASCRIPT_</title>
+  </head>
+  <body>
+    <h1>문자열 타입</h1>
+    <p id="str"></p>
+    <h1>숫자와 문자열의 덧셈</h1>
+    <p id="result"></p>
+
+    <script>
+      var firstStr = "이것도 문자열입니다.";
+      var secondStr = '이것도 문자열입니다.';
+      var thirdStr = "내 이름은 '우기'다.";
+      var fourthStr = '내 이름은 "우기"다.';
+      var num = 2020;
+      var str1 = "올해는 "
+      var str2 = "년 이다"
+
+      document.getElementById("str").innerHTML =
+      firstStr + "<br />" +secondStr + "<br />" + thirdStr + "<br />" + fourthStr + "<br />"
+      document.getElementById("result").innerHTML =
+      str1 + num + str2
+    </script>
+  </body>
+</html>
