@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>JAVASCRIPT_SUMMARY</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <ul class="navi">
+    <li><a href="http://www.tcpschool.com/javascript/intro" target="_blank">TCP_JAVASCRIPT</a></li>
+    <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=lucky3luck&logNo=220571294988&proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank">색상표</a></li>
+    <li style="float:right;"><a href=""></a></li>
+    <li style="float:right;"><a href=""></a></li>
+  </ul>
+  <nav>
+    <div class = "index">
+      <a name = "인덱스"><h3 class="index_name">목차</h3></a>
+      <ol>
+        <a href="#자바스크립트_문법"><li>자바스크립트_문법</li></a><hr>
+        <a href="#자바스크립트_출력"><li>자바스크립트_출력</li></a><hr>
+      </ol>
+    </div>
+  </nav>
+  <pre>
+<a name="자바스크립트_문법"><h4 class="chapter">자바스크립트_문법</h4></a><hr>
+<h3 class="subchapter">프로그램(program)이란?</h3>
+프로그램은 컴퓨터가 실행할 수 있는 명령(instruction)으로 이루어짐
+컴퓨터 프로그래밍에서 컴퓨터가 실행할 수 있는 명령들을 실행문(statement)이라고 함
+즉, 프로그램이란 특정 결과를 얻기 위해서 컴퓨터에 의해 실행되는 실행문의 집합이라고 할 수 있음
+<h3 class="subchapter">자바스크립트 문법</h3>
+자바스크립트의 실행문은 세미콜론(;)으로 구분
+<div class="code">예제.
+  var x = 10;
+  var result = x + 3;
+</div>
+자바스크립트는 대소문자를 구분
+<div class="code">예제.
+var javascript = 10; // 변수 javascript와 JavaScript는 서로 다른 두 개의 변수로 인식됨.
+var JavaScript = 20;
+Var Script = 30; // 변수의 선언은 var 키워드로만 할 수 있으면 Var는 동작하지 않음.
+</div>
+<h3 class="subchapter">리터럴(literal)</h3>
+리터럴은 직접 표현되는 값 그 자체를 의미
+다음 예제에서 등장하는 값들은 모두 리터럴
+<div class="code">예제.
+12            // 숫자 리터럴
+"JavaScript"  // 문자열 리터럴
+'안녕하세요'  // 문자열 리터럴
+true          // 불리언 리터럴
+</div>
+<h3 class="subchapter">식별자(identifier)</h3>
+식별자는 변수나 함수의 이름을 작성할 때 사용하는 이름을 의미
+영문자(대소문자), 숫자, 언더스코어(_) 또는 달러($)만을 사용할 수 있음
+자바스크립트에서 식별자는 숫자와 식별자의 구별을 빠르게 할 수 있도록 숫자로 시작할 수 없음
+<h3 class="subchapter">주석(comment)</h3>
+1. 한 줄 주석 : // 주석문
+2. 여러 줄 주석 : /* 주석문 */
+<div class="code">예제.
+var x = 10;
+// var y = 20; 한 줄의 주석문 : 이 부분은 실행되지 않을 것입니다.
+/*
+x = x + y;
+여러 줄의 주석문 :
+이 부분 또한 실행되지 않을 것입니다.
+*/
+document.getElementById("text").innerHTML = x;
+</div>
+<a name="자바스크립트_출력"><h4 class="chapter">자바스크립트_출력</h4></a><hr>
+<h3 class="subchapter">자바스크립트 출력</h3>
+자바스크립트는 여러 방법을 통해 결과물을 HTML 페이지에 출력할 수 있음
+
+1. window.alert() 메소드
+2. HTML DOM 요소를 이용한 innerHTML 프로퍼티
+3. document.write() 메소드
+4. console.log() 메소드
+
+<h3 class="subchapter">window.alert() 메소드</h3>
+자바스크립트에서 가장 간단하게 데이터를 출력할 수 있는 방법
+브라우저와는 별도의 대화 상자를 띄워 사용자에게 데이터를 전달해줌
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_JAVASCRIPT_05&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Window 객체의 alert() 메소드&lt;/h1&gt;
+      &lt;button onclick="alertDialogBox()"&gt;alert 대화 상자&lt;/button&gt;
+      &lt;script&gt;
+        function alertDialogBox() {
+          alert("확인을 누를 때까지 다른 작업을 할 수 없습니다!")
+        }
+      &lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_JAVASCRIPT_05.html" width="100%"></object>
+<h3 class="subchapter">HTML DOM 요소를 이용한 innerHTML 프로퍼티</h3>
+실제 자바스크립트 코드에서 출력을 위해 가장 많이 사용되는 방법
+우선 document 객체의 getElementByID()나 getElementsByTagName() 등의 메소드를 사용하여
+HTML 요소를 선택
+그리고서 innerHTML 프로퍼티를 이용하면 선택된 HTML 요소의 내용(content)이나 속성(attribute)값
+등을 손쉽게 변경할 수 있음
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_JAVASCRIPT_05&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;HTML DOM 요소를 이용한 innerHTML 프로퍼티&lt;/h1&gt;
+      &lt;p id="text"&gt;이 문장을 바꿀 것입니다.&lt;/p&gt;
+      &lt;script&gt;
+        var str = document.getElementById("text");
+        str.innerHTML = "이 문장으로 바뀌었습니다!";
+      &lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_JAVASCRIPT_05(2).html" width="100%"></object>
+<h3 class="subchapter">document.write() 메소드</h3>
+document.write() 메소드는 웹 페이지가 로딩될 때 실행되면, 웹 페이지에 가장 먼저 데이터를 출력
+따라서 document.write() 메소드는 대부분 테스트나 디버깅을 위해 사용
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_JAVASCRIPT_&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Document 객체의 write() 메소드&lt;/h1&gt;
+      &lt;script&gt;
+        document.write(4*5);
+      &lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_JAVASCRIPT_05(3).html" width="100%"></object>
+하지만 웹 페이지의 모든 내용이 로딩된 후에 document.write() 메소드가 실행되면, 웹 페이지 내에
+먼저 로딩된 모든 데이터를 지우고 자신의 데이터를 출력하게됨
+따라서 document.write() 메소드를 테스트 이외의 용도로 사용할 때에는 충분히 주의해서 사용
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_JAVASCRIPT_&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Document 객체의 write() 메소드&lt;/h1&gt;
+      &lt;button onclick="document.write(4*5)"&gt;버튼&lt;/button&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_JAVASCRIPT_05(4).html" width="100%"></object>
+<h3 class="subchapter">console.log() 메소드</h3>
+console.log() 메소드는 웹 브라우저의 콘솔을 통해 데이터를 출력해줌
+대부분의 주요 웹 브라우저에서는 F12를 누른 후, 메뉴에서 콘솔을 클릭하면 콘솔 화면을 사용할 수 있음
+이러한 콘솔 화면을 통한 데이터의 출력은 좀 더 자세한 사항까지 출력되므로, 디버깅하는데 많은 도움을 줌
+<div class="code">
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang = "ko"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8" /&gt;
+      &lt;title&gt;TCP_JAVASCRIPT_&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;console.log() 메소드&lt;/h1&gt;
+      &lt;p&gt;F12를 눌러서 콘솔 화면을 열면 결과를 확인할 수 있습니다.&lt;/p&gt;
+      &lt;script&gt;
+        console.log(4*5);
+      &lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<object class="page" data="/TCP_JAVASCRIPT_05(5).html" width="100%"></object>
+
+
+
+
+
+
+
+<input type="text" name="bottom" placeholder="맨밑" autofocus />
+
+</pre>
+</body>
+
+</html>

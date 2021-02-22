@@ -28,6 +28,7 @@
         <a href="#DML"><li>DML</li></a><hr>
         <a href="#제약조건"><li>제약조건</li></a><hr>
         <a href="#INDEX"><li>INDEX</li></a><hr>
+        <a href="#VIEW"><li>VIEW</li></a><hr>
       </ol>
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
@@ -201,6 +202,12 @@
         <a href="#인덱스확인"><h4>인덱스확인</h4></a>
         <a href="#INDEX_REBUILD"><h4>INDEX_REBUILD</h4></a>
         <a href="#ROWID"><h4>ROWID</h4></a>
+      </ul>
+      <a href="#인덱스" name="VIEW"><h3>VIEW</h3></a><hr>
+      <ul>
+        <a href="#SIMPLE_VIEW"><h4>SIMPLE_VIEW</h4></a>
+        <a href="#COMPLEX_VIEW"><h4>COMPLEX_VIEW</h4></a>
+        <a href="#INLINE_VIEW"><h4>INLINE_VIEW</h4></a>
       </ul>
     </div>
   </header>
@@ -5146,6 +5153,295 @@ FROM emp
   </tr>
 </table>
 같은 테이블의 데이터의 경우 로우번호만 다르다
+<a href="#VIEW" name="SIMPLE_VIEW"><h4>SIMPLE_VIEW</h4></a><hr>
+view는 가상테이블
+view를 사용하는 이유
+1. 보안: 특정컬럼만 보여주기
+2. 편의성: 복잡한 SQL을 VIEW로 생성
+
+Simple View
+view를 생성할 서브 쿼리에 조인 조건이 안들어가고 1개의 테이블로만 만들어지는 간단한 view
+
+권한할당
+conn /as sysdba
+GRANT CREATE VIEW TO scott;
+
+문법사항
+CREATE [OR REPLACE] [FORCE|NOFORCE] VIEW view이름 [(alias,alias...)]
+AS SUB_QUERY
+[WITH CHECK OPTION [CONSTRAINT 제약조건]]
+[WITH READ ONLY]
+
+REPLACE: 같은 이름의 VIEW가 있을 경우 삭제 후 다시 생성
+FORCE: 기본 테이블의 존재여부와 상관 업시 VIEW 생성
+ALIAS: 기본 테이블의 컬럼이름과 다르게 지정한 VIEW 컬럼
+WITH CHECK OPTION: 주어진 제약조건에 맞는 데이터만 입력 수정
+WITH READ ONLY: SELECT만 가능한 VIEW
+
+view 생성
+<div class="code">
+CREATE OR REPLACE VIEW v_emp1
+AS
+SELECT empno,
+	ename,
+	hiredate
+FROM emp
+;
+--View created.
+</div>
+view 사용
+
+<div class="code">
+SELECT *
+FROM v_emp1
+;
+--EMPNO ENAME                HIREDATE
+------------ -------------------- --------
+-- 7369 SMITH                80/12/17
+-- 7499 ALLEN                81/02/20
+-- 7521 WARD                 81/02/22
+-- 7566 JONES                81/04/02
+-- 7654 MARTIN               81/09/28
+-- 7698 BLAKE                81/05/01
+-- 7782 CLARK                81/06/09
+-- 7839 KING                 81/11/17
+-- 7844 TURNER               81/09/08
+-- 7900 JAMES                81/12/03
+-- 7902 FORD                 81/12/03
+--
+--EMPNO ENAME                HIREDATE
+------------ -------------------- --------
+-- 7934 MILLER               82/01/23
+</div>
+view에는 인덱스를 사용할 수 없음
+
+<div class="code">
+CREATE INDEX IDX_V_EMP_ENAME
+ON v_emp1(ename)
+;
+--ORA-01702: a view is not appropriate here
+</div>
+view를 통한 DML수행
+뷰 생성
+
+<div class="code">
+CREATE OR REPLACE VIEW view1
+AS
+SELECT a, b
+FROM o_table
+;
+</div>
+뷰에 데이터 입력 및 데이터 확인
+
+<div class="code">
+INSERT INTO view1 VALUES(1,2)
+;
+--뷰의 데이터 확인
+SELECT *
+FROM view1
+;
+--         A          B
+------------ ----------
+--         1          2
+
+--테이블의 데이터 확인
+SELECT *
+FROM o_table
+;
+--         A          B
+------------ ----------
+--         1          2
+</div>
+WITH READ ONLY
+읽기전용 뷰 생성
+
+<div class="code">
+CREATE OR REPLACE VIEW view2
+AS
+SELECT a,b
+FROM o_table
+WITH READ ONLY
+;
+</div>
+읽기전용 뷰에 데이터 입력불가
+테이블에 데이터 입력후 view를 통해 조회
+
+<div class="code">
+INSERT INTO view2 VALUES(1,2)
+;
+--ORA-42399: cannot perform a DML operation on a read-only view
+
+INSERT INTO o_table VALUES(1,2)
+;
+SELECT * FROM view2
+;
+--         A          B
+------------ ----------
+--         1          2
+</div>
+WITH CHECK OPTION
+주어진 제약조건에 맞는 데이터만 입력 수정
+
+<div class="code">
+CREATE OR REPLACE VIEW view3
+AS
+SELECT a,b
+FROM o_table
+WHERE a = 3
+WITH CHECK OPTION
+;
+UPDATE view3
+SET b = 5
+WHERE a = 1
+;
+--0 rows updated.
+</div>
+<a href="#VIEW" name="COMPLEX_VIEW"><h4>COMPLEX_VIEW</h4></a><hr>
+여러 개의 테이블이 조인되어서 생성
+INTERSECT, MINUS, UNION 같은 집합연산자는 사용X(성능저하)
+
+emp, dept join한 v_emp
+
+<div class="code">
+CREATE OR REPLACE VIEW v_emp
+AS
+SELECT t1.ename, t2.dname
+FROM emp t1, dept t2
+WHERE t1.deptno = t2.deptno
+;
+--ENAME                DNAME
+---------------------- ----------------------------
+--SMITH                RESEARCH
+--ALLEN                SALES
+--WARD                 SALES
+--JONES                RESEARCH
+--MARTIN               SALES
+--BLAKE                SALES
+--CLARK                ACCOUNTING
+--KING                 ACCOUNTING
+--TURNER               SALES
+--JAMES                SALES
+--FORD                 RESEARCH
+--MILLER               ACCOUNTING
+</div>
+<a href="#VIEW" name="INLINE_VIEW"><h4>INLINE_VIEW</h4></a><hr>
+1회용 뷰
+FROM절에 VIEW의 SUBQUERY를 바로 적어서 사용
+
+emp와 dept 테이블을 조회하여 부서번호, 부서별 최대급여 및 부서명
+
+<div class="code">
+SELECT t1.deptno,
+	t2.dname,
+	t1.sal
+FROM(
+	SELECT deptno,MAX(sal) sal
+	FROM emp
+	GROUP BY deptno
+)t1, dept t2
+WHERE t1.deptno = t2.deptno
+;
+--    DEPTNO DNAME                 SAL
+------------ -------------- ----------
+--        30 SALES                2850
+--        20 RESEARCH             3000
+--        10 ACCOUNTING           5000
+</div>
+professor 테이블에서 lag와 inline view를 활용해서 중복된 항목을 제거해서 보여주기
+중복된 deptno 제거하고 출력
+
+<div class="code">
+SELECT DECODE(deptno, ndeptno, null, deptno) deptno, profno, name
+FROM(
+	SELECT LAG(deptno) OVER(order by deptno) ndeptno,
+	deptno,
+	profno,
+	name
+	FROM professor
+)t1
+;
+--DEPTNO    PROFNO NAME
+---------- ------- --------------------
+--101         1001 Audie Murphy
+--            1002 Angela Bassett
+--            1003 Jessica Lange
+--102         2001 Winona Ryder
+--            2002 Michelle Pfeiffer
+--            2003 Whoopi Goldberg
+--103         3001 Emma Thompson
+--            3002 Julia Roberts
+--            3003 Sharon Stone
+--201         4001 Meryl Streep
+--            4002 Susan Sarandon
+--202         4003 Nicole Kidman
+--            4004 Holly Hunter
+--203         4005 Meg Ryan
+--301         4006 Andie Macdowell
+--            4007 Jodie Foster
+</div>
+user_views: 사용자가 생성한 view조회
+dba_views: 모든 사용자가 생성한 view 조회
+<a href="#VIEW" name="MATERIALIZED_VIEW"><h4>MATERIALIZED_VIEW</h4></a><hr>
+뷰는 데이터를 가지지 않고 SQL문장을 가지고 있기에 해당 테이블에 가서 데이터를 가져온 후
+사용자에게 데이터를 반환하고 데이터를 삭제하는 데 대용량 뷰일 경우 성능 이슈가 발생함
+그래서 데이터를 가지고 있는 Mview를 사용한다.
+
+권한설정
+
+<div class="code">
+GRANT QUERY REWRITE TO SCOTT;
+GRANT CREATE MATERIALIZED VIEW TO SCOTT;
+</div>
+MVIEW 생성
+
+<div class="code">
+CREATE MATERIALIZED VIEW m_prof
+BUILD IMMEDIATE
+REFRESH
+ON DEMAND
+COMPLETE
+ENABLE QUERY REWRITE
+AS
+SELECT profno, name, pay
+FROM professor
+;
+</div>
+
+BUILD IMMEDIATE: 서브쿼리를 수행하면서 데이터를 가져오라
+ON DEMAND: 사용자가 수동으로 데이터 동기화
+ON COMMIT: 원본 테이블 변경 후 COMMIT이 발생하면 자동으로 동기화
+COMPLETE: MVIEW 내의 데이터 전체가 원본 테이블과 동기화 되는 방법
+ATOMIC_REFRESH = TRUE와 COMPLETE로 설정 되어 있어야함
+데이터가 많은 경우 시간이 많이 소요
+FAST: 원본 테이블에 새로운 데이터가 입력된 경우 그 부분만 MVIEW로 동기화
+FORCE: FAST방법이 가능한지 살펴보고 불가능하면 COMPLETE방법을 사용자가
+NEVER: 동기화 하지 않음
+
+MVIEW 에는 데이터가 존재하기 때문에 index도 생성가능
+
+<div class="code">
+CREATE INDEX idx_m_prof_pay
+ON m_prof(pay ASC)
+;
+</div>
+MVIEW 관리
+생성옵션에서 ON COMMIT을 설정하면 즉시 동기화가 되나 대량의 데이터가 변경될 경우 큰 부하를 유발
+
+<div class="code">
+BEGIN
+	DBMS_MVIEW.REFRESH('뷰이름');
+END;
+/
+</div>
+모든 Mview를 동기화하는 구문
+
+<div class="code">
+EXEC DMBS_MVIEW.REFRESH_ALL_MVIEW
+;
+</div>
+
+
+
 
 
 
