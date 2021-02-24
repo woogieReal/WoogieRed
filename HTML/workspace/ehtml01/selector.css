@@ -1,0 +1,29 @@
+/* selector */
+/* universal: * */
+* {
+    color: green;
+}
+h2 {
+    color: brown;
+}
+li#special {
+    color: blue;
+}
+.red {
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+.blue {
+    width: 100px;
+    height: 100px;
+    background: blue;
+}
+button:hover {
+    color: indianred;
+    background: gold;
+}
+/* $ 는 끝을 의미 */
+a[href $=".net"] {
+    color: lightskyblue;
+}
