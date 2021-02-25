@@ -30,6 +30,8 @@
         <a href="#INDEX"><li>INDEX</li></a><hr>
         <a href="#VIEW"><li>VIEW</li></a><hr>
         <a href="#SUB_QUERY"><li>SUB_QUERY</li></a><hr>
+        <a href="#SEQUENCE"><li>SEQUENCE</li></a><hr>
+        <a href="#SYNONYM"><li>SYNONYM</li></a><hr>
       </ol>
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
@@ -218,6 +220,11 @@
         <a href="#상호연관_서브쿼리"><h4>상호연관_서브쿼리</h4></a>
         <a href="#스칼라_서브쿼리"><h4>스칼라_서브쿼리</h4></a>
         <a href="#with_서브쿼리"><h4>with_서브쿼리</h4></a>
+      </ul>
+      <a href="#인덱스" name="SEQUENCE"><h3>SEQUENCE</h3></a><hr>
+      <ul>
+        <a href="#시퀀스사용"><h4>시퀀스사용</h4></a>
+        <a href="#시퀀스초기화"><h4>시퀀스초기화</h4></a>
       </ul>
     </div>
   </header>
@@ -5635,7 +5642,7 @@ WHERE deptno IN (
 --EXISTS
 --서브쿼리의 내용을 먼저 수행하고 그 결과가 1건이라도 나옴면 메인쿼리 수행
 --한 건도 나오지 않으면 메인쿼리가 수행 안됨
---서브쿼리는 true/false라고 보고 true면 메인쿼리가 수행되는 것
+--서브쿼리를 true/false라고 보고 true면 메인쿼리가 수행되는 것
 
 <div class="code">
 SELECT *
@@ -6005,6 +6012,226 @@ SELECT 'MAX-MIN' C1, (max_pay - min_pay) FROM sub_pay
 --
 --Elapsed: 00:00:00.18
 </div>
+<a href="#SEQUENCE" name="시퀀스사용"><h4>시퀀스사용</h4></a><hr>
+--SEQUENCE와 SYNONYM
+--시퀀스는 연속적인 번호를 자동으로 생성하는 번호 생성기
+--단점은 DML이 롤백 되어도 시퀀스는 롤백 되지 않는다.
+
+--생성방법 
+--CREATE SEQUENCE sequence_name
+<table>
+  <tr>
+    <th>속성</th>
+    <th>의미</th>
+    <th>기본값</th>
+  </tr>
+  <tr>
+    <td>INCREMENT BY n</td>
+    <td>시퀀스 번호의 증가 값</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>START WITH n</td>
+    <td>시퀀스 번호의 시작값</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>MAXVALUE n</td>
+    <td>시퀀스 최대값</td>
+    <td>없음</td>
+  </tr>
+  <tr>
+    <td>MINVALUE n</td>
+    <td>시퀀스 최소값</td>
+    <td>없음</td>
+  </tr>
+  <tr>
+    <td>CYCLE|NOCYCLE</td>
+    <td>시퀀스 번호의 순환여부</td>
+    <td>NOCYCLE</td>
+  </tr>
+  <tr>
+    <td>CACHE|NOCHACHE</td>
+    <td>시퀀스 생성속도 개선하기 위한 캐싱여부 지정</td>
+    <td>NOCHACHE</td>
+  </tr>
+</table>
+--SEQUENCE_NAME: jno_seq
+--증감값: 1
+--시작번호: 100
+--끝번호: 110
+--최소: 90
+--증가값: 1
+--반복되고 캐싱은 2
+
+<div class="code">
+CREATE SEQUENCE jno_seq
+INCREMENT BY 1
+START WITH 100
+MAXVALUE 110
+MINVALUE 90
+CYCLE
+CACHE 2
+;
+</div>
+--CURRVAL: 현재 시퀀스 값
+--NEXTVAR: 다음 시퀀스 값
+
+--테이블 생성
+
+<div class="code">
+CREATE TABLE s_order(
+	ord_no NUMBER(4),
+	ord_name VARCHAR2(10),
+	p_name VARCHAR2(20),
+	p_qty NUMBER
+);
+</div>
+--시퀀스를 s_order 테이블의 ord_no에 사용
+
+<div class="code">
+INSERT INTO s_order (
+    ord_no,
+    ord_name,
+    p_name,
+    p_qty
+) VALUES (
+    jno_seq.NEXTVAL,
+    'james',
+    'MAC',
+    2
+);
+--    ORD_NO ORD_NAME             P_NAME                                        P_QTY
+------------ -------------------- ---------------------------------------- ----------
+--       100 james                MAC                                               2
+</div>
+--MAXVALUE와 MINVALUE 테스트
+
+<div class="code">
+BEGIN
+	FOR i IN 1..11 LOOP
+		INSERT INTO s_order (
+		    ord_no,
+		    ord_name,
+		    p_name,
+		    p_qty
+		) VALUES (
+		    jno_seq.NEXTVAL,
+		    'james',
+		    'MAC',
+		    1
+		);
+	END LOOP;
+	COMMIT;
+END;
+/
+--    ORD_NO ORD_NAME             P_NAME                                        P_QTY
+------------ -------------------- ---------------------------------------- ----------
+--       100 james                MAC                                               2
+--       101 james                MAC                                               1
+--       102 james                MAC                                               1
+--       103 james                MAC                                               1
+--       104 james                MAC                                               1
+--       105 james                MAC                                               1
+--       106 james                MAC                                               1
+--       107 james                MAC                                               1
+--       108 james                MAC                                               1
+--       109 james                MAC                                               1
+--       110 james                MAC                                               1
+--        90 james                MAC                                               1
+--
+--12 rows selected.
+</div>
+--값이 감소하는 시퀀스
+
+<div class="code">
+CREATE SEQUENCE jno_seq_rv
+INCREMENT BY -2
+START WITH 10
+MAXVALUE 20
+MINVALUE 0
+;
+</div>
+--테이블 생성
+
+<div class="code">
+CREATE TABLE s_revl(
+	no NUMBER
+);
+</div>
+--CYCLE 속성을 안줬기 때문에 MINVALUE인 0에 도달하면 더이상 데이터를 입력할 수 없음
+
+<div class="code">
+INSERT INTO s_revl VALUES(jno_seq_rv.NEXTVAL)
+;
+--        NO
+------------
+--        10
+--         8
+--         6
+--         4
+--         2
+--         0
+--ORA-08004: sequence JNO_SEQ_RV.NEXTVAL goes below MINVALUE and cannot be instantiated
+</div>
+<a href="#SEQUENCE" name="시퀀스초기화"><h4>시퀀스초기화</h4></a><hr>
+--시퀀스 초기화
+
+<div class="code">
+CREATE OR REPLACE PROCEDURE SCOTT.res_sequence (sequencename IN VARCHAR2) as curr_val INTEGER;
+BEGIN
+  EXECUTE IMMEDIATE 'alter sequence ' ||sequencename||' MINVALUE 0';
+  EXECUTE IMMEDIATE 'SELECT ' ||sequencename ||'.nextval FROM dual' INTO curr_val;
+  EXECUTE IMMEDIATE 'alter sequence ' ||sequencename||' increment by -'||curr_val;
+  EXECUTE IMMEDIATE 'SELECT ' ||sequencename ||'.nextval FROM dual' INTO curr_val;
+  EXECUTE IMMEDIATE 'alter sequence ' ||sequencename||' increment by 1';
+END res_sequence;
+--Procedure RES_SEQUENCE이(가) 컴파일되었습니다.
+</div>
+--프로시저 실행
+--EXEC 혹은 EXECUTE 프로시저명(매개변수1 값, 매개변수2 값, ...);
+
+<div class="code">
+CREATE SEQUENCE seq_test;
+</div>
+--조회할 수록 값이 올라감
+
+<div class="code">
+SELECT seq_test.nextval
+FROM dual
+;
+</div>
+--EXEC res_sequence();
+--괄호 안의 시퀀스명은 대문자로
+--시퀀스 값을 초기화. 다시 1부터 들어감
+
+<div class="code">
+EXEC res_sequence('SEQ_TEST');
+</div>
+--시퀀스 목록조회
+--user_sequences 테이블
+
+<div class="code">
+SELECT * FROM user_sequences
+;
+--SEQUENCE_NAME       MIN_VALUE  MAX_VALUE INCREMENT_BY CY OR CACHE_SIZE LAST_NUMBER
+-------------------- ---------- ---------- ------------ -- -- ---------- -----------
+--BOARD_SEQ                   0  999999999            1 N  N          20           0
+--JNO_SEQ                    90        110            1 Y  N           2          92
+--JNO_SEQ_RV                  0         20           -2 N  N          20          -2
+--SEQ_TEST                    0 1.0000E+28            1 N  N          20          21
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 </pre>
 </body>

@@ -485,5 +485,234 @@ SELECT 'MAX-MIN' C1, (max_pay - min_pay) FROM sub_pay
 --
 --Elapsed: 00:00:00.18
 
+--IN연산자: 다중행 연산자로 내부적으로 중복값을 제거하는 것으로 DISTINCT연산을 수행
+--EXISTS: 존재여부만 확인, 하나라도 존재하면 더이상 검색하지 않고 바로 빠져나옴
 
+--1. 고객테이블 생성: Small(1000건)
+CREATE TABLE cust_t(
+	cust_no VARCHAR2(1000),
+	cust_nm VARCHAR2(1000)
+);
+
+INSERT INTO cust_t
+SELECT level,
+	'SCOTT'||TO_CHAR(LEVEL,'000')
+FROM dual
+CONNECT BY LEVEL <= 1000
+;
+
+--1.1. 주문테이블 생성: Big (1000000건)
+CREATE TABLE order_t(
+	order_no VARCHAR2(4000),
+	cust_no VARCHAR2(1000),
+	orderdd VARCHAR2(8),
+	product_nm VARCHAR2(4000)
+);
+
+--append hint: insert 속도 향상
+--데이터베이스가 noarchive mode인 경우 혹은 table이 nologging으로 설정시 사용
+INSERT /*+ append */ INTO order_t
+SELECT level order_no,
+	MOD(level,500) cust_no,
+	TO_CHAR(SYSDATE - mod(level, 30)) orderdd,
+	'MAC'||TO_CHAR(LEVEL, '000000') product_nm
+FROM dual
+CONNECT BY LEVEL <= 1000000
+;
+COMMIT;
+
+--통계정보 갱신전
+SELECT table_name,
+	num_rows,
+	blocks,
+	avg_row_len,
+	sample_size
+FROM user_tables
+WHERE table_name IN ('ORDER_T','CUST_T')
+;
+--TABLE_NAME           NUM_ROWS     BLOCKS AVG_ROW_LEN SAMPLE_SIZE
+-------------------- ---------- ---------- ----------- -----------
+--CUST_T
+--ORDER_T
+
+--통계정보 갱신후
+ANALYZE TABLE order_t COMPUTE STATISTICS;
+ANALYZE TABLE cust_t COMPUTE STATISTICS;
+
+SELECT table_name,
+	num_rows,
+	blocks,
+	avg_row_len,
+	sample_size
+FROM user_tables
+WHERE table_name IN ('ORDER_T','CUST_T')
+;
+--TABLE_NAME           NUM_ROWS     BLOCKS AVG_ROW_LEN SAMPLE_SIZE
+-------------------- ---------- ---------- ----------- -----------
+--CUST_T                   1000          5          17        1000
+--ORDER_T               1000000       5033          34     1000000
+
+--2. 주문테이블 인덱스 생성
+--order_t 테이블의 cust_no에 인덱스 생성
+CREATE INDEX idx_order_t_01
+ON order_t(cust_no)
+;
+
+--exists
+--EXISTS 서브쿼리의 SELECT에는 무엇이 와도 상관없음
+SELECT COUNT(*)
+FROM cust_t t1
+WHERE EXISTS (
+	SELECT 1
+	FROM order_t t2
+	WHERE t1.cust_no = t2.cust_no
+);
+
+--3. PLAN
+explain plan for
+SELECT COUNT(*)
+FROM cust_t t1
+WHERE EXISTS (
+	SELECT 1
+	FROM order_t t2
+	WHERE t1.cust_no = t2.cust_no
+);
+
+col plan_table_output format a200; 
+SELECT * FROM table(dbms_xplan.display);
+
+--PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------------------
+--Plan hash value: 1679909791
+--
+-------------------------------------------------------------------------------------------
+--| Id  | Operation              | Name           | Rows  | Bytes | Cost (%CPU)| Time     |
+-------------------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT       |                |     1 |     6 |   570   (2)| 00:00:07 |
+--|   1 |  SORT AGGREGATE        |                |     1 |     6 |            |          |
+--|*  2 |   HASH JOIN SEMI       |                |   500 |  3000 |   570   (2)| 00:00:07 |
+--|   3 |    TABLE ACCESS FULL   | CUST_T         |  1000 |  3000 |     3   (0)| 00:00:01 |
+--|   4 |    INDEX FAST FULL SCAN| IDX_ORDER_T_01 |  1000K|  2929K|   564   (1)| 00:00:07 |
+-------------------------------------------------------------------------------------------
+--
+--Predicate Information (identified by operation id):
+-----------------------------------------------------
+--
+--   2 - access("T1"."CUST_NO"="T2"."CUST_NO")
+
+--기존 인덱스 삭제 (order_t 테이블의 cust_no)
+DROP INDEX idx_order_t_01;
+
+--cust_t 테이블의 cust_no에 인덱스 생성
+CREATE INDEX idx_cust_t_01
+ON cust_t(cust_no);
+
+--조회
+--leading: 조인할 때 먼저 읽어 들일 테이블을 지정
+--use_nl: nested loop join을 수행하시오
+SELECT /*+ leading(order_t) use_nl(order_t cust_t)*/ COUNT(*)
+FROM cust_t
+WHERE cust_no IN (SELECT cust_no FROM order_t)
+;
+--  COUNT(*)
+------------
+--       499
+--
+--Elapsed: 00:00:00.21
+
+--PLAN
+explain plan for
+SELECT /*+ leading(order_t) use_nl(order_t cust_t)*/ COUNT(*)
+FROM cust_t
+WHERE cust_no IN (SELECT cust_no FROM order_t)
+;
+
+col plan_table_output format a200; 
+SELECT * FROM table(dbms_xplan.display);
+
+--PLAN_TABLE_OUTPUT
+-----------------------------------------------------------------------------------------------
+--Plan hash value: 1465242419
+--
+------------------------------------------------------------------------------------------
+--| Id  | Operation              | Name          | Rows  | Bytes | Cost (%CPU)| Time     |
+------------------------------------------------------------------------------------------
+--|   0 | SELECT STATEMENT       |               |     1 |     6 |  4453   (1)| 00:00:54 |
+--|   1 |  SORT AGGREGATE        |               |     1 |     6 |            |          |
+--|   2 |   NESTED LOOPS         |               |   500 |  3000 |  4453   (1)| 00:00:54 |
+--|   3 |    SORT UNIQUE         |               |  1000K|  2929K|  1371   (1)| 00:00:17 |
+--|   4 |     TABLE ACCESS FULL  | ORDER_T       |  1000K|  2929K|  1371   (1)| 00:00:17 |
+--|*  5 |    INDEX FAST FULL SCAN| IDX_CUST_T_01 |     1 |     3 |     1   (0)| 00:00:01 |
+------------------------------------------------------------------------------------------
+--
+--Predicate Information (identified by operation id):
+-----------------------------------------------------
+--
+--   5 - filter("CUST_NO"="CUST_NO")
+
+--스칼라 서브쿼리의 성능을 빠르게 하려면
+--메인쿼리가 먼저 수행된 후 나온 결과 집합 수만큼 스칼라 서브쿼리를 수행
+--메인쿼리에 나온 결과가 100건이면 100번 스칼라 쿼리를 수행
+--스칼라 서브쿼리에 조인되는 컬럼에 인덱스가 존재하지 않으면 굉장한 비효율 발생
+
+--스칼라 서브쿼리에서 NULL 처리
+--EMP2, DEPT2 스칼라 서브쿼리
+
+--NVL처리를 했지만 NULL값로 '## not belog to a Dept..' 바뀌어 출력되지 않았음
+SELECT t1.name,
+	(SELECT NVL(dname,'## not belog to a Dept..') FROM dept2 t2 WHERE t1.deptno = t2.dcode)dname
+FROM emp2 t1
+;
+--NAME                  DNAME
+----------------------- -----------------------------
+--Ray
+--Kurt Russell          President
+--AL Pacino             Management Support Team
+--Woody Harrelson       Management Support Team
+--Tommy Lee Jones       Financial Management Team
+--Gene Hackman          General affairs
+--Kevin Bacon           Engineering division
+--Hugh Grant            H/W Support Team
+--Keanu Reeves          S/W Support Team
+--Val Kilmer            Business Department
+--Chris O'Donnell       Business Planning Team
+--Jack Nicholson        Sales1 Team
+--Denzel Washington     Sales2 Team
+--Richard Gere          Sales3 Team
+--Kevin Costner         Sales4 Team
+--JohnTravolta          Sales1 Team
+--Robert De Niro        Sales2 Team
+--Sly Stallone          Sales3 Team
+--Tom Cruise            Sales4 Team
+--Harrison Ford         H/W Support Team
+--Clint Eastwood        S/W Support Team
+
+--스칼라 서브쿼리를 쓸때는 SELECT 절을 감싸는 형태로 NULL처리를 해야함
+SELECT t1.name,
+	NVL((SELECT dname FROM dept2 t2 WHERE t1.deptno = t2.dcode),'## not belog to a Dept..')dname
+FROM emp2 t1
+;
+--NAME                   DNAME
+------------------------ -----------------------------
+--Ray                    ## not belog to a Dept..
+--Kurt Russell           President
+--AL Pacino              Management Support Team
+--Woody Harrelson        Management Support Team
+--Tommy Lee Jones        Financial Management Team
+--Gene Hackman           General affairs
+--Kevin Bacon            Engineering division
+--Hugh Grant             H/W Support Team
+--Keanu Reeves           S/W Support Team
+--Val Kilmer             Business Department
+--Chris O'Donnell        Business Planning Team
+--Jack Nicholson         Sales1 Team
+--Denzel Washington      Sales2 Team
+--Richard Gere           Sales3 Team
+--Kevin Costner          Sales4 Team
+--JohnTravolta           Sales1 Team
+--Robert De Niro         Sales2 Team
+--Sly Stallone           Sales3 Team
+--Tom Cruise             Sales4 Team
+--Harrison Ford          H/W Support Team
+--Clint Eastwood         S/W Support Team
 
