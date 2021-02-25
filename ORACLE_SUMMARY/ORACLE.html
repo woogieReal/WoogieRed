@@ -226,6 +226,11 @@
         <a href="#시퀀스사용"><h4>시퀀스사용</h4></a>
         <a href="#시퀀스초기화"><h4>시퀀스초기화</h4></a>
       </ul>
+      <a href="#인덱스" name="SYNONYM"><h3>SYNONYM</h3></a><hr>
+      <ul>
+        <a href="#시노님사용"><h4>시노님사용</h4></a>
+        <a href="#시노님조회"><h4>시노님조회</h4></a>
+      </ul>
     </div>
   </header>
   <pre>
@@ -6221,13 +6226,134 @@ SELECT * FROM user_sequences
 --JNO_SEQ_RV                  0         20           -2 N  N          20          -2
 --SEQ_TEST                    0 1.0000E+28            1 N  N          20          21
 </div>
+--시퀀스 삭제
 
+<div class="code">
+DROP SEQUENCE jno_seq;
+</div>
+<a href="#SYNONYM" name="시노님사용"><h4>시노님사용</h4></a><hr>
+--SYNONYM(동의어 OR 별칭)
+--1. 보안(다른 유저의 객체(ex.테이블)를 참조할 때 많이 사용)
+--2. 사용자 편의성(긴 이름의 객체를 단축이름으로 사용)
 
+--SYNONYM 생성권한 필요
+--GRANT CREATE [PUBLIC] SYNONYM TO 유저명 
 
+--문법
+--CREATE [PUBLIC] SYNONYM 시노님_이름 (기본값은 PRIVATE)
+--FOR [SCOTT].대상객체(테이블);
 
+--PUBLIC이 붙으면 모든 사람이 사용가능(단 권한 필요)
+--PUBLIC이 없으면 만든 사람만 사용가능 
 
+--1. 계정변환
 
+<div class="code">
+conn /as sysdba;
+</div>
+--2. 권한할당
 
+--PRIVATE
+
+<div class="code">
+GRANT CREATE SYNONYM TO SCOTT
+;
+--Grant succeeded.
+</div>
+--PUBLIC
+
+<div class="code">
+GRANT CREATE PUBLIC SYNONYM TO SCOTT
+;
+--Grant succeeded.
+</div>
+--3. 계정전환
+
+<div class="code">
+conn scott/sist;
+</div>
+--4. PUBLIC SYNONYM 생성
+
+<div class="code">
+CREATE PUBLIC SYNONYM d2
+FOR dept
+; 
+--Synonym created.
+</div>
+--5. PUBLIC SYNONYM으로 조회
+
+<div class="code">
+SELECT * FROM d2
+;
+--  DEPTNO DNAME                        LOC
+---------- ---------------------------- --------------------
+--      10 ACCOUNTING                   NEW YORK
+--      20 RESEARCH                     DALLAS
+--      30 SALES                        CHICAGO
+--      40 OPERATIONS                   BOSTON
+</div>
+
+--6. PRIVATE SYNONYM 생성
+
+<div class="code">
+CREATE SYNONYM e
+FOR emp
+;
+</div>
+--7. PRIVATE SYNONYM으로 조회
+
+<div class="code">
+SELECT * FROM e
+;
+--  EMPNO ENAME      JOB               MGR HIREDATE        SAL       COMM     DEPTNO
+--------- ---------- ---------- ---------- -------- ---------- ---------- ----------
+--   7369 SMITH      CLERK            7902 80/12/17        800                    20
+--   7499 ALLEN      SALESMAN         7698 81/02/20       1600        300         30
+--   7521 WARD       SALESMAN         7698 81/02/22       1250        500         30
+--   7566 JONES      MANAGER          7839 81/04/02       2975                    20
+--   7654 MARTIN     SALESMAN         7698 81/09/28       1250       1400         30
+--   7698 BLAKE      MANAGER          7839 81/05/01       2850                    30
+--   7782 CLARK      MANAGER          7839 81/06/09       2450                    10
+--   7839 KING       PRESIDENT             81/11/17       5000                    10
+--   7844 TURNER     SALESMAN         7698 81/09/08       1500          0         30
+--   7900 JAMES      CLERK            7698 81/12/03        950                    30
+--   7902 FORD       ANALYST          7566 81/12/03       3000                    20
+--   7934 MILLER     CLERK            7782 82/01/23       1300                    10
+</div>
+<a href="#SYNONYM" name="시노님조회"><h4>시노님조회</h4></a><hr>
+--PUBLIC SYNONYM 조회하기
+--PUBLIC SYNONYM은 dba_synonyms 테이블에서만 조회가능
+
+<div class="code">
+SELECT synonym_name
+	,table_name
+	,table_owner
+FROM dba_synonyms
+WHERE TABLE_NAME = 'DEPT'
+;
+--SYNONYM_NAME      TABLE_NAME      TABLE_OWNER
+------------------- --------------- ---------------
+--D2                DEPT            SCOTT
+</div>
+--8. PRIVATE SYNONYM 조회하기
+--PRIVATE SYNONYM은 dba_synonyms 테이블과 user_synonyms 테이블 양쪽에서 모두 조회가능
+
+<div class="code">
+SELECT synonym_name
+	,table_name
+	,table_owner
+FROM user_synonyms
+WHERE TABLE_NAME = 'EMP'
+;
+--SYNONYM_NAME       TABLE_NAME      TABLE_OWNER
+-------------------- --------------- --------------
+--E                  EMP             SCOTT
+</div>
+--SYNONYM 삭제
+
+<div class="code">
+DROP SYNONYM scott.e;
+</div>
 
 
 
