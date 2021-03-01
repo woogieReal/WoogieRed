@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>eclass</title>
+    <style>
+      div.list {
+        width: 70px;
+        display: inline-block;
+        margin: 5px;
+      }
+      .button {
+        border: 2px solid #ba6b6c;
+        background-color: #ffcccb;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>input: ex)사용자 회원가입</h2>
+    <hr/>
+    <!--form은 요소(input)를 서버로 전송
+        action: 서버(controller)
+        method: get/post
+          get방식: httpsL//cafe.naver.com/kndjang?seq=4698(?변수=변수값) 
+            브라우저 주소에 입력정보가 노출, 최대 4096바이트
+          post방식: httpsL//cafe.naver.com/kndjang
+            브라우저 주소에 입력정보가 노출안됨.
+        enctype: default value -> apllication/x-www-form-urlencoded
+          파일 업로드 -> post +multipart/form-data
+        frame 안쓴다!!!!
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+        여기서 호환성에 걸리는 타입 걸러라!!
+        https://cafe.naver.com/kndjang
+        web 에러 상태값!!
+        novalidate="novalidate" 과 maxlength 같은 속성은 같이 쓰면 안됨.
+          -->
+        
+        <form action="./board/board.do" method="GET">
+        <!-- <form action="./board/board.do" method="POST" enctype="multipart/form-data"> -->
+          <div class="list">아이디</div>
+          <input type="text" name="member_id" size="20" maxlength="12" minlength="4"/><br/>
+          <div class="list">비번</div>
+          <input type="password" name="passwd" size="20" maxlength="50"/><br/>
+          <div class="list">과목</div>
+          <input list="programming" name="dtlist"/><br/>
+            <datalist id="programming">
+              <option value="HTML"></option>
+              <option value="CSS"></option>
+              <option value="JSP"></option>
+            </datalist>
+          <input type="hidden" name="div" value="10"/>
+          <div class="list">등급</div>
+          <select name="subject">
+            <option value="" selected="selected">전체</option>
+            <option value="beginning">초급</option>
+            <option value="intermediate">중급</option>
+            <option value="advanced">고급</option>
+          </select><br/>
+          <input type="file" name="file"/><br/>
+          <textarea rows="5" cols="30" name="contents"></textarea>
+
+
+          <input type="reset" value="초기화" class="button"/>
+          <input type="submit" value="전송" class="button"/>
+        <!--
+          GET 데이터 전송 예
+          http://172.30.1.10:5500/web/tmp.html?member_id=woogie&passwd=123123123&dtlist=HTML&div=10
+        -->
+
+
+
+
+        </form>
+
+
+
+  </body>
+</html>

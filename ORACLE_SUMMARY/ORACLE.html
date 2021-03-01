@@ -101,7 +101,6 @@
         <a href="#LAST_DAY"><h4>LAST_DAY</h4></a>
         <a href="#ROUND/TRUNC"><h4>ROUND/TRUNC</h4></a>
         <a href="#EXTRACT"><h4>EXTRACT</h4></a>
-        <a href="#TO_DATE"><h4>TO_DATE</h4></a>
       </ul>
       <a href="#인덱스" name="형변환함수"><h3>형변환함수</h3></a><hr>
       <ul>
@@ -141,7 +140,6 @@
         <a href="#GROUPING_SETS"><h4>GROUPING_SETS</h4></a>
         <a href="#LISTAGG"><h4>LISTAGG</h4></a>
         <a href="#XMLAGG"><h4>XMLAGG</h4></a>
-        <a href="#PIVOT"><h4>PIVOT</h4></a>
         <a href="#UNPIVOT"><h4>UNPIVOT</h4></a>
         <a href="#LAG"><h4>LAG</h4></a>
         <a href="#LEAD"><h4>LEAD</h4></a>
@@ -1250,17 +1248,6 @@ FROM emp;
 --FORD                 81/12/03       1981         12          3
 --MILLER               82/01/23       1982          1         23
 </div>
-<a href="#날짜함수" name="TO_DATE"><h4>TO_DATE</h4></a><hr>
---TO_DATE: 날짜가 아닌 날짜처럼 생긴 문자를 날짜로 바꿔주는 함수
-
-<div class = "code">
-SELECT TO_DATE('20210201')"date"
-FROM dual;
---date
-----------
---21/02/01
-</div>
-
 <a href="#형변환함수" name="DATA_TYPE"><h4>DATA_TYPE</h4></a><hr>
 --CHAR(n): 고정길이의 문자를 저장, 최댓값은 2000바이트(꼭 고정된 길이의 데이터에만 쓸 것)
 --VARCHAR2(n): 변하는 길이의 문자를 저장, 최댓값은 4000바이트
@@ -2511,18 +2498,18 @@ SELECT job, XMLELEMENT(NAME,'-',ename)"NAME"
 FROM emp;
 --JOB                NAME
 -------------------- --------------------------------------------------
---CLERK              <NAME>-SMITH</NAME>
---SALESMAN           <NAME>-ALLEN</NAME>
---SALESMAN           <NAME>-WARD</NAME>
---MANAGER            <NAME>-JONES</NAME>
---SALESMAN           <NAME>-MARTIN</NAME>
---MANAGER            <NAME>-BLAKE</NAME>
---MANAGER            <NAME>-CLARK</NAME>
---PRESIDENT          <NAME>-KING</NAME>
---SALESMAN           <NAME>-TURNER</NAME>
---CLERK              <NAME>-JAMES</NAME>
---ANALYST            <NAME>-FORD</NAME>
---CLERK              <NAME>-MILLER</NAME>
+--CLERK              &lt;NAME&gt;-SMITH&lt;/NAME&gt;
+--SALESMAN           &lt;NAME&gt;-ALLEN&lt;/NAME&gt;
+--SALESMAN           &lt;NAME&gt;-WARD&lt;/NAME&gt;
+--MANAGER            &lt;NAME&gt;-JONES&lt;/NAME&gt;
+--SALESMAN           &lt;NAME&gt;-MARTIN&lt;/NAME&gt;
+--MANAGER            &lt;NAME&gt;-BLAKE&lt;/NAME&gt;
+--MANAGER            &lt;NAME&gt;-CLARK&lt;/NAME&gt;
+--PRESIDENT          &lt;NAME&gt;-KING&lt;/NAME&gt;
+--SALESMAN           &lt;NAME&gt;-TURNER&lt;/NAME&gt;
+--CLERK              &lt;NAME&gt;-JAMES&lt;/NAME&gt;
+--ANALYST            &lt;NAME&gt;-FORD&lt;/NAME&gt;
+--CLERK              &lt;NAME&gt;-MILLER&lt;/NAME&gt;
 </div>
 --2. 직업별로 직원들의 이름을 하나의 ROW로 출력
 --XMLAGG(컬럼1 ORDER BY 컬럼2): 컬럼1을 컬럼2의 순서로 정렬하여 하나의 ROW에 출력
@@ -2534,11 +2521,11 @@ FROM emp
 GROUP BY job;
 --JOB                NAME
 -------------------- --------------------------------------------------------------------------------
---ANALYST            <NAME>-FORD</NAME>
---CLERK              <NAME>-SMITH</NAME><NAME>-JAMES</NAME><NAME>-MILLER</NAME>
---MANAGER            <NAME>-CLARK</NAME><NAME>-BLAKE</NAME><NAME>-JONES</NAME>
---PRESIDENT          <NAME>-KING</NAME>
---SALESMAN           <NAME>-WARD</NAME><NAME>-MARTIN</NAME><NAME>-TURNER</NAME><NAME>-ALLEN</NAME>
+--ANALYST            &lt;NAME&gt;-FORD&lt;/NAME&gt;
+--CLERK              &lt;NAME&gt;-SMITH&lt;/NAME&gt;&lt;NAME&gt;-JAMES&lt;/NAME&gt;&lt;NAME&gt;-MILLER&lt;/NAME&gt;
+--MANAGER            &lt;NAME&gt;-CLARK&lt;/NAME&gt;&lt;NAME&gt;-BLAKE&lt;/NAME&gt;&lt;NAME&gt;-JONES&lt;/NAME&gt;
+--PRESIDENT          &lt;NAME&gt;-KING&lt;/NAME&gt;
+--SALESMAN           &lt;NAME&gt;-WARD&lt;/NAME&gt;&lt;NAME&gt;-MARTIN&lt;/NAME&gt;&lt;NAME&gt;-TURNER&lt;/NAME&gt;&lt;NAME&gt;-ALLEN&lt;/NAME&gt;
 </div>
 --3. 태그를 제외한 데이터만 뽑아서 출력
 --EXTRACT('//text()')
