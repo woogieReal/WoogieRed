@@ -32,6 +32,7 @@
         <a href="#SUB_QUERY"><li>SUB_QUERY</li></a><hr>
         <a href="#SEQUENCE"><li>SEQUENCE</li></a><hr>
         <a href="#SYNONYM"><li>SYNONYM</li></a><hr>
+        <a href="#계층형쿼리"><li>계층형쿼리</li></a><hr>
       </ol>
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
@@ -228,6 +229,19 @@
       <ul>
         <a href="#시노님사용"><h4>시노님사용</h4></a>
         <a href="#시노님조회"><h4>시노님조회</h4></a>
+      </ul>
+      <a href="#인덱스" name="계층형쿼리"><h3>계층형쿼리</h3></a><hr>
+      <ul>
+        <a href="#계층형쿼리_문법"><h4>계층형쿼리_문법</h4></a>
+        <a href="#LEVEL"><h4>LEVEL</h4></a>
+        <a href="#PRIOR"><h4>PRIOR</h4></a>
+        <a href="#START WITH"><h4>START WITH</h4></a>
+        <a href="#PRIOR 컬럼"><h4>PRIOR 컬럼</h4></a>
+        <a href="#CONNECT + AND"><h4>CONNECT + AND</h4></a>
+        <a href="#SYS_CONNECT_BY_PATH"><h4>SYS_CONNECT_BY_PATH</h4></a>
+        <a href="#CONNECT_BY_ISLEAF"><h4>CONNECT_BY_ISLEAF</h4></a>
+        <a href="#CONNECT_BY_ROOT"><h4>CONNECT_BY_ROOT</h4></a>
+        <a href="#계층+스칼라쿼리"><h4>계층+스칼라쿼리</h4></a>
       </ul>
     </div>
   </header>
@@ -6341,6 +6355,281 @@ WHERE TABLE_NAME = 'EMP'
 <div class="code">
 DROP SYNONYM scott.e;
 </div>
+<a href="#계층형쿼리" name="계층형쿼리_문법"><h4>계층형쿼리_문법</h4></a><hr>
+--계층형 쿼리(Hierarchical Query)
+--계층구조의 문법
+--START WITH: 계층형 질의의 루트(부모형), 서브쿼리를 사용할 수 있음
+--CONNECT BY PRIOR: 계층 질의에서 상위계층과 하위계층의 관계를 규정
+--LEVEL: Pseudocolumn, 계층 구조의 depth를 표현하는 의사컬럼.
+--WHERE: 조건 지정
+--ORDER BY SIBLINGS BY: 계층 구조간의 정렬
+
+--주의사항
+--CONNECT BY에는 서브쿼리를 사용할 수 없다.
+--부분 범위 처리 기법을 계층형 쿼리에 사용할 수 없다.
+--CONNECT BY, WHERE 절에 인덱스가 있어야한다.
+<a href="#계층형쿼리" name="LEVEL"><h4>LEVEL</h4></a><hr>
+--LEVEL
+
+<div class="code">
+SELECT empno,
+	ename,
+	job,
+	mgr,
+	LEVEL
+FROM emp
+START WITH empno = 7839
+CONNECT BY PRIOR empno = mgr
+;
+-- EMPNO ENAME       JOB                 MGR      LEVEL
+-------- ----------- ------------ ---------- ----------
+--  7839 KING        PRESIDENT                        1
+--  7566 JONES       MANAGER            7839          2
+--  7902 FORD        ANALYST            7566          3
+--  7369 SMITH       CLERK              7902          4
+--  7698 BLAKE       MANAGER            7839          2
+--  7499 ALLEN       SALESMAN           7698          3
+--  7521 WARD        SALESMAN           7698          3
+--  7654 MARTIN      SALESMAN           7698          3
+--  7844 TURNER      SALESMAN           7698          3
+--  7900 JAMES       CLERK              7698          3
+--  7782 CLARK       MANAGER            7839          2
+--  7934 MILLER      CLERK              7782          3
+
+--LEVEL1: KING
+--LEVEL2: JONES BLAKE CLARK
+--LEVEL3: WARD ALLEN MILLER FORD JAMES TURNER MARTIN
+--LEVEL4: SMITH
+</div>
+<a href="#계층형쿼리" name="PRIOR"><h4>PRIOR</h4></a><hr>
+--CONNECT BY PRIOR
+--계층을 자식(LEVEL 1)에서 부모(LEVEL 4)로 
+--START WITH empno = 7369(SMITH의 empno)
+--CONNECT BY empno = PRIOR mgr(부모를 향해서 올라가라)
+
+<div class="code">
+SELECT LEVEL ,LPAD(ename, LEVEL*5, '*') "ENAME"
+FROM emp
+CONNECT BY empno = PRIOR mgr
+START WITH empno = 7369
+;
+--  LEVEL ENAME
+--------- --------------------------
+--      1 SMITH
+--      2 ******FORD
+--      3 **********JONES
+--      4 ****************KING
+</div>
+<a href="#계층형쿼리" name="START WITH"><h4>START WITH</h4></a><hr>
+--START WITH
+--START WITH mgr IS NULL (mgr 컬럼의 값이 NULL인 데이터부터 시작하라)
+--CONNECT BY PRIOR empno(자식을 향해 내려가라) = mgr
+--ORDER SIBLINGS BY empno (empno 로 정렬하라)
+
+<div class="code">
+SELECT empno,
+	level,
+	LPAD(ename, LEVEL*4, '*') "ENAME"
+FROM emp
+CONNECT BY PRIOR empno = mgr
+START WITH mgr IS NULL
+ORDER SIBLINGS BY empno
+;
+--  EMPNO      LEVEL ENAME
+--------- ---------- ------------------
+--   7839          1 KING
+--   7566          2 ***JONES
+--   7902          3 ********FORD
+--   7369          4 ***********SMITH
+--   7698          2 ***BLAKE
+--   7499          3 *******ALLEN
+--   7521          3 ********WARD
+--   7654          3 ******MARTIN
+--   7844          3 ******TURNER
+--   7900          3 *******JAMES
+--   7782          2 ***CLARK
+--   7934          3 ******MILLER
+</div>
+<a href="#계층형쿼리" name="PRIOR 컬럼"><h4>PRIOR 컬럼</h4></a><hr>
+--PRIOR 컬럼
+--PRIOR ename AS "MGR_NM" (상위 객체의 ename을 출력)
+--ORDER SIBLINGS BY ename (ename으로 정렬)
+
+<div class="code">
+SELECT empno,
+	level,
+	LPAD(ename, LEVEL*4, ' ') "NAME",
+	PRIOR ename AS "MGR_NM"
+FROM emp
+CONNECT BY PRIOR empno = mgr
+START WITH mgr IS NULL
+ORDER SIBLINGS BY ename
+;
+--  EMPNO      LEVEL NAME                           MGR_NM
+--------- ---------- ------------------------------ ----------------
+--   7839          1 KING
+--   7698          2    BLAKE                       KING
+--   7499          3        ALLEN                   BLAKE
+--   7900          3        JAMES                   BLAKE
+--   7654          3       MARTIN                   BLAKE
+--   7844          3       TURNER                   BLAKE
+--   7521          3         WARD                   BLAKE
+--   7782          2    CLARK                       KING
+--   7934          3       MILLER                   CLARK
+--   7566          2    JONES                       KING
+--   7902          3         FORD                   JONES
+--   7369          4            SMITH               FORD
+</div>
+<a href="#계층형쿼리" name="CONNECT + AND"><h4>CONNECT + AND</h4></a><hr>
+--AND
+--계층구조에서 일부분만 계층화 하기
+--AND ename = 'JONES' (이름이 'JONES'인 객체만 조회)
+
+<div class="code">
+SELECT empno,
+	level,
+	LPAD(ename, LEVEL*4, ' ') "NAME"
+FROM emp
+CONNECT BY PRIOR empno = mgr
+	AND ename = 'JONES'
+START WITH mgr IS NULL
+;
+--   EMPNO      LEVEL NAME
+---------- ---------- -------------
+--    7839          1 KING
+--    7566          2    JONES
+</div>
+<a href="#계층형쿼리" name="SYS_CONNECT_BY_PATH"><h4>SYS_CONNECT_BY_PATH</h4></a><hr>
+--SYS_CONNECT_BY_PATH
+--계층구조를 자기 기준으로 출력
+
+<div class="code">
+SELECT LPAD(ename, LEVEL*5, ' ')"NAME",
+	SYS_CONNECT_BY_PATH(ename, '->') "depth_list"
+FROM emp
+START WITH empno = 7369
+CONNECT BY empno = PRIOR mgr
+;
+--NAME                           depth_list
+-------------------------------- -------------------------------
+--SMITH                          ->SMITH
+--      FORD                     ->SMITH->FORD
+--          JONES                ->SMITH->FORD->JONES
+--                KING           ->SMITH->FORD->JONES->KING
+</div>
+<a href="#계층형쿼리" name="CONNECT_BY_ISLEAF"><h4>CONNECT_BY_ISLEAF</h4></a><hr>
+--CONNECT_BY_ISLEAF
+--0을 주면 마지막 값을 안볼 수도 있고 
+--1을 주고 마지막 값만 볼 수도 있다.
+
+--0
+
+<div class="code">
+SELECT LPAD(ename, LEVEL*5, ' ')"NAME",
+	SYS_CONNECT_BY_PATH(ename, '->') "depth_list"
+FROM emp
+WHERE CONNECT_BY_ISLEAF = 0
+START WITH empno = 7369
+CONNECT BY empno = PRIOR mgr
+;
+--NAME                           depth_list
+-------------------------------- ---------------------------
+--SMITH                          ->SMITH
+--      FORD                     ->SMITH->FORD
+--          JONES                ->SMITH->FORD->JONES
+</div>
+--1
+
+<div class="code">
+SELECT LPAD(ename, LEVEL*5, ' ')"NAME",
+	SYS_CONNECT_BY_PATH(ename, '->') "depth_list"
+FROM emp
+WHERE CONNECT_BY_ISLEAF = 1
+START WITH empno = 7369
+CONNECT BY empno = PRIOR mgr
+;
+--NAME                           depth_list
+-------------------------------- -------------------------------
+--                KING           ->SMITH->FORD->JONES->KING
+</div>
+<a href="#계층형쿼리" name="CONNECT_BY_ROOT"><h4>CONNECT_BY_ROOT</h4></a><hr>
+--CONNECT_BY_ROOT
+--특정 레벨에서 최상위 값을 찾아주는 함수
+
+<div class="code">
+SELECT empno, 
+	ename,
+	SUBSTR(SYS_CONNECT_BY_PATH(ename, '<-'),3) "depth_list",
+	CONNECT_BY_ROOT empno "ROOT_EMPNO"
+FROM emp
+START WITH mgr IS NULL
+CONNECT BY PRIOR empno = mgr
+;
+   EMPNO ENAME       depth_list                    ROOT_EMPNO
+-------- ----------  ----------------------------- ----------
+    7839 KING        KING                              7839
+    7566 JONES       KING<-JONES                       7839
+    7902 FORD        KING<-JONES<-FORD                 7839
+    7369 SMITH       KING<-JONES<-FORD<-SMITH          7839
+    7698 BLAKE       KING<-BLAKE                       7839
+    7499 ALLEN       KING<-BLAKE<-ALLEN                7839
+    7521 WARD        KING<-BLAKE<-WARD                 7839
+    7654 MARTIN      KING<-BLAKE<-MARTIN               7839
+    7844 TURNER      KING<-BLAKE<-TURNER               7839
+    7900 JAMES       KING<-BLAKE<-JAMES                7839
+    7782 CLARK       KING<-CLARK                       7839
+    7934 MILLER      KING<-CLARK<-MILLER  
+</div>
+<a href="#계층형쿼리" name="계층+스칼라쿼리"><h4>계층+스칼라쿼리</h4></a><hr>
+--스칼라 쿼리로 각 직원의 부하직원의 수를 출력
+--서브쿼리의 CONNECT BY PRIOR f.empno = f.pempno는 상사부터 부하로 계층을 출력하는 것
+--그 수를 COUNT하면 자신을 포함해 밑으로 몇 명인지를 계산 가능
+--자신을 -1 해주면 부하직원의 수를 출력가능
+
+<div class="code">
+SELECT empno,
+	LPAD(name,LEVEL*10,'-') 
+	    || '-' || 
+	    d.dname 
+	    || '-' || 
+	    NVL(e.position,'Team-Worker') 
+	"ENAME AND POSITION",
+	(
+		SELECT COUNT(*) 
+		FROM emp2 f
+		START WITH f.empno = e.empno
+		CONNECT BY PRIOR f.empno = f.pempno
+	)-1 "COUNT"
+FROM emp2 e, dept2 d
+WHERE e.deptno = d.dcode
+START WITH pempno IS NULL
+CONNECT BY PRIOR empno = pempno
+ORDER BY COUNT DESC 
+;
+--     EMPNO ENAME AND POSITION                                                                        COUNT
+------------ ------------------------------------------------------------------------------------ ----------
+--  19900101 Kurt Russe-President-Boss                                                                    19
+--  19970112 ----------Val Kilmer-Business Department-Department head                                      9
+--  19960212 ---------------Chris O'Donnell-Business Planning Team-Section head                            8
+--  19966102 ---------Kevin Bacon-Engineering division-Department head                                     4
+--  19960101 -----------AL Pacino-Management Support Team-Department head                                  3
+--  19960303 ------------------Keanu Reeves-S/W Support Team-Deputy Section chief                          1
+--  19930402 --------------------Hugh Grant-H/W Support Team-Section head                                  1
+--  20000203 ----------------------------Richard Gere-Sales3 Team-Team-Worker                              0
+--  20000305 ----------------------------JohnTravolta-Sales1 Team-Team-Worker                              0
+--  20000308 ------------------------------Tom Cruise-Sales4 Team-Team-Worker                              0
+--  20000334 ---------------------------Kevin Costner-Sales4 Team-Team-Worker                              0
+--  20000407 ----------------------------Sly Stallone-Sales3 Team-Team-Worker                              0
+--  20000102 -----------------------Denzel Washington-Sales2 Team-Team-Worker                              0
+--  20000101 --------------------------Jack Nicholson-Sales1 Team-Team-Worker                              0
+--  20006106 --------------------------Robert De Niro-Sales2 Team-Team-Worker                              0
+--  20000119 ---------------------------Harrison Ford-H/W Support Team-Team-Worker                         0
+--  19970201 ---------------Woody Harrelson-Management Support Team-Section head                           0
+--  19950303 ------------------Gene Hackman-General affairs-Section head                                   0
+--  19930331 ---------------Tommy Lee Jones-Financial Management Team-Deputy department head               0
+--  20000210 --------------------------Clint Eastwood-S/W Support Team-Team-Worker                         0
+</div>
+
 
 
 
