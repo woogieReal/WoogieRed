@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang = "ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>JSP_SUMMARY</title>
+    <link rel="stylesheet" href="summary.css">
+  </head>
+  <body>
+    <ul class="navi">
+      <li><a href="http://www.tcpschool.com/html/intro" target="_blank">TCP_HTML</a></li>
+      <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=lucky3luck&logNo=220571294988&proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank">색상표</a></li>
+      <li style="float:right;"><a href=""></a></li>
+      <li style="float:right;"><a href=""></a></li>
+    </ul>
+    <nav>
+      <div class = "index">
+        <a name = "인덱스"><h3>목차</h3></a>
+        <ol>
+          <a href="#JSP기본"><li>JSP기본</li></a><hr>
+          <a href="#request"><li>request</li></a><hr>
+          <a href="#response"><li>response</li></a><hr>
+          <a href="#out"><li>out</li></a><hr>
+          <a href="#application"><li>application</li></a><hr>
+        </ol>
+      </div>
+    </nav>
+    <pre>
+<a name="JSP기본"><h4 class="chapter">JSP기본</h4></a><hr>
+<h3 class="subchapter">jsp life 싸이클</h3>
+*.jsp -> *.java(Servlet) -> *.class -> 브라우저에 결과 출력(*.html)
+<h3 class="subchapter">선언부</h3>
+<div class="code">&lt;%@page import="java.util.Date"%&gt;
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;
+</div>
+language: 페이지에서 사용하는 언어는 java
+contentType: jsp MIME(Multipurpose Internet Mail Extension)
+pageEncoding: UTF-8, euc-kr, ISO-8859-1 등이 올 수 있다.		
+import: java의 import와 동일
+<h3 class="subchapter">상단 라인스킵(2줄)삭제</h3>
+<div class="code">&lt;%@ page trimDirectiveWhitespaces="true" %&gt;
+</div>
+<h3 class="subchapter">주석처리</h3>
+&lt;!-- html comment 소스보기로 드러나니 중요한 내용은 넣으면 안됨 --&gt;
+&lt;%-- jsp comment 소스보기에서 드러나지 않음 --%&gt;
+<h3 class="subchapter">jsp의 스크립트 요소</h3>
+jsp의 스크립트 요소
+1. 스크립트립(Scriptlet): &lt;% %&gt;
+  일반적인 자바코드를 넣을 수 있다.
+<div class="code">&lt;%
+int sum = 0;
+for(int i = 1; i <= 100; i++){
+  sum += i;
+  out.print(sum);
+}
+%&gt;
+</div>
+2. 표현식(Expression): &lt;%= %&gt;
+  =으로 out.print를 대신 할 수 있다.
+  세미콜론을 붙히지 않는다.
+<div class="code"><%=sum %>
+</div>
+3. 선언부(Declaration): &lt;%! %&gt;
+		선언식: 사용금지
+<a name="request"><h4 class="chapter">request</h4></a><hr>
+request내장객체: 웹브라우저 요청처리
+-클라이언트와 관련된 정보 읽기
+-서버와 관련된 정보
+-클라이언트가 전송한 요청 정보
+-클라이언트가 전송한 쿠키
+-속성처리
+<div class="code">서버포트: &lt;%=request.getServerPort() %&gt;&lt;br/&gt;
+서버이름: &lt;%=request.getServerName() %&gt;&lt;br/&gt;
+서버URI: &lt;%=request.getRequestURI() %&gt;&lt;br/&gt;
+client ip: &lt;%=request.getRemoteAddr() %&gt;&lt;br/&gt;
+요청정보 길이: &lt;%=request.getContentLength() %&gt;&lt;br/&gt;
+요청정보 인코딩: &lt;%=request.getCharacterEncoding() %&gt;&lt;br/&gt;
+요청정보 전송방식: &lt;%=request.getProtocol() %&gt;&lt;br/&gt;
+요청컨텍스트 경로: &lt;%=request.getContextPath() %&gt;&lt;br/&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j01/h05_request.jsp" width="100%"></object>
+form의 input 요소로 다른 페이지에 데이터 전송
+<div class="code"><h3 class="class_name">h06_form.jsp</h3>
+  &lt;div&gt;
+  &lt;form action="./h06_form_request.jsp"&gt;
+      이름: &lt;input type="text" name="user_nm" size=10/&gt;&lt;br/&gt; 
+      전화: &lt;input type="text" name="user_tel" size=10/&gt;&lt;br/&gt; 
+      좋아하는 프로그램&lt;br/&gt;
+      &lt;input type="checkbox" name="lang" value="10"/&gt;java&lt;br/&gt;
+      &lt;input type="checkbox" name="lang" value="20"/&gt;oracle&lt;br/&gt;
+      &lt;input type="checkbox" name="lang" value="30"/&gt;jsp&lt;br/&gt;
+      &lt;input type="checkbox" name="lang" value="40"/&gt;css&lt;br/&gt;
+      &lt;input type="submit" value="전송"/&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+
+<h3 class="class_name">h06_form_request.jsp</h3>
+&lt;div&gt;
+    &lt;%-- 웹에서는 다 String으로 넘어온다! --%&gt;
+    	이름: &lt;%= request.getParameter("user_nm") %&gt;&lt;br/&gt;
+    	전화: &lt;%= request.getParameter("user_tel") %&gt;&lt;br/&gt;
+    	
+    	&lt;!-- 다건 전송했지만 1건만 read --&gt;
+    	좋아하는 프로그램: &lt;%= request.getParameter("lang") %&gt;&lt;br/&gt;
+    	
+    	&lt;!-- 다건 처리 --&gt;
+    	&lt;%
+    		String[] langs = request.getParameterValues("lang");
+    		for(int i = 0; i &lt; langs.length; i++){
+    			out.print("좋아하는 프로그램: " + langs[i] + "&lt;br/&gt;");
+    		}
+    	%&gt;
+    	
+    	변수이름 추출&lt;br/&gt;
+    	&lt;%
+    		Enumeration&lt;String&gt; names = request.getParameterNames();
+    		while(names.hasMoreElements()){
+    			String paramName = names.nextElement();
+    			
+    			if(paramName.equals("lang")){
+    				String[] langStr = request.getParameterValues("lang");
+    				for(int i = 0; i &lt; langStr.length; i++) {
+    					out.print(paramName + ": " + langs[i] + "&lt;br/&gt;");
+    				}
+    			} else {
+	    			out.print(paramName + ": " + request.getParameter(paramName) + "&lt;br/&gt;");
+    			}	
+    		}
+    	%&gt;
+&lt;/div&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j02/h06_form.jsp" width="100%"></object>
+http 프로토콜은 헤더의 부가적인 정보를 가지고 있다.
+웹브라우저의 종류, 언어
+ex) User-Agent: 브라우저 정보
+<div class="code"><h3 class="class_name">h07_request_header.jsp</h3>
+&lt;div&gt;
+  &lt;%
+  Enumeration&lt;String&gt; headerNms = request.getHeaderNames();
+  
+    while(headerNms.hasMoreElements()) {
+      String header = headerNms.nextElement();
+      out.print(header + ": " + request.getHeader(header) +"&lt;br/&gt;");
+     }
+  %&gt;
+&lt;/div&gt;</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j03/h07_request_header.jsp" width="100%"></object>
+<a name="response"><h4 class="chapter">response</h4></a><hr>
+response는 request 기본 객체와 반대의 기능을 수행
+웹브라우저에 전송할 내용을 담을 수 있다.
+
+-헤더정보 입력: cache control
+-리다이렉트 하기
+
+웹 캐시(영어: web cache) 또는 HTTP 캐시(HTTP cache)는 서버 지연을 줄이기 위해 웹 페이지, 
+이미지, 기타 유형의 웹 멀티미디어 등의 웹 문서들을 임시 저장하기 위한 정보기술이다. 
+웹 캐시 시스템은 이를 통과하는 문서들의 사본을 저장하며 이후 요청들은 특정 조건을 충족하는 경우 
+캐시화가 가능.
+<div class="code"><h3 class="class_name">h08_response.jsp</h3>
+&lt;div&gt;
+  &lt;%
+  //HTTP 1.1에서 지원하는 헤더: 웹브라우저가 응답 결과를 캐시하지 않음.
+  response.setHeader("Cache-Control", "no-cache");
+ 
+  //웹브라우저가 응답 결과를 캐시하지 않음.(앞/뒤로 가기 no chache)
+  response.setHeader("Cache-Control", "no-store");
+  
+  //HTTP 1.0: 웹브라우저가 응답결과를 캐시하지 않음
+  response.setHeader("Pragma", "no-cache");
+  
+  //HTTP 1.0: 현재시간 이전으로 캐시하지 않음
+  response.setHeader("Expires", "1L");
+  %&gt;
+&lt;/div&gt;
+</div>
+<a name="out"><h4 class="chapter">out</h4></a><hr>
+JSP 페이지가 생성하는 모든 내용은 out 기본 객체를 통해 전송됨.
+복잡한 조건비교 때문에 출력코드가 복잡해 지는 경우가 아니면 out 기본객체를 사용하지 않는 것이 
+좋음
+
+out: JSP 페이지가 생성하는 결과를 출력할 때 사용하는 출력 스트림
+print(): 데이터를 출력
+println(): 줄바꿈 문자를 출력, 단 브라우저 줄바꿈은 되지 않는다. 소스코드에만 줄 바꿈됨
+newLine(): 줄바꿈 문자출력.
+<div class="code"><h3 class="class_name">h10_out.jsp</h3>
+  &lt;%
+  out.print("print");
+  out.println("println");
+  out.newLine();
+  out.print("new line 다음의 print");
+  %&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j04/h10_out.jsp" width="100%"></object>
+<div class="code"><h3 class="class_name">페이지 소스코드</h3>
+  &lt;body&gt;
+    &lt;h2&gt;out 내장 객체&lt;/h2&gt;
+    &lt;hr /&gt;
+
+    &lt;div&gt;
+    printprintln
+
+  new line 다음의 print
+    &lt;/div&gt;
+  &lt;/body&gt;
+</div>
+<a name="application"><h4 class="chapter">application</h4></a><hr>
+application 기본객체는 웹 어플리케이션 전반에 걸쳐서 사용되는 정보를 담고 있음
+초기설정, 서버정보, 웹 어플리케이션이 제공하는 자원(파일)을 읽어올 수도 있음.
+<div class="code"><h3 class="class_name">h11_application.jsp</h3>
+&lt;div&gt;
+  1. 서버정보: &lt;%=application.getServerInfo() %&gt;&lt;br/&gt;
+  2. 서블릿  API: &lt;%=application.getMajorVersion() + "." + application.getMinorVersion() %&gt;&lt;br/&gt;
+  3. 물리적 파일 위치: &lt;%=application.getRealPath("h11_application.jsp") %&gt;
+&lt;/div&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j04/h11_application.jsp" width="100%"></object>
+application 내장객체 파일 read
+eclass_notice.txt 파일을 읽어옴
+<div class="code"><h3 class="class_name">h12_application.jsp</h3>
+&lt;div&gt;
+  &lt;%
+    String resourcePath = "/e_jsp/j04/eclass_notice.txt";
+    out.print("자원의 실제 경로: " + application.getRealPath(resourcePath) + "&lt;br/&gt;");
+    char[] buff = new char[128];
+    int len = -1;
+    InputStreamReader br = null;
+    try{
+      br = new InputStreamReader(application.getResourceAsStream(resourcePath),"UTF-8");
+      while((len = br.read(buff)) != -1){
+        out.print(new String(buff,0,len));
+      }
+      
+    } catch(IOException e){
+      e.printStackTrace();
+    } finally{
+      if(null != br){
+        try{
+          br.close();
+        } catch(IOException e){
+          e.printStackTrace();
+        }
+        
+      }
+    }
+  %&gt;
+&lt;/div&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j04/h12_application.jsp" width="100%"></object>
+
+
+
+
+
+
+
+
+
+    </pre>
+  </body>
+</html>
