@@ -21,6 +21,8 @@
           <a href="#response"><li>response</li></a><hr>
           <a href="#out"><li>out</li></a><hr>
           <a href="#application"><li>application</li></a><hr>
+          <a href="#error_handling"><li>error_handling</li></a><hr>
+          <a href="#include"><li>include</li></a><hr>
         </ol>
       </div>
     </nav>
@@ -245,11 +247,197 @@ eclass_notice.txt 파일을 읽어옴
 &lt;/div&gt;
 </div>
 <object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j04/h12_application.jsp" width="100%"></object>
+<a name="error_handling"><h4 class="chapter">error_handling</h4></a><hr>
+실행페이지
+ - errorPage: 예외를 처리할 페이지를 지정
+
+예외처리페이지
+ - isErrorPage="true": 에러처리 페이지로 지정
+<div class="code"><h3 class="class_name">h13_error.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  errorPage="./h14_error_handling.jsp"
+  pageEncoding="UTF-8"%&gt;
+  
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8" /&gt;
+      &lt;title&gt;eclass_2021. 3. 4.&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;Exception&lt;/h2&gt;
+      &lt;hr /&gt;
+      
+      &lt;div&gt;
+      &lt;%=5/0 %&gt;   
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+
+  <h3 class="class_name">h14_error_handling.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+isErrorPage="true"
+pageEncoding="UTF-8"%&gt;
+&lt;%--
+	exception처리
+	isErrorPage="true" 에러처리 페이지
+--%&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;eclass_2021. 3. 4.&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h2&gt;에러처리페이지&lt;/h2&gt;
+    &lt;hr /&gt;
+
+    &lt;div&gt;
+    	요청 처리과정에 에러가 발생 했습니다.&lt;br/&gt;
+    	빠른 시간에 문제를 처리 하도록 하겠습니다.&lt;br/&gt;
+    	에러타입: &lt;%=exception.getClass().getName() %&gt;&lt;br/&gt;
+    	에러메시지: &lt;%=exception.getMessage() %&gt;&lt;br/&gt;
+    &lt;/div&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</div>
+<object class="page" data="./img/h13_error.png" width="100%"></object>
+<a name="include"><h4 class="chapter">include</h4></a><hr>
+&lt;jsp:include page="서브페이지명"&gt;&lt;/jsp:include&gt;
+위와 같이 지정하면 해당 페이지의 소스코드를 불러온다.
+&lt;html&gt;까지 불러오므로 불러올 페이지의 소스코드에서 body나 html 태그와 같은
+것들은 미리 삭제 해 놓는 것이 좋다.
+<div class="code"><h3 class="class_name">main.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%&gt;
+  
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8" /&gt;
+      &lt;title&gt;eclass_2021. 3. 4.&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;main.jsp&lt;/h2&gt;
+      &lt;hr /&gt;
+      
+    &lt;jsp:include page="sub.jsp"&gt;&lt;/jsp:include&gt;
+      
+      &lt;div&gt;
+        include 이후 생성한 내용으로 &lt;br/&gt;
+        main.jsp에 작성된 내용입니다.
+      &lt;/div&gt;
+    
+    &lt;/body&gt;
+  &lt;/html&gt;
+
+<h3 class="class_name">sub.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%&gt;
+&lt;p&gt;
+	sub.jsp에 작성된 내용입니다. &lt;br/&gt;
+	main.jsp에서 jsp:include page="sub.jsp" 로 설정하였습니다.
+&lt;/p&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j05/main.jsp" width="100%"></object>
+include를 통해 페이지의 레이아웃을 중복된 코드 없이 구현할 수 있다.
+아래의 파란 부분은 어느 페이지를 가도 유지되므로 굳이 각 페이지 마다 코드를
+작성할 필요가 없으며 만약 작성하게 되면 수정할 때도 각각의 페이지를 수정해야 한다.
+<img src="./img/layout_ex.png" alt="레이아웃 예시"/>
+<div class="code"><h3 class="class_name">h17_layout_include.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%&gt;
+  
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8" /&gt;
+      &lt;title&gt;eclass_2021. 3. 4.&lt;/title&gt;
+      &lt;link rel="stylesheet" href="./layout_style.css"&gt;	
+    &lt;/head&gt;
+    &lt;body&gt;
+  
+      &lt;div id="wrap"&gt;
+        &lt;div class="header"&gt;&lt;jsp:include page="./inc/header.jsp"&gt;&lt;/jsp:include&gt;&lt;/div&gt;
+        &lt;div class="side"&gt;&lt;jsp:include page="./inc/side.jsp"&gt;&lt;/jsp:include&gt;&lt;/div&gt;
+        &lt;div class="contents"&gt;&lt;jsp:include page="./inc/contents.jsp"&gt;&lt;/jsp:include&gt;&lt;/div&gt;
+        &lt;div class="footer"&gt;&lt;jsp:include page="./inc/footer.jsp"&gt;&lt;/jsp:include&gt;&lt;/div&gt;
+      &lt;/div&gt;
+  
+    &lt;/body&gt;
+  &lt;/html&gt;
+</div>
+<div class="code"><h3 class="class_name">side.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%&gt;
+  &lt;ul&gt;
+    &lt;li&gt;JAVA&lt;/li&gt;
+    &lt;li&gt;ORACLE&lt;/li&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JSP&lt;/li&gt;
+  &lt;/ul&gt;
+</div>
+<div class="code"><h3 class="class_name">layout_style.css</h3>
+@charset "UTF-8";
+
+body {
+	background-color: gold;
+}
+
+#wrap {
+	width: 1000px;
+	height: 500px;
+	color: white;
+	text-align: center;
+	font-size: 40px;
+	margin: 0 auto;
+}
 
 
+/* float은 left와 right 속성이 있다. */
 
+.side {
+	width: 300px;
+	height: 400px;
+	background-color: indianred;
+	float: left;
+	
+}
+li {
+	list-style-type: none;
+	text-align: left;
+}
 
+.header {
+	width: 1000px;
+	height: 100px;
+	background-color: white;
+	color: black;
+	float: left;
+	line-height: 100px;
+}
 
+.contents {
+	width: 700px;
+	height: 300px;
+	background-color: orange;
+	float: left;
+}
+
+.footer {
+	width: 700px;
+	height: 100px;
+	background-color: blue;
+	float: left;
+}
+div.footer {
+	font-size: 30px;
+}
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j07/h17_layout_include.jsp" width="100%" height="500px"></object>
 
 
 
