@@ -22,7 +22,8 @@
           <a href="#out"><li>out</li></a><hr>
           <a href="#application"><li>application</li></a><hr>
           <a href="#error_handling"><li>error_handling</li></a><hr>
-          <a href="#include"><li>include</li></a><hr>
+          <a href="#jsp:include"><li>jsp:include</li></a><hr>
+          <a href="#jsp:param"><li>jsp:param</li></a><hr>
         </ol>
       </div>
     </nav>
@@ -304,7 +305,7 @@ pageEncoding="UTF-8"%&gt;
 &lt;/html&gt;
 </div>
 <object class="page" data="./img/h13_error.png" width="100%"></object>
-<a name="include"><h4 class="chapter">include</h4></a><hr>
+<a name="jsp:include"><h4 class="chapter">jsp:include</h4></a><hr>
 &lt;jsp:include page="서브페이지명"&gt;&lt;/jsp:include&gt;
 위와 같이 지정하면 해당 페이지의 소스코드를 불러온다.
 &lt;html&gt;까지 불러오므로 불러올 페이지의 소스코드에서 body나 html 태그와 같은
@@ -438,6 +439,73 @@ div.footer {
 }
 </div>
 <object class="page" data="http://localhost:8099/WEB_H01/e_jsp/j07/h17_layout_include.jsp" width="100%" height="500px"></object>
+<a name="jsp:param"><h4 class="chapter">jsp:param</h4></a><hr>
+jsp:include 를 통해 페이지를 불러오는데 여기서 페이지를 불러올 때 param값을 넘겨 줄 수 있다.
+jsp:param는 jsp:include 태그 안에 위치한다.
+name 하나에 여러 value가 있을 수 있다.
+<div class="code"><h3 class="class_name">body_main.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%&gt;
+  &lt;% 
+    request.setCharacterEncoding("utf-8");
+  %&gt;
+  
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8" /&gt;
+      &lt;title&gt;eclass_2021. 3. 4.&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;hr /&gt;
+  
+      &lt;div&gt;
+        body_sub에서 넘겨준 name의 value값: &lt;%= request.getParameter("name") %&gt;
+        &lt;hr/&gt;
+        
+        &lt;jsp:include page="body_sub.jsp" flush="false"&gt;
+          &lt;jsp:param value="김재욱" name="name"/&gt;
+        &lt;/jsp:include&gt;
+        &lt;hr/&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+
+  <h3 class="class_name">body_sub.jsp</h3>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%&gt;
+  
+  &lt;div style="background-color: gold;"&gt;
+    body_main에서 jsp:inclue 로 불러온 페이지URI: &lt;strong&gt;&lt;%= request.getRequestURI() %&gt;&lt;/strong&gt;
+    &lt;br /&gt; body_main에서 jsp:param 으로 넘겨준 파라미터 값: &lt;strong&gt;&lt;%= request.getParameter("name") %&gt;&lt;/strong&gt;
+    &lt;br /&gt;
+  
+    &lt;ul&gt;
+      &lt;%
+          String[] names = request.getParameterValues("name");
+          out.print("name의 value 갯수: " + names.length);
+          for(int i = 0; i &lt; names.length; i++) {
+        %&gt;
+      &lt;li&gt;&lt;%= names[i] %&gt;&lt;/li&gt;
+  
+      &lt;% } %&gt;
+    &lt;/ul&gt;
+  
+    &lt;form action="./body_main.jsp" method="GET"&gt;
+      &lt;input type="text" name="name" size="10" /&gt; &lt;input type="submit"
+        value="전송" /&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+</div>
+<object class="page" data="http://localhost:8099/WEB_H01/e_jsp/w01/body_main.jsp" width="100%"></object>
+
+
+
+
+
+
+
 
 
 

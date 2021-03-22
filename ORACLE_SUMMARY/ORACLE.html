@@ -33,6 +33,7 @@
         <a href="#SEQUENCE"><li>SEQUENCE</li></a><hr>
         <a href="#SYNONYM"><li>SYNONYM</li></a><hr>
         <a href="#계층형쿼리"><li>계층형쿼리</li></a><hr>
+        <a href="#PL/SQL"><li>PL/SQL</li></a><hr>
       </ol>
       <a href="#인덱스" name="구현기능"><h3>구현기능</h3></a><hr>
       <ul>
@@ -242,6 +243,22 @@
         <a href="#CONNECT_BY_ISLEAF"><h4>CONNECT_BY_ISLEAF</h4></a>
         <a href="#CONNECT_BY_ROOT"><h4>CONNECT_BY_ROOT</h4></a>
         <a href="#계층+스칼라쿼리"><h4>계층+스칼라쿼리</h4></a>
+      </ul>
+      <a href="#인덱스" name="PL/SQL"><h3>PL/SQL</h3></a><hr>
+      <ul>
+        <a href="#PL/SQL_SELECT"><h4>PL/SQL_SELECT</h4></a>
+        <a href="#PL/SQL_INSERT"><h4>PL/SQL_INSERT</h4></a>
+        <a href="#PL/SQL_UPDATE"><h4>PL/SQL_UPDATE</h4></a>
+        <a href="#PL/SQL_DELETE"><h4>PL/SQL_DELETE</h4></a>
+        <a href="#PL/SQL_MERGE"><h4>PL/SQL_MERGE</h4></a>
+        <a href="#PL/SQL_식별자"><h4>PL/SQL_식별자</h4></a>
+        <a href="#PL/SQL_중첩"><h4>PL/SQL_중첩</h4></a>
+        <a href="#PL/SQL_변수"><h4>PL/SQL_변수</h4></a>
+        <a href="#PL/SQL_TYPE변수"><h4>PL/SQL_TYPE</h4></a>
+        <a href="#PL/SQL_ROWTYPE변수"><h4>PL/SQL_ROWTYPE</h4></a>
+        <a href="#PL/SQL_사용자입력"><h4>PL/SQL_사용자입력</h4></a>
+        <a href="#PL/SQL_RECORD타입"><h4>PL/SQL_RECORD_TYPE</h4></a>
+
       </ul>
     </div>
   </header>
@@ -6629,6 +6646,283 @@ ORDER BY COUNT DESC
 --  19930331 ---------------Tommy Lee Jones-Financial Management Team-Deputy department head               0
 --  20000210 --------------------------Clint Eastwood-S/W Support Team-Team-Worker                         0
 </div>
+<a href="#PL/SQL" name="PL/SQL_SELECT"><h4>PL/SQL_SELECT</h4></a><hr>
+
+<div class="code">
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_salary employees.salary%TYPE;
+BEGIN
+	SELECT employee_id, salary
+		INTO v_empid, v_salary
+	FROM employees
+	WHERE employee_id=197;
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_salary );
+END;
+/
+--197, 3000
+</div>
+<a href="#PL/SQL" name="PL/SQL_INSERT"><h4>PL/SQL_INSERT</h4></a><hr>
+
+<div class="code">
+DECLARE
+	v_no NUMBER := '&no';
+	v_name VARCHAR2(10) := '&name';
+	v_addr VARCHAR2(10) := '&addr';
+BEGIN
+	INSERT INTO pl_test2 VALUES(v_no, v_name, v_addr);
+END;
+/
+--      NO NAME                 ADDR
+---------- -------------------- --------------------
+--       1 woogie               Incheon
+</div>
+<a href="#PL/SQL" name="PL/SQL_UPDATE"><h4>PL/SQL_UPDATE</h4></a><hr>
+--      NO NAME
+---------- --------------------
+--       1 AAA
+--       2 AAA
+--       2 AAA -> BBB 로 수정
+
+<div class="code">
+DECLARE
+	
+BEGIN
+	UPDATE pl_test
+	SET name = 'BBB'
+	WHERE no = 2;
+END;
+/
+--      NO NAME
+---------- --------------------
+--       1 AAA
+--       2 BBB
+</div>
+<a href="#PL/SQL" name="PL/SQL_DELETE"><h4>PL/SQL_DELETE</h4></a><hr>
+--      NO NAME
+---------- --------------------
+--       1 AAA -> 삭제
+--       2 BBB
+
+<div class="code">
+DECLARE
+
+BEGIN
+	DELETE
+	FROM pl_test
+	WHERE no = 1;
+END;
+/
+--      NO NAME
+---------- --------------------
+--       2 BBB
+</div>
+<a href="#PL/SQL" name="PL/SQL_MERGE"><h4>PL/SQL_MERGE</h4></a><hr>
+----------------------pl_merge1
+--      NO NAME
+---------- --------------------
+--       1 AAA
+--       2 BBB
+
+----------------------pl_merge2
+--      NO NAME
+---------- --------------------
+--       1 CCC
+--       3 DDD
+
+--(MERGE) pl_merge2 테이블에 
+--(USING) pl_merge1 테이블을 MERGE한다.
+--(ON) 서로 no 값이 같은 값이
+--(MATCHED) 있을경우 m1.name 값으로 UPDATE한다.
+--(NOT MATCHED) 없을경우 m1.no와 m1.name을 INSERT한다.
+
+<div class="code">
+DECLARE
+	
+BEGIN
+	MERGE INTO pl_merge2 m2
+	USING pl_merge1 m1
+	ON (m1.no = m2.no)
+	WHEN MATCHED THEN
+		UPDATE SET m2.name = m1.name
+	WHEN NOT MATCHED THEN
+		INSERT VALUES(m1.no, m1.name)
+	;
+END;
+/
+--      NO NAME
+---------- --------------------
+--       1 AAA
+--       2 BBB
+--       3 DDD
+</div>
+<a href="#PL/SQL" name="PL/SQL_식별자"><h4>PL/SQL_식별자</h4></a><hr>
+--PL/SQL 식별자: PL/SQL 객체에서 부여되는 이름
+--"" 사용
+
+--권장하지 않음
+--1. 식별자의 대소분 구분이 필요한 경우
+--ex) "eClass"
+--2. 공백문자가 포함될 경우
+--ex) "a col"
+--3. 예약어인 경우
+--ex) "table"
+
+--리터럴: 변수에 할당되는 값
+--1. 문자 리터럴: CHAR, VARCHAR2 ex) abcd
+--2. 숫자 리터럴: 정수, 또는 실수 ex) 1234, 1.234
+--3. 부울 리터럴: TRUE, FALSE, NULL
+
+--주석
+--한줄: --
+--여러줄 주석: /* */
+<a href="#PL/SQL" name="PL/SQL_중첩"><h4>PL/SQL_중첩</h4></a><hr>
+--중첩된 PL/SQL 출력
+--중첩된 쿼리에서 선언된 변수는 외부 쿼리에서는 사용할 수 없다.
+
+<div class="code">
+DECLARE
+	v_first VARCHAR2(10) := 'FIRST';
+BEGIN
+	DECLARE
+		v_second VARCHAR2(10) := 'SECOND';
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE(v_first);
+		DBMS_OUTPUT.PUT_LINE(v_second);
+	END;
+DBMS_OUTPUT.PUT_LINE(v_first);
+
+--오류
+--PLS-00201: identifier 'V_SECOND' must be declared
+DBMS_OUTPUT.PUT_LINE(v_second);
+
+END;
+/
+</div>
+<a href="#PL/SQL" name="PL/SQL_변수"><h4>PL/SQL_변수</h4></a><hr>
+<img src="./img/변수분류.png" style="width: 90%;" />
+
+<a href="#PL/SQL" name="PL/SQL_TYPE변수"><h4>PL/SQL_TYPE변수</h4></a><hr>
+<div class="code">
+DECLARE
+	v_no employees3.employee_id%TYPE;
+	v_name employees3.first_name%TYPE;
+	v_sal employees3.salary%TYPE;
+BEGIN
+	SELECT employee_id, first_name, salary
+		INTO v_no, v_name, v_sal
+	FROM employees3
+	WHERE employee_id = 180;
+	
+	DBMS_OUTPUT.PUT_LINE(v_no || '-----' || v_name || '--------' || v_sal);
+END;
+/
+--180-----Winston--------3200
+</div>
+--테이블을 조인하여 TYPE변수 사용
+
+<div class="code">
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_name employees.first_name%TYPE;
+	v_deptno employees.department_id%TYPE;
+	v_deptnm departments.department_name%TYPE;
+BEGIN
+	SELECT t1.employee_id, 
+		t1.first_name, 
+		t1.department_id,
+		t2.department_name
+	INTO v_empid, v_name, v_deptno, v_deptnm
+	FROM employees t1, departments t2
+	WHERE t1.department_id = t2.department_id
+	AND t1.employee_id = 180;
+	
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_name ||', '|| v_deptno ||', '|| v_deptnm);
+	
+END;
+/
+--180, Winston, 50, Shipping
+</div>
+<a href="#PL/SQL" name="PL/SQL_ROWTYPE변수"><h4>PL/SQL_ROWTYPE변수</h4></a><hr>
+
+<div class="code">
+DECLARE
+	v_row employees3%ROWTYPE;
+BEGIN
+	SELECT employee_id, first_name, salary
+		INTO v_row
+	FROM employees3
+	WHERE employee_id = 180;
+	
+	DBMS_OUTPUT.PUT_LINE(
+		v_row.employee_id || ', ' || 
+		v_row.first_name || ',' || 
+		v_row.salary
+	);
+END;
+/
+--180, Winston,3200
+</div>
+<a href="#PL/SQL" name="PL/SQL_사용자입력"><h4>PL/SQL_사용자입력</h4></a><hr>
+
+<div class="code">
+DECLARE
+	v_no1 NUMBER := &NO1;
+	v_no2 NUMBER := &NO2;
+	v_sum NUMBER;
+BEGIN
+	v_sum := v_no1 + v_no2;
+	
+	DBMS_OUTPUT.PUT_LINE(v_sum ||' = '||v_no1 ||' + '||v_no2 );
+END;
+/
+--Enter value for no1: 2
+--old   2: v_no1 NUMBER := &NO1;
+--new   2: v_no1 NUMBER := 2;
+--Enter value for no2: 3
+--old   3: v_no2 NUMBER := &NO2;
+--new   3: v_no2 NUMBER := 3;
+--5 = 2 + 3
+</div>
+<a href="#PL/SQL" name="PL/SQL_RECORD타입"><h4>PL/SQL_RECORD_TYPE</h4></a><hr>
+--복합변수: 레코드 TYPE과 테이블 TYPE
+--동일한 데이터 타입의 여러 건의 데이터를 저장하는 경우 TABLE TYPE(COLLECTION TYPE), 
+--이것 외에는 RECORD TYPE
+
+<div class="code">
+DECLARE
+	--레코드 타입 변수선언
+	TYPE emp_record_type IS RECORD
+	(
+		emp_id employees.employee_id%TYPE,
+		emp_name employees.first_name%TYPE,
+		emp_sal employees.salary%TYPE
+	);
+	--emp_record_type를 v_record01로 변수선언
+	v_record01 emp_record_type;
+	
+BEGIN
+	SELECT employee_id, first_name, salary
+		INTO v_record01
+	FROM employees
+	WHERE employee_id = 180;
+	
+	DBMS_OUTPUT.PUT_LINE(v_record01.emp_id ||', '|| v_record01.emp_name ||', '|| v_record01.emp_sal);
+END;
+/
+--180, Winston, 3200
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

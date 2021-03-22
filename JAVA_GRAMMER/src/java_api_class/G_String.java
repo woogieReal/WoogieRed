@@ -74,7 +74,7 @@ public class G_String {
 //		만약 해당 문자열에 전달된 문자나 문자열이 포함되어 있지 않으면 -1을 반환합니다.
 		
 		String Introducing = "I am woogie, I came from Incheon, Korea";
-		System.out.println(Introducing.indexOf("woogie"));
+		System.out.println("indexOf(): "+Introducing.indexOf("am"));
 		
 //		trim() 메소드
 //		해당 문자열의 맨 앞과 맨 뒤에 포함된 모든 공백 문자를 제거해 줍니다.

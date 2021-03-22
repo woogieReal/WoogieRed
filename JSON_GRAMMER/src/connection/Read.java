@@ -50,6 +50,8 @@ public class Read {
 			System.out.println(age);
 			System.out.println(jsonArr);
 			
+			System.out.println(jsonObject.toString());
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
