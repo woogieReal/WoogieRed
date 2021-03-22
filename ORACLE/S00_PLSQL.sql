@@ -357,7 +357,202 @@ END;
 /
 --180, Winston, 3200
 
+--TABLE TYPE 변수(컬렉션)
+--연관배열, 중첩테이블, VARRAY
 
+--연관배열을 가장 많이 사용
+--key/value 구조
+--key <- 숫자: binary_integer, pls_integer, 
+--		 문자: varchar2
+
+--정의
+--TYPE type_name IS TABLE OF
+--{column_type | variable%type | table.column_type%type [not null] }
+--[index by binary_integer]
+
+--선언
+--indentifier type_name;
+
+--단건처리
+DECLARE
+	--정의
+	TYPE tbl_emp_name IS TABLE OF
+		employees.first_name%TYPE
+		INDEX BY BINARY_INTEGER;
+	--선언부
+	v_name tbl_emp_name;
+	t_name VARCHAR2(20);
+BEGIN
+	SELECT first_name
+		INTO t_name
+	FROM employees
+	WHERE employee_id = 180
+	;
+	
+	v_name(0) := t_name;
+	DBMS_OUTPUT.PUT_LINE(v_name(0));
+END;
+/
+--Winston
+
+--다건처리
+DECLARE
+	--정의
+	TYPE tbl_emp_name IS TABLE OF
+		employees.first_name%TYPE
+		INDEX BY BINARY_INTEGER;
+	--선언부
+	v_name tbl_emp_name;
+	
+	--INDEX
+	a BINARY_INTEGER := 0;
+BEGIN
+	--할당
+	FOR i IN (SELECT first_name FROM employees) LOOP
+		a:=a+1;
+		v_name(a):=i.first_name;
+	END LOOP;
+	
+	--출력
+	FOR j IN 1..a LOOP
+		DBMS_OUTPUT.PUT_LINE(j||'. '||v_name(j));
+	END LOOP;
+	
+END;
+/
+--1. Ellen
+--2. Sundar
+--3. Mozhe
+--...
+--105. Matthew
+--106. Jennifer
+--107. Eleni
+  
+--제어문
+--1. 조건문: IF, CASE
+--2. 반복문: FOR, WHILE, BASIC LOOP
+
+--PL/SQL_IF
+--IF 조건 THEN
+--	실행문장
+--END IF;
+
+
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	v_deptid employees.department_id%TYPE;
+	v_dname VARCHAR2(30 BYTE);
+BEGIN
+	SELECT employee_id, first_name, department_id
+		INTO v_empid, v_fname, v_deptid
+	FROM employees
+	WHERE employee_id = 203
+	;
+	
+	IF(v_deptid = 10) THEN
+		v_dname := 'Administration';
+	END IF;
+	
+	IF(v_deptid = 20) THEN
+		v_dname := 'Marketing';
+	END IF;
+	
+	IF(v_deptid = 30) THEN
+		v_dname := 'Purchasing';
+	END IF;
+	
+	IF(v_deptid = 40) THEN
+		v_dname := 'Human Resources';
+	END IF;
+	
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||', '|| v_deptid ||', '|| v_dname);
+	
+END;
+/
+--203, Susan, 40, Human Resources
+
+--PL/SQL_ELSIF
+--IF 조건 THEN
+--	실행문장
+--ELSIF 조건 THEN
+--	실행문장
+--ELSIF 조건 THEN
+--	실행문장
+--END IF;
+
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	v_deptid employees.department_id%TYPE;
+	v_dname VARCHAR2(30 BYTE);
+BEGIN
+	SELECT employee_id, first_name, department_id
+		INTO v_empid, v_fname, v_deptid
+	FROM employees
+	WHERE employee_id = 203
+	;
+	
+	IF(v_deptid = 10) THEN
+		v_dname := 'Administration';
+		
+	ELSIF(v_deptid = 20) THEN
+		v_dname := 'Marketing';
+		
+	ELSIF(v_deptid = 30) THEN
+		v_dname := 'Purchasing';
+		
+	ELSIF(v_deptid = 40) THEN
+		v_dname := 'Human Resources';
+		
+	END IF;
+	
+	
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||', '|| v_deptid ||', '|| v_dname);
+	
+END;
+/
+--203, Susan, 40, Human Resources
+
+--PL/SQL_ELSE
+--IF 조건 THEN
+--	실행문장
+--ELSE
+--	실행문장
+--END IF;
+
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	v_sal employees.salary%TYPE;
+	v_comm employees.commission_pct%TYPE;
+	v_total NUMBER;
+BEGIN
+
+	SELECT employee_id, first_name, salary, commission_pct, salary*commission_pct
+		INTO v_empid, v_fname, v_sal, v_comm, v_total
+	FROM employees
+	WHERE employee_id = &empid
+	;
+	
+	IF(v_comm > 0 AND v_comm <= 0.3) THEN
+		DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||' 사원의 보너스는 '|| v_total  ||' 입니다.')
+		;
+	ELSIF(v_comm > 0.3) THEN
+		DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||' 사원의 보너스는 '|| v_total  ||' 이며, 30%를 넘습니다.')
+		;
+	ELSE
+		DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||' 사원의 보너스는 없습니다.')
+		;
+	END IF
+	;
+
+END;
+/
+--Enter value for empid: 145
+--old  12: WHERE employee_id = &empid
+--new  12: WHERE employee_id = 145
+--145, John 사원의 보너스는 5600 이며, 30%를 넘습니다.
 
 
 
