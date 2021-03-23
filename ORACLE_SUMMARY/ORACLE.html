@@ -246,10 +246,7 @@
       </ul>
       <a href="#인덱스" name="PL/SQL"><h3>PL/SQL</h3></a><hr>
       <ul>
-        <a href="#PL/SQL_SELECT"><h4>PL/SQL_SELECT</h4></a>
-        <a href="#PL/SQL_INSERT"><h4>PL/SQL_INSERT</h4></a>
-        <a href="#PL/SQL_UPDATE"><h4>PL/SQL_UPDATE</h4></a>
-        <a href="#PL/SQL_DELETE"><h4>PL/SQL_DELETE</h4></a>
+        <a href="#PL/SQL_DML"><h4>PL/SQL_DML</h4></a>
         <a href="#PL/SQL_MERGE"><h4>PL/SQL_MERGE</h4></a>
         <a href="#PL/SQL_식별자"><h4>PL/SQL_식별자</h4></a>
         <a href="#PL/SQL_중첩"><h4>PL/SQL_중첩</h4></a>
@@ -260,7 +257,14 @@
         <a href="#PL/SQL_사용자입력"><h4>PL/SQL_사용자입력</h4></a>
         <a href="#PL/SQL_RECORD_TYPE"><h4>PL/SQL_RECORD_TYPE</h4></a>
         <a href="#PL/SQL_TABLE_TYPE"><h4>PL/SQL_TABLE_TYPE</h4></a>
-        <a href="#PL/SQL_IF"><h4>PL/SQL_IF</h4></a>
+        <a href="#PL/SQL_조건문"><h4>PL/SQL_조건문</h4></a>
+        <a href="#PL/SQL_반복문"><h4>PL/SQL_반복문</h4></a>
+        <a href="#PL/SQL_CURSOR"><h4>PL/SQL_CURSOR</h4></a>
+        <a href="#PL/SQL_EXCEPTION"><h4>PL/SQL_EXCEPTION</h4></a>
+        <a href="#PL/SQL_PROCEDURE"><h4>PL/SQL_PROCEDURE</h4></a>
+        <a href="#PL/SQL_FUNCTION"><h4>PL/SQL_FUNCTION</h4></a>
+
+
       </ul>
     </div>
   </header>
@@ -6648,7 +6652,8 @@ ORDER BY COUNT DESC
 --  19930331 ---------------Tommy Lee Jones-Financial Management Team-Deputy department head               0
 --  20000210 --------------------------Clint Eastwood-S/W Support Team-Team-Worker                         0
 </div>
-<a href="#PL/SQL" name="PL/SQL_SELECT"><h4>PL/SQL_SELECT</h4></a><hr>
+<a href="#PL/SQL" name="PL/SQL_DML"><h4>PL/SQL_DML</h4></a><hr>
+--PL/SQL_SELECT
 
 <div class="code">
 DECLARE
@@ -6664,7 +6669,7 @@ END;
 /
 --197, 3000
 </div>
-<a href="#PL/SQL" name="PL/SQL_INSERT"><h4>PL/SQL_INSERT</h4></a><hr>
+--PL/SQL_INSERT
 
 <div class="code">
 DECLARE
@@ -6679,7 +6684,8 @@ END;
 ---------- -------------------- --------------------
 --       1 woogie               Incheon
 </div>
-<a href="#PL/SQL" name="PL/SQL_UPDATE"><h4>PL/SQL_UPDATE</h4></a><hr>
+--PL/SQL_UPDATE
+
 --      NO NAME
 ---------- --------------------
 --       1 AAA
@@ -6700,7 +6706,8 @@ END;
 --       1 AAA
 --       2 BBB
 </div>
-<a href="#PL/SQL" name="PL/SQL_DELETE"><h4>PL/SQL_DELETE</h4></a><hr>
+--PL/SQL_DELETE
+
 --      NO NAME
 ---------- --------------------
 --       1 AAA -> 삭제
@@ -7005,7 +7012,8 @@ END;
 --106. Jennifer
 --107. Eleni
 </div>
-<a href="#PL/SQL" name="PL/SQL_IF"><h4>PL/SQL_IF</h4></a><hr>
+<a href="#PL/SQL" name="PL/SQL_조건문"><h4>PL/SQL_조건문</h4></a><hr>
+--PL/SQL_IF
 
 <div class="code">
 DECLARE
@@ -7041,6 +7049,324 @@ END;
 --new  12: WHERE employee_id = 145
 --145, John 사원의 보너스는 5600 이며, 30%를 넘습니다.
 </div>
+--PL/SQL_CASE
+
+<div class="code">
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	v_deptid employees.department_id%TYPE;
+	v_dname VARCHAR2(30 BYTE);
+BEGIN
+	SELECT employee_id, first_name, department_id
+		INTO v_empid, v_fname, v_deptid
+	FROM employees
+	WHERE employee_id = 203
+	;
+	
+	v_dname := CASE v_deptid
+		WHEN 10 THEN 'Administration'
+		WHEN 20 THEN 'Marketing'
+		WHEN 30 THEN 'Purchasing'
+		WHEN 40 THEN 'Human Resources'
+	END;
+	
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||', '|| v_deptid ||', '|| v_dname);
+	
+END;
+/
+--203, Susan, 40, Human Resources
+</div>
+<a href="#PL/SQL" name="PL/SQL_반복문"><h4>PL/SQL_반복문</h4></a><hr>
+--PL/SQL_BASIC_LOOP
+
+<div class="code">
+DECLARE
+	no01 NUMBER := 0;
+BEGIN
+	LOOP
+		DBMS_OUTPUT.PUT_LINE(no01);
+		no01 := no01 + 1;
+		EXIT WHEN no01 > 5;
+	END LOOP;
+END;
+/
+--0
+--1
+--2
+--3
+--4
+--5
+</div>
+--PL/SQL_WHILE
+
+<div class="code">
+DECLARE
+	no01 NUMBER := 0;
+BEGIN
+	WHILE(no01 < 21) 
+	LOOP
+		DBMS_OUTPUT.PUT_LINE('no01: ' || no01);
+		no01 := no01 + 4;
+	END LOOP;
+END;
+/
+--no01: 0
+--no01: 4
+--no01: 8
+--no01: 12
+--no01: 16
+--no01: 20
+</div>
+--PL/SQL_FOR
+
+<div class="code">
+DECLARE
+
+BEGIN
+	FOR i IN 0..20 LOOP
+	--FOR i IN REVERSE 0..20 LOOP
+		DBMS_OUTPUT.PUT_LINE(i);
+	END LOOP;
+END;
+/
+--1
+--2
+--...
+--20
+</div>
+<a href="#PL/SQL" name="PL/SQL_CURSOR"><h4>PL/SQL_CURSOR</h4></a><hr>
+--SQL CURSOR는 묵시적커서와 명시적커서로 나눌 수 있음
+--DML문이 실행될 때마다 자동으로 선언되며 문장이 종료됨과 동시에 정리됨
+--단건검색, 다건검색의 경우 명시적커서를 이용해야함
+--SQL%ROWCOUNT: 해당커서에서 실행한 총 행의 개수를 반환
+--SQL%FOUND: 해당커서에서 아직 수행해야할 것이 있는 경우 TRUE반환
+--SQL%NOTFOUND: 해당커서에서 수행해야할 데이터가 없는 경우 TRUE반환
+--SQL%ISOPEN: 현재 묵시적커서가 메모리에 OPEN 되어있을 경우 TRUE반환 
+
+--명시적커서
+--사용자가 선언하여 생성 후 사용
+--다건검색
+
+--묵시적커서와 마찬가지로 4가지 속성을 지원
+--커서이름%ROWCOUNT
+--커서이름%FOUND
+--커서이름%NOTFOUND
+--커서이름%ISOPEN
+
+<div class="code">
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	
+	CURSOR C1 IS
+	SELECT employee_id, first_name
+	FROM employees
+	WHERE department_id = 30;
+BEGIN
+	OPEN C1;        
+	LOOP
+		FETCH C1 INTO v_empid, v_fname;
+		EXIT WHEN C1%NOTFOUND; 
+		DBMS_OUTPUT.PUT_LINE(v_empid||', '||v_fname);
+	END LOOP;
+	CLOSE C1;
+	
+END;
+--114, Den
+--115, Alexander
+--116, Shelli
+--117, Sigal
+--118, Guy
+--119, Karen
+</div>
+--PL/SQL_CURSOR_FOR
+--커서의 OPEN/FETCH/CLOSE를 오라클이 자동으로 수행
+--훨씬 간단함
+
+<div class="code">
+DECLARE
+	CURSOR emp_cur IS
+	SELECT employee_id, first_name
+	FROM employees
+	WHERE department_id = 100;
+BEGIN
+	FOR emp_rec IN emp_cur 
+	LOOP
+		DBMS_OUTPUT.PUT_LINE(emp_rec.employee_id ||', '|| emp_rec.first_name);
+	END LOOP;
+END;
+/
+--108, Nancy
+--109, Daniel
+--110, John
+--111, Ismael
+--112, Jose Manuel
+--113, Luis
+</div>
+<a href="#PL/SQL" name="PL/SQL_EXCEPTION"><h4>PL/SQL_EXCEPTION</h4></a><hr>
+--PL/SQL블록이 실행되는 동안 발생하는 런타임에러
+
+<div class="code">
+DECLARE
+	v_fname employees.first_name%TYPE;
+BEGIN
+	SELECT first_name
+	INTO v_fname
+	FROM employees
+	WHERE first_name like 'Z%';
+	
+	DBMS_OUTPUT.PUT_LINE(v_fname);
+	
+	EXCEPTION
+		WHEN TOO_MANY_ROWS THEN
+			DBMS_OUTPUT.PUT_LINE('사원명이 2명 이상입니다.');
+		WHEN NO_DATA_FOUND THEN
+			DBMS_OUTPUT.PUT_LINE('해당사원이 없습니다.');
+END;
+/
+</div>
+--사용자 정의 EXCEPTION
+--특정 에러코드가 발생할 경우 예외를 사용자가 직접정의
+--PRAGMA EXCEPTION_INIT함수를 사용하여 직접정의
+
+--기존의 경우
+
+<div class="code">
+CREATE TABLE t_pragma(
+	no NUMBER PRIMARY KEY,
+	name VARCHAR2(20)
+);
+
+INSERT INTO t_pragma
+VALUES(1, 'AAA');
+
+INSERT INTO t_pragma
+VALUES(1, 'BBB');
+--ORA-00001: unique constraint (HR.SYS_C007154) violated
+</div>
+--사용자정의 EXCEPTION을 만들경우
+
+<div class="code">
+DECLARE
+	new_msg EXCEPTION;
+	PRAGMA EXCEPTION_INIT(new_msg, -1);
+BEGIN
+	INSERT INTO t_pragma
+	VALUES(1, 'BBB');
+	
+	EXCEPTION
+		WHEN new_msg THEN
+		DBMS_OUTPUT.PUT_LINE('키 중복. 키를 확인하시오.');
+END;
+/
+</div>
+<a href="#PL/SQL" name="PL/SQL_PROCEDURE"><h4>PL/SQL_PROCEDURE</h4></a><hr>
+--생성하면 데이터베이스 내에 저장되며 반복적으로 사용가능
+--재실행 시에 컴파일이 불필요하므로 성능에 좋음
+
+--문법
+--CREATE OR REPLACE PROCEDURE procedure_name
+--[(
+--	parameter datatype1,
+--	parameter datatype2,
+--	parameter datatype3,
+--	...
+--)]
+--IS|AS
+--PL/SQL BLOCK
+--
+--PARAMETER
+--IN: 사용자로부터 입력
+--OUT: RETURN
+--IN OUT: 입/출력 모두 가능
+
+--사원번호를 입력받아 해당 사원의 급여를 10000 UPDATE처리
+
+--프로시저 생성
+
+<div class="code">
+CREATE OR REPLACE PROCEDURE up_sal
+( 
+	vempid employees.employee_id%TYPE
+)  
+IS
+BEGIN
+	UPDATE employees
+	SET salary = 10000
+	WHERE employee_id = vempid;
+END;
+/
+--Procedure created.
+</div>
+--프로시저 실행
+
+<div class="code">
+EXEC up_sal(206);
+--
+--EMPLOYEE_ID     SALARY
+------------- ----------
+--        206      10000
+</div>
+<a href="#PL/SQL" name="PL/SQL_FUNCTION"><h4>PL/SQL_FUNCTION</h4></a><hr>
+--정해진 작업을 수행하고 결과를 돌려준다.
+--프로시저와의 차이점은 항상 리턴값이 있는 점
+--
+--생성 CREATE FUNCTION 이름
+--삭제 DROP FUNCTION 이름
+--수정 ALTER FUNCTION 이름
+
+--CREATE OR REPLACE FUNCTION function_name
+--[(
+--	parameter datatype1,
+--	parameter datatype2,
+--	parameter datatype3,
+--	...
+--)]
+--RETURN DATA;
+--IS|AS
+--PL/SQL BLOCK
+
+--부서번호를 넣으면 그 부서에서 가장 높은 연봉을 리턴
+
+--함수생성
+
+<div class="code">
+CREATE OR REPLACE FUNCTION max_sal
+(
+	s_deptno employees.department_id%TYPE
+)
+RETURN NUMBER
+IS
+	max_sal employees.salary%TYPE;
+BEGIN
+	SELECT MAX(salary)
+	INTO max_sal
+	FROM employees
+	WHERE department_id = s_deptno;
+	
+	RETURN max_sal;
+END;
+/
+--Function created.
+</div>
+
+<div class="code">
+SELECT max_sal(10)
+FROM dual;
+--
+--MAX_SAL(10)
+-------------
+--       4400
+</div>
+
+
+
+
+
+
+
+
 
 
 

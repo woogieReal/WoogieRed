@@ -554,7 +554,325 @@ END;
 --new  12: WHERE employee_id = 145
 --145, John 사원의 보너스는 5600 이며, 30%를 넘습니다.
 
+--PL/SQL_CASE
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	v_deptid employees.department_id%TYPE;
+	v_dname VARCHAR2(30 BYTE);
+BEGIN
+	SELECT employee_id, first_name, department_id
+		INTO v_empid, v_fname, v_deptid
+	FROM employees
+	WHERE employee_id = 203
+	;
+	
+	v_dname := CASE v_deptid
+		WHEN 10 THEN 'Administration'
+		WHEN 20 THEN 'Marketing'
+		WHEN 30 THEN 'Purchasing'
+		WHEN 40 THEN 'Human Resources'
+	END;
+	
+	DBMS_OUTPUT.PUT_LINE(v_empid ||', '|| v_fname ||', '|| v_deptid ||', '|| v_dname);
+	
+END;
+/
+--203, Susan, 40, Human Resources
 
+--PL/SQL_BASIC_LOOP
+
+DECLARE
+	no01 NUMBER := 0;
+BEGIN
+	LOOP
+		DBMS_OUTPUT.PUT_LINE(no01);
+		no01 := no01 + 1;
+		EXIT WHEN no01 > 5;
+	END LOOP;
+END;
+/
+--0
+--1
+--2
+--3
+--4
+--5
+
+--PL/SQL_WHILE
+
+DECLARE
+	no01 NUMBER := 0;
+BEGIN
+	WHILE(no01 < 21) 
+	LOOP
+		DBMS_OUTPUT.PUT_LINE('no01: ' || no01);
+		no01 := no01 + 4;
+	END LOOP;
+END;
+/
+--no01: 0
+--no01: 4
+--no01: 8
+--no01: 12
+--no01: 16
+--no01: 20
+
+--PL/SQL_FOR
+DECLARE
+
+BEGIN
+	FOR i IN 0..20 LOOP
+	--FOR i IN REVERSE 0..20 LOOP
+		DBMS_OUTPUT.PUT_LINE(i);
+	END LOOP;
+END;
+/
+--1
+--2
+--...
+--20
+
+--PL/SQL_CURSOR
+--SQL CURSOR? ?????? ?????? ?? ? ??
+
+--?????? ????? ????? ????? SQL????, ???? ?????
+--? ? ??
+--????
+--SQL%ROWCOUNT
+--SQL%FOUND
+--SQL%NOTFOUND
+--SQL%ISOPEN
+
+--?????
+--???? ???? ?? ? ??
+--????
+--????%ROWCOUNT
+--????%FOUND
+--????%NOTFOUND
+--????%ISOPEN
+
+DECLARE
+	v_empid employees.employee_id%TYPE;
+	v_fname employees.first_name%TYPE;
+	
+	CURSOR C1 IS
+	SELECT employee_id, first_name
+	FROM employees
+	WHERE department_id = 30;
+BEGIN
+	OPEN C1;        
+	LOOP
+		FETCH C1 INTO v_empid, v_fname;
+		EXIT WHEN C1%NOTFOUND; 
+		DBMS_OUTPUT.PUT_LINE(v_empid||', '||v_fname);
+	END LOOP;
+	CLOSE C1;
+	
+END;
+--114, Den
+--115, Alexander
+--116, Shelli
+--117, Sigal
+--118, Guy
+--119, Karen
+
+--PL/SQL_CURSOR_FOR
+--??? OPEN/FETCH/CLOSE? ???? ???? ??
+--?? ???
+
+DECLARE
+	CURSOR emp_cur IS
+	SELECT employee_id, first_name
+	FROM employees
+	WHERE department_id = 100;
+BEGIN
+	FOR emp_rec IN emp_cur LOOP
+		DBMS_OUTPUT.PUT_LINE(emp_rec.employee_id ||', '|| emp_rec.first_name);
+	END LOOP;
+END;
+/
+--108, Nancy
+--109, Daniel
+--110, John
+--111, Ismael
+--112, Jose Manuel
+--113, Luis
+
+--???? ? ? ??.
+--?? ??? ???? ?? ???? ???? ????
+DECLARE
+	
+BEGIN
+	FOR emp_rec IN (
+		SELECT employee_id, first_name
+		FROM employees
+		WHERE department_id = 100) 
+	LOOP
+		DBMS_OUTPUT.PUT_LINE(emp_rec.employee_id ||', '|| emp_rec.first_name);
+	END LOOP;
+END;
+/
+
+--PL/SQL_EXCEPTION
+--PL/SQL??? ???? ?? ???? ?????
+
+DECLARE
+	v_fname employees.first_name%TYPE;
+BEGIN
+	SELECT first_name
+	INTO v_fname
+	FROM employees
+	WHERE first_name like 'Z%';
+	
+	DBMS_OUTPUT.PUT_LINE(v_fname);
+	
+	EXCEPTION
+		WHEN TOO_MANY_ROWS THEN
+			DBMS_OUTPUT.PUT_LINE('???? 2? ?????.');
+		WHEN NO_DATA_FOUND THEN
+			DBMS_OUTPUT.PUT_LINE('????? ????.');
+END;
+/
+
+--??? ?? EXCEPTION
+--?? ????? ??? ?? ??? ???? ????
+--PRAGMA EXCEPTION_INIT??? ???? ????
+CREATE TABLE t_pragma(
+	no NUMBER PRIMARY KEY,
+	name VARCHAR2(20)
+);
+
+INSERT INTO t_pragma
+VALUES(1, 'AAA');
+
+INSERT INTO t_pragma
+VALUES(1, 'BBB');
+--ORA-00001: unique constraint (HR.SYS_C007154) violated
+
+DECLARE
+	new_msg EXCEPTION;
+	PRAGMA EXCEPTION_INIT(new_msg, -1);
+BEGIN
+	INSERT INTO t_pragma
+	VALUES(1, 'BBB');
+	
+	EXCEPTION
+		WHEN new_msg THEN
+		DBMS_OUTPUT.PUT_LINE('? ??. ?? ?????.');
+END;
+/
+
+--PROCEDURE
+--?? CREATE PROCEDURE ??
+--?? DROP PROCEDURE ??
+--?? ALTER PROCEDURE ??
+
+--CREATE OR REPLACE PROCEDURE procedure_name
+--[(
+--	parameter datatype1,
+--	parameter datatype2,
+--	parameter datatype3,
+--	...
+--)]
+--IS|AS
+--PL/SQL BLOCK
+
+--PARAMETER
+--IN: ?????? ??
+--OUT: RETURN
+--IN OUT: ?/?? ?? ??
+
+--????? ???? ?? ??? ??? 10000 UPDATE??
+
+SELECT employee_id, salary
+FROM employees
+WHERE employee_id = 206;
+--
+--EMPLOYEE_ID     SALARY
+------------- ----------
+--        206       8300
+
+--???? ??
+CREATE OR REPLACE PROCEDURE up_sal
+( 
+	vempid employees.employee_id%TYPE
+)  
+IS
+BEGIN
+	UPDATE employees
+	SET salary = 10000
+	WHERE employee_id = vempid;
+END;
+/
+--Procedure created.
+
+--???? ??
+EXEC up_sal(206);
+--
+--EMPLOYEE_ID     SALARY
+------------- ----------
+--        206      10000
+
+
+--FUNCTION
+--??? ??? ???? ??? ????.
+--?????? ???? ?? ???? ?? ?
+--
+--?? CREATE FUNCTION ??
+--?? DROP FUNCTION ??
+--?? ALTER FUNCTION ??
+
+--CREATE OR REPLACE FUNCTION function_name
+--[(
+--	parameter datatype1,
+--	parameter datatype2,
+--	parameter datatype3,
+--	...
+--)]
+--RETURN DATA;
+--IS|AS
+--PL/SQL BLOCK
+
+SELECT MAX(salary)
+FROM employees
+WHERE department_id = 10;
+--
+--MAX(SALARY)
+-------------
+--       4400
+
+--????
+CREATE OR REPLACE FUNCTION max_sal
+(
+	s_deptno employees.department_id%TYPE
+)
+RETURN NUMBER
+IS
+	max_sal employees.salary%TYPE;
+BEGIN
+	SELECT MAX(salary)
+	INTO max_sal
+	FROM employees
+	WHERE department_id = s_deptno;
+	
+	RETURN max_sal;
+END;
+/
+--Function created.
+
+SELECT max_sal(10) FROM dual;
+--
+--MAX_SAL(10)
+-------------
+--       4400
+
+
+--????
+--SELECT name, text
+--FROM USER_SOURCE
+--WHERE type='FUNCTION'
+--AND name='MAX_SAL';
 
 
 
