@@ -1,0 +1,17 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	스프링 제공 클래스
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+PlatformTransactionManager
+	스프링 트랜잭션 추상화의 핵심 인터페이스로, TransactionManager 인터페이스를 상속한다.
+	다음과 같은 3개의 메소드를 가진다.
+		1. TransactionStatus getTransaction(@Nullable TransactionDefinition definition)
+		2. void commit(TransactionStatus status)
+		3. void rollback(TransactionStatus status)	
+
+MethodInvocation
+	MethodInvocation은 일종의 콜백 오브젝트로, proceed() 메소드를 실행하면 타깃 오브젝트의 메소드를 내부적으로 실행해주는 기능이 있다.
+
+	
+		
+		

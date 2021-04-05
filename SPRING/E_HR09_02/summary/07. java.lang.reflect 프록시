@@ -1,0 +1,70 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	java.lang.reflect 프록시
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+기존코드에 영향을 주지 않으면서 타깃의 부가기능을 제공할 수 있다.
+프록시의 기반기술: 리플렉션(java.lang.reflect) 패키지 안에서 손쉽게 만들 수 있도록 지원
+
+--Hello.java
+	public interface Hello {
+		
+		String sayHello(String name);
+		
+		String sayHi(String name);
+		
+		String sayThankYou(String name);
+	}
+	
+--HelloTarget.java
+	//hello interface를 구현한 타깃 클래스
+	public class HelloTarget implements Hello {
+	
+		@Override
+		public String sayHello(String name) {
+			return "Hello "+name;
+		}
+	
+		@Override
+		public String sayHi(String name) {
+			return "Hi "+name;
+		}
+	
+		@Override
+		public String sayThankYou(String name) {
+			return "Thank You "+name;
+		}
+	
+	}	
+	
+--UpperHandler.java
+	public class UpperHandler implements InvocationHandler {
+		Hello target;
+		
+		//다이내믹 프록시로부터 전달받은 요청을 다시 타깃 오브젝트에 위임
+		public UpperHandler(Hello hello) {
+			this.target = hello;
+		}
+		
+	
+		/*
+		 * sayHello
+		 * sayHi		---->invoke로 모임
+		 * sayThankYou
+		 */
+		@Override
+		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+			
+			String ret = (String) method.invoke(target, args);
+			System.out.println("method 이름: "+method.getName());
+			
+			//PointCut
+			//method 이름이 'sayH'로 시작하는 것만 대문자로 바꿔 리턴함
+			if(ret instanceof String &&  method.getName().startsWith("sayH")) {
+				return ret.toUpperCase();
+			} else {
+				return ret;
+			}
+		}
+	}
+	
+	

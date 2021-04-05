@@ -1,0 +1,2379 @@
+2021-04-05 15:45:22,480 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 15:45:22,486 DEBUG [main] ehr.JTestUserService (JTestUserService.java:208)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 15:45:22,489 DEBUG [main] ehr.JTestUserService (JTestUserService.java:212)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 15:45:22,489 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:45:22,490 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:45:22,490 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:22,490 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:45:22,897 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:45:22,897 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:45:22,897 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:22,897 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:45:22,940 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:45:22,940 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:45:22,940 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:22,941 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:45:22,997 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:45:22,999 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:45:22,999 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:22,999 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:45:23,070 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:45:23,070 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:45:23,070 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,070 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:45:23,114 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:45:23,115 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:45:23,115 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,115 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:45:23,221 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:45:23,221 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:45:23,221 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,222 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:45:23,282 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:45:23,282 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:45:23,283 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,283 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:45:23,328 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:45:23,328 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:45:23,328 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,328 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:45:23,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:45:23,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:45:23,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:45:23,512 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 15:45:23,513 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 15:45:23,513 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,513 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 15:45:23,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 15:45:23,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 15:45:23,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 15:45:23,567 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3104f7bd
+2021-04-05 15:45:23,573 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 15:45:23,573 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 15:45:23,573 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 15:45:23,573 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 15:45:23,573 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:45:23,574 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 15:45:23,574 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:45:23,574 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:45:23,574 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >Rollback>
+2021-04-05 15:45:23,574 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:44)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:45:23,580 DEBUG [main] ehr.JTestUserService (JTestUserService.java:240)     - ================================
+2021-04-05 15:45:23,580 DEBUG [main] ehr.JTestUserService (JTestUserService.java:241)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 15:45:23,580 DEBUG [main] ehr.JTestUserService (JTestUserService.java:242)     - ================================
+2021-04-05 15:45:23,580 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 15:45:23,580 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 15:45:23,581 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 15:45:23,581 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@4930539b
+2021-04-05 15:45:23,645 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 15:45:23,649 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 15:45:23,649 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 154523, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:45:23,649 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 15:45:23,651 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 15:45:31,587 DEBUG [main] proxy.JTestProxy  (JTestProxy.java:44)     - proxiedHello: com.sist.ehr.proxy.HelloTarget@56620197
+2021-04-05 15:45:31,595 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:15)     - invocation.getMethod(): public abstract java.lang.String com.sist.ehr.proxy.Hello.sayHello(java.lang.String)
+2021-04-05 15:45:31,595 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:17)     - ret: Hello eClass
+2021-04-05 15:45:31,596 DEBUG [main] proxy.JTestProxy  (JTestProxy.java:47)     - HELLO ECLASS
+2021-04-05 15:45:31,596 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:15)     - invocation.getMethod(): public abstract java.lang.String com.sist.ehr.proxy.Hello.sayHi(java.lang.String)
+2021-04-05 15:45:31,596 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:17)     - ret: Hi eClass
+2021-04-05 15:45:31,596 DEBUG [main] proxy.JTestProxy  (JTestProxy.java:48)     - HI ECLASS
+2021-04-05 15:45:31,596 DEBUG [main] proxy.JTestProxy  (JTestProxy.java:49)     - Thank You eClass
+2021-04-05 15:45:31,597 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:15)     - invocation.getMethod(): public abstract java.lang.String com.sist.ehr.proxy.Hello.sayHello(java.lang.String)
+2021-04-05 15:45:31,597 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:17)     - ret: Hello eClass
+2021-04-05 15:45:31,598 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:15)     - invocation.getMethod(): public abstract java.lang.String com.sist.ehr.proxy.Hello.sayHi(java.lang.String)
+2021-04-05 15:45:31,598 DEBUG [main] proxy.UpperAdvice (UpperAdvice.java:17)     - ret: Hi eClass
+2021-04-05 15:45:37,820 DEBUG [main] ehr.JTestUserService (JTestFactoryBean.java:56)     - context: org.springframework.context.support.GenericApplicationContext@13b13b5d, started on Mon Apr 05 15:45:37 KST 2021
+2021-04-05 15:45:37,825 DEBUG [main] ehr.JTestUserService (JTestFactoryBean.java:60)     - message: com.sist.ehr.factory.Message@3899782c
+2021-04-05 15:45:37,825 DEBUG [main] ehr.JTestUserService (JTestFactoryBean.java:62)     - message.getText(): Factory 빈
+2021-04-05 15:45:37,829 DEBUG [main] ehr.JTestUserService (JTestFactoryBean.java:42)     - factory: com.sist.ehr.factory.MessageFactoryBean@58326051
+2021-04-05 15:45:37,829 DEBUG [main] ehr.JTestUserService (JTestFactoryBean.java:45)     - factory instanceof MessageFactoryBean: true
+2021-04-05 15:48:19,926 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 15:48:19,930 DEBUG [main] ehr.JTestUserService (JTestUserService.java:208)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 15:48:19,934 DEBUG [main] ehr.JTestUserService (JTestUserService.java:212)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 15:48:19,934 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:48:19,934 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:48:19,935 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:19,935 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:48:20,307 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:48:20,307 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:48:20,308 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,308 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:48:20,361 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:48:20,362 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:48:20,362 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,362 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:48:20,423 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:48:20,424 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:48:20,424 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,424 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:48:20,477 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 15:48:20,477 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 15:48:20,477 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,477 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 15:48:20,535 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:48:20,535 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:48:20,535 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,535 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:48:20,594 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:48:20,595 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:48:20,595 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,595 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:48:20,638 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:48:20,638 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:48:20,638 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,638 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:48:20,683 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:48:20,684 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:48:20,684 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,684 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:48:20,745 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 15:48:20,745 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 15:48:20,745 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,745 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 15:48:20,858 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 15:48:20,859 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 15:48:20,859 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,859 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 15:48:20,910 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,911 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,912 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,912 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 15:48:20,912 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3cbcd8f3
+2021-04-05 15:48:20,914 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 15:48:20,914 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 15:48:20,914 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 15:48:20,914 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 15:48:20,915 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:48:20,915 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 15:48:20,915 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:48:20,916 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:48:20,916 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >Rollback>
+2021-04-05 15:48:20,916 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:44)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 15:48:20,928 DEBUG [main] ehr.JTestUserService (JTestUserService.java:240)     - ================================
+2021-04-05 15:48:20,928 DEBUG [main] ehr.JTestUserService (JTestUserService.java:241)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 15:48:20,928 DEBUG [main] ehr.JTestUserService (JTestUserService.java:242)     - ================================
+2021-04-05 15:48:20,928 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 15:48:20,928 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 15:48:20,928 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 15:48:20,928 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@2f5c1332
+2021-04-05 15:48:20,973 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 15:48:20,977 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 15:48:20,977 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 154821, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 15:48:20,977 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 15:48:20,978 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:33:54,756 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:33:54,760 DEBUG [main] ehr.JTestUserService (JTestUserService.java:193)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:33:54,763 DEBUG [main] ehr.JTestUserService (JTestUserService.java:197)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:33:54,764 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:33:54,764 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:33:54,764 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:54,764 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:33:55,143 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:33:55,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:33:55,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:33:55,221 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:33:55,222 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:33:55,222 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,222 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:33:55,282 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:33:55,283 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:33:55,283 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,283 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:33:55,338 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:33:55,338 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:33:55,338 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,338 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:33:55,384 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:33:55,384 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:33:55,385 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,385 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:33:55,446 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:33:55,446 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:33:55,446 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,446 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:33:55,504 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:33:55,504 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:33:55,504 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,505 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:33:55,573 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:33:55,573 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:33:55,573 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,573 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:33:55,633 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:33:55,633 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:33:55,633 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,633 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:33:55,739 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:33:55,740 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:33:55,740 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,740 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:33:55,791 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163355, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163355, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163356, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,792 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163356, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,793 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163356, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,793 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:33:55,793 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3104f7bd
+2021-04-05 16:33:55,797 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:33:55,797 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:33:55,798 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:33:55,798 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:33:55,798 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:33:55,798 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:33:55,798 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:33:55,798 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:33:55,798 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >Rollback>
+2021-04-05 16:33:55,799 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:44)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:33:55,802 DEBUG [main] ehr.JTestUserService (JTestUserService.java:225)     - ================================
+2021-04-05 16:33:55,802 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:33:55,802 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - ================================
+2021-04-05 16:33:55,802 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:33:55,803 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:33:55,803 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:33:55,803 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@4930539b
+2021-04-05 16:33:55,858 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:33:55,861 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:33:55,861 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163355, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:33:55,861 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:33:55,863 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:36:34,881 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:36:34,885 DEBUG [main] ehr.JTestUserService (JTestUserService.java:193)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:36:34,888 DEBUG [main] ehr.JTestUserService (JTestUserService.java:197)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:36:34,889 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:36:34,889 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:36:34,889 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:34,889 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:36:35,293 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:36:35,293 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:36:35,293 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,293 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:36:35,349 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:36:35,349 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:36:35,349 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,349 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:36:35,401 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:36:35,401 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:36:35,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,402 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:36:35,460 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:36:35,460 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:36:35,461 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,461 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:36:35,514 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:36:35,514 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:36:35,514 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,515 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:36:35,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:36:35,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:36:35,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,566 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:36:35,612 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:36:35,612 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:36:35,612 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,612 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:36:35,668 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:36:35,668 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:36:35,668 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,669 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:36:35,756 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:36:35,756 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:36:35,756 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,756 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:36:35,877 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:36:35,877 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:36:35,877 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,877 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:36:35,929 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:36:35,929 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,930 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,931 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:36:35,931 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3cbcd8f3
+2021-04-05 16:36:35,933 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:36:35,933 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:36:35,933 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:36:35,933 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:36:35,933 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:36:35,933 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:36:35,933 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:36:35,933 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:41)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:36:35,933 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >Rollback>
+2021-04-05 16:36:35,934 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:36:35,938 DEBUG [main] ehr.JTestUserService (JTestUserService.java:225)     - ================================
+2021-04-05 16:36:35,939 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:36:35,939 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - ================================
+2021-04-05 16:36:35,939 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:36:35,939 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:36:35,939 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:36:35,939 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@2f5c1332
+2021-04-05 16:36:35,984 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:36:35,989 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:36:35,989 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163636, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:36:35,989 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:36:35,990 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:37:14,263 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:37:14,266 DEBUG [main] ehr.JTestUserService (JTestUserService.java:193)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:37:14,269 DEBUG [main] ehr.JTestUserService (JTestUserService.java:197)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:37:14,270 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:14,270 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:14,270 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,270 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:14,643 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:14,643 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:14,643 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,643 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:14,703 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:14,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:14,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:14,759 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:14,760 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:14,760 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,761 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:14,811 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:14,811 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:14,812 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,812 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:14,873 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:14,873 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:14,873 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,873 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:14,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:14,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:14,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:14,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:15,007 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:15,008 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:15,008 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,008 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:15,056 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:15,056 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:15,056 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,057 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:15,105 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:15,105 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:15,105 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,105 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:15,217 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:37:15,217 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:37:15,218 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,218 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:37:15,268 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:37:15,268 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:37:15,268 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:37:15,268 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:37:15,268 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:37:15,269 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3db64bd4
+2021-04-05 16:37:15,271 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:37:15,271 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:37:15,271 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:37:15,272 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:37:15,272 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:15,272 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:37:15,272 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:15,272 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:41)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:15,272 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >Rollback>
+2021-04-05 16:37:15,272 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:15,278 DEBUG [main] ehr.JTestUserService (JTestUserService.java:225)     - ================================
+2021-04-05 16:37:15,278 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:37:15,278 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - ================================
+2021-04-05 16:37:15,278 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:37:15,278 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:37:15,278 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:37:15,278 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@232cce0
+2021-04-05 16:37:15,324 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:37:15,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:37:15,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163715, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:15,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:37:15,329 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:37:40,335 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:37:40,339 DEBUG [main] ehr.JTestUserService (JTestUserService.java:193)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:37:40,343 DEBUG [main] ehr.JTestUserService (JTestUserService.java:197)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:37:40,343 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:40,343 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:40,343 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,344 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:40,690 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:40,690 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:40,690 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,690 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:40,753 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:40,753 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:40,753 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,753 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:40,814 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:40,815 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:40,815 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,815 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:40,862 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:37:40,862 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:37:40,862 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,862 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:37:40,919 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:40,919 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:40,919 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,919 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:40,981 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:40,981 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:40,982 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:40,982 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:41,035 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:41,036 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:41,036 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,037 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:41,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:41,095 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:41,095 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,095 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:41,145 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:37:41,145 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:37:41,146 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,146 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:37:41,274 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:37:41,275 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:37:41,275 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,275 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:37:41,326 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:37:41,327 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@3db64bd4
+2021-04-05 16:37:41,332 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:37:41,332 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:37:41,332 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:37:41,332 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:37:41,333 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:41,333 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:37:41,333 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:41,333 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:41)     - ret: null
+2021-04-05 16:37:41,333 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:41,333 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >Rollback>
+2021-04-05 16:37:41,333 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:44)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:37:41,346 DEBUG [main] ehr.JTestUserService (JTestUserService.java:225)     - ================================
+2021-04-05 16:37:41,347 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:37:41,347 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - ================================
+2021-04-05 16:37:41,347 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:37:41,347 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:37:41,347 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:37:41,347 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@232cce0
+2021-04-05 16:37:41,393 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:37:41,395 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:37:41,396 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163741, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:37:41,396 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:37:41,397 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:38:35,104 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:38:35,109 DEBUG [main] ehr.JTestUserService (JTestUserService.java:194)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:38:35,112 DEBUG [main] ehr.JTestUserService (JTestUserService.java:198)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:38:35,112 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:38:35,113 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:38:35,113 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,113 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:38:35,494 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:38:35,494 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:38:35,494 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,494 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:38:35,539 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:38:35,539 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:38:35,539 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,539 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:38:35,592 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:38:35,594 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:38:35,594 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,594 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:38:35,641 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:38:35,641 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:38:35,641 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,642 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:38:35,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:38:35,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:38:35,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,704 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:38:35,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:38:35,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:38:35,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,763 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:38:35,820 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:38:35,821 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:38:35,821 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,821 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:38:35,878 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:38:35,878 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:38:35,878 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,878 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:38:35,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:38:35,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:38:35,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:35,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:38:36,043 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:38:36,043 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:38:36,043 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,043 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:38:36,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:38:36,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:38:36,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:38:36,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:38:36,094 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@476a736d
+2021-04-05 16:38:36,098 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:38:36,098 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:38:36,098 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:38:36,098 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:38:36,098 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:38:36,099 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@16c8b7bd
+2021-04-05 16:38:36,103 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:38:36,103 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:38:36,103 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:38:36,103 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:38:36,110 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:37)     - commit 성공
+2021-04-05 16:38:36,110 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:38:36,110 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:38:36,110 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:38:36,110 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@5a8ba37c
+2021-04-05 16:38:36,157 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:38:36,164 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:38:36,164 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=SILVER, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163836, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:38:36,164 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:38:36,166 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:39:20,117 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:39:20,122 DEBUG [main] ehr.JTestUserService (JTestUserService.java:194)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@6c6357f9]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@591e58fa]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:39:20,126 DEBUG [main] ehr.JTestUserService (JTestUserService.java:198)     - txUserService: com.sist.ehr.TestUserService@591e58fa
+2021-04-05 16:39:20,126 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:39:20,126 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:39:20,127 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,127 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:39:20,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:39:20,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:39:20,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:39:20,576 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:39:20,576 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:39:20,579 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,579 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:39:20,632 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:39:20,634 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:39:20,634 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,634 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:39:20,717 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:39:20,717 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:39:20,718 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,718 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:39:20,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:39:20,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:39:20,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,762 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:39:20,821 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:39:20,822 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:39:20,822 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,822 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:39:20,881 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:39:20,881 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:39:20,881 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,881 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:39:20,926 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:39:20,926 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:39:20,926 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,926 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:39:20,975 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:39:20,975 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:39:20,975 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:20,975 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:39:21,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:39:21,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:39:21,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,093 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:39:21,143 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:39:21,143 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:39:21,143 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:39:21,144 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@63ec445c
+2021-04-05 16:39:21,147 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:39:21,147 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:39:21,147 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:39:21,147 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:39:21,147 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:39:21,148 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@77d18d0b
+2021-04-05 16:39:21,150 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:39:21,150 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:39:21,151 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:39:21,151 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:39:21,151 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:36)     - ret: null
+2021-04-05 16:39:21,158 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:38)     - commit 성공
+2021-04-05 16:39:21,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:39:21,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:39:21,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:39:21,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@3b08f438
+2021-04-05 16:39:21,221 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:39:21,224 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:39:21,224 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=SILVER, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 163921, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:39:21,224 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:39:21,225 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:40:08,680 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:40:08,684 DEBUG [main] ehr.JTestUserService (JTestUserService.java:194)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:40:08,687 DEBUG [main] ehr.JTestUserService (JTestUserService.java:198)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:40:08,687 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:08,688 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:08,688 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:08,688 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:09,058 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:09,059 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:09,059 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,059 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:09,134 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:09,134 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:09,134 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,134 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:09,182 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:09,183 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:09,183 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,183 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:09,382 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:09,383 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:09,383 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,384 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:09,443 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:09,443 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:09,444 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,444 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:09,502 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:09,502 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:09,502 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,502 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:09,564 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:09,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:09,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:09,627 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:09,627 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:09,627 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,627 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:09,682 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:09,682 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:09,682 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,682 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:09,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:40:09,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:40:09,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 164009, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,837 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 164010, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 164010, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 164010, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 164010, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:40:09,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@719843e5
+2021-04-05 16:40:09,841 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:40:09,841 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:40:09,841 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:40:09,841 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:40:09,841 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:09,841 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:40:09,841 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:09,842 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:41)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:09,842 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >Rollback>
+2021-04-05 16:40:09,842 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:09,846 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - ================================
+2021-04-05 16:40:09,847 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:40:09,847 DEBUG [main] ehr.JTestUserService (JTestUserService.java:228)     - ================================
+2021-04-05 16:40:09,847 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:40:09,847 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:40:09,847 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:40:09,847 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@7ec25216
+2021-04-05 16:40:09,889 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:40:09,892 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:40:09,892 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 164010, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:09,892 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:40:09,895 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()
+2021-04-05 16:40:22,147 DEBUG [main] ehr.JTestUserService (JTestUserService.java:68)     - setUp()
+2021-04-05 16:40:22,152 DEBUG [main] ehr.JTestUserService (JTestUserService.java:194)     - proxyFactoryBean: org.springframework.aop.framework.ProxyFactoryBean: 1 interfaces [com.sist.ehr.member.service.UserService]; 1 advisors [org.springframework.aop.support.DefaultPointcutAdvisor: pointcut [org.springframework.aop.support.NameMatchMethodPointcut: [upgrade*]]; advice [com.sist.ehr.member.service.TransactionAdvice@307765b4]]; targetSource [SingletonTargetSource for target object [com.sist.ehr.TestUserService@4a9e6faf]]; proxyTargetClass=false; optimize=false; opaque=false; exposeProxy=false; frozen=false
+2021-04-05 16:40:22,155 DEBUG [main] ehr.JTestUserService (JTestUserService.java:198)     - txUserService: com.sist.ehr.TestUserService@4a9e6faf
+2021-04-05 16:40:22,156 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:22,156 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:22,156 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,156 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:22,509 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:22,509 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:22,509 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,509 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:22,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:22,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:22,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,565 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:22,610 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:22,611 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:22,611 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,612 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:22,667 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-05 16:40:22,667 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-05 16:40:22,667 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,667 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-05 16:40:22,721 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:22,722 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:22,722 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,722 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:22,782 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:22,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:22,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:22,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:22,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:22,838 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,839 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:22,886 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:22,887 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:22,887 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,887 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:22,935 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-05 16:40:22,936 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-05 16:40:22,936 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:22,936 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-05 16:40:23,049 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-05 16:40:23,049 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-05 16:40:23,049 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,049 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-05 16:40:23,101 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:40:23,101 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-05 16:40:23,101 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-05 16:40:23,101 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-05 16:40:23,101 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-05 16:40:23,102 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@65bcf7c2
+2021-04-05 16:40:23,116 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-05 16:40:23,116 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-05 16:40:23,116 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-05 16:40:23,116 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-05 16:40:23,117 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:13)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:23,117 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:14)     - >TestUserServiceException>트랜잭션 테스트: H_126_04
+2021-04-05 16:40:23,117 DEBUG [main] ehr.TestUserServiceException (TestUserServiceException.java:15)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:23,117 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:41)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:23,117 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:42)     - >Rollback>
+2021-04-05 16:40:23,117 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:43)     - >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2021-04-05 16:40:23,124 DEBUG [main] ehr.JTestUserService (JTestUserService.java:226)     - ================================
+2021-04-05 16:40:23,124 DEBUG [main] ehr.JTestUserService (JTestUserService.java:227)     - =RuntimeException=트랜잭션 테스트: H_126_04
+2021-04-05 16:40:23,124 DEBUG [main] ehr.JTestUserService (JTestUserService.java:228)     - ================================
+2021-04-05 16:40:23,124 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-05 16:40:23,124 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-05 16:40:23,124 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-05 16:40:23,124 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@37c2eacb
+2021-04-05 16:40:23,168 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-05 16:40:23,170 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-05 16:40:23,170 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/05 164023, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-05 16:40:23,171 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-05 16:40:23,172 DEBUG [main] ehr.JTestUserService (JTestUserService.java:156)     - tearDown()

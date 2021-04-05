@@ -1,0 +1,52 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	bean태그 안의 property태그를 이용한 값 입력 
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+E_HR05_04
+
+  
+init-method=생성자 다음 -> 빈초기화
+destroy-method : 자원정리
+lazy-init="true" : 클래스 사용시 메모리에 올린다.
+scope="singleton": 객체가 1개만 사용.
+scope="prototype": 빈이 요청될때 마다 매번 새래운 객체를 생성	      
+	
+	
+자바의 식별자 작성규칙과 동일
+	1. 영문자로 시작
+	2. 단어사이에 space있으면 않된다.
+	3. 특수기호 :$이외는 사용 금지.
+	name="http://www.name.com"
+id="값"  
+
+--board-context.xml
+
+	<bean id="lgTv" 
+		init-method="initMethod"
+	    destroy-method="destroyMethod"
+	    lazy-init="true"
+	    scope="singleton"
+		class="com.sist.ehr.LgTv"
+	>
+		<property name="price" value="20000000"/>
+	 	<property name="speaker" ref="sonySpeaker"/>
+	</bean>
+	
+--applicationContext.xml
+
+	<import resource="/com/sist/ehr/board-context.xml"/>
+	<!-- 위의 board-context.xml를 import 하고 있음 -->
+	
+	<bean id="sonySpeaker" class="com.sist.ehr.SonySpeaker"/>
+	<bean id="appleSpeaker" class="com.sist.ehr.AppleSpeaker" />
+
+    <bean id="samsungTv" class="com.sist.ehr.SamsungTv">
+      <!-- 생성자 통한 주입 -->
+      <!-- 
+        index= arguments 순서(0,1,2..)
+        ref=참조 bean
+        value ="값"
+       -->      
+      <constructor-arg index="0" value="10000000" />
+      <constructor-arg index="1" ref="appleSpeaker" />
+    </bean>	

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- ProxyFactoryBean 적용된 Transaction -->
+		<!-- Advice --><!-- 내가 만든 것 -->
+		<bean id="transactionAdvice" class="com.sist.ehr.member.service.TransactionAdvice">
+			<property name="transactionManager" ref="transactionManager"></property>
+		</bean>
+		
+		<!-- Pointcut: NameMatchMethodPointcut --><!-- Spring이 제공 -->
+		<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+			<property name="mappedName" value="upgrade*"></property>
+		</bean>
+		
+		<!-- Advisor: Advice + Pointcut --><!-- Spring이 제공 -->
+		<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+			<property name="advice" ref="transactionAdvice"/>
+			<property name="pointcut" ref="transactionPointcut"/>
+		</bean>
+		
+		<!-- ProxyFactoryBean --><!-- Spring이 제공 -->
+			<!-- interceptorNames: Advice + Pointcut을 동시에 설정하는 프로퍼티 -->
+			<!-- 여러가지 기능을 넣을 수 있도록 list 형태로 값을 받는다.(ex.트랜잭션, 로그인....) -->
+		<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+			<property name="target" ref="userService"/>
+			<property name="interceptorNames">
+				<list>
+					<value>transactionAdvisor</value>
+				</list>
+			</property>
+		</bean>
+	<!--// ProxyFactoryBean 적용된 Transaction -->
+	
+	<!-- PlatformTransactionManager 구현체: DataSourceTransactionManager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- email set -->
+	
+		<!--1. PasswordAuthentication -->
+		<bean id="passwordAuth" class="javax.mail.PasswordAuthentication" >
+			<constructor-arg index="0">
+				<value>123wodnr@naver.com</value>
+			</constructor-arg>
+			<constructor-arg index="1">
+				<value>NAaegis01!!</value>
+			</constructor-arg>
+		</bean>	
+		
+		<!--2. Authenticator: javax.mail과 연결 -->	
+		<bean id="authenticator" class="javax.mail.Authenticator">
+			<lookup-method name="getPasswordAuthentication" 
+				bean="passwordAuth"
+			/>
+		</bean>
+		
+		<!--3. Session: PasswordAuthentication + Authenticator -->
+		<!--  private Session(Properties props, Authenticator authenticator) -->
+		<bean id="emailSession" class="javax.mail.Session">
+			<constructor-arg index="0">
+				<props>
+					<prop key="mail.smtp.host">smtp.naver.com</prop>
+					<prop key="mail.smtp.port">465</prop>
+					<prop key="mail.smtp.auth">true</prop>
+					<prop key="mail.smtp.ssl.enable">true</prop>
+					<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
+				</props>
+			</constructor-arg>
+			<constructor-arg index="1" ref="authenticator"/>
+		</bean>
+		
+		<!--4. JavaMailSenderImpl: 전송가능한 mail 설정 -->
+		<bean id="mailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<property name="session" ref="emailSession"/>
+		</bean>
+		
+		<!--5. DummyMailSender(implements MailSender): 메일전송이 되지 않는 mail설정  -->
+		<bean id="dummyMailSender" class="com.sist.ehr.member.service.DummyMailSender">
+			
+		</bean>
+	
+	<!--// email set -->
+	
+	<!-- UserServiceTx -->
+	<bean id="userServiceTx" class="com.sist.ehr.member.service.UserServiceTx">
+		<property name="userService" ref="userService"/>
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>
+	
+	<!-- UserServiceTx을 대신하는 TxProxyFactoryBean 트랜잭션 프록시 팩토리 빈 -->
+	<bean id="txProxyFactoryBean" class="com.sist.ehr.member.service.TxProxyFactoryBean">
+		<property name="target" ref="userService"/>
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="pattern" value="upgradeLevels"/>
+		<property name="serviceInterface" value="com.sist.ehr.member.service.UserService"/>
+	</bean>	
+		
+		
+	<!-- UserService 객체 생성 -->
+	<bean id="userService" class="com.sist.ehr.member.service.UserServiceImpl">
+		<!-- 
+			setter DI
+			ref: setter의 파라미터 
+		-->
+		<property name="userDao" ref="userDao"/>
+		
+		<!-- mail 전송됨 -->
+		<!-- <property name="mailSender" ref="mailSenderImpl"/> -->
+		
+		<!-- mail 전송안됨 -->
+		<property name="mailSender" ref="dummyMailSender"></property>
+		
+	</bean>
+	
+	<!-- DataSource 구현 class SimpleDriverDataSource -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"         value="jdbc:oracle:thin:@211.238.142.124:1521:xe" />
+		<property name="username"    value="SPRING" />
+		<property name="password"    value="eclass" />
+	</bean>
+	
+	<bean id="userDao" class="com.sist.ehr.UserDaoImpl">
+		<!-- setter통한 주입: name 값을 누르면 setter를 찾아가야함, ref는 setter의 param 값 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+</beans>
