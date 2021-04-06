@@ -6814,10 +6814,10 @@ BEGIN
 		DBMS_OUTPUT.PUT_LINE(v_second);
 	END;
 DBMS_OUTPUT.PUT_LINE(v_first);
+DBMS_OUTPUT.PUT_LINE(v_second);
 
 --오류
 --PLS-00201: identifier 'V_SECOND' must be declared
-DBMS_OUTPUT.PUT_LINE(v_second);
 
 END;
 /
@@ -7151,8 +7151,9 @@ END;
 </div>
 <a href="#PL/SQL" name="PL/SQL_CURSOR"><h4>PL/SQL_CURSOR</h4></a><hr>
 --SQL CURSOR는 묵시적커서와 명시적커서로 나눌 수 있음
+
+--묵시적커서
 --DML문이 실행될 때마다 자동으로 선언되며 문장이 종료됨과 동시에 정리됨
---단건검색, 다건검색의 경우 명시적커서를 이용해야함
 --SQL%ROWCOUNT: 해당커서에서 실행한 총 행의 개수를 반환
 --SQL%FOUND: 해당커서에서 아직 수행해야할 것이 있는 경우 TRUE반환
 --SQL%NOTFOUND: 해당커서에서 수행해야할 데이터가 없는 경우 TRUE반환
@@ -7162,7 +7163,6 @@ END;
 --사용자가 선언하여 생성 후 사용
 --다건검색
 
---묵시적커서와 마찬가지로 4가지 속성을 지원
 --커서이름%ROWCOUNT
 --커서이름%FOUND
 --커서이름%NOTFOUND
