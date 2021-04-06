@@ -1,0 +1,57 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	Spring 프록시
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+java.lang.reflect 프록시에서, DI 대상이 되는 다이내믹 프록시 오브젝트(FactoryBean)는 일반적인 스프링의 빈으로 등록할 방법이 없다. 
+그래서 사용하는 것이 다이내믹 프록시를 위한 FactoryBean(스프링을 대신해서 오브젝트의 생성로직을 담당하도록 만들어진 특별한 빈)
+
+다이나믹 프록시란
+	애플리케이션 실행도중, 특정 인터페이스 들을 구현하는 구현하는 클래스 또는 인스턴스를 만드는 기술이다.
+
+FactoryBean
+	스프링을 사용하면서 만나게 되는 문제점 중 하나는 new 연산자로 간단히 생성할 수 없는 의존성을 어떻게 
+	생성해 주입할 것인가입니다. 이 문제를 극복하려고 스프링은 기본으로 제공되는 스프링 구문(semantic)
+	으로는 생성 및 관리할 수 없는 객체를 관리하기 위한 어댑터인 FactoryBean 인터페이스를 제공합니다. 
+	흔히 사용하는 것은 아니지만 정적 팩터리 클래스로 접근해야 하는 객체처럼 new 연산자로 생성할 수 없는 
+	객체를 생성할 때는 일반적으로 FactoryBean을 사용합니다. 
+	간단히 말하면 FactoryBean은 다른 빈을 생성하는 팩터리 역할을 담당하는 빈입니다. 
+	FactoryBean은 일반적인 빈과 마찬가지로 ApplicationContext에서 구성하지만, 스프링이 
+	FactoryBean 인터페이스를 사용해 의존성 요청이나 검색 요청에 응답할 때는 일반적인 빈과는 달리 
+	FactoryBean 인스턴스를 반환하지 않습니다. 
+	대신에 스프링이 FactoryBean.getObject() 메서드를 호출하여 반환받은 결과를 반환합니다.
+
+ProxyFactoryBean
+--applicationContext.xml
+
+	<!-- ProxyFactoryBean 적용된 Transaction -->
+		<!-- Advice --><!-- 내가 만든 것 -->
+		<bean id="transactionAdvice" class="com.sist.ehr.member.service.TransactionAdvice">
+			<property name="transactionManager" ref="transactionManager"></property>
+		</bean>
+		
+		<!-- Pointcut: NameMatchMethodPointcut --><!-- Spring이 제공 -->
+		<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+			<property name="mappedName" value="upgrade*"></property>
+		</bean>
+		
+		<!-- Advisor: Advice + Pointcut --><!-- Spring이 제공 -->
+		<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+			<property name="advice" ref="transactionAdvice"/>
+			<property name="pointcut" ref="transactionPointcut"/>
+		</bean>
+		
+		<!-- ProxyFactoryBean --><!-- Spring이 제공 -->
+			<!-- interceptorNames: Advice + Pointcut을 동시에 설정하는 프로퍼티 -->
+			<!-- 여러가지 기능을 넣을 수 있도록 list 형태로 값을 받는다.(ex.트랜잭션, 로그인....) -->
+		<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+			<property name="target" ref="userService"/>
+			<property name="interceptorNames">
+				<list>
+					<value>transactionAdvisor</value>
+				</list>
+			</property>
+		</bean>
+	<!--// ProxyFactoryBean 적용된 Transaction -->
+
+
+

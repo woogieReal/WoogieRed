@@ -1,0 +1,63 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	ENUM 클래스 사용
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+E_HR06_02
+
+--Level.java
+
+	//사용자 레벨은: BASIC, SILVER, GOLD
+	public enum Level {
+		
+		//BASIC(1),SILVER(2),GOLD(3);
+		//현재값, nextLevel
+		GOLD(3, null), SILVER(2, GOLD), BASIC(1, SILVER);
+		
+		private final int value;
+		private final Level nextLevel;
+		
+		Level(int value, Level nextLevel){
+			this.value = value;
+			this.nextLevel = nextLevel;
+		}
+		
+		public int getValue() {
+			return value;
+		}
+		
+		//다음 레벨을 추출
+		public Level getNextLevel() {
+			return nextLevel;
+		}
+	
+		//int 값을 넣으면 그에 맞는 Level값을 리턴
+		public static Level valueOf(int value) {
+			switch(value) {
+			case 1: return BASIC;
+			case 2: return SILVER;
+			case 3: return GOLD;
+			default:
+				throw new AssertionError("Unknown value: "+value);
+			
+			}
+		}
+	}
+	
+	
+--UserService.java
+
+	private boolean canUpgradeLevel(User user) throws IllegalAccessException {
+		Level currLevel = user.getLevel();
+		
+		switch(currLevel) {
+			//case 문에서 ENUM클래스를 쓸 때는 ENUM클래스명을 생략한다.
+			//레벨별로 구분해서 조건판단
+								//리턴값이 boolean이므로 조건문을 써도 된다.
+			case BASIC: return (user.getLogin() >= MIN_LOGIN_COUNT_FOR_SILVER);
+			case SILVER: return (user.getRecommend() >= MIN_RECOMMEND_COUNT_FOR_GOLD);
+			case GOLD: return false;
+			default: throw new IllegalAccessException("unknown Level");
+		}
+		
+	}
+	

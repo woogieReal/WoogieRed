@@ -1,0 +1,750 @@
+2021-04-06 11:32:10,688 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,691 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): SimpleDriverDataSource
+2021-04-06 11:32:10,691 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,702 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,703 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): DataSourceTransactionManager
+2021-04-06 11:32:10,703 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,715 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,715 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): PasswordAuthentication
+2021-04-06 11:32:10,715 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,776 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,776 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): Authenticator$$EnhancerBySpringCGLIB$$17b44ede
+2021-04-06 11:32:10,776 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,793 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,793 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): Session
+2021-04-06 11:32:10,793 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,813 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,814 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): JavaMailSenderImpl
+2021-04-06 11:32:10,814 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,814 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,814 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): DummyMailSender
+2021-04-06 11:32:10,815 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,829 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,829 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): UserDaoImpl
+2021-04-06 11:32:10,829 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:10,832 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:10,832 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): UserServiceImpl
+2021-04-06 11:32:10,833 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: true
+2021-04-06 11:32:10,865 DEBUG [main] ehr.JTestUserService (JTestUserService.java:66)     - setUp()
+2021-04-06 11:32:10,872 DEBUG [main] ehr.JTestUserService (JTestUserService.java:159)     - context: org.springframework.context.support.GenericApplicationContext@26275bef, started on Tue Apr 06 11:32:10 KST 2021
+2021-04-06 11:32:10,873 DEBUG [main] ehr.JTestUserService (JTestUserService.java:160)     - userService: com.sist.ehr.member.service.UserServiceImpl@60cf80e7
+2021-04-06 11:32:10,873 DEBUG [main] ehr.JTestUserService (JTestUserService.java:161)     - userDao: com.sist.ehr.UserDaoImpl@302fec27
+2021-04-06 11:32:10,873 DEBUG [main] ehr.JTestUserService (JTestUserService.java:162)     - dataSource: org.springframework.jdbc.datasource.SimpleDriverDataSource@770d0ea6
+2021-04-06 11:32:10,873 DEBUG [main] ehr.JTestUserService (JTestUserService.java:163)     - transactionManagerorg.springframework.jdbc.datasource.DataSourceTransactionManager@48c40605
+2021-04-06 11:32:10,877 DEBUG [main] ehr.JTestUserService (JTestUserService.java:154)     - tearDown()
+2021-04-06 11:32:10,880 DEBUG [main] ehr.JTestUserService (JTestUserService.java:66)     - setUp()
+2021-04-06 11:32:10,880 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:10,880 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:10,880 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:10,880 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:11,333 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:11,333 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:11,333 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:11,334 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:11,487 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:11,487 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:11,487 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:11,487 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:11,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:11,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:11,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:11,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:11,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:11,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:11,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:11,783 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:11,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:11,937 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:11,938 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:11,938 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:12,304 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:12,304 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:12,304 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:12,304 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:12,469 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:12,470 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:12,470 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:12,470 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:12,624 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:12,625 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:12,625 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:12,625 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:12,786 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:12,787 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:12,787 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:12,787 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:13,060 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-06 11:32:13,060 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-06 11:32:13,060 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,060 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-06 11:32:13,118 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/06 113212, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/06 113212, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,119 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/06 113212, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,120 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/06 113212, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,120 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/06 113213, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,120 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-06 11:32:13,120 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@546621c4
+2021-04-06 11:32:13,129 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-06 11:32:13,129 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-06 11:32:13,129 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-06 11:32:13,129 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-06 11:32:13,129 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-06 11:32:13,129 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@f339eae
+2021-04-06 11:32:13,138 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-06 11:32:13,139 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-06 11:32:13,139 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-06 11:32:13,139 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-06 11:32:13,157 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:38)     - commit 성공
+2021-04-06 11:32:13,157 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-06 11:32:13,157 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-06 11:32:13,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-06 11:32:13,158 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@3d43fe
+2021-04-06 11:32:13,296 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-06 11:32:13,312 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-06 11:32:13,312 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=SILVER, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/06 113213, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:13,312 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-06 11:32:13,313 DEBUG [main] ehr.JTestUserService (JTestUserService.java:154)     - tearDown()
+2021-04-06 11:32:26,317 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,320 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): SimpleDriverDataSource
+2021-04-06 11:32:26,320 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,330 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,330 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): DataSourceTransactionManager
+2021-04-06 11:32:26,330 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,342 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,343 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): PasswordAuthentication
+2021-04-06 11:32:26,343 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,406 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,406 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): Authenticator$$EnhancerBySpringCGLIB$$17b44ede
+2021-04-06 11:32:26,407 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,426 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,426 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): Session
+2021-04-06 11:32:26,426 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,448 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,449 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): JavaMailSenderImpl
+2021-04-06 11:32:26,449 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,449 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,450 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): DummyMailSender
+2021-04-06 11:32:26,450 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,463 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,463 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): UserDaoImpl
+2021-04-06 11:32:26,463 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: false
+2021-04-06 11:32:26,467 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:35)     - mappedName: *ServiceImpl
+2021-04-06 11:32:26,467 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:36)     - clazz.getSimpleName(): UserServiceImpl
+2021-04-06 11:32:26,467 DEBUG [main] service.NameMatchClassMethodPointCut (NameMatchClassMethodPointCut.java:37)     - flag: true
+2021-04-06 11:32:26,503 DEBUG [main] ehr.JTestUserService (JTestUserService.java:66)     - setUp()
+2021-04-06 11:32:26,510 DEBUG [main] ehr.JTestUserService (JTestUserService.java:159)     - context: org.springframework.context.support.GenericApplicationContext@26275bef, started on Tue Apr 06 11:32:26 KST 2021
+2021-04-06 11:32:26,511 DEBUG [main] ehr.JTestUserService (JTestUserService.java:160)     - userService: com.sist.ehr.member.service.UserServiceImpl@60cf80e7
+2021-04-06 11:32:26,511 DEBUG [main] ehr.JTestUserService (JTestUserService.java:161)     - userDao: com.sist.ehr.UserDaoImpl@302fec27
+2021-04-06 11:32:26,511 DEBUG [main] ehr.JTestUserService (JTestUserService.java:162)     - dataSource: org.springframework.jdbc.datasource.SimpleDriverDataSource@770d0ea6
+2021-04-06 11:32:26,511 DEBUG [main] ehr.JTestUserService (JTestUserService.java:163)     - transactionManagerorg.springframework.jdbc.datasource.DataSourceTransactionManager@48c40605
+2021-04-06 11:32:26,515 DEBUG [main] ehr.JTestUserService (JTestUserService.java:154)     - tearDown()
+2021-04-06 11:32:26,517 DEBUG [main] ehr.JTestUserService (JTestUserService.java:66)     - setUp()
+2021-04-06 11:32:26,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:26,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:26,517 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:26,518 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:26,977 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:26,978 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:26,978 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:26,978 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:27,116 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:27,116 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:27,116 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,116 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:27,242 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:27,242 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:27,242 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,242 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:27,370 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:129)     - =sql=
+ DELETE FROM hr_member   
+ WHERE u_id = ?          
+
+2021-04-06 11:32:27,370 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:132)     - ==================================
+2021-04-06 11:32:27,371 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:133)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,371 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:134)     - ==================================
+2021-04-06 11:32:27,503 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:27,503 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:27,503 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,503 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:27,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:27,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:27,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,654 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:27,799 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:27,799 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:27,800 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,800 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:27,934 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:27,934 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:27,935 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:27,935 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:28,085 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:176)     - =sql=
+ INSERT INTO hr_member (   
+     u_id,                 
+     name,                 
+     passwd,               
+     u_level,              
+     login,                
+     recommend,            
+     email,                
+     reg_dt                 
+ ) VALUES (                
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     ?,                    
+     SYSDATE               
+ )                         
+
+2021-04-06 11:32:28,085 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:187)     - ==================================
+2021-04-06 11:32:28,085 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:188)     - =user=User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,085 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:189)     - ==================================
+2021-04-06 11:32:28,353 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:77)     - ==================================
+2021-04-06 11:32:28,353 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:78)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM hr_member               
+ WHERE u_id LIKE  ? || '%'    
+ ORDER BY u_id                
+
+2021-04-06 11:32:28,353 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:79)     - =param=User [uId=H_126, name=null, passwd=null, level=null, login=0, recommend=0, email=null, regDt=null, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,353 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:80)     - ==================================
+2021-04-06 11:32:28,412 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-06 11:32:28,412 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 1
+2021-04-06 11:32:28,412 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 2
+2021-04-06 11:32:28,412 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 3
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 4
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_01, name=김재욱_01, passwd=1234, level=BASIC, login=49, recommend=0, email=plagis@daum.net, regDt=2021/04/06 113227, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_02, name=김재욱_02, passwd=1234, level=BASIC, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/06 113227, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_03, name=김재욱_03, passwd=1234, level=SILVER, login=51, recommend=29, email=plagis@daum.net, regDt=2021/04/06 113228, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_04, name=김재욱_04, passwd=1234, level=SILVER, login=51, recommend=30, email=plagis@daum.net, regDt=2021/04/06 113228, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:85)     - User [uId=H_126_05, name=김재욱_05, passwd=1234, level=GOLD, login=99, recommend=31, email=plagis@daum.net, regDt=2021/04/06 113228, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-06 11:32:28,413 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@4ed38226
+2021-04-06 11:32:28,425 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-06 11:32:28,426 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-06 11:32:28,426 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-06 11:32:28,426 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-06 11:32:28,426 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:265)     - =sql=
+ UPDATE hr_member     
+ SET                  
+ 	name      = ?,   
+ 	passwd    = ?,   
+ 	u_level   = ?,   
+ 	login     = ?,   
+ 	recommend = ?,   
+ 	email     = ?,   
+ 	reg_dt    = SYSDATE    
+ WHERE u_id    = ?    
+
+2021-04-06 11:32:28,426 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:277)     - =args=
+[Ljava.lang.Object;@74ad8d05
+2021-04-06 11:32:28,438 DEBUG [main] service.DummyMailSender (DummyMailSender.java:13)     - ***********************
+2021-04-06 11:32:28,438 DEBUG [main] service.DummyMailSender (DummyMailSender.java:14)     - 개발용 email 입니다.
+2021-04-06 11:32:28,438 DEBUG [main] service.DummyMailSender (DummyMailSender.java:15)     - mail은 전송되지 않습니다.
+2021-04-06 11:32:28,438 DEBUG [main] service.DummyMailSender (DummyMailSender.java:16)     - ***********************
+2021-04-06 11:32:28,462 DEBUG [main] service.TransactionAdvice (TransactionAdvice.java:38)     - commit 성공
+2021-04-06 11:32:28,463 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:221)     - ==================================
+2021-04-06 11:32:28,463 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:222)     - =sql=
+ SELECT                
+     u_id,             
+     name,             
+     passwd,           
+     u_level,          
+     login,            
+     recommend,        
+     email,            
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24MISS') reg_dt         
+ FROM                  
+     hr_member         
+ WHERE u_id = ?        
+
+2021-04-06 11:32:28,463 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:223)     - ==================================
+2021-04-06 11:32:28,463 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:226)     - =args=[Ljava.lang.Object;@7159139f
+2021-04-06 11:32:28,613 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:41)     - rowNum: 0
+2021-04-06 11:32:28,624 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:230)     - ==================================
+2021-04-06 11:32:28,624 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:231)     - =outVO=User [uId=H_126_02, name=김재욱_02, passwd=1234, level=SILVER, login=50, recommend=10, email=plagis@daum.net, regDt=2021/04/06 113228, toString()=DTO [uId=null, name=null, passwd=null]]
+2021-04-06 11:32:28,624 DEBUG [main] ehr.UserDaoImpl   (UserDaoImpl.java:232)     - ==================================
+2021-04-06 11:32:28,624 DEBUG [main] ehr.JTestUserService (JTestUserService.java:154)     - tearDown()
+2021-04-06 14:25:22,076 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:40)     - context: org.springframework.context.support.GenericApplicationContext@13b13b5d, started on Tue Apr 06 14:25:21 KST 2021
+2021-04-06 14:26:17,747 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:43)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:26:17 KST 2021
+2021-04-06 14:26:17,752 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:44)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 14:27:46,336 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:49)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:27:46 KST 2021
+2021-04-06 14:27:46,342 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:50)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 14:27:46,351 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:27:46,352 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doSave
+2021-04-06 14:27:46,352 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:27:46,352 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 14:27:46,352 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 14:27:46,352 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 14:28:29,841 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:50)     - context: org.springframework.context.support.GenericApplicationContext@7b02881e, started on Tue Apr 06 14:28:29 KST 2021
+2021-04-06 14:28:29,846 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:51)     - member: com.sist.ehr.aspect.MemberImpl@3e10dc6
+2021-04-06 14:28:29,857 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:28:29,857 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doSave
+2021-04-06 14:28:29,857 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:28:29,857 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 14:28:29,858 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 14:28:29,858 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 14:28:29,858 DEBUG [main] aspect.MemberImpl (MemberImpl.java:26)     - --------------------------
+2021-04-06 14:28:29,858 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - -delete()-
+2021-04-06 14:28:29,858 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - --------------------------
+2021-04-06 14:28:35,386 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:50)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:28:35 KST 2021
+2021-04-06 14:28:35,391 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:51)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 14:28:35,398 DEBUG [main] aspect.MemberImpl (MemberImpl.java:26)     - --------------------------
+2021-04-06 14:28:35,398 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - -delete()-
+2021-04-06 14:28:35,399 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - --------------------------
+2021-04-06 14:28:47,872 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:51)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:28:47 KST 2021
+2021-04-06 14:28:47,878 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:52)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 14:28:47,889 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:28:47,889 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doUpdate
+2021-04-06 14:28:47,890 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:28:47,890 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 14:28:47,890 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 14:28:47,890 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 14:29:56,407 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:51)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:29:56 KST 2021
+2021-04-06 14:29:56,412 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:52)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 14:29:56,423 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:29:56,423 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doSave
+2021-04-06 14:29:56,423 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:29:56,423 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 14:29:56,423 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 14:29:56,424 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 14:29:56,424 DEBUG [main] aspect.MemberImpl (MemberImpl.java:26)     - --------------------------
+2021-04-06 14:29:56,424 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - -delete()-
+2021-04-06 14:29:56,424 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - --------------------------
+2021-04-06 14:29:56,424 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:29:56,424 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doUpdate
+2021-04-06 14:29:56,424 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:29:56,425 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 14:29:56,425 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 14:29:56,426 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 14:36:44,593 DEBUG [main] aspect.JTestAspectjAfter (JTestAspectjAfter.java:68)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:36:44 KST 2021
+2021-04-06 14:36:44,598 DEBUG [main] aspect.JTestAspectjAfter (JTestAspectjAfter.java:69)     - member: com.sist.ehr.aspect.MemberImpl@75e91545
+2021-04-06 14:36:44,606 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 14:36:44,606 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 14:36:44,606 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 14:36:44,609 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:36:44,609 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doSave
+2021-04-06 14:36:44,609 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:36:44,609 DEBUG [main] aspect.MemberImpl (MemberImpl.java:26)     - --------------------------
+2021-04-06 14:36:44,610 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - -delete()-
+2021-04-06 14:36:44,610 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - --------------------------
+2021-04-06 14:36:44,610 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 14:36:44,610 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 14:36:44,610 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 14:36:44,610 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:36:44,610 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doUpdate
+2021-04-06 14:36:44,611 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:37:00,043 DEBUG [main] aspect.JTestAspectjAfter (JTestAspectjAfter.java:68)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 14:36:59 KST 2021
+2021-04-06 14:37:00,049 DEBUG [main] aspect.JTestAspectjAfter (JTestAspectjAfter.java:69)     - member: com.sist.ehr.aspect.MemberImpl@75e91545
+2021-04-06 14:37:00,055 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 14:37:00,056 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 14:37:00,056 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 14:37:00,059 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:37:00,059 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doSave
+2021-04-06 14:37:00,059 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 14:37:00,059 DEBUG [main] aspect.MemberImpl (MemberImpl.java:26)     - --------------------------
+2021-04-06 14:37:00,059 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - -delete()-
+2021-04-06 14:37:00,059 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - --------------------------
+2021-04-06 14:37:00,059 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 14:37:00,060 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 14:37:00,060 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 14:37:00,060 DEBUG [main] aspect.LoggingAop (LoggingAop.java:21)     - ***************************
+2021-04-06 14:37:00,060 DEBUG [main] aspect.LoggingAop (LoggingAop.java:22)     - *methodName*doUpdate
+2021-04-06 14:37:00,061 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:03:06,703 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:68)     - context: org.springframework.context.support.GenericApplicationContext@306cf3ea, started on Tue Apr 06 15:03:06 KST 2021
+2021-04-06 15:03:06,708 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:69)     - member: com.sist.ehr.aspect.MemberImpl@338494fa
+2021-04-06 15:03:06,715 DEBUG [main] around.AroundAdvice (AroundAdvice.java:16)     - Before: 메소드 수행 전
+2021-04-06 15:03:06,716 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 15:03:06,716 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 15:03:06,716 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 15:03:06,716 DEBUG [main] around.AroundAdvice (AroundAdvice.java:20)     - After: 메소드 수행 전
+2021-04-06 15:04:15,165 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:68)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:04:14 KST 2021
+2021-04-06 15:04:15,171 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:69)     - member: com.sist.ehr.aspect.MemberImpl@40c80397
+2021-04-06 15:04:15,179 DEBUG [main] around.AroundAdvice (AroundAdvice.java:16)     - Before: 메소드 수행 전
+2021-04-06 15:04:15,179 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 15:04:15,179 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 15:04:15,180 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 15:04:15,180 DEBUG [main] around.AroundAdvice (AroundAdvice.java:20)     - After: 메소드 수행 후
+2021-04-06 15:04:15,180 DEBUG [main] around.AroundAdvice (AroundAdvice.java:16)     - Before: 메소드 수행 전
+2021-04-06 15:04:15,180 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 15:04:15,180 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 15:04:15,181 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 15:04:15,181 DEBUG [main] around.AroundAdvice (AroundAdvice.java:20)     - After: 메소드 수행 후
+2021-04-06 15:11:11,331 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:52)     - context: org.springframework.context.support.GenericApplicationContext@1ca3b418, started on Tue Apr 06 15:11:10 KST 2021
+2021-04-06 15:11:11,337 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:53)     - member: com.sist.ehr.aspect.MemberImpl@1a1da881
+2021-04-06 15:11:11,348 DEBUG [main] around.AroundAdvice (AroundAdvice.java:17)     - Before: 메소드 수행 전
+2021-04-06 15:11:11,350 DEBUG [main] around.AroundAdvice (AroundAdvice.java:20)     - signature.getName(): doSave
+2021-04-06 15:11:31,243 DEBUG [main] aspect.MemberImpl (MemberImpl.java:10)     - --------------------------
+2021-04-06 15:11:31,243 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - -doSave()-
+2021-04-06 15:11:31,243 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - --------------------------
+2021-04-06 15:11:31,244 DEBUG [main] around.AroundAdvice (AroundAdvice.java:24)     - After: 메소드 수행 후
+2021-04-06 15:11:31,244 DEBUG [main] around.AroundAdvice (AroundAdvice.java:17)     - Before: 메소드 수행 전
+2021-04-06 15:11:31,244 DEBUG [main] around.AroundAdvice (AroundAdvice.java:20)     - signature.getName(): doUpdate
+2021-04-06 15:11:39,216 DEBUG [main] aspect.MemberImpl (MemberImpl.java:18)     - --------------------------
+2021-04-06 15:11:39,216 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - -doUpdate()-
+2021-04-06 15:11:39,216 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - --------------------------
+2021-04-06 15:11:39,217 DEBUG [main] around.AroundAdvice (AroundAdvice.java:24)     - After: 메소드 수행 후
+2021-04-06 15:13:39,749 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:53)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:13:39 KST 2021
+2021-04-06 15:13:39,755 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:54)     - member: com.sist.ehr.aspect.MemberImpl@40c80397
+2021-04-06 15:13:39,764 DEBUG [main] around.AroundAdvice (AroundAdvice.java:17)     - Before: 메소드 수행 전
+2021-04-06 15:13:39,765 DEBUG [main] around.AroundAdvice (AroundAdvice.java:21)     - signature.getName(): doRetrieve
+2021-04-06 15:13:39,766 DEBUG [main] around.AroundAdvice (AroundAdvice.java:26)     - obj: 24
+2021-04-06 15:13:39,766 DEBUG [main] aspect.MemberImpl (MemberImpl.java:34)     - --------------------------
+2021-04-06 15:13:39,766 DEBUG [main] aspect.MemberImpl (MemberImpl.java:35)     - -doRetrieve()-
+2021-04-06 15:13:39,766 DEBUG [main] aspect.MemberImpl (MemberImpl.java:36)     - --------------------------
+2021-04-06 15:13:39,766 DEBUG [main] around.AroundAdvice (AroundAdvice.java:31)     - After: 메소드 수행 후
+2021-04-06 15:31:08,107 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:53)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:31:07 KST 2021
+2021-04-06 15:31:08,113 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:54)     - member: com.sist.ehr.aspect.MemberImpl@40c80397
+2021-04-06 15:31:08,122 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:15)     - signature.getName(): doRetrieve
+2021-04-06 15:31:08,123 DEBUG [main] aspect.MemberImpl (MemberImpl.java:34)     - --------------------------
+2021-04-06 15:31:08,123 DEBUG [main] aspect.MemberImpl (MemberImpl.java:35)     - -doRetrieve()-
+2021-04-06 15:31:08,123 DEBUG [main] aspect.MemberImpl (MemberImpl.java:36)     - --------------------------
+2021-04-06 15:31:08,124 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:26)     - doRetrieve의 수행시간: 0(ms)초
+2021-04-06 15:35:10,557 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:53)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:35:10 KST 2021
+2021-04-06 15:35:10,562 DEBUG [main] aspect.JTestAspectjAround (JTestAspectjAround.java:54)     - member: com.sist.ehr.aspect.MemberImpl@40c80397
+2021-04-06 15:35:10,571 DEBUG [main] around.AroundAdvice (AroundAdvice.java:17)     - Before: 메소드 수행 전
+2021-04-06 15:35:10,573 DEBUG [main] around.AroundAdvice (AroundAdvice.java:21)     - signature.getName(): doRetrieve
+2021-04-06 15:35:10,573 DEBUG [main] around.AroundAdvice (AroundAdvice.java:26)     - obj: 24
+2021-04-06 15:35:10,575 DEBUG [main] aspect.MemberImpl (MemberImpl.java:39)     - --------------------------
+2021-04-06 15:35:10,575 DEBUG [main] aspect.MemberImpl (MemberImpl.java:40)     - -doRetrieve()-
+2021-04-06 15:35:10,575 DEBUG [main] aspect.MemberImpl (MemberImpl.java:41)     - --------------------------
+2021-04-06 15:35:10,575 DEBUG [main] around.AroundAdvice (AroundAdvice.java:31)     - After: 메소드 수행 후
+2021-04-06 15:35:25,167 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:53)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:35:24 KST 2021
+2021-04-06 15:35:25,173 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:54)     - member: com.sist.ehr.aspect.MemberImpl@40c80397
+2021-04-06 15:35:25,182 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:15)     - signature.getName(): doRetrieve
+2021-04-06 15:35:25,185 DEBUG [main] aspect.MemberImpl (MemberImpl.java:39)     - --------------------------
+2021-04-06 15:35:25,185 DEBUG [main] aspect.MemberImpl (MemberImpl.java:40)     - -doRetrieve()-
+2021-04-06 15:35:25,185 DEBUG [main] aspect.MemberImpl (MemberImpl.java:41)     - --------------------------
+2021-04-06 15:35:25,186 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:26)     - doRetrieve의 수행시간: 2(ms)초
+2021-04-06 15:49:12,252 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:68)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:49:11 KST 2021
+2021-04-06 15:49:12,257 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:69)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 15:49:12,267 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:49:12,268 DEBUG [main] aspect.LoggingAop (LoggingAop.java:24)     - *methodName*doSave
+2021-04-06 15:49:12,268 DEBUG [main] aspect.LoggingAop (LoggingAop.java:25)     - ***************************
+2021-04-06 15:49:12,268 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - --------------------------
+2021-04-06 15:49:12,269 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - -doSave()-
+2021-04-06 15:49:12,269 DEBUG [main] aspect.MemberImpl (MemberImpl.java:13)     - --------------------------
+2021-04-06 15:49:12,269 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - --------------------------
+2021-04-06 15:49:12,269 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - -delete()-
+2021-04-06 15:49:12,269 DEBUG [main] aspect.MemberImpl (MemberImpl.java:29)     - --------------------------
+2021-04-06 15:49:12,269 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:49:12,270 DEBUG [main] aspect.LoggingAop (LoggingAop.java:24)     - *methodName*doUpdate
+2021-04-06 15:49:12,270 DEBUG [main] aspect.LoggingAop (LoggingAop.java:25)     - ***************************
+2021-04-06 15:49:12,270 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - --------------------------
+2021-04-06 15:49:12,270 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - -doUpdate()-
+2021-04-06 15:49:12,271 DEBUG [main] aspect.MemberImpl (MemberImpl.java:21)     - --------------------------
+2021-04-06 15:49:29,777 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:69)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 15:49:29 KST 2021
+2021-04-06 15:49:29,783 DEBUG [main] aspect.JTestAspectj (JTestAspectj.java:70)     - member: com.sist.ehr.aspect.MemberImpl@60d1a32f
+2021-04-06 15:49:29,793 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:49:29,794 DEBUG [main] aspect.LoggingAop (LoggingAop.java:24)     - *methodName*doSave
+2021-04-06 15:49:29,794 DEBUG [main] aspect.LoggingAop (LoggingAop.java:25)     - ***************************
+2021-04-06 15:49:29,794 DEBUG [main] aspect.MemberImpl (MemberImpl.java:11)     - --------------------------
+2021-04-06 15:49:29,794 DEBUG [main] aspect.MemberImpl (MemberImpl.java:12)     - -doSave()-
+2021-04-06 15:49:29,794 DEBUG [main] aspect.MemberImpl (MemberImpl.java:13)     - --------------------------
+2021-04-06 15:49:29,795 DEBUG [main] aspect.MemberImpl (MemberImpl.java:27)     - --------------------------
+2021-04-06 15:49:29,795 DEBUG [main] aspect.MemberImpl (MemberImpl.java:28)     - -delete()-
+2021-04-06 15:49:29,795 DEBUG [main] aspect.MemberImpl (MemberImpl.java:29)     - --------------------------
+2021-04-06 15:49:29,795 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:49:29,795 DEBUG [main] aspect.LoggingAop (LoggingAop.java:24)     - *methodName*doUpdate
+2021-04-06 15:49:29,795 DEBUG [main] aspect.LoggingAop (LoggingAop.java:25)     - ***************************
+2021-04-06 15:49:29,795 DEBUG [main] aspect.MemberImpl (MemberImpl.java:19)     - --------------------------
+2021-04-06 15:49:29,796 DEBUG [main] aspect.MemberImpl (MemberImpl.java:20)     - -doUpdate()-
+2021-04-06 15:49:29,796 DEBUG [main] aspect.MemberImpl (MemberImpl.java:21)     - --------------------------
+2021-04-06 15:49:29,797 DEBUG [main] aspect.LoggingAop (LoggingAop.java:23)     - ***************************
+2021-04-06 15:49:29,797 DEBUG [main] aspect.LoggingAop (LoggingAop.java:24)     - *methodName*doRetrieve
+2021-04-06 15:49:29,797 DEBUG [main] aspect.LoggingAop (LoggingAop.java:25)     - ***************************
+2021-04-06 15:49:29,798 DEBUG [main] aspect.MemberImpl (MemberImpl.java:40)     - --------------------------
+2021-04-06 15:49:29,798 DEBUG [main] aspect.MemberImpl (MemberImpl.java:41)     - -doRetrieve()-
+2021-04-06 15:49:29,799 DEBUG [main] aspect.MemberImpl (MemberImpl.java:42)     - --------------------------
+2021-04-06 17:35:31,047 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:53)     - context: org.springframework.context.support.GenericApplicationContext@355ce81c, started on Tue Apr 06 17:35:30 KST 2021
+2021-04-06 17:35:31,053 DEBUG [main] aspect.JTestAspectjAroundPerfomance (JTestAspectjAroundPerfomance.java:54)     - member: com.sist.ehr.aspect.MemberImpl@e077866
+2021-04-06 17:35:31,063 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:15)     - signature.getName(): doRetrieve
+2021-04-06 17:35:31,065 DEBUG [main] aspect.MemberImpl (MemberImpl.java:42)     - --------------------------
+2021-04-06 17:35:31,065 DEBUG [main] aspect.MemberImpl (MemberImpl.java:43)     - -doRetrieve()-
+2021-04-06 17:35:31,066 DEBUG [main] aspect.MemberImpl (MemberImpl.java:44)     - --------------------------
+2021-04-06 17:35:31,066 DEBUG [main] performance.PerformanceAdvice (PerformanceAdvice.java:26)     - doRetrieve의 수행시간: 2(ms)초

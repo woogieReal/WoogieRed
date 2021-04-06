@@ -1,0 +1,44 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	xml파일에 p네임스페이스
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+E_HR05_05
+
+P네임스페이스를 이용하면 효율적으로 의존성을 주입할 수 있다.
+xmlns:p="http://www.springframework.org/schema/p"
+p:변수명="설정값"
+p:변수명-ref="참조할 객체 ID NAME"
+		
+
+--board-context.xml
+
+	<bean id="lgTv" 
+		init-method="initMethod"
+	    destroy-method="destroyMethod"
+	    lazy-init="true"
+	    scope="singleton"
+	 	class="com.sist.ehr.LgTv" p:price="27000000" p:speaker-ref="sonySpeaker" 
+	 >
+	 </bean>
+	 
+--applicationContext.xml
+
+    <bean id="samsungTv" class="com.sist.ehr.SamsungTv">
+      <!-- 생성자 통한 주입 -->
+      <!-- 
+        index= arguments 순서(0,1,2..)
+        ref=참조 bean
+        value ="값"
+       -->      
+      <constructor-arg index="0" value="10000000" />
+      <constructor-arg index="1" ref="appleSpeaker" />
+    </bean>
+
+--SamsungTv.java
+
+	<!-- 위의 iddex 순서는 아래의 생성자에 따른 것 -->
+	public SamsungTv(int price, Speaker  speaker) {
+		this.speaker = speaker;
+		this.price   = price;
+	}
+
