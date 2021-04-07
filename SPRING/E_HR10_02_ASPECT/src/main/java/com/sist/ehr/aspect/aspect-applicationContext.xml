@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- Target -->
+	<bean id="memberImpl" class="com.sist.ehr.aspect.MemberImpl"/>
+	<!-- Advice 부가기능 -->
+	<bean id="loggingAop" class="com.sist.ehr.aspect.LoggingAop"/>
+	
+	<!-- 
+	  aop:pointcut
+		* : return type이 무엇이든
+		com.sist.ehr.aspect : 패키지
+		.. : 하위의 모든 것
+		*Impl : Impl로 끝나는 클래스 모두
+		.do* : do로 시작하는 모든 메소드
+		(..) : 모든 param
+	  aop:aspect -> 포인트컷 + 어드바이스 = advisor
+	  	aop:before -> 타겟이 실행되기 전에 advice 수행
+	  	aop:after  -> 타겟이 실행되고나서 advice 수행
+	  	aop:around -> 타겟 실행 전후: ex) 트랜잭션, 성능측정
+	  	
+	 -->
+	<aop:config>
+		<aop:aspect ref="loggingAop">
+			<aop:before method="logging" pointcut="execution(* com.sist.ehr.aspect..*Impl.do*(..))"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+	<!-- aop root element 
+		여러번 사용가능
+	-->
