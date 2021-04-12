@@ -1,0 +1,176 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	list
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+E_HR05_06	
+
+--CollectionBeanList.java
+	
+	public class CollectionBeanList {
+		private List<String> addressList;
+		생성자, getter&setter
+	}	
+	
+--applicationContextList.xml	
+	
+	<bean id="collectionBeanList" class="com.sist.ehr.CollectionBeanList" >
+		<property name="addressList">
+			<list>
+				<value>서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실</value>
+				<value>서울시 강남구 테헤란로 132</value>
+				<value>서울시 서대문구 수색로 100</value>
+			</list>		
+		</property>
+	</bean>
+	
+--CollectionBeanListTest.java
+
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration(locations = "xml파일경로")
+	public class CollectionBeanListTest {
+		@Autowired
+		ApplicationContext context;
+		
+		CollectionBeanList collectionBeanList;
+				
+		@Before
+		public void setUp() throws Exception {	
+			collectionBeanList = context.getBean("collectionBeanList", CollectionBeanList.class);
+		}
+		
+		@Test
+		public void test() {
+			
+			List<String> list = collectionBeanList.getAddressList();
+			for(String str : list) {
+				LOG.debug(str);
+				
+				//서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실
+				//서울시 강남구 테헤란로 132
+				//서울시 서대문구 수색로 100
+			}
+		}
+
+	}
+	
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	map
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->	
+	
+--CollectionBeanMapTest.java
+
+	public class CollectionBeanMap {
+		private Map<String, String> addressMap;
+		생성자, getter&setter
+	}	
+
+--applicationContextMap.xml
+
+	<bean id="collectionBeanMap" class="com.sist.ehr.CollectionBeanMap" >
+		<property name="addressMap">
+			<map>
+				<entry>
+					<key><value>강북</value></key>
+					<value>서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실</value>
+				</entry>
+				<entry>
+					<key><value>강남</value></key>
+					<value>서울시 강남구 테헤란로 132</value>
+				</entry>
+			</map>		
+		</property>
+	</bean>
+	
+--CollectionBeanPropTest
+
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration(locations = "xml파일경로")
+	public class CollectionBeanListTest {
+		@Autowired
+		ApplicationContext context;
+		
+		CollectionBeanMap collectionBeanMap;
+				
+		@Before
+		public void setUp() throws Exception {	
+			collectionBeanMap = context.getBean("collectionBeanMap", CollectionBeanMap.class);
+		}
+		
+		@Test
+		public void test() {
+			
+			Map<String, String> map = collectionBeanMap.getAddressMap();
+			Set<String> set = map.keySet();
+			
+			for(String str : set) {
+				LOG.debug(str + ", "+ map.get(str));
+				
+				//강북, 서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실
+				//강남, 서울시 강남구 테헤란로 132
+			}
+		}
+
+	}
+	
+	
+	
+	
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	properties
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->			
+
+--CollectionBeanProperties.java
+
+	public class CollectionBeanProperties {
+		private Properties addressProp;
+		생성자, getter&setter
+	}
+
+--applicationContextProp.xml
+
+	<bean id="collectionBeanProperties" class="com.sist.ehr.CollectionBeanProperties" >
+		<property name="addressProp">
+			<props>
+				<prop key="강북">서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실</prop>
+				<prop key="강남">서울시 강남구 테헤란로 132</prop>
+			</props>
+		</property>
+	</bean>
+	
+--CollectionBeanPropTest
+
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration(locations = "xml파일경로")
+	public class CollectionBeanListTest {
+		@Autowired
+		ApplicationContext context;
+		
+		CollectionBeanProperties collectionBeanProperties;
+				
+		@Before
+		public void setUp() throws Exception {	
+			collectionBeanProperties = context.getBean("collectionBeanProperties", CollectionBeanProperties.class);
+		}
+		
+		@Test
+		public void test() {
+			
+			Properties props = collectionBeanProperties.getAddressProp();
+			Set<Object> set = props.keySet();
+			
+			for(Object str : set) {
+				LOG.debug(str + ", "+ props.getProperty(str.toString()));
+				
+				// 강남, 서울시 강남구 테헤란로 132
+				// 강북, 서울시 마포구 월드컵북로 21 풍성빌딩 3층 E강의실
+			}
+		}
+
+	}	
+	
+	
+
+
+
+
+

@@ -1,0 +1,157 @@
+<!-- ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+	이메일 전송
+	☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆	-->
+	
+E_HR07_01
+
+--applicationContext.xml
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:lang="http://www.springframework.org/schema/lang"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		
+		<!-- email set -->
+		
+			<!--1. PasswordAuthentication -->
+			<bean id="passwordAuth" class="javax.mail.PasswordAuthentication" >
+				<constructor-arg index="0">
+					<value>123wodnr@naver.com</value>
+				</constructor-arg>
+				<constructor-arg index="1">
+					<value>NAaegis01!!</value>
+				</constructor-arg>
+			</bean>	
+			
+			<!--2. Authenticator: javax.mail과 연결 -->	
+			<bean id="authenticator" class="javax.mail.Authenticator">
+				<lookup-method name="getPasswordAuthentication" 
+					bean="passwordAuth"
+				/>
+			</bean>
+			
+			<!--3. Session: PasswordAuthentication + Authenticator -->
+			<!--  private Session(Properties props, Authenticator authenticator) -->
+			<bean id="emailSession" class="javax.mail.Session">
+				<constructor-arg index="0">
+					<props>
+						<prop key="mail.smtp.host">smtp.naver.com</prop>
+						<prop key="mail.smtp.port">465</prop>
+						<prop key="mail.smtp.auth">true</prop>
+						<prop key="mail.smtp.ssl.enable">true</prop>
+						<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
+					</props>
+				</constructor-arg>
+				<constructor-arg index="1" ref="authenticator"/>
+			</bean>
+			
+			<!--4. JavaMailSenderImpl: 전송가능한 mail 설정 -->
+			<bean id="mailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+				<property name="session" ref="emailSession"/>
+			</bean>
+		
+		<!--// email set -->
+			
+		<!-- UserService 객체 생성 -->
+		<bean id="userService" class="com.sist.ehr.UserService">
+			<!-- 
+				setter DI
+				ref: setter의 파라미터 
+			-->
+			<property name="userDao" ref="userDao"/>
+			<property name="dataSource" ref="dataSource"/>
+			
+			<!-- mail 전송됨 -->
+			<property name="mailSender" ref="mailSenderImpl"/>
+			
+		</bean>
+		
+		<!-- DataSource 구현 class SimpleDriverDataSource -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+			<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="url"         value="jdbc:oracle:thin:@211.238.142.124:1521:xe" />
+			<property name="username"    value="SPRING" />
+			<property name="password"    value="eclass" />
+		</bean>
+		
+		<bean id="userDao" class="com.sist.ehr.UserDaoImpl">
+			<!-- setter통한 주입: name 값을 누르면 setter를 찾아가야함, ref는 setter의 param 값 -->
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+	
+	</beans>	
+	
+	
+--UserService.java
+
+	private void sendUpgradeEmail(User user) {
+		
+		/*
+		POP 서버명 : pop.naver.com 
+		SMTP서버명 : smtp.naver.com 
+		POP포트 : 995, 보안연결(SSL) 필요
+		SMTP 포트 : 465, 보안 연결(SSL)필요 
+		아이디 : 123wodnr
+		비밀번호 : 네이버 로그인 비밀번호
+		*/
+		
+		String from = "123wodnr@naver.com";
+		String title = user.getName()+"님 등업(https://cafe.naver.com/kndjang)";
+		String contents = user.getuId()+"님 등급이 "+user.getLevel().name()+"로 등업 되었습니다.";
+		String recAddr = user.getEmail();
+		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+		
+		simpleMailMessage.setFrom(from);
+		simpleMailMessage.setTo(recAddr);
+		simpleMailMessage.setSubject(title);
+		simpleMailMessage.setSentDate(new Date());
+		simpleMailMessage.setText(contents);
+		
+		mailSender.send(simpleMailMessage);
+		
+	}		
+	
+
+--pom.xml
+--새롭게 추가되어야 할 것들
+
+	<dependencies>
+	  
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+	  
+	  
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>${javax.activation.version}</version>
+		</dependency>
+	  
+	  
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>${javax.mail.version}</version>
+		</dependency>	
+		
+	</dependencies>
+	
+	
+	
+	
+	
+	
+	
+	
