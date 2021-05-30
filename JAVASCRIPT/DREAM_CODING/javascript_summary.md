@@ -527,6 +527,434 @@ console.log(user5);
 -> {name: "woogie", level: 50, job: "magician"}
 ```
 
+## Array
+---
 
- 
+### array 출력
+ * 아래와 같은 3가지 방법이 있으며 결과는 동일하다.
+``` javascript
+const cities = ['seoul', 'incheon', 'busan'];
+
+//for
+for(let i = 0; i < cities.length; i++){
+    console.log(cities[i]);
+}
+
+//for..of
+for(let city of cities){
+    console.log(city);
+}
+
+//forEach
+cities.forEach((city) => console.log(city));
+```
+ * forEach의 파라미터로 함수를 넣어 사용할 수도 있다.
+``` javascript
+cities.forEach(function doCapitalize(city, index, array){
+    const result =  city.charAt(0).toUpperCase() + city.slice(1, city.length);
+    console.log(`capitalized: ${result}`);
+});
+-> capitalized: Seoul
+-> capitalized: Incheon
+-> capitalized: Busan
+```
+
+### puch, pop, unshift, shift
+ * puch: 배열의 끝에 값을 추가
+ * pop: 배열의 끝에서 부터 반환&제거
+ * unshift: 배열의 시작에 값을 추가
+ * shift: 배열의 처음부터 반환&제거
+ * unshift, shift는 성능에 악영향을 끼친다.
+ * 앞의 칸을 비우거나 채우기 위해 전체 데이터가 옮겨져야 하기 때문
+``` javascript
+cities.push('suwon', 'ilsan');
+console.log(cities);
+-> ["seoul", "incheon", "busan", "suwon", "ilsan"]
+
+cities.pop();
+console.log(cities);
+-> ["seoul", "incheon", "busan", "suwon"]
+
+cities.unshift('hanyang');
+console.log(cities);
+-> ["hanyang", "seoul", "incheon", "busan", "suwon"]
+
+cities.shift();
+console.log(cities);
+-> ["seoul", "incheon", "busan", "suwon"]
+``` 
+
+### splice(startNum, [deleteCount], [obj], ..., [obj])
+ * 배열의 startNum 부터 deleteCount개 만큼 반환&제거
+ * deleteCount는 생략 가능- > startNum부터 전부 반환&제거
+ * 그리고 제거된 자리에 obj, ..., obj를 넣는다.
+``` javascript
+-> ["seoul", "incheon", "busan", "suwon", "ilsan"]
+const splicedCities = cities.splice(0, 2);
+console.log(cities);
+-> ["busan", "suwon"]
+
+console.log(splicedCities);
+-> ["seoul", "incheon"]
+
+cities.splice(1, 1, 'seoul', 'incheon', 'ilsan');
+console.log(cities);
+-> ["busan", "seoul", "incheon", "ilsan"]
+``` 
+
+### concat
+ * 배열 결합
+``` javascript
+const japanCities = ['tokyo','osaka'];
+const globalCities = cities.concat(japanCities);
+console.log(globalCities);
+-> ["busan", "seoul", "incheon", "ilsan", "tokyo", "osaka"]
+```
+
+### indexOf, includes
+ * indexOf(value): value의 위치를 반환(없으면 -1)
+ * includes(value): value가 있는지를 true/false로 반환
+``` javascript
+console.log(globalCities.indexOf('tokyo'));   -> 4
+console.log(globalCities.includes('nagoya')); -> false
+console.log(globalCities.indexOf('nagoya'));  -> -1
+```
+
+### lastIndexOf(value)
+ * value가 가장 마지막에 나타난 위치를 반환(없으면 -1)
+``` javascript 
+globalCities.push('tokyo');
+-> ["busan", "seoul", "incheon", "ilsan", "tokyo", "osaka", "tokyo"]
+console.log(globalCities.lastIndexOf('tokyo'));
+-> 6
+``` 
+
+### join([구분자])
+ * 배열을 문자열로 반환하는 함수
+ * 구분자는 생략 가능하다.
+``` javascript 
+const fruits = ['apple', 'banana', 'orange'];
+let allFruits = fruits.join(', ');
+console.log(allFruits);
+-> apple, banana, orange
+``` 
+
+### split(구분자, [num])
+ * 문자열을 구분자를 기준으로 문자열 배열로 반환함
+ * num은 생략이 가능하며, 구분자를 기준으로 num개를 가지는 배열을 반환함
+``` javascript 
+const strFruits2 = 'apple, kiwi, banana, cherry';
+const arrFruits2 = strFruits2.split(',', 3);
+arrFruits2.forEach(function (fruit, index, array){
+    array[index] = fruit.trim();
+});
+console.log(arrFruits2);
+-> ["apple", "kiwi", "banana"]
+```
+
+### reverse
+ * 배열의 순서를 뒤집음
+``` javascript 
+const arrNumbers = [1, 2, 3, 4, 5];
+arrNumbers.reverse();
+console.log(arrNumbers);
+-> [5, 4, 3, 2, 1]
+```
+
+### slice(num1, num2)
+ * 배열의 num1 부터 num2 -1 만큼 반환
+``` javascript
+const arrNumbers2 = [1, 2, 3, 4, 5];
+const arrResult2 = arrNumbers2.slice(1, 4);
+console.log(arrResult2);
+-> [2, 3, 4]
+```
+
+### find([value], [index], [array])
+ * return 조건, 을 넣으면 조건에 맞는 배열의 요소가 반환됨
+ * 조건에 맞는 요소를 찾는 순간 함수를 종료하므로 유일한 값을 가진 배열의 요소를 찾을 때 사용해야 함
+``` javascript
+const students = [
+    new Student('A', 29, true, 45),
+    new Student('B', 28, false, 80),
+    new Student('C', 30, true, 90),
+    new Student('D', 40, false, 66),
+    new Student('E', 18, true, 90)
+];
+
+const findStudent = students.find((student) => {
+    return student.name === 'D';
+});
+console.log(findStudent);
+-> Student?{name: "D", age: 40, enrolled: false, score: 66}
+```
+
+### filter([value], [index], [array])
+ * return 조건, 을 넣으면 조건에 맞는 배열의 요소가 반환됨
+ * 조건에 맞는 요소들을 배열로 반환
+``` javascript
+const filterStudent = students.filter((value) => {
+    return value.enrolled === true;
+})
+console.log(filterStudent);
+-> 
+ 0: Student {name: "A", age: 29, enrolled: true, score: 45}
+ 1: Student {name: "C", age: 30, enrolled: true, score: 90}
+ 2: Student {name: "E", age: 18, enrolled: true, score: 90}
+```
+
+### map([value], [index], [array])
+ * 배열의 요소들에서 특정 값만 뽑아 낼 때 사용
+``` javascript
+const mapStudent = students.map((student) => student.name);
+console.log(mapStudent);
+-> ["A", "B", "C", "D", "E"]
+```
+
+### some/every([value], [index], [array])
+ * 조건을 가지고 true/false를 반환
+ * some: 배열의 요소 중 조건에 하나라도 걸리면 true
+ * every: 배열의 요소 전부가 조건에 부합해야 true
+``` javascript
+console.log(students.some((student) => student.score < 50));
+-> true
+console.log(students.every((student) => student.score > 50));
+-> false
+```
+
+### reduce(prev, curr, index, array)
+ * 배열에 있는 요소의 값을 누적
+``` javascript
+let sum = students.reduce((prev, curr) => {
+    console.log(prev + '+' + curr.score);
+    return prev + curr.score;
+}, 0); // <- 0은 prev 값 지정
+console.log(`sum: ${sum}`);
+-> 0+45
+-> 45+80
+-> 125+90
+-> 215+66
+-> 281+90
+-> sum: 371
+```
+
+### sort
+ * 기본은 오름차순
+``` javascript
+// 내림차순으로 정렬
+const complexResult = students
+    .map((student) => student.score)
+    .sort()
+    .reverse();
+
+console.log(complexResult);
+-> [90, 90, 80, 66, 45]
+
+//더 효율적인 방법
+const complexResult = students
+    .map((student) => student.score)
+    .sort((a, b) => b - a);
+    //식의 결과가 음수이면 자리를 바꾸는 구조
+    //a - b 가 오름차순
+
+console.log(complexResult);
+-> [90, 90, 80, 66, 45]
+```
+
+## JSON(JavaScript Object Notation)
+---
+
+### JSON 특징
+ * JSON은 자바스크립트를 확장하여 만들어짐
+ * JSON은 자바스크립트 객체 표기법을 따름
+ * JSON은 사람과 기계가 모두 읽기 편함
+ * JSON은 프로그래밍 언어와 운영체제에 독립적
+
+### stringify: Object to JSON
+ * Object를 JSON으로 serialize
+ * 리스트 배열은 ["A", "B"...]
+ * 맵 배열은 {"a":"A", "b": "B"...} 형식을 가진다.
+ * ['key1', 'key2'..]을 파라미터로 넣으면 해당 키만 stringify 한다.
+ * callback함수를 사용할 수 있다.
+``` javascript
+let json = JSON.stringify(['apple', 'banana']);
+console.log(json);
+-> ["apple","banana"]
+
+const rabbit = {
+    name: 'tori',
+    color: 'white',
+    size: null,
+    birthDate: new Date(),
+    jump: () => {
+        console.log(`${name} cam jump!`);
+    }
+};
+
+const jsonRabbit = JSON.stringify(rabbit);
+console.log(jsonRabbit);
+-> {"name":"tori","color":"white","size":null,"birthDate":"2021-05-30T06:06:55.507Z"}
+
+const jsonRabbitKey = JSON.stringify(rabbit, ['name', 'color']);
+console.log(jsonRabbitKey);
+-> {"name":"tori","color":"white"}
+
+const jsonRabbitKeyValue = JSON.stringify(rabbit, (key, value) => {
+    console.log(`key: ${key}, value: ${value}`);
+    //return key === 'name' ? 'woogie' : value;
+    return key === 'name' ? 'woogie' : value, key === 'size' ? 74 : value;
+});
+console.log(jsonRabbitKeyValue);
+-> {"name":"tori","color":"white","size":74,"birthDate":"2021-05-30T06:06:55.507Z"}
+```
+
+### parse: JSON to Object
+ * JSON을 Object로 unserialize
+ * 
+``` javascript
+const objectRabbit = JSON.parse(jsonRabbit);
+console.log(objectRabbit.birthDate);
+-> 2021-05-30T06:21:37.119Z
+//Object -> JSON -> Object가 되면 Date() 객체였던 birthDate가 평범한 문자열로 취급되어 함수(getDate())를 사용할 수 없게 된다.
+
+console.log(rabbit.birthDate.getDate());
+-> 30
+
+const objecgtRabbitPerfect = JSON.parse(jsonRabbit, (key, value) => {
+    //console.log(`key: ${key}, value: ${value}`);
+    return key === 'birthDate' ? new Date(value) : value;
+});
+console.log(objecgtRabbitPerfect.birthDate.getDate());
+-> 30
+```
+
+## Promise
+---
+
+### promise 개념
+ * 자바스크립트에서 제공하는 비동기를 간편하게 처리할 수 있도록 하는 오브젝트
+ * 정해진 장시간의 기능을 수행하고 나서, 정상적으로 기능이 수행이 되었다면 성공의 메시지와 함께 처리된 결과값을 전달 해줌
+ * 만약 기능을 수행하다가 오류가 나면 에러를 전달 해줌
+ * ex) 아직 완성 되지 않은 A라는 제품을 펀딩
+   1. 제품을 펀딩한다.
+   2. 제품이 완성될 때 까지 기다린다.
+   3. 제품을 받는다.
+ * ex) 이미 완성된 위의 제품 A를 구매
+   1. 제품을 구매한다.
+   3. 제품을 받는다.
+ * 위와 같은 과정이 promise
+ * State: pending -> fulfiled or rejected
+ * Producer vs Consumer
+
+### promise 생성/사용
+ * 새로운 promise 객체를 만들면 함께 선언한 excuter 함수가 동시에 실행 된다.
+ * Promise 객체
+   * resolve -> 성공시 처리
+   * reject -> 실패시 처리
+ * Promise 객체 실행 시 
+   * then: promise의 resolve 실행
+   * catch: promise의 reject 실행
+   * finally: 무조건 실행
+``` javascript
+class User {
+    constructor(id, pw){
+        this.id = id;
+        this.pw = pw;
+    }
+    
+    doShowList(list) { //배열 리스트를 건네주면 출력하는 함수
+        list.forEach(element => {
+            console.log(element);
+        });
+    }
+
+    doSignin(list, id, pw){ 
+        //promise를 사용하여 코드 간소화
+        return new Promise((resolve, reject) => {
+            const flag = list.some(user => {
+                //배열 클래스 함수인 some은 조건에 따른 true/false 를 반환
+                return user.id === id && user.pw === pw;
+            });
+            if(flag){ //성공하면 resolve
+                resolve(id);
+            } else { //실패하면 reject
+                reject('id or pw is not correct');
+            }
+        })
+    }
+
+    moveToMain(){ //로그인 성공시 호출되는 함수
+        console.log('main page');
+    }
+
+}
+
+const userList = [ //회원명부
+    new User('woogie1', '123'),
+    new User('woogie2', '456'),
+    new User('woogie3', '789')
+];
+
+const user = new User();
+
+const id = prompt('id');
+const pw = prompt('pw');
+
+user.doSignin(userList, id, pw)
+    .then(id => { //id <- resolve에서 받아온 파라미터
+        console.log(`Welcome ${id}`);
+        user.moveToMain();
+    })
+    .catch(error => { //error <- reject에서 받아온 파라미터
+        alert(error);
+    })
+    .finally(console.log('process over'))
+;
+```
+
+## aync & await
+---
+
+### 개념
+ * aync
+   * promise를 사용하지 않고 함수를 비동기로 만드는 역할을 함
+   * return 값은 항상 promise다
+ * await
+   * async가 붙은 함수의 안에서만 사용 될 수 있음
+   * 비동기 함수를 동기적으로 만듬(수행이 완료될 때까지 기다리게 함)
+``` javascript
+function deley(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//1.5초를 기다리지 않고 바로 다음 코드를 수행
+async function walk(id) {
+    deley(1500); 
+    return `${id} arrived`;
+}
+
+//1초를 기다리고 나서 다음 코드를 수행
+async function run(id) {
+    await deley(1000); 
+    return `${id} arrived`;
+}
+
+//먼저 수행된 비동기 함수의 결과 값을 반환
+async function doRace(id1, id2) {
+    return Promise.race([walk(id1), run(id2)]);    
+}
+
+//파라미터로 입력된 모든 비동기 함수가 처리된 후에 그 결과물들을 반환
+async function arrive(id1, id2) {
+    return Promise.all([walk(id1), run(id2)])
+        .then(name => name.join(', '));
+}
+
+doRace('woogie', 'umi').then(result => console.log(`race winner: ${result}`));
+-> race winner: woogie arrived
+
+//받아오는 값을 바로 파라미터로 사용할 경우 둘 다 생략이 가능하다.
+arrive('woogie', 'umi').then(console.log);
+-> woogie arrived, umi arrived
+```
 
