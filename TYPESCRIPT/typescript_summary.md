@@ -107,7 +107,7 @@ dog01.name = 'koko';
 //Cannot assign to 'name' because it is a read-only property.
 ```
 
-## Enum & literal
+## Enum & Literal
 ---
 
 ### Enum
@@ -146,7 +146,7 @@ showStudentGrade({
 -> woogie(28) got B
 ```
 
-### literal
+### Literal
  * enum 타입과 같은 효과를 내면서 코드를 간결하게 함
 ``` javascript
 interface Cat {
