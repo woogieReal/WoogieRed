@@ -449,5 +449,399 @@ function Profile() {
 ## Dynamic Routes
 ---
 
-### 
+### 기본개념
+ * 각 파일에 대한 동적경로를 지원
+
+### 사용 라이브러리
+
+#### Render Markdown
+ * 설치
+``` next
+npm install remark remark-html
+```
+
+#### Formatting the Date
+ * 설치
+``` next
+npm install date-fns
+```
+ * /components/date.js
+``` next
+import { parseISO, format } from "date-fns";
+
+export default function Date({ dateString }) {
+  const date = parseISO(dateString);
+  
+  ★ format은 변경 가능
+  return <time dateTime={dateString}>{format(date, "LLLL d, yyyy")}</time>;
+}
+```
+ * [참고](https://date-fns.org/v2.16.1/docs/format)
+
+### 코드 설명
+
+#### posts.js
+
+``` next
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import remark from 'remark'
+import html from 'remark-html'
+
+★ 각 파일의 이름만 id값으로 뽑아 배열로 반환
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory)
+  
+  ★ map()함수: 배열의 특정 값만 뽑아서 리스트로 반환
+  return fileNames.map(fileName => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
+
+★ id, html로 변환된 마크다운, matterResult.data(title, date 포함) 리턴
+export async function getPostData(id) {
+  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+  ★ gray-matter를 사용해서 metadata section 부분을 파싱
+  const matterResult = matter(fileContents)
+
+  ★ remark를 사용해서 마크다운 언어의 콘텐트를 html로 변환
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content)
+  const contentHtml = processedContent.toString()
+
+  // Combine the data with the id and contentHtml
+  return {
+    id,
+    contentHtml,
+    ...matterResult.data
+  }
+}
+```
+
+#### [id].js
+ * Next.js에서 dynamic routes를 사용하기 위해 파일명을 []로 감싼다.
+ * 각 파일(여기서는 md파일)을 render하는 페이지
+``` next
+import Layout from '../../components/layout'
+import { getAllPostIds, getPostData } from '../../lib/posts'
+import Head from 'next/head'
+import Date from '../../components/date'
+import utilStyles from '../../styles/utils.module.css'
+
+export default function Post({ postData }) {
+  return (
+    <Layout>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
+    </Layout>
+  );
+}
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+★  build time시 가장 먼저 실행됨
+export async function getStaticProps({ params }) {
+
+  ★ import한 posts.js의 getPostData()를 호출
+  ★ id, html로 변환된 마크다운, matterResult.data(title, date 포함)를 받음
+  const postData = await getPostData(params.id);
+  return {
+    props: {
+      postData,
+    },
+  };
+}
+```
+
+#### index.js
+``` next
+<section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+  <h2 className={utilStyles.headingLg}>Blog</h2>
+  <ul className={utilStyles.list}>
+    {allPostsData.map(({ id, date, title }) => (
+      <li className={utilStyles.listItem} key={id}>
+        
+        ★ posts/[id].js를 호출
+        ★ 파일명이 id 값이 되며 dynamic routes가 생성되어 있어 해당 파일의 페이지가 호출되는 방식
+        <Link href={`/posts/${id}`}>
+          {title}
+        </Link>
+        <br />
+        <small className={utilStyles.lightText}>
+          <Date dateString={date} />
+        </small>
+      </li>
+    ))}
+  </ul>
+</section>
+```
+
+## getStaticProps 
+---
+
+### 기본개념
+ * async 함수인 getStaticProps 함수를 export하면 Next.js는 getStaticProps에 의해 return된 props를 이용해 build 시에 pre-rendering 함
+``` next
+export async function getStaticProps(context) {
+  return {
+    props: {}, // props로 page component에 전달될 것입니다.
+  }
+}
+```
+
+### 사용처
+ * 사용자 요청에 앞서서 build 시에 페이지를 pre-render에 이용할 수 있는 데이터가 있다면
+ * headless CMS로부터 오는 데이터가 있다면
+ * cached될 수 있는 데이터가 있다면(사용자 별로 말고)
+ * SEO를 위해 pre-rendering 되어야만 하는 페이지라면
+
+### context
+ * getStaticProps의 파라미터
+ * 아래와 같은 key를 가지는 object
+ 
+ * ##### params
+   * getStaticPaths함수와 함께 사용되어짐
+   * dynamic route에서 사용하는 값으로 route parameter를 가짐
+   * ex) [id].js라는 page라면 params에는 { id: ... }와 같은 형태를 가짐
+
+ * ##### preview
+   * preview mode에 있다면 true이고 그렇지 않으면 undefined
+   * headless CMS에서 data를 fetch할 때 유용
+   * Next.js가 build time이 아닌 runtime 요청 시에 기존에 게시된 콘텐츠 대신 현재 CMS에서 draft된 콘텐츠를 render하길 원할 때 유용
+
+ * ##### previewData 
+   * preview mode 시에 preview Data set을 가지고 있음
+
+ * ##### locale 
+   * 현재 active locale을 포함
+
+ * ##### locales 
+   * 모든 supported locales를 포함
+
+ * ##### defaultLocale
+   * 설정된 default locale을 포함
+ 
+### return
+ * getStaticProps는 다음과 같은 object를 return
+
+ * ##### props
+   * required(object)
+   * page component가 받을 props object입니다. serializable object로 만들어야만함
+
+ * ##### revalidate
+   * optional(number)
+   * page re-generate가 일어날 수 있는 시간(초 단위)
+   * 예를들어 1초로 적용해놓으면 요청이 들어올 때 1초마다 page를 re-generation함
+   * 새로운 post가 생성되더라도 재 build, 재 deploy 하는 것 없이 사용될 수 있음
+
+ * ##### notFound
+   * optional(boolean)
+   * 404 page로 return 하도록 함\
+   * **getStaticPaths**에서 fallback: false 일 경우에는 필요하지 않음
+     * pre-render되는 path들만 return 되기 때문
+``` next
+export async function getStaticProps(context) {
+  const res = await fetch(`https://.../data`)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {}, 
+  }
+}
+``` 
+ * ##### redirect
+   * optinal({ desination: string, permanent: boolean})
+   * 내부나 외부 resource로 redirect 하게함
+``` next
+export async function getStaticProps(context) {
+  const res = await fetch(`https://...`)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
+```
+
+### Note
+ * build 시에 redirecting은 현재 허용되지 않음
+ * build 시에 redirect를 허용하기 위해 next.config.js에 다음과 같이 추가 해야 됨
+``` next
+module.exports = {
+   async redirects() {
+     return [
+       {
+         source: '/about',
+         destination: '/',
+         permanent: true,
+       },
+     ]
+   },
+ }
+```
+ * getStaticProps에서 top-level scope module을 사용 할 수 있음
+ * getStaticProps에서 import된 module은 클라이언트 측에 번들로 제공되지 않음
+   * getStaticProps에서 직접 서버 측 코드를 작성할 수 있음
+   * 여기에는 파일 시스템이나 데이터베이스에서 읽는 것이 포함
+ * top-level scope module
+``` next
+import { something } from "<module>"; <-- Global / Top-level scope
+```
+ * getStaticProps에서 Application내에 API route를 호출하기 위해 fetch()를 사용해서는 안됨
+ * 대신 API route 내에서 사용되는 로직(control)을 직접 가져와야 함
+ * 이 접근 방식을 위해 코드를 약간 리팩토링해야 할 수도 있음
+ * 외부 API에서 가져 오는 것은 괜찮음
+
+## getStaticPaths 
+---
+
+### 기본개념
+ * dynamic route를 이용한다면, build 시에 HTML을 생성하기 위해 path list를 정의해야할 필요가 있음
+ * 이런 경우에 getStaticPaths를 사용
+ * Next.js는 getStaticPaths에 정의된 모든 path에 대해 정적으로 pre-rendering을 함
+ * server-side에서 build 시에만 동작
+ * page에서만 허용
+ * 개발 시에는 모든 요청에 대해 동작
+```next
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { ... } } 
+    ],
+    fallback: true or false 
+  };
+}
+```
+
+### 사용처
+ * dynamic route를 사용한 정적 pre-rendering page가 있다면 사용해야만함
+   * getServerSideProps와는 함께 사용할 수 없음
+
+### return
+ * ##### paths
+   * required
+   * pre-render되는 path를 결정
+   * ex) pages/posts/[id].js로 dynamic route를 만들었다고 가정
+``` next
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: '1' } },
+      { params: { id: '2' } }
+    ],
+    fallback: ...
+  }
+}
+```
+   * Next.js는 posts/1 posts/2를 pages/posts/[id].js를 사용하여 build 시에 정적으로 생성
+   * posts/1 posts/2를 pages/posts/[id].js를 사용하여 build 시에 정적으로 생성
+   * params는 dynamic route에서 page pathname으로 사용된 parameter와 match되어야만 함
+ * ##### fallback
+   * required
+   * **false**
+     * getStaticPaths에 path로 정의되지 않은 것은 404 page로 응답
+	 * pre-render하는 path list가 많지 않다면(build시에 모두 정적 생성되기 때문입니다) 사용할 수 있음
+	 * 새로운 page가 추가되었을 때는 build를 새로해야 404 page로 가지 않음
+   * **true**
+     * 매우 많은 수의 정적 페이지들(e-commerce site와 같은? 방대한 데이터에 의존하는)이 있는 app 에서 유용
+	 * build 시에 생성 되지 않았던 path들은 404 page가 되지는 않음
+	 * 대신 Next.js는 이러한 path들에 대해서 첫 요청이 들어오면 "대체" 버전(fallback 버전)을 제공
+	   * background에서는 Next.js가 요청된 path에 대해 정적으로 HTML과 JSON을 생성할 것이고 getStaticProps에 넘겨줌
+	   * 사용자 관점에서는 fallback page에서 완전한 page로 swap될 것
+	   * 동시에 Next.js는 이 path를 pre-render page 리스트에 추가
+	   * 그리고 후속 요청은 정적 생성된 page(build 시 pre-rendering 페이지)와 동일하게 제공
+	 * next export 사용시에는 제공되지 않음
+	 * Fallback page
+	   * next/router를 사용해 fallback 인지 체크
+	   * router.isFallback === true
+``` next
+☆ pages/posts/[id].js
+
+import { useRouter } from 'next/router'
+
+function Post({ post }) {
+  const router = useRouter()
+
+  ★ 만약 아직 page가 생성되지 않았다면, 아래와 같이
+  ★ Loading...이라는 글자를 보여줍니다.
+  ★ (getStaticProps() 동작이 끝나기 전까지)
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
+  ★ Render post...
+}
+
+★ build time 때 호출
+export async function getStaticPaths() {
+  return {
+  
+    ★ 정적 생성 : `/posts/1` and `/posts/2`
+    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
+    ★ `/posts/3` 와 같은 
+    fallback: true,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://.../posts/${params.id}`)
+  const post = await res.json()
+
+  return {
+    props: { post },
+    ★ 요청이 들어온다면
+    ★ 매 1초당 post를 재 생성 할것입니다.
+    revalidate: 1,
+  }
+}
+
+export default Post
+```
+
+## TypeScript
+---
+
+### 설치
+``` next
+npm install --save-dev typescript @types/react @types/node
+```
+
 
