@@ -3,7 +3,6 @@ package java_api_class;
 public class G_Wrapper {
 
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 				
 		Integer num = new Integer(17); //박싱
