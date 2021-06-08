@@ -659,7 +659,7 @@ export async function getStaticProps(context) {
 
  * ##### notFound
    * optional(boolean)
-   * 404 page로 return 하도록 함\
+   * 404 page로 return 하도록 함
    * **getStaticPaths**에서 fallback: false 일 경우에는 필요하지 않음
      * pre-render되는 path들만 return 되기 때문
 ``` next
@@ -844,4 +844,11 @@ export default Post
 npm install --save-dev typescript @types/react @types/node
 ```
 
+-----------------------------------------------------------
+
+npm i axios
+
+useEffect, useState
+
+npm install semantic-ui-react semantic-ui-css
 
